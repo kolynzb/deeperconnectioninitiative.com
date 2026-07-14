@@ -3,6 +3,53 @@
 	import Button, { buttonVariants } from '../../ui/button/button.svelte';
 	import AnimateSvg from '@/lib/components/animate-svg.svelte';
 	import { reveal } from '@/lib/actions/reveal';
+	import gsap from 'gsap';
+	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
+
+	let animationCtx: gsap.Context | undefined;
+
+	onMount(() => {
+		if (!browser) return;
+
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (prefersReducedMotion) return;
+
+		animationCtx = gsap.context(() => {
+			// Input stream: flows right-to-left (text flowing into the head)
+			// Two textPaths offset by 50% for seamless looping coverage
+			gsap.to('#input-text-1', {
+				attr: { startOffset: '-100%' },
+				duration: 28,
+				ease: 'none',
+				repeat: -1
+			});
+			gsap.to('#input-text-2', {
+				attr: { startOffset: '-50%' },
+				duration: 28,
+				ease: 'none',
+				repeat: -1
+			});
+
+			// Output stream: flows left (away from the head)
+			gsap.to('#output-text-1', {
+				attr: { startOffset: '100%' },
+				duration: 25,
+				ease: 'none',
+				repeat: -1
+			});
+			gsap.to('#output-text-2', {
+				attr: { startOffset: '150%' },
+				duration: 25,
+				ease: 'none',
+				repeat: -1
+			});
+		});
+
+		return () => {
+			animationCtx?.revert();
+		};
+	});
 </script>
 
 <section class="relative w-full overflow-hidden px-4 pt-32 pb-16 sm:px-6 lg:px-8 lg:pt-40 lg:pb-8">
