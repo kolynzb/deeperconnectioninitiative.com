@@ -7,14 +7,13 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
-	// Repeat text enough to fill the scroll range (~3200 SVG units at font-size 16)
 	const badPhrase =
 		'stress \u00b7 anxiety \u00b7 isolation \u00b7 burnout \u00b7 why me \u00b7 not sleeping \u00b7 always busy \u00b7 can\u2019t cope \u00b7 ';
 	const goodPhrase =
 		'clarity \u00b7 connection \u00b7 hope \u00b7 belonging \u00b7 healing \u00b7 supported \u00b7 seen \u00b7 I\u2019m not alone \u00b7 ';
 
-	const badText = badPhrase.repeat(6);
-	const goodText = goodPhrase.repeat(6);
+	const badText = badPhrase.repeat(8);
+	const goodText = goodPhrase.repeat(8);
 
 	let svgEl: SVGSVGElement | undefined;
 
@@ -25,20 +24,20 @@
 		if (prefersReducedMotion) return;
 
 		const ctx = gsap.context(() => {
-			// Input stream: path goes head→right, so scrolling x from 0 → -3200
+			// Input stream: path goes head→right, scrolling x 0→-5000
 			// makes text visually flow from right toward the head
 			gsap.fromTo(
 				'#input-text',
 				{ attr: { x: 0 } },
-				{ attr: { x: -3200 }, duration: 32, ease: 'none', repeat: -1 }
+				{ attr: { x: -5000 }, duration: 55, ease: 'none', repeat: -1 }
 			);
 
-			// Output stream: path goes left→head, so scrolling x from 0 → -3200
+			// Output stream: path goes left→head, scrolling x 0→-5000
 			// makes text visually flow from head toward the left
 			gsap.fromTo(
 				'#output-text',
 				{ attr: { x: 0 } },
-				{ attr: { x: -3200 }, duration: 28, ease: 'none', repeat: -1 }
+				{ attr: { x: -5000 }, duration: 50, ease: 'none', repeat: -1 }
 			);
 		}, svgEl);
 
@@ -49,7 +48,7 @@
 </script>
 
 <section
-	class="relative w-full overflow-hidden px-4 pt-32 pb-16 sm:px-6 lg:px-8 lg:pt-40 lg:pb-8"
+	class="relative w-full overflow-hidden px-4 pt-32 pb-0 sm:px-6 lg:px-8 lg:pt-40 lg:pb-0"
 >
 	<div class="pointer-events-none absolute top-28 left-0 hidden w-[42vw] opacity-45 lg:block">
 		<AnimateSvg
@@ -132,20 +131,14 @@
 				Explore the ecosystem
 			</Button>
 		</div>
-
-		<div class="grid w-full max-w-xl grid-cols-3 gap-3 pt-4 text-xs text-foreground/70">
-			<div class="border-t border-primary/25 pt-3">Community-rooted</div>
-			<div class="border-t border-accent/25 pt-3">Offline-first</div>
-			<div class="border-t border-foreground/20 pt-3">Trauma-aware</div>
-		</div>
 	</div>
 
-	<!-- Flowing thoughts animation -->
-	<div class="mx-auto mt-12 max-w-5xl lg:mt-16" use:reveal={{ delay: 200, y: 30 }}>
-		<div class="relative w-full" style="aspect-ratio: 1200 / 650;">
+	<!-- Flowing thoughts animation — directly below buttons, no gap -->
+	<div class="mx-auto mt-6 w-full max-w-6xl lg:mt-8" use:reveal={{ delay: 200, y: 30 }}>
+		<div class="relative w-full" style="aspect-ratio: 1200 / 600;">
 			<svg
 				bind:this={svgEl}
-				viewBox="0 0 1200 650"
+				viewBox="0 0 1200 600"
 				class="h-full w-full overflow-visible"
 				xmlns="http://www.w3.org/2000/svg"
 				xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -153,81 +146,80 @@
 			>
 				<defs>
 					<!-- Glow behind the head -->
-					<radialGradient id="head-glow" cx="50%" cy="46%" r="28%">
-						<stop offset="0%" stop-color="#2A6268" stop-opacity="0.14" />
-						<stop offset="50%" stop-color="#F6ECD9" stop-opacity="0.07" />
+					<radialGradient id="head-glow" cx="50%" cy="42%" r="25%">
+						<stop offset="0%" stop-color="#2A6268" stop-opacity="0.18" />
+						<stop offset="50%" stop-color="#F6ECD9" stop-opacity="0.08" />
 						<stop offset="100%" stop-color="#F6ECD9" stop-opacity="0" />
 					</radialGradient>
-
-					<!-- Circular clip for head icon -->
-					<clipPath id="head-clip">
-						<circle cx="600" cy="300" r="130" />
-					</clipPath>
 				</defs>
 
-				<!-- Input path: reversed so text reads left-to-right (natural reading direction).
-				     Path goes head → right. GSAP scrolls text so it visually enters from the right. -->
+				<!-- INPUT PATH: head → upper-right (text reads naturally left-to-right).
+				     Dramatic sweeping arc from head area up and out to the right. -->
 				<path
 					id="input-path"
-					d="M610 310 C640 295, 680 275, 730 260 C800 240, 880 250, 960 290 C1050 335, 1150 420, 1300 520"
+					d="M580 260 C620 240, 680 200, 760 180 C860 155, 960 170, 1060 220 C1160 270, 1260 360, 1400 440"
 					fill="none"
 					stroke="#6F231E"
-					stroke-width="1"
-					stroke-opacity="0.08"
+					stroke-width="1.5"
+					stroke-opacity="0.1"
 				/>
 
-				<!-- Output path: left → head (reversed so text reads naturally).
-				     GSAP scrolls x from 0 → -3200, making text visually flow from head leftward. -->
+				<!-- OUTPUT PATH visual band: thick dark stroke creates the ribbon effect -->
+				<path
+					d="M-300 420 C-150 400, 0 380, 120 350 C260 315, 380 290, 480 275 C540 266, 570 262, 600 260"
+					fill="none"
+					stroke="#1A3C40"
+					stroke-width="42"
+					stroke-linecap="round"
+					stroke-opacity="0.92"
+				/>
+
+				<!-- OUTPUT PATH: left → head (reversed for natural text direction) -->
 				<path
 					id="output-path"
-					d="M-250 370 C-150 360, -50 395, 50 410 C180 430, 300 415, 400 380 C490 350, 550 325, 590 310"
+					d="M-300 420 C-150 400, 0 380, 120 350 C260 315, 380 290, 480 275 C540 266, 570 262, 600 260"
 					fill="none"
-					stroke="#2A6268"
-					stroke-width="1"
-					stroke-opacity="0.08"
+					stroke="none"
 				/>
 
 				<!-- Subtle glow behind the head -->
-				<ellipse cx="600" cy="300" rx="200" ry="200" fill="url(#head-glow)" />
+				<ellipse cx="590" cy="260" rx="180" ry="180" fill="url(#head-glow)" />
 
-				<!-- Input stream: bad thoughts flowing right → head -->
+				<!-- Input stream: bad thoughts (thin, ghostly, burgundy) -->
 				<text
 					id="input-text"
 					x="0"
 					font-family="'Outfit', sans-serif"
 					font-weight="500"
-					font-size="18"
+					font-size="28"
 					fill="#6F231E"
-					fill-opacity="0.5"
+					fill-opacity="0.4"
 				>
 					<textPath href="#input-path">{badText}</textPath>
 				</text>
 
-				<!-- Output stream: good thoughts flowing head → left -->
+				<!-- Output stream: good thoughts (white on dark band) -->
 				<text
 					id="output-text"
 					x="0"
 					font-family="'Outfit', sans-serif"
-					font-weight="500"
-					font-size="18"
-					fill="#2A6268"
-					fill-opacity="0.65"
+					font-weight="600"
+					font-size="28"
+					fill="#F6ECD9"
+					fill-opacity="0.95"
 				>
 					<textPath href="#output-path">{goodText}</textPath>
 				</text>
 
-				<!-- Head icon border ring -->
-				<circle cx="600" cy="300" r="132" fill="none" stroke="#EFE5D0" stroke-width="3" />
-
-				<!-- Head icon (on top — text flows behind it) -->
+				<!-- Head icon (no circle clip — mix-blend-mode removes white bg) -->
 				<image
 					href="/photos/head-icon.jpg"
-					x="470"
-					y="170"
-					width="260"
+					x="480"
+					y="130"
+					width="220"
 					height="260"
-					clip-path="url(#head-clip)"
-					preserveAspectRatio="xMidYMid slice"
+					preserveAspectRatio="xMidYMid meet"
+					style="mix-blend-mode: multiply;"
 				/>
 			</svg>
 		</div>
