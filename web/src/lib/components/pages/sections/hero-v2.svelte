@@ -13,24 +13,84 @@
 	const goodText = goodPhrase.repeat(10);
 </script>
 
-<section
-	class="relative w-full overflow-hidden px-4 pt-32 pb-0 sm:px-6 lg:px-8 lg:pt-40 lg:pb-0"
->
-	<div class="pointer-events-none absolute top-28 left-0 hidden w-[42vw] opacity-45 lg:block">
-		<AnimateSvg
-			width="100%"
-			height="100%"
-			viewBox="0 0 560 240"
-			path="M8 70 C112 16, 178 206, 272 142 C343 93, 374 36, 452 58 C500 72, 529 110, 552 155"
-			strokeColor="oklch(0.35 0.12 25 / 0.48)"
-			strokeWidth={3}
-			strokeLinecap="round"
-			animationDuration={1.8}
-		/>
+<section class="hero-section relative w-full overflow-hidden pt-32 pb-0 lg:pt-40 lg:pb-0">
+	<!-- ============================================================
+	     ANIMATION LAYER — absolute, behind copy, overlays the section
+	     Left curve starts top-left and spirals down through the copy.
+	     Right band sits bottom-right, bleeds off-screen.
+	     Logo mark sits at the intersection point.
+	     ============================================================ -->
+	<div class="hero-anim-wrapper pointer-events-none" aria-hidden="true">
+		<!-- Left SVG: bad thoughts — starts top-left, spirals down -->
+		<div class="hero-anim-left">
+			<svg
+				width="100%"
+				height="100%"
+				viewBox="0 0 1048 594"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+				preserveAspectRatio="xMinYMin meet"
+			>
+				<path
+					id="curve-bad"
+					d="M0.597656 50.924805C17.4612 143.2965 97.8522 293.141 284.508 353.548C440.828 399.056 583.839 294.067 500.618 184.7492C417.397 75.4309 238.217 282.098 499.258 441.668C551.913 477.802 817.468 561.26 1046.43 565.235"
+					stroke="#EFE5D0"
+				/>
+				<text x="-3300">
+					<textPath id="marquee-bad" href="#curve-bad">{badText}</textPath>
+					<animate
+						attributeName="x"
+						dur="40s"
+						values="-3300; 0"
+						repeatCount="indefinite"
+					/>
+				</text>
+			</svg>
+		</div>
+
+		<!-- DCI logo mark — small, at the intersection point -->
+		<div class="hero-anim-mark">
+			<img
+				src="/photos/dci-logo-mark.png"
+				alt=""
+				class="h-full w-auto object-contain"
+			/>
+		</div>
+
+		<!-- Right SVG: good thoughts — bottom-right, bleeds off-screen -->
+		<div class="hero-anim-right">
+			<svg
+				width="100%"
+				height="100%"
+				viewBox="0 0 1024 620"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+				preserveAspectRatio="xMaxYMax meet"
+			>
+				<path
+					id="curve-good"
+					d="M2.04309 563.872C111.592 558.268 316.491 554.016 517.963 490.064C703.017 431.323 875.319 444.531 1021.88 453.216"
+					stroke="#1A3C40"
+					stroke-width="30"
+				/>
+				<text x="-4500">
+					<textPath id="marquee-good" href="#curve-good">{goodText}</textPath>
+					<animate
+						attributeName="x"
+						dur="50s"
+						values="-4500; 0"
+						repeatCount="indefinite"
+					/>
+				</text>
+			</svg>
+		</div>
 	</div>
 
+	<!-- ============================================================
+	     COPY LAYER — relative, sits on top of the animation
+	     ============================================================ -->
 	<div
-		class="mx-auto flex max-w-3xl flex-col items-center space-y-8 text-center"
+		class="relative z-20 mx-auto flex max-w-3xl flex-col items-center space-y-8 px-4 text-center sm:px-6 lg:px-8"
 		use:reveal={{ delay: 0, y: 18 }}
 	>
 		<div
@@ -99,87 +159,80 @@
 		</div>
 	</div>
 
-	<!-- Flowing thoughts animation — side by side: [left curve] [HEAD] [right curve] -->
-	<div
-		class="relative mx-auto mt-4 flex w-full max-w-7xl items-center lg:mt-6"
-		use:reveal={{ delay: 200, y: 30 }}
-	>
-		<!-- Left: bad thoughts flowing L→R into the head -->
-		<div class="hero-anim-left flex-1">
-			<svg
-				width="100%"
-				height="auto"
-				viewBox="0 0 1048 594"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					id="curve-bad"
-					d="M0.597656 50.924805C17.4612 143.2965 97.8522 293.141 284.508 353.548C440.828 399.056 583.839 294.067 500.618 184.7492C417.397 75.4309 238.217 282.098 499.258 441.668C551.913 477.802 817.468 561.26 1046.43 565.235"
-					stroke="#EFE5D0"
-				/>
-				<text x="-3300">
-					<textPath id="marquee-bad" href="#curve-bad">{badText}</textPath>
-					<animate
-						attributeName="x"
-						dur="40s"
-						values="-3300; 0"
-						repeatCount="indefinite"
-					/>
-				</text>
-			</svg>
-		</div>
-
-		<!-- Center: DCI logo mark head (on top of both curves via z-index) -->
-		<div class="pointer-events-none relative z-10 mx-[-4%] shrink-0">
-			<img
-				src="/photos/dci-logo-mark.png"
-				alt=""
-				class="h-[180px] w-auto object-contain sm:h-[240px] lg:h-[300px]"
-				loading="lazy"
-			/>
-		</div>
-
-		<!-- Right: good thoughts flowing L→R away from the head -->
-		<div class="hero-anim-right flex-1">
-			<svg
-				width="100%"
-				height="auto"
-				viewBox="0 0 1024 620"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					id="curve-good"
-					d="M2.04309 563.872C111.592 558.268 316.491 554.016 517.963 490.064C703.017 431.323 875.319 444.531 1021.88 453.216"
-					stroke="#1A3C40"
-					stroke-width="30"
-				/>
-				<text x="-4500">
-					<textPath id="marquee-good" href="#curve-good">{goodText}</textPath>
-					<animate
-						attributeName="x"
-						dur="50s"
-						values="-4500; 0"
-						repeatCount="indefinite"
-					/>
-				</text>
-			</svg>
-		</div>
-	</div>
+	<!-- Spacer so the section is tall enough for the animation to breathe -->
+	<div class="h-[260px] sm:h-[320px] lg:h-[380px]"></div>
 </section>
 
 <style>
-	/* Bad thoughts text — ghostly, thin */
+	/* Section needs to be tall enough for the absolute animation */
+	.hero-section {
+		min-height: 100vh;
+	}
+
+	/* Animation wrapper — absolute, full section coverage */
+	.hero-anim-wrapper {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		overflow: visible;
+	}
+
+	/* Left curve — positioned top-left, extends into upper area
+	   ~55% of viewport width, starts above the fold */
+	.hero-anim-left {
+		position: absolute;
+		top: -5%;
+		left: -5%;
+		width: 55%;
+		height: 90%;
+	}
+
+	/* Logo mark — small, at the intersection of both curves
+	   Bottom-center area where left curve ends and right begins */
+	.hero-anim-mark {
+		position: absolute;
+		bottom: 18%;
+		left: 50%;
+		transform: translateX(-50%);
+		height: 70px;
+		width: 70px;
+		z-index: 10;
+	}
+
+	@media (min-width: 640px) {
+		.hero-anim-mark {
+			height: 90px;
+			width: 90px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.hero-anim-mark {
+			height: 110px;
+			width: 110px;
+			bottom: 15%;
+		}
+	}
+
+	/* Right band — positioned bottom-right, bleeds off-screen */
+	.hero-anim-right {
+		position: absolute;
+		bottom: 0;
+		right: -10%;
+		width: 65%;
+		height: 55%;
+	}
+
+	/* Bad thoughts text — ghostly, thin, LARGE */
 	:global(#marquee-bad) {
 		font-size: inherit;
 		font-weight: 400;
 		fill: #1a3c40;
 		baseline-shift: -20%;
-		opacity: 0.4;
+		opacity: 0.35;
 	}
 
-	/* Good thoughts text — bold, cream on dark band */
+	/* Good thoughts text — bold, cream on dark band, LARGE */
 	:global(#marquee-good) {
 		font-size: inherit;
 		font-weight: 600;
@@ -187,21 +240,13 @@
 		baseline-shift: -30%;
 	}
 
-	/* SVG paths should be transparent fill */
+	/* SVG paths — transparent fill */
 	:global(#curve-bad),
 	:global(#curve-good) {
 		fill: transparent;
 	}
 
-	/* Side-by-side layout — curves flanking the head */
-	.hero-anim-left,
-	.hero-anim-right {
-		position: relative;
-		z-index: 1;
-		overflow: visible;
-	}
-
-	/* Reduced motion — pause animations */
+	/* Reduced motion */
 	@media (prefers-reduced-motion: reduce) {
 		:global(#marquee-bad animate),
 		:global(#marquee-good animate) {
