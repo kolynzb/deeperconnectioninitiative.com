@@ -99,20 +99,13 @@
 		</div>
 	</div>
 
-	<!-- Flowing thoughts animation — wisprflow technique -->
-	<div class="relative mx-auto mt-4 w-full max-w-7xl lg:mt-6" use:reveal={{ delay: 200, y: 30 }}>
-		<!-- Head motif — ON TOP of text streams (z-10) -->
-		<div class="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
-			<img
-				src="/photos/head-motif.png"
-				alt=""
-				class="h-[280px] w-auto object-contain sm:h-[360px] lg:h-[440px]"
-				loading="lazy"
-			/>
-		</div>
-
-		<!-- Left SVG: bad thoughts flowing L→R into the head (behind head via z-order) -->
-		<div class="hero-anim-left">
+	<!-- Flowing thoughts animation — side by side: [left curve] [HEAD] [right curve] -->
+	<div
+		class="relative mx-auto mt-4 flex w-full max-w-7xl items-center lg:mt-6"
+		use:reveal={{ delay: 200, y: 30 }}
+	>
+		<!-- Left: bad thoughts flowing L→R into the head -->
+		<div class="hero-anim-left flex-1">
 			<svg
 				width="100%"
 				height="auto"
@@ -137,8 +130,18 @@
 			</svg>
 		</div>
 
-		<!-- Right SVG: good thoughts flowing L→R out of the head (behind head via z-order) -->
-		<div class="hero-anim-right">
+		<!-- Center: DCI logo mark head (on top of both curves via z-index) -->
+		<div class="pointer-events-none relative z-10 mx-[-4%] shrink-0">
+			<img
+				src="/photos/dci-logo-mark.png"
+				alt=""
+				class="h-[180px] w-auto object-contain sm:h-[240px] lg:h-[300px]"
+				loading="lazy"
+			/>
+		</div>
+
+		<!-- Right: good thoughts flowing L→R away from the head -->
+		<div class="hero-anim-right flex-1">
 			<svg
 				width="100%"
 				height="auto"
@@ -190,16 +193,12 @@
 		fill: transparent;
 	}
 
-	/* Position the two SVGs to overlap with the head in the center */
-	.hero-anim-left {
-		position: relative;
-		z-index: 1;
-		margin-bottom: -45%;
-	}
-
+	/* Side-by-side layout — curves flanking the head */
+	.hero-anim-left,
 	.hero-anim-right {
 		position: relative;
 		z-index: 1;
+		overflow: visible;
 	}
 
 	/* Reduced motion — pause animations */
