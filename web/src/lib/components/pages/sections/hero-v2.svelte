@@ -3,48 +3,14 @@
 	import Button, { buttonVariants } from '../../ui/button/button.svelte';
 	import AnimateSvg from '@/lib/components/animate-svg.svelte';
 	import { reveal } from '@/lib/actions/reveal';
-	import gsap from 'gsap';
-	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
 
 	const badPhrase =
 		'stress \u00b7 anxiety \u00b7 isolation \u00b7 burnout \u00b7 why me \u00b7 not sleeping \u00b7 always busy \u00b7 can\u2019t cope \u00b7 ';
 	const goodPhrase =
 		'clarity \u00b7 connection \u00b7 hope \u00b7 belonging \u00b7 healing \u00b7 supported \u00b7 seen \u00b7 I\u2019m not alone \u00b7 ';
 
-	const badText = badPhrase.repeat(8);
-	const goodText = goodPhrase.repeat(8);
-
-	let svgEl: SVGSVGElement | undefined;
-
-	onMount(() => {
-		if (!browser || !svgEl) return;
-
-		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-		if (prefersReducedMotion) return;
-
-		const ctx = gsap.context(() => {
-			// Input stream: path goes head→right, scrolling x 0→-5000
-			// makes text visually flow from right toward the head
-			gsap.fromTo(
-				'#input-text',
-				{ attr: { x: 0 } },
-				{ attr: { x: -5000 }, duration: 55, ease: 'none', repeat: -1 }
-			);
-
-			// Output stream: path goes left→head, scrolling x 0→-5000
-			// makes text visually flow from head toward the left
-			gsap.fromTo(
-				'#output-text',
-				{ attr: { x: 0 } },
-				{ attr: { x: -5000 }, duration: 50, ease: 'none', repeat: -1 }
-			);
-		}, svgEl);
-
-		return () => {
-			ctx.revert();
-		};
-	});
+	const badText = badPhrase.repeat(10);
+	const goodText = goodPhrase.repeat(10);
 </script>
 
 <section
@@ -133,95 +99,114 @@
 		</div>
 	</div>
 
-	<!-- Flowing thoughts animation — directly below buttons, no gap -->
-	<div class="mx-auto mt-6 w-full max-w-6xl lg:mt-8" use:reveal={{ delay: 200, y: 30 }}>
-		<div class="relative w-full" style="aspect-ratio: 1200 / 600;">
+	<!-- Flowing thoughts animation — wisprflow technique -->
+	<div class="relative mx-auto mt-4 w-full max-w-7xl lg:mt-6" use:reveal={{ delay: 200, y: 30 }}>
+		<!-- Head motif — ON TOP of text streams (z-10) -->
+		<div class="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
+			<img
+				src="/photos/head-motif.png"
+				alt=""
+				class="h-[280px] w-auto object-contain sm:h-[360px] lg:h-[440px]"
+				loading="lazy"
+			/>
+		</div>
+
+		<!-- Left SVG: bad thoughts flowing L→R into the head (behind head via z-order) -->
+		<div class="hero-anim-left">
 			<svg
-				bind:this={svgEl}
-				viewBox="0 0 1200 600"
-				class="h-full w-full overflow-visible"
+				width="100%"
+				height="auto"
+				viewBox="0 0 1048 594"
+				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
-				xmlns:xlink="http://www.w3.org/1999/xlink"
-				aria-hidden="true"
 			>
-				<defs>
-					<!-- Glow behind the head -->
-					<radialGradient id="head-glow" cx="50%" cy="42%" r="25%">
-						<stop offset="0%" stop-color="#2A6268" stop-opacity="0.18" />
-						<stop offset="50%" stop-color="#F6ECD9" stop-opacity="0.08" />
-						<stop offset="100%" stop-color="#F6ECD9" stop-opacity="0" />
-					</radialGradient>
-				</defs>
-
-				<!-- INPUT PATH: head → upper-right (text reads naturally left-to-right).
-				     Dramatic sweeping arc from head area up and out to the right. -->
 				<path
-					id="input-path"
-					d="M580 260 C620 240, 680 200, 760 180 C860 155, 960 170, 1060 220 C1160 270, 1260 360, 1400 440"
-					fill="none"
-					stroke="#6F231E"
-					stroke-width="1.5"
-					stroke-opacity="0.1"
+					id="curve-bad"
+					d="M0.597656 50.924805C17.4612 143.2965 97.8522 293.141 284.508 353.548C440.828 399.056 583.839 294.067 500.618 184.7492C417.397 75.4309 238.217 282.098 499.258 441.668C551.913 477.802 817.468 561.26 1046.43 565.235"
+					stroke="#EFE5D0"
 				/>
+				<text x="-3300">
+					<textPath id="marquee-bad" href="#curve-bad">{badText}</textPath>
+					<animate
+						attributeName="x"
+						dur="40s"
+						values="-3300; 0"
+						repeatCount="indefinite"
+					/>
+				</text>
+			</svg>
+		</div>
 
-				<!-- OUTPUT PATH visual band: thick dark stroke creates the ribbon effect -->
+		<!-- Right SVG: good thoughts flowing L→R out of the head (behind head via z-order) -->
+		<div class="hero-anim-right">
+			<svg
+				width="100%"
+				height="auto"
+				viewBox="0 0 1024 620"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
 				<path
-					d="M-300 420 C-150 400, 0 380, 120 350 C260 315, 380 290, 480 275 C540 266, 570 262, 600 260"
-					fill="none"
+					id="curve-good"
+					d="M2.04309 563.872C111.592 558.268 316.491 554.016 517.963 490.064C703.017 431.323 875.319 444.531 1021.88 453.216"
 					stroke="#1A3C40"
-					stroke-width="42"
-					stroke-linecap="round"
-					stroke-opacity="0.92"
+					stroke-width="30"
 				/>
-
-				<!-- OUTPUT PATH: left → head (reversed for natural text direction) -->
-				<path
-					id="output-path"
-					d="M-300 420 C-150 400, 0 380, 120 350 C260 315, 380 290, 480 275 C540 266, 570 262, 600 260"
-					fill="none"
-					stroke="none"
-				/>
-
-				<!-- Subtle glow behind the head -->
-				<ellipse cx="590" cy="260" rx="180" ry="180" fill="url(#head-glow)" />
-
-				<!-- Input stream: bad thoughts (thin, ghostly, burgundy) -->
-				<text
-					id="input-text"
-					x="0"
-					font-family="'Outfit', sans-serif"
-					font-weight="500"
-					font-size="28"
-					fill="#6F231E"
-					fill-opacity="0.4"
-				>
-					<textPath href="#input-path">{badText}</textPath>
+				<text x="-4500">
+					<textPath id="marquee-good" href="#curve-good">{goodText}</textPath>
+					<animate
+						attributeName="x"
+						dur="50s"
+						values="-4500; 0"
+						repeatCount="indefinite"
+					/>
 				</text>
-
-				<!-- Output stream: good thoughts (white on dark band) -->
-				<text
-					id="output-text"
-					x="0"
-					font-family="'Outfit', sans-serif"
-					font-weight="600"
-					font-size="28"
-					fill="#F6ECD9"
-					fill-opacity="0.95"
-				>
-					<textPath href="#output-path">{goodText}</textPath>
-				</text>
-
-				<!-- Head icon (no circle clip — mix-blend-mode removes white bg) -->
-				<image
-					href="/photos/head-icon.jpg"
-					x="480"
-					y="130"
-					width="220"
-					height="260"
-					preserveAspectRatio="xMidYMid meet"
-					style="mix-blend-mode: multiply;"
-				/>
 			</svg>
 		</div>
 	</div>
 </section>
+
+<style>
+	/* Bad thoughts text — ghostly, thin */
+	:global(#marquee-bad) {
+		font-size: inherit;
+		font-weight: 400;
+		fill: #1a3c40;
+		baseline-shift: -20%;
+		opacity: 0.4;
+	}
+
+	/* Good thoughts text — bold, cream on dark band */
+	:global(#marquee-good) {
+		font-size: inherit;
+		font-weight: 600;
+		fill: #f6ecd9;
+		baseline-shift: -30%;
+	}
+
+	/* SVG paths should be transparent fill */
+	:global(#curve-bad),
+	:global(#curve-good) {
+		fill: transparent;
+	}
+
+	/* Position the two SVGs to overlap with the head in the center */
+	.hero-anim-left {
+		position: relative;
+		z-index: 1;
+		margin-bottom: -45%;
+	}
+
+	.hero-anim-right {
+		position: relative;
+		z-index: 1;
+	}
+
+	/* Reduced motion — pause animations */
+	@media (prefers-reduced-motion: reduce) {
+		:global(#marquee-bad animate),
+		:global(#marquee-good animate) {
+			animation-play-state: paused;
+		}
+	}
+</style>
