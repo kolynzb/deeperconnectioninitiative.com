@@ -7,52 +7,50 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
-	let animationCtx: gsap.Context | undefined;
+	// Repeat text enough to fill the scroll range (~3200 SVG units at font-size 16)
+	const badPhrase =
+		'stress \u00b7 anxiety \u00b7 isolation \u00b7 burnout \u00b7 why me \u00b7 not sleeping \u00b7 always busy \u00b7 can\u2019t cope \u00b7 ';
+	const goodPhrase =
+		'clarity \u00b7 connection \u00b7 hope \u00b7 belonging \u00b7 healing \u00b7 supported \u00b7 seen \u00b7 I\u2019m not alone \u00b7 ';
+
+	const badText = badPhrase.repeat(6);
+	const goodText = goodPhrase.repeat(6);
+
+	let svgEl: SVGSVGElement | undefined;
 
 	onMount(() => {
-		if (!browser) return;
+		if (!browser || !svgEl) return;
 
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		if (prefersReducedMotion) return;
 
-		animationCtx = gsap.context(() => {
-			// Input stream: flows right-to-left (text flowing into the head)
-			// Two textPaths offset by 50% for seamless looping coverage
-			gsap.to('#input-text-1', {
-				attr: { startOffset: '-100%' },
-				duration: 28,
-				ease: 'none',
-				repeat: -1
-			});
-			gsap.to('#input-text-2', {
-				attr: { startOffset: '-50%' },
-				duration: 28,
-				ease: 'none',
-				repeat: -1
-			});
+		const ctx = gsap.context(() => {
+			// Input stream: path goes head→right, so scrolling x from 0 → -3200
+			// makes text visually flow from right toward the head
+			gsap.fromTo(
+				'#input-text',
+				{ attr: { x: 0 } },
+				{ attr: { x: -3200 }, duration: 32, ease: 'none', repeat: -1 }
+			);
 
-			// Output stream: flows left (away from the head)
-			gsap.to('#output-text-1', {
-				attr: { startOffset: '100%' },
-				duration: 25,
-				ease: 'none',
-				repeat: -1
-			});
-			gsap.to('#output-text-2', {
-				attr: { startOffset: '150%' },
-				duration: 25,
-				ease: 'none',
-				repeat: -1
-			});
-		});
+			// Output stream: path goes left→head, so scrolling x from 0 → -3200
+			// makes text visually flow from head toward the left
+			gsap.fromTo(
+				'#output-text',
+				{ attr: { x: 0 } },
+				{ attr: { x: -3200 }, duration: 28, ease: 'none', repeat: -1 }
+			);
+		}, svgEl);
 
 		return () => {
-			animationCtx?.revert();
+			ctx.revert();
 		};
 	});
 </script>
 
-<section class="relative w-full overflow-hidden px-4 pt-32 pb-16 sm:px-6 lg:px-8 lg:pt-40 lg:pb-8">
+<section
+	class="relative w-full overflow-hidden px-4 pt-32 pb-16 sm:px-6 lg:px-8 lg:pt-40 lg:pb-8"
+>
 	<div class="pointer-events-none absolute top-28 left-0 hidden w-[42vw] opacity-45 lg:block">
 		<AnimateSvg
 			width="100%"
@@ -142,139 +140,95 @@
 		</div>
 	</div>
 
-	<!-- Animation container — built in Task 2 -->
-	<div
-		class="mx-auto mt-12 max-w-5xl lg:mt-16"
-		use:reveal={{ delay: 200, y: 30 }}
-	>
-		<div class="relative aspect-[12/7] w-full">
+	<!-- Flowing thoughts animation -->
+	<div class="mx-auto mt-12 max-w-5xl lg:mt-16" use:reveal={{ delay: 200, y: 30 }}>
+		<div class="relative w-full" style="aspect-ratio: 1200 / 650;">
 			<svg
-				viewBox="0 0 1200 700"
-				class="h-full w-full"
+				bind:this={svgEl}
+				viewBox="0 0 1200 650"
+				class="h-full w-full overflow-visible"
 				xmlns="http://www.w3.org/2000/svg"
 				xmlns:xlink="http://www.w3.org/1999/xlink"
 				aria-hidden="true"
 			>
 				<defs>
-					<!-- Input path: curves from right edge into the back of the head -->
-					<path
-						id="input-path"
-						d="M1250 480 C1100 380, 1000 280, 880 260 C780 245, 720 300, 670 350"
-						fill="none"
-					/>
-					<!-- Output path: curves from the face outward to the left -->
-					<path
-						id="output-path"
-						d="M530 320 C470 280, 400 250, 320 260 C220 275, 120 340, -50 400"
-						fill="none"
-					/>
-
-					<!-- Mask for input text: visible on right, fades near head -->
-					<linearGradient id="input-fade" x1="100%" y1="0%" x2="40%" y2="0%">
-						<stop offset="0%" stop-color="white" />
-						<stop offset="70%" stop-color="white" />
-						<stop offset="100%" stop-color="black" />
-					</linearGradient>
-					<mask id="input-mask">
-						<rect x="0" y="0" width="1200" height="700" fill="url(#input-fade)" />
-					</mask>
-
-					<!-- Mask for output text: fades near head, visible on left -->
-					<linearGradient id="output-fade" x1="0%" y1="0%" x2="60%" y2="0%">
-						<stop offset="0%" stop-color="white" />
-						<stop offset="30%" stop-color="white" />
-						<stop offset="100%" stop-color="black" />
-					</linearGradient>
-					<mask id="output-mask">
-						<rect x="0" y="0" width="1200" height="700" fill="url(#output-fade)" />
-					</mask>
-
 					<!-- Glow behind the head -->
-					<radialGradient id="head-glow" cx="50%" cy="45%" r="35%">
-						<stop offset="0%" stop-color="#2A6268" stop-opacity="0.12" />
-						<stop offset="60%" stop-color="#F6ECD9" stop-opacity="0.06" />
+					<radialGradient id="head-glow" cx="50%" cy="46%" r="28%">
+						<stop offset="0%" stop-color="#2A6268" stop-opacity="0.14" />
+						<stop offset="50%" stop-color="#F6ECD9" stop-opacity="0.07" />
 						<stop offset="100%" stop-color="#F6ECD9" stop-opacity="0" />
 					</radialGradient>
+
+					<!-- Circular clip for head icon -->
+					<clipPath id="head-clip">
+						<circle cx="600" cy="300" r="130" />
+					</clipPath>
 				</defs>
 
-				<!-- Subtle glow behind the head -->
-				<ellipse cx="600" cy="340" rx="280" ry="260" fill="url(#head-glow)" />
-
-				<!-- Head motif -->
-				<image
-					href="/photos/head-motif.png"
-					x="430"
-					y="60"
-					width="340"
-					height="480"
-					preserveAspectRatio="xMidYMid meet"
+				<!-- Input path: reversed so text reads left-to-right (natural reading direction).
+				     Path goes head → right. GSAP scrolls text so it visually enters from the right. -->
+				<path
+					id="input-path"
+					d="M610 310 C640 295, 680 275, 730 260 C800 240, 880 250, 960 290 C1050 335, 1150 420, 1300 520"
+					fill="none"
+					stroke="#6F231E"
+					stroke-width="1"
+					stroke-opacity="0.08"
 				/>
 
-				<!-- Input stream (bad thoughts) -->
-				<g mask="url(#input-mask)">
-					<text
-						font-family="'Outfit', sans-serif"
-						font-weight="600"
-						font-size="22"
-						fill="#6F231E"
-						fill-opacity="0.7"
-					>
-						<textPath
-							id="input-text-1"
-							href="#input-path"
-							startOffset="0%"
-						>
-							stress &#x2022; anxiety &#x2022; isolation &#x2022; burnout &#x2022; I can't cope &#x2022; why me &#x2022; not sleeping &#x2022; always busy &#x2022;
-						</textPath>
-					</text>
-					<text
-						font-family="'Outfit', sans-serif"
-						font-weight="600"
-						font-size="22"
-						fill="#6F231E"
-						fill-opacity="0.7"
-					>
-						<textPath
-							id="input-text-2"
-							href="#input-path"
-							startOffset="50%"
-						>
-							stress &#x2022; anxiety &#x2022; isolation &#x2022; burnout &#x2022; I can't cope &#x2022; why me &#x2022; not sleeping &#x2022; always busy &#x2022;
-						</textPath>
-					</text>
-				</g>
+				<!-- Output path: left → head (reversed so text reads naturally).
+				     GSAP scrolls x from 0 → -3200, making text visually flow from head leftward. -->
+				<path
+					id="output-path"
+					d="M-250 370 C-150 360, -50 395, 50 410 C180 430, 300 415, 400 380 C490 350, 550 325, 590 310"
+					fill="none"
+					stroke="#2A6268"
+					stroke-width="1"
+					stroke-opacity="0.08"
+				/>
 
-				<!-- Output stream (good thoughts) -->
-				<g mask="url(#output-mask)">
-					<text
-						font-family="'Outfit', sans-serif"
-						font-weight="500"
-						font-size="22"
-						fill="#2A6268"
-					>
-						<textPath
-							id="output-text-1"
-							href="#output-path"
-							startOffset="0%"
-						>
-							clarity &#x2022; connection &#x2022; hope &#x2022; belonging &#x2022; I'm not alone &#x2022; healing &#x2022; supported &#x2022; seen &#x2022;
-						</textPath>
-					</text>
-					<text
-						font-family="'Outfit', sans-serif"
-						font-weight="500"
-						font-size="22"
-						fill="#2A6268"
-					>
-						<textPath
-							id="output-text-2"
-							href="#output-path"
-							startOffset="50%"
-						>
-							clarity &#x2022; connection &#x2022; hope &#x2022; belonging &#x2022; I'm not alone &#x2022; healing &#x2022; supported &#x2022; seen &#x2022;
-						</textPath>
-					</text>
-				</g>
+				<!-- Subtle glow behind the head -->
+				<ellipse cx="600" cy="300" rx="200" ry="200" fill="url(#head-glow)" />
+
+				<!-- Input stream: bad thoughts flowing right → head -->
+				<text
+					id="input-text"
+					x="0"
+					font-family="'Outfit', sans-serif"
+					font-weight="500"
+					font-size="18"
+					fill="#6F231E"
+					fill-opacity="0.5"
+				>
+					<textPath href="#input-path">{badText}</textPath>
+				</text>
+
+				<!-- Output stream: good thoughts flowing head → left -->
+				<text
+					id="output-text"
+					x="0"
+					font-family="'Outfit', sans-serif"
+					font-weight="500"
+					font-size="18"
+					fill="#2A6268"
+					fill-opacity="0.65"
+				>
+					<textPath href="#output-path">{goodText}</textPath>
+				</text>
+
+				<!-- Head icon border ring -->
+				<circle cx="600" cy="300" r="132" fill="none" stroke="#EFE5D0" stroke-width="3" />
+
+				<!-- Head icon (on top — text flows behind it) -->
+				<image
+					href="/photos/head-icon.jpg"
+					x="470"
+					y="170"
+					width="260"
+					height="260"
+					clip-path="url(#head-clip)"
+					preserveAspectRatio="xMidYMid slice"
+				/>
 			</svg>
 		</div>
 	</div>
