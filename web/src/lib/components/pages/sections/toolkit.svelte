@@ -28,14 +28,14 @@
 			credit: 'Compiled by Ann Banya — Early Child Development Specialist, 40+ years of experience.' as
 				| string
 				| null,
-			miles: '8 Connection Miles™ · 8 lives impacted',
+			miles: '8 Connection Miles™',
+			impact: '8 lives impacted',
 			price: '69,000 UGX',
 			image: '/photos/product-card-game.jpg',
 			video: null as string | null,
 			paymentLink: paymentLinks.cardGame,
-			accent: 'text-dci-burgundy',
 			border: 'border-dci-burgundy/20',
-			badge: 'border-dci-burgundy/20 bg-dci-burgundy/5 text-dci-burgundy'
+			badge: 'border-dci-burgundy/25 bg-dci-burgundy/10 text-dci-burgundy'
 		},
 		{
 			name: 'DCI Reflection Journal',
@@ -43,14 +43,14 @@
 			description:
 				'A year-long emotional healing journey, guided by Ann Banya. Each month explores a different stage of your development — helping you understand where your patterns, habits, and feelings actually came from. Because healing starts with understanding your story.',
 			credit: null as string | null,
-			miles: '1 Connection Mile™ · Your life, on the map',
+			miles: '1 Connection Mile™',
+			impact: 'Your life, on the map',
 			price: '120,000 UGX',
 			image: '/photos/product-journal.jpg',
 			video: '/videos/journal.mp4',
 			paymentLink: paymentLinks.journal,
-			accent: 'text-dci-teal',
 			border: 'border-dci-teal/20',
-			badge: 'border-dci-teal/20 bg-dci-teal/5 text-dci-teal'
+			badge: 'border-dci-teal/25 bg-dci-teal/10 text-dci-teal'
 		},
 		{
 			name: 'DCI Mood Tracker',
@@ -58,14 +58,14 @@
 			description:
 				'12 months. Daily check-ins. One colour at a time. Track how you actually feel — not how you think you should feel. Look back weekly or monthly and start to see your patterns: what triggers you, what restores you, what your stress has been trying to tell you all along.',
 			credit: null as string | null,
-			miles: '1 Connection Mile™ · 1 life tracked',
+			miles: '1 Connection Mile™',
+			impact: '1 life tracked',
 			price: '31,000 UGX',
 			image: '/photos/product-mood-tracker.jpg',
 			video: '/videos/mood-tracker.mp4',
 			paymentLink: paymentLinks.moodTracker,
-			accent: 'text-dci-teal-deep',
 			border: 'border-dci-teal-deep/20',
-			badge: 'border-dci-teal-deep/20 bg-dci-teal-deep/5 text-dci-teal-deep'
+			badge: 'border-dci-teal-deep/25 bg-dci-teal-deep/10 text-dci-teal-deep'
 		}
 	];
 </script>
@@ -89,6 +89,16 @@
 				<p class="max-w-md text-base leading-relaxed text-slate-700 sm:text-lg">
 					Designed for homes, schools, clinics, youth groups, and community circles where support
 					needs to work without perfect internet, expert language, or a formal therapy room.
+				</p>
+				<p class="max-w-md text-sm leading-relaxed text-slate-600">
+					Every tool is measured in
+					<a
+						href="/connection-miles"
+						class="font-semibold text-dci-teal underline-offset-2 hover:underline"
+					>
+						Connection Miles™
+					</a>
+					— our way of tracking the real connection each purchase puts into the world.
 				</p>
 			</div>
 
@@ -162,17 +172,18 @@
 							{#if product.credit}
 								<p class="max-w-md text-sm italic leading-relaxed text-slate-500">{product.credit}</p>
 							{/if}
-							<div>
+							<div class="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
 								<span
-									class={`inline-flex items-center rounded-full border px-3 py-1 text-[0.7rem] font-bold uppercase tracking-widest ${product.badge}`}
+									class={`inline-flex items-center whitespace-nowrap rounded-full border px-3 py-1 text-[0.7rem] font-bold uppercase tracking-widest ${product.badge}`}
 								>
 									{product.miles}
 								</span>
+								<span class="text-sm text-slate-500">{product.impact}</span>
 							</div>
 						</div>
 
 						<div class="flex flex-wrap items-center justify-between gap-4">
-							<p class={`text-2xl font-bold tracking-tight ${product.accent}`}>{product.price}</p>
+							<p class="text-2xl font-bold tracking-tight text-dci-teal-deep">{product.price}</p>
 							<Button href={product.paymentLink} target="_blank" rel="noopener noreferrer" class="rounded-full px-5">
 								Get this tool
 								<ArrowUpRight class="size-4" weight="regular" />
