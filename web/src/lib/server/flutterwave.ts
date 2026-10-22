@@ -44,6 +44,34 @@ export const products: Record<string, Product> = {
 		description: 'Wear the mission. Every shirt supports community champion training.',
 		amount: 50_000
 	},
+	'angel-kit': {
+		slug: 'angel-kit',
+		name: 'DCI Angel Starter',
+		description:
+			'The DCI Card Game and a DCI shirt together, which is what a volunteer needs to run a conversation and be recognised while doing it. After purchase you are added to the DCI Angels WhatsApp group.',
+		amount: 119_000
+	},
+	'sponsor-toolkit': {
+		slug: 'sponsor-toolkit',
+		name: 'Sponsor a Full Toolkit',
+		description:
+			'Puts a complete toolkit into the hands of someone who cannot buy one. Ten Connection Miles, ten lives meaningfully impacted, none of them yours.',
+		amount: 200_000
+	},
+	'sponsor-scholarship': {
+		slug: 'sponsor-scholarship',
+		name: 'Sponsor a Champion Scholarship',
+		description:
+			'Funds a full Community Champion certification for someone who cannot pay for it, so a whole community gains a trained facilitator.',
+		amount: 500_000
+	},
+	'champion-deposit': {
+		slug: 'champion-deposit',
+		name: 'Community Champion Waitlist Deposit',
+		description:
+			'A 30 per cent deposit that reserves your place on the waitlist for Community Champion certification. The balance of 350,000 UGX is due before training begins. Training days are announced at the next Conversation Clinic.',
+		amount: 150_000
+	},
 	'cert-foundation': {
 		slug: 'cert-foundation',
 		name: 'Foundation Level: Community Champion Certification',
@@ -93,11 +121,16 @@ type CreatePaymentInput = {
 	amount: number;
 	customer: { email: string; name?: string; phone?: string };
 	redirectUrl: string;
+	/** Extra detail carried on the payment, e.g. which clinic date was booked.
+	 *  Appears in the Flutterwave record and in the order email. */
+	meta?: Record<string, string>;
+	/** Overrides the description shown on the Flutterwave payment page. */
+	description?: string;
 };
 
 export async function createPayment(
 	fetchFn: typeof fetch,
-	{ product, amount, customer, redirectUrl }: CreatePaymentInput
+	{ product, amount, customer, redirectUrl, meta, description }: CreatePaymentInput
 ): Promise<{ link: string; txRef: string } | { error: string }> {
 	const secretKey = env.FLUTTERWAVE_SECRET_KEY;
 	if (!secretKey) {
@@ -126,9 +159,9 @@ export async function createPayment(
 				},
 				customizations: {
 					title: 'DCI Wellness',
-					description: product.name
+					description: description ?? product.name
 				},
-				meta: { product: product.slug }
+				meta: { product: product.slug, ...(meta ?? {}) }
 			})
 		});
 

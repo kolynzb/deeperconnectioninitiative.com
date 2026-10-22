@@ -1,5 +1,10 @@
 <script lang="ts">
 	import Logo from './logo.svelte';
+	import DciMark from '$lib/components/dci-mark/dci-mark.svelte';
+	import { createCompactHeader } from '$lib/components/dci-mark/header-state.svelte';
+
+	// Compact state comes from an IntersectionObserver sentinel, not a scroll listener.
+	const header = createCompactHeader();
 	import * as Sheet from '$lib/components/ui/sheet';
 	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import { cn } from '$lib/utils';
@@ -19,39 +24,11 @@
 	} from 'phosphor-svelte';
 	import NoiseOverlay from './overlays/noise-overlay.svelte';
 
+	// Five top-level items and one primary CTA. The nav is a decision path, not a
+	// directory: every item either sells something or explains who we are.
+	// Pages removed from the nav stay live at their URLs, in the footer, and in
+	// the sitemap. Nothing here has been deleted.
 	const navItems = [
-		{ label: 'Mission', href: '/#about' },
-		{
-			label: 'Ecosystem',
-			href: '/#ecosystem',
-			description: 'The care pathway from self-led tools to community support.',
-			children: [
-				{
-					label: 'Trainings',
-					href: '/trainings',
-					description: 'Equip community champions and partner teams.',
-					icon: Users
-				},
-				{
-					label: 'Partners',
-					href: '/partners',
-					description: 'Build mental wellness into trusted local spaces.',
-					icon: Building2
-				},
-				{
-					label: 'Champions',
-					href: '/champions',
-					description: 'Become the infrastructure in your community.',
-					icon: Users
-				},
-				{
-					label: 'Events',
-					href: '/events',
-					description: 'Book a clinic seat, join workshops and gatherings.',
-					icon: CalendarDays
-				}
-			]
-		},
 		{
 			label: 'Toolkit',
 			href: '/toolkit',
@@ -60,35 +37,67 @@
 				{
 					label: 'Open the kit',
 					href: '/toolkit',
-					description: 'Explore how cards, journals, and mood tracking work.',
+					description: 'See how the cards, journal, and mood tracker work.',
 					icon: Sparkles
 				},
 				{
-					label: 'Toolkit products',
-					href: '/#toolkit-products',
+					label: 'Buy a tool',
+					href: '/toolkit#toolkit-products',
 					description: 'Compare the card game, journal, mood tracker, and full kit.',
 					icon: BookOpen
 				},
 				{
 					label: 'Connection Miles',
 					href: '/connection-miles',
-					description: 'Track sponsored toolkits, field activity, and the miles rubric.',
+					description: 'How we count the impact every purchase puts into the world.',
 					icon: ChartLineUp
 				},
 				{
 					label: 'Sponsor a kit',
-					href: '/#toolkit',
-					description: 'Fund toolkit access and community champion training.',
+					href: '/checkout/donate',
+					description: 'Put a toolkit in the hands of someone who cannot buy one.',
 					icon: HeartHandshake
 				}
 			]
 		},
+		{ label: 'Clinics', href: '/clinics' },
 		{ label: 'Coaching', href: '/performance' },
-		{ label: 'Contact Us', href: '/contact' }
+		{
+			label: 'Organisations',
+			href: '/partners',
+			description: 'Wellbeing infrastructure for schools, companies, and NGOs.',
+			children: [
+				{
+					label: 'For organisations',
+					href: '/partners',
+					description: 'Build wellbeing into how your people already work.',
+					icon: Building2
+				},
+				{
+					label: 'Champion certification',
+					href: '/trainings',
+					description: 'Certify the people who will hold the conversations.',
+					icon: Users
+				},
+				{
+					label: 'Become a Champion',
+					href: '/champions',
+					description: 'What the role involves and who it suits.',
+					icon: Users
+				},
+				{
+					label: 'Events',
+					href: '/events',
+					description: 'Workshops, orientations, and one-off gatherings.',
+					icon: CalendarDays
+				}
+			]
+		},
+		{ label: 'About', href: '/#about' }
 	];
 
 	let isOpen = $state(false);
-	let openMobileSection = $state('Ecosystem');
+	let openMobileSection = $state('Toolkit');
 	let activeDesktopMenu = $state('');
 	let closeTimer: ReturnType<typeof setTimeout> | undefined;
 	let activeItem = $derived(
@@ -177,13 +186,19 @@
 <header
 	class="fixed top-3 right-0 left-0 z-50 mx-auto w-[calc(100%-1rem)] max-w-7xl px-2 sm:top-4 sm:w-[calc(100%-2rem)]"
 >
+	<!--
+		Fixed height per breakpoint, transitioning 78px to 60px over 300ms, with
+		overflow hidden so the ribbons cannot bleed into the hero on first paint.
+	-->
 	<div
-		class="relative overflow-visible rounded-2xl border border-dci-teal/12 bg-dci-cream/92 px-3 py-1.5 shadow-dci-lift backdrop-blur-xl sm:px-4"
+		class={`dci-header-shell relative overflow-hidden rounded-2xl border border-dci-teal/12 bg-dci-cream/92 px-3 shadow-dci-lift backdrop-blur-xl sm:px-4${
+			header.compact ? ' is-compact' : ''
+		}`}
 	>
 		<NoiseOverlay />
-		<div class="relative flex h-12 items-center justify-between gap-4">
+		<div class="relative flex h-full items-center justify-between gap-4">
 			<div class="flex min-w-0 items-center">
-				<Logo isLink />
+				<DciMark compact={header.compact} ribbons={false} />
 			</div>
 
 			<div
@@ -311,16 +326,10 @@
 				{/if}
 			</div>
 
-			<div class="hidden shrink-0 items-center gap-2 lg:flex">
-				<a
-					href="/checkout/donate"
-					class={cn(
-						buttonVariants({ variant: 'outline' }),
-						'rounded-full border-dci-teal/20 bg-dci-paper/70 px-5 text-dci-teal-deep hover:bg-dci-teal/7 hover:text-dci-teal-deep'
-					)}
-				>
-					Sponsor a kit
-				</a>
+			<!-- One primary CTA. Sponsorship still converts from the toolkit section
+			     and the get-involved block, where it reads as a choice rather than
+			     as competition for the purchase. -->
+			<div class="hidden shrink-0 items-center lg:flex">
 				<a href="/toolkit#toolkit-products" class={cn(buttonVariants(), 'rounded-full px-5')}>
 					Get the toolkit
 				</a>
@@ -453,16 +462,6 @@
 									onclick={closeMobileMenu}
 								>
 									Get the toolkit
-								</a>
-								<a
-									href="/checkout/donate"
-									class={cn(
-										buttonVariants({ variant: 'outline', size: 'lg' }),
-										'w-full rounded-full border-dci-teal/20 bg-transparent text-dci-teal-deep'
-									)}
-									onclick={closeMobileMenu}
-								>
-									Sponsor a kit
 								</a>
 							</div>
 						</div>
