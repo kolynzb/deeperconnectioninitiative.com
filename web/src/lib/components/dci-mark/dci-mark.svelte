@@ -7,7 +7,7 @@
 	}: { compact?: boolean; href?: string; showWord?: boolean } = $props();
 </script>
 
-<a href={href} class={`dci-mark${compact ? ' is-compact' : ''}`} aria-label="DCI Wellness, home">
+<a {href} class={`dci-mark${compact ? ' is-compact' : ''}`} aria-label="DCI Wellness, home">
 	<span class="dci-mark__head">
 		<img class="dci-mark__img" src="/photos/dci-mark-2026.webp" width="128" height="128" alt="" />
 	</span>

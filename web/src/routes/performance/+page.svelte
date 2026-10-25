@@ -179,7 +179,7 @@
 		class="mb-12"
 	/>
 	<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-		{#each otherTiers as tier, index}
+		{#each otherTiers as tier, index (tier.name)}
 			<article
 				use:reveal={{ delay: index * 70, y: 22 }}
 				class={`dci-soft-hover relative flex h-full flex-col overflow-hidden rounded-[2rem] border bg-dci-paper p-6 shadow-dci-lift ${tier.popular ? 'border-dci-burgundy/35 lg:-mt-4 lg:mb-4' : 'border-dci-teal/12'}`}

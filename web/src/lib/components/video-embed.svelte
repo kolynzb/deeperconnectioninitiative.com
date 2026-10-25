@@ -53,7 +53,8 @@
 				fetchpriority="high"
 				onerror={(e) => {
 					const img = e.currentTarget as HTMLImageElement;
-					if (!img.src.includes('hqdefault')) img.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+					if (!img.src.includes('hqdefault'))
+						img.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 				}}
 				class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
 			/>

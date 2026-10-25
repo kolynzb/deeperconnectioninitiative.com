@@ -18,7 +18,6 @@
 		ChartLineUpIcon as ChartLineUp,
 		HandshakeIcon as HeartHandshake,
 		ListIcon as Menu,
-		ChatCircleTextIcon as MessageCircle,
 		SparkleIcon as Sparkles,
 		UsersThreeIcon as Users
 	} from 'phosphor-svelte';

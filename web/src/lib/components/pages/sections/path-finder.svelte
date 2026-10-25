@@ -176,7 +176,7 @@
 				</p>
 
 				<div class="mt-8 grid gap-2">
-					{#each pathways as path}
+					{#each pathways as path (path.id)}
 						{@const Icon = path.icon}
 						<button
 							type="button"
@@ -239,7 +239,7 @@
 					{#if 'options' in activePath && activePath.options}
 						<!-- Two routes in, each buyable in place. -->
 						<div class="grid gap-3 sm:grid-cols-2">
-							{#each activePath.options as option}
+							{#each activePath.options as option (option.slug)}
 								<article
 									class="flex flex-col justify-between rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-4"
 								>
@@ -312,7 +312,7 @@
 						<!-- Buyable inline. Horizontal rows on phones, three columns above that,
 						     so the panel does not balloon on small screens. -->
 						<div class="grid gap-3 sm:grid-cols-3">
-							{#each activePath.products as product}
+							{#each activePath.products as product (product.slug)}
 								<article
 									class="flex items-center gap-3 rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-3 sm:flex-col sm:items-stretch sm:gap-2"
 								>
@@ -372,7 +372,7 @@
 						</article>
 					{:else}
 						<div class="grid gap-3 sm:grid-cols-3">
-							{#each activePath.steps as step, index}
+							{#each activePath.steps as step, index (step)}
 								<div class="rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-4">
 									<p class="text-xs font-semibold text-dci-burgundy/70">0{index + 1}</p>
 									<p class="mt-3 text-sm font-semibold leading-snug text-dci-teal-deep">{step}</p>

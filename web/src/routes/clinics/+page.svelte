@@ -44,7 +44,6 @@
 			body: 'A way of naming what you are carrying, and people who now know your name. Many come back the following month.'
 		}
 	];
-
 </script>
 
 <section class="relative overflow-hidden pt-28">
@@ -65,9 +64,9 @@
 					A room where the conversation is already started.
 				</h1>
 				<p class="max-w-xl text-base leading-relaxed text-slate-700 sm:text-lg">
-					The Conversation Clinic is a monthly meet-up in Kampala. A trained Champion, the DCI
-					card game, and a small group of people who came for the same reason you did. You do not
-					need the right words. The cards do that part.
+					The Conversation Clinic is a monthly meet-up in Kampala. A trained Champion, the DCI card
+					game, and a small group of people who came for the same reason you did. You do not need
+					the right words. The cards do that part.
 				</p>
 			</div>
 
@@ -80,9 +79,7 @@
 					style="background-image: radial-gradient(#F6ECD9 1px, transparent 1px); background-size: 26px 26px;"
 				></div>
 				<div class="relative space-y-6">
-					<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">
-						Next clinic
-					</p>
+					<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">Next clinic</p>
 					<p class="text-3xl font-semibold leading-tight text-white sm:text-4xl">
 						{formatClinicDate(next)}
 					</p>
@@ -126,7 +123,7 @@
 		class="mb-12"
 	/>
 	<div class="grid gap-6 md:grid-cols-3">
-		{#each howItWorks as step, index}
+		{#each howItWorks as step, index (step.title)}
 			{@const Icon = step.icon}
 			<div
 				use:reveal={{ delay: index * 80, y: 22 }}
@@ -144,13 +141,9 @@
 	</div>
 </Section>
 <Section tone="cream">
-	<SectionHeading
-		eyebrow="Attend a clinic"
-		title="Upcoming clinics."
-		class="mb-10"
-	/>
+	<SectionHeading eyebrow="Attend a clinic" title="Upcoming clinics." class="mb-10" />
 	<div class="space-y-3">
-		{#each dates as date, index}
+		{#each dates as date, index (date.getTime())}
 			<article
 				use:reveal={{ delay: index * 60, y: 18 }}
 				class={`grid gap-4 rounded-[2rem] border p-5 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:p-6 ${
@@ -174,8 +167,8 @@
 						{#if index === 0}
 							<span
 								class="ml-2 rounded-full bg-dci-teal/10 px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-dci-teal"
-							>Next</span
-						>
+								>Next</span
+							>
 						{/if}
 					</p>
 					<p class="mt-1 text-sm text-slate-600">
@@ -203,7 +196,8 @@
 		Bringing a group, or want a clinic hosted at your school, workplace, or venue?
 		<a
 			href="/contact?topic=Community%20clinic%20or%20event"
-			class="font-semibold text-dci-teal underline underline-offset-4">Talk to us about hosting one.</a
+			class="font-semibold text-dci-teal underline underline-offset-4"
+			>Talk to us about hosting one.</a
 		>
 	</p>
 </Section>

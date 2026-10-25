@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { SvelteSet } from 'svelte/reactivity';
 
 	let {
 		images,
@@ -17,20 +18,13 @@
 
 	let index = $state(0);
 	// Broken images are dropped rather than shown as empty frames.
-	let failed = $state<Set<number>>(new Set());
-	// Rotation stays off until the client confirms motion is welcome.
-	let rotating = $state(false);
+	const failed = new SvelteSet<number>();
 
 	const usable = $derived(images.map((_, i) => i).filter((i) => !failed.has(i)));
 
 	function onError(i: number) {
-		const next = new Set(failed);
-		next.add(i);
-		failed = next;
-		if (index === i) {
-			const left = images.map((_, n) => n).filter((n) => !next.has(n));
-			if (left.length) index = left[0];
-		}
+		failed.add(i);
+		if (index === i && usable.length) index = usable[0];
 	}
 
 	function show(i: number) {
@@ -38,32 +32,20 @@
 	}
 
 	onMount(() => {
+		// Rotation is skipped under reduced motion and in background tabs.
 		const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-		rotating = !motion.matches;
 
-		let timer: ReturnType<typeof setInterval> | undefined;
-		const start = () => {
-			timer = setInterval(() => {
-				if (motion.matches || document.visibilityState !== 'visible') return;
-				const list = images.map((_, i) => i).filter((i) => !failed.has(i));
-				if (list.length < 2) return;
-				const at = list.indexOf(index);
-				index = list[(at + 1) % list.length];
-			}, interval);
-		};
-		start();
-
-		const sync = () => (rotating = !motion.matches);
-		motion.addEventListener('change', sync);
-		return () => {
-			if (timer) clearInterval(timer);
-			motion.removeEventListener('change', sync);
-		};
+		const timer = setInterval(() => {
+			if (motion.matches || document.visibilityState !== 'visible') return;
+			if (usable.length < 2) return;
+			index = usable[(usable.indexOf(index) + 1) % usable.length];
+		}, interval);
+		return () => clearInterval(timer);
 	});
 </script>
 
 <div class={`relative overflow-hidden bg-dci-cream ${className}`}>
-	{#each images as src, i}
+	{#each images as src, i (src)}
 		<img
 			{src}
 			alt={i === index ? alt : ''}
@@ -79,7 +61,7 @@
 		<!-- Clickable, so the other photos are reachable even when auto-rotation
 		     is off for reduced motion or a background tab. -->
 		<div class="absolute inset-x-0 bottom-1 flex justify-center gap-1.5">
-			{#each usable as i}
+			{#each usable as i (i)}
 				<button
 					type="button"
 					onclick={() => show(i)}
