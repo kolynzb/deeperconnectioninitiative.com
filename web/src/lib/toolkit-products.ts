@@ -1,5 +1,10 @@
 import { cardGamePhotos, journalPhotos, moodTrackerPhotos } from './product-photos';
 
+// The inline cards show photos at thumbnail size, so they use the 480px WebP
+// copies in each photo folder's thumbs/ instead of the 1080px JPEGs.
+const thumbs = (photos: string[]) =>
+	photos.map((src) => src.replace(/([^/]+)\.jpg$/, 'thumbs/$1.webp'));
+
 /**
  * The three toolkit products, for places that show them inline.
  *
@@ -25,7 +30,7 @@ export const toolkitProducts: ToolkitProduct[] = [
 		price: '69,000 UGX',
 		miles: '8 Miles',
 		line: 'Sixty questions that open a conversation, with friends, family or a group.',
-		photos: cardGamePhotos
+		photos: thumbs(cardGamePhotos)
 	},
 	{
 		slug: 'journal',
@@ -33,7 +38,7 @@ export const toolkitProducts: ToolkitProduct[] = [
 		price: '100,000 UGX',
 		miles: '1 Mile',
 		line: 'A year of guided pages that trace where your patterns came from.',
-		photos: journalPhotos
+		photos: thumbs(journalPhotos)
 	},
 	{
 		slug: 'mood-tracker',
@@ -41,6 +46,6 @@ export const toolkitProducts: ToolkitProduct[] = [
 		price: '31,000 UGX',
 		miles: '1 Mile',
 		line: 'One colour a day, twelve months to a page you can read at a glance.',
-		photos: moodTrackerPhotos
+		photos: thumbs(moodTrackerPhotos)
 	}
 ];
