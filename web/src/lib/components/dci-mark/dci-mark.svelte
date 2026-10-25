@@ -1,23 +1,16 @@
 <script lang="ts">
-	import DciRibbons from './dci-ribbons.svelte';
-	import { MARK_SRC } from './paths';
-
 	// Header lockup. Pass compact from the compact-header observer.
 	let {
 		compact = false,
 		href = '/',
-		showWord = true,
-		ribbons = true
-	}: { compact?: boolean; href?: string; showWord?: boolean; ribbons?: boolean } = $props();
+		showWord = true
+	}: { compact?: boolean; href?: string; showWord?: boolean } = $props();
 </script>
 
 <a href={href} class={`dci-mark${compact ? ' is-compact' : ''}`} aria-label="DCI Wellness, home">
 	<span class="dci-mark__head">
-		<img class="dci-mark__img" src={MARK_SRC} alt="" />
+		<img class="dci-mark__img" src="/photos/dci-mark-2026.webp" width="128" height="128" alt="" />
 	</span>
-	{#if ribbons}
-		<DciRibbons />
-	{/if}
 	{#if showWord}
 		<span class="dci-mark__words">
 			<span class="dci-mark__word">DCI Wellness</span>
