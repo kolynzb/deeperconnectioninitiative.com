@@ -55,10 +55,19 @@ export function clinicsRemainingThisYear(from: Date = new Date()): Date[] {
 	return dates;
 }
 
-/** True only for a date that is actually a scheduled clinic, used to validate
+/**
+ * The dates the clinics page lists and checkout accepts. Late in December the
+ * current year runs out, so it rolls into the next four instead.
+ */
+export function bookableClinics(from: Date = new Date()): Date[] {
+	const remaining = clinicsRemainingThisYear(from);
+	return remaining.length > 0 ? remaining : upcomingClinics(4, from);
+}
+
+/** True only for a date that is actually a bookable clinic, used to validate
  *  the ?date= parameter before it reaches the payment provider. */
 export function isClinicDate(iso: string, from: Date = new Date()): boolean {
-	return clinicsRemainingThisYear(from).some((d) => clinicKey(d) === iso);
+	return bookableClinics(from).some((d) => clinicKey(d) === iso);
 }
 
 export function formatClinicDate(date: Date): string {

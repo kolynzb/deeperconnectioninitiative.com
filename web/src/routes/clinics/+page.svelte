@@ -47,14 +47,6 @@
 
 </script>
 
-<svelte:head>
-	<title>Conversation Clinics | DCI Wellness</title>
-	<meta
-		name="description"
-		content="A monthly Conversation Clinic in Kampala. Last Wednesday of every month at {CLINIC_VENUE}. Book your seat for {price}."
-	/>
-</svelte:head>
-
 <section class="relative overflow-hidden pt-28">
 	<div class="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
 		<div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -112,7 +104,7 @@
 					</div>
 
 					<Button
-						href="/checkout/clinic"
+						href={`/checkout/clinic?date=${clinicKey(next)}`}
 						size="lg"
 						class="w-full rounded-full bg-dci-cream text-dci-teal-deep hover:bg-white"
 					>
@@ -154,7 +146,7 @@
 <Section tone="cream">
 	<SectionHeading
 		eyebrow="Attend a clinic"
-		title="Every clinic left this year."
+		title="Upcoming clinics."
 		class="mb-10"
 	/>
 	<div class="space-y-3">

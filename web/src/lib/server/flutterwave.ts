@@ -183,6 +183,8 @@ export type VerifiedTransaction = {
 	currency: string;
 	txRef: string;
 	customerEmail: string;
+	/** Set when a dated clinic seat was booked, from the meta sent at checkout. */
+	clinicDate: string | null;
 };
 
 export async function verifyTransaction(
@@ -210,7 +212,8 @@ export async function verifyTransaction(
 			amount: Number(body.data.amount ?? 0),
 			currency: String(body.data.currency ?? ''),
 			txRef: String(body.data.tx_ref ?? ''),
-			customerEmail: String(body.data.customer?.email ?? '')
+			customerEmail: String(body.data.customer?.email ?? ''),
+			clinicDate: body.data.meta?.clinic_date ? String(body.data.meta.clinic_date) : null
 		};
 	} catch (err) {
 		console.error('[payments] verify threw', err);
