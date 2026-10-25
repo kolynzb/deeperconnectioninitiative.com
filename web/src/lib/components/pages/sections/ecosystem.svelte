@@ -83,7 +83,7 @@
 </script>
 
 <section
-	id="ecosystem"
+	id="about"
 	class="w-full bg-dci-teal-deep text-dci-sand relative rounded-t-4xl overflow-hidden"
 >
 	<!-- Background Pattern -->
@@ -106,7 +106,11 @@
 					<h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
 						Built for the places care already happens.
 					</h2>
-					<p class="text-lg text-dci-sand/80">
+					<p class="text-lg text-dci-sand/90">
+						DCI exists to shift mental health from a passive service model to an active, self-led
+						journey.
+					</p>
+					<p class="mt-4 text-base text-dci-sand/75">
 						DCI is to mental health what Airbnb is to hospitality: we don't provide the support
 						directly. We build what community support runs on.
 					</p>
