@@ -62,7 +62,7 @@
 			illustration: 'community',
 			title: 'I am a mental health advocate.',
 			description:
-				'There will never be enough counsellors. There are already enough people who care. Training of Trainers certifies you to facilitate a session safely, use the toolkit with a group, recognise when someone needs more than you can give, and follow the referral procedure.',
+				'There will never be enough counsellors. There are already enough people who care.',
 			// One offer, rendered inline instead of the three step labels.
 			steps: [],
 			offer: {
@@ -75,7 +75,7 @@
 				cta: 'Pay deposit and join the waitlist'
 			},
 			helper: 'Training days are announced at the next Conversation Clinic.',
-			href: '/performance',
+			href: '/performance/assessment',
 			cta: 'Take the Blueprint Assessment',
 			ctaRed: true,
 			accent: '#6F231E'
@@ -145,7 +145,7 @@
 
 	// The free assessment gets a distinct treatment, since it asks for nothing
 	// and is the softest way into the funnel.
-	const ctaIsAssessment = $derived(activePath.href === '/performance');
+	const ctaIsAssessment = $derived(activePath.href === '/performance/assessment');
 	// Doors can ask for the DCI red treatment on their button.
 	const ctaIsRed = $derived(ctaIsAssessment || ('ctaRed' in activePath && activePath.ctaRed));
 </script>
@@ -384,10 +384,10 @@
 					<div class="mt-8 flex flex-col gap-3 border-t border-dci-teal/12 pt-6 sm:flex-row sm:items-center sm:justify-between">
 						<div class="max-w-sm space-y-2">
 							<p class="text-sm leading-relaxed text-slate-600">{activePath.helper}</p>
-							{#if activePath.href !== '/performance'}
+							{#if activePath.href !== '/performance/assessment'}
 							<p class="text-sm leading-relaxed text-slate-600">
 								Not sure where to start?
-								<a href="/performance" class="font-semibold text-dci-teal underline underline-offset-4">
+								<a href="/performance/assessment" class="font-semibold text-dci-teal underline underline-offset-4">
 									Take the free Blueprint Assessment
 								</a>
 								and see what the patterns say.
