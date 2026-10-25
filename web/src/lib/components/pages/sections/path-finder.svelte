@@ -7,6 +7,7 @@
 	import { cn } from '$lib/utils';
 
 	import {
+		ArrowRightIcon,
 		ArrowUpRightIcon,
 		BookOpenTextIcon,
 		BuildingsIcon,
@@ -150,278 +151,266 @@
 	const ctaIsRed = $derived(ctaIsAssessment || ('ctaRed' in activePath && activePath.ctaRed));
 </script>
 
+<!--
+	A dark band of four numbered doors. The open door unfolds its detail
+	(products, offer, video or options) directly beneath its row. The band
+	tucks up behind the hero video, so it starts with a negative margin.
+-->
 <section
 	id="find-your-path"
-	class="relative z-10 scroll-mt-28 overflow-hidden px-4 py-14 sm:px-6 lg:px-8 lg:py-20"
+	class="relative -mt-40 scroll-mt-28 bg-dci-teal-deep px-4 pt-56 pb-20 text-dci-cream sm:px-6 lg:-mt-64 lg:px-8 lg:pt-80 lg:pb-28"
 >
-	<div
-		use:reveal={{ delay: 0, y: 18 }}
-		class="mx-auto grid max-w-7xl overflow-hidden rounded-4xl bg-dci-teal-deep text-dci-cream shadow-dci-panel lg:grid-cols-[0.82fr_1.18fr]"
-	>
-		<div class="relative p-6 sm:p-8 lg:p-10">
-			<div
-				class="pointer-events-none absolute inset-0 opacity-10"
-				style="background-image: radial-gradient(#F6ECD9 1px, transparent 1px); background-size: 28px 28px;"
-			></div>
-			<div class="relative">
-				<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">
-					Find your path
-				</p>
-				<h2 class="mt-4 max-w-md text-4xl font-semibold leading-tight text-white sm:text-5xl">
-					Start where you are.
-				</h2>
-				<p class="mt-4 max-w-md text-base leading-relaxed text-dci-cream/72">
-					DCI can be a toolkit, a training path, a measurement system, or a way to sponsor access. Choose
-					the entry point that matches what brought you here.
-				</p>
-
-				<div class="mt-8 grid gap-2">
-					{#each pathways as path (path.id)}
-						{@const Icon = path.icon}
-						<button
-							type="button"
-							class={cn(
-								'group grid w-full grid-cols-[2.75rem_1fr_auto] items-center gap-3 rounded-2xl border p-3 text-left transition duration-300',
-								activePath.id === path.id
-									? 'border-dci-cream/28 bg-dci-cream/12 text-white'
-									: 'border-dci-cream/10 bg-dci-cream/5 text-dci-cream/78 hover:bg-dci-cream/9'
-							)}
-							aria-pressed={activePath.id === path.id}
-							onclick={() => selectPath(path)}
-						>
-							<span
-								class={cn(
-									'flex size-11 items-center justify-center rounded-xl transition',
-									activePath.id === path.id ? 'bg-dci-cream text-dci-teal-deep' : 'bg-dci-cream/10'
-								)}
-							>
-								<Icon class="size-5" weight="duotone" />
-							</span>
-							<span>
-								<span class="block text-sm font-semibold">{path.label}</span>
-								<span class="mt-1 block text-xs text-dci-cream/58">{path.kicker}</span>
-							</span>
-							<span
-								class={cn(
-									'h-2 w-2 rounded-full transition',
-									activePath.id === path.id ? 'bg-dci-clay' : 'bg-dci-cream/18'
-								)}
-							></span>
-						</button>
-					{/each}
-				</div>
-			</div>
+	<div class="mx-auto max-w-6xl">
+		<div use:reveal={{ delay: 0, y: 18 }}>
+			<p class="text-xs font-semibold tracking-wide text-dci-cream/75 uppercase">Find your path</p>
+			<h2 class="mt-4 max-w-3xl text-5xl leading-[1.04] font-normal tracking-tight text-balance sm:text-6xl">
+				Start <em class="text-dci-clay">where you are.</em>
+			</h2>
+			<p class="mt-6 max-w-xl text-base leading-relaxed text-dci-cream/75 sm:text-lg">
+				DCI can be a toolkit, a training path, a measurement system, or a way to sponsor access.
+				Choose the entry point that matches what brought you here.
+			</p>
 		</div>
 
-		<div class="relative min-h-[34rem] overflow-hidden bg-dci-cream p-6 text-foreground sm:p-8 lg:p-10">
-			<SpotIllustration
-				variant={activePath.illustration}
-				class="dci-float-slow pointer-events-none absolute -right-28 -bottom-6 hidden w-[27rem] opacity-16 [--float-rotate:2deg] lg:block"
-			/>
-			<div class="relative z-10 flex h-full max-w-2xl flex-col justify-between">
-				<div>
-					<div
-						class="inline-flex items-center rounded-full border border-dci-teal/15 bg-dci-paper/70 px-3 py-1"
+		<ol class="mt-14 border-t border-dci-cream/15">
+			{#each pathways as path, index (path.id)}
+				{@const open = activePath.id === path.id}
+				<li class="border-b border-dci-cream/15">
+					<button
+						type="button"
+						class="group grid w-full grid-cols-[2.5rem_1fr_auto] items-center gap-4 py-6 text-left sm:grid-cols-[3.5rem_1fr_1fr_auto] lg:py-7"
+						aria-expanded={open}
+						aria-controls={`door-${path.id}`}
+						onclick={() => selectPath(path)}
 					>
-						<span class="text-xs font-semibold uppercase tracking-wide text-dci-teal">
-							{activePath.kicker}
-						</span>
-					</div>
-					<h3 class="mt-5 max-w-xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-						{activePath.title}
-					</h3>
-					<p class="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-						{activePath.description}
-					</p>
-				</div>
-
-				<div class="mt-10">
-					{#if 'options' in activePath && activePath.options}
-						<!-- Two routes in, each buyable in place. -->
-						<div class="grid gap-3 sm:grid-cols-2">
-							{#each activePath.options as option (option.slug)}
-								<article
-									class="flex flex-col justify-between rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-4"
-								>
-									<div>
-										<p class="text-sm font-semibold leading-tight text-foreground">{option.name}</p>
-										<p class="mt-2 text-xs leading-relaxed text-muted-foreground">{option.body}</p>
-										<p class="mt-3 text-base font-bold text-dci-teal-deep">{option.price}</p>
-										<p class="mt-1 text-xs text-muted-foreground">{option.note}</p>
-									</div>
-									<div class="mt-4 space-y-2">
-										<button
-											type="button"
-											onclick={() => (buying = { slug: option.slug, name: option.name, price: option.price })}
-											class="inline-flex h-10 w-full items-center justify-center rounded-full bg-dci-teal-deep px-4 text-xs font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98]"
-										>
-											{option.cta}
-										</button>
-									</div>
-								</article>
-							{/each}
-						</div>
-					{:else if 'video' in activePath && activePath.video}
-						<!-- Click to play, so no YouTube request is made until it is wanted. -->
-						<div class="max-w-md overflow-hidden rounded-2xl border border-dci-teal/12 bg-dci-ink">
-							{#if playing}
-								<div class="aspect-video w-full">
-									<iframe
-										src={`https://www.youtube-nocookie.com/embed/${activePath.video.id}?autoplay=1&rel=0`}
-										title={activePath.video.title}
-										frameborder="0"
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-										allowfullscreen
-										class="h-full w-full"
-									></iframe>
-								</div>
-							{:else}
-								<button
-									type="button"
-									onclick={() => (playing = true)}
-									aria-label={`Play video: ${activePath.video.title}`}
-									class="group relative flex aspect-video w-full items-center justify-center"
-								>
-									<img
-										src="/photos/ann-banya.jpg"
-										alt=""
-										loading="lazy"
-										class="absolute inset-0 h-full w-full object-cover opacity-70 transition group-hover:opacity-80"
-									/>
-									<span
-										class="relative flex size-14 items-center justify-center rounded-full bg-dci-cream/95 text-dci-teal-deep shadow-dci-lift transition group-hover:scale-105"
-									>
-										<PlayIcon class="ml-0.5 size-6" weight="fill" />
-									</span>
-									<span class="absolute bottom-3 left-4 right-4 text-left text-sm font-semibold text-dci-cream">
-										{activePath.video.title}
-									</span>
-								</button>
-							{/if}
-						</div>
-					<p class="mt-2 text-xs text-muted-foreground">
-						Video not loading?
-						<a
-							href={`https://www.youtube.com/watch?v=${activePath.video.id}`}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="font-semibold text-dci-teal underline underline-offset-4"
-						>Watch it on YouTube</a>
-					</p>
-					{:else if 'products' in activePath && activePath.products}
-						<!-- Buyable inline. Horizontal rows on phones, three columns above that,
-						     so the panel does not balloon on small screens. -->
-						<div class="grid gap-3 sm:grid-cols-3">
-							{#each activePath.products as product (product.slug)}
-								<article
-									class="flex items-center gap-3 rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-3 sm:flex-col sm:items-stretch sm:gap-2"
-								>
-									<!-- object-contain, so no product is cropped despite the three
-									     photo sets having different aspect ratios. -->
-									<ProductCarousel
-										images={product.photos}
-										alt={product.name}
-										showDots={false}
-										class="size-16 shrink-0 rounded-xl sm:hidden"
-									/>
-									<ProductCarousel
-										images={product.photos}
-										alt={product.name}
-										class="hidden aspect-[4/3] w-full rounded-xl sm:block"
-									/>
-									<div class="min-w-0 flex-1 sm:flex-none">
-										<p class="text-sm font-semibold leading-tight text-foreground">{product.name}</p>
-										<p class="mt-0.5 text-xs font-semibold text-dci-teal-deep">
-											{product.price} · {product.miles}
-										</p>
-										<p class="mt-1 text-xs leading-snug text-muted-foreground">{product.line}</p>
-									</div>
-									<button
-										type="button"
-										onclick={() => (buying = { slug: product.slug, name: product.name, price: product.price })}
-										class="inline-flex h-9 shrink-0 items-center justify-center rounded-full bg-dci-teal-deep px-4 text-xs font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98] sm:w-full"
-									>
-										Buy
-									</button>
-								</article>
-							{/each}
-						</div>
-					{:else if 'offer' in activePath && activePath.offer}
-						<article
-							class="rounded-2xl border border-dci-teal/15 bg-dci-paper/65 p-5 sm:flex sm:items-center sm:justify-between sm:gap-6"
-						>
-							<div class="min-w-0">
-								<p class="text-sm font-semibold leading-tight text-foreground">
-									{activePath.offer.name}
-								</p>
-								<p class="mt-2 text-xs leading-relaxed text-muted-foreground">{activePath.offer.body}</p>
-								<p class="mt-3 text-sm font-semibold text-dci-teal-deep">
-									{activePath.offer.deposit} deposit
-									<span class="font-normal text-muted-foreground">of {activePath.offer.total}</span>
-								</p>
-								<p class="mt-1 text-xs leading-snug text-muted-foreground">
-									{activePath.offer.depositNote}
-								</p>
-							</div>
-							<a
-								href={activePath.offer.href}
-								class="mt-4 inline-flex h-11 shrink-0 items-center justify-center rounded-full bg-dci-teal-deep px-6 text-sm font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98] sm:mt-0"
-							>
-								{activePath.offer.cta}
-							</a>
-						</article>
-					{:else}
-						<div class="grid gap-3 sm:grid-cols-3">
-							{#each activePath.steps as step, index (step)}
-								<div class="rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-4">
-									<p class="text-xs font-semibold text-dci-burgundy/70">0{index + 1}</p>
-									<p class="mt-3 text-sm font-semibold leading-snug text-dci-teal-deep">{step}</p>
-								</div>
-							{/each}
-						</div>
-					{/if}
-
-					<div class="mt-8 flex flex-col gap-3 border-t border-dci-teal/12 pt-6 sm:flex-row sm:items-center sm:justify-between">
-						<div class="max-w-sm space-y-2">
-							<p class="text-sm leading-relaxed text-muted-foreground">{activePath.helper}</p>
-							{#if activePath.href !== '/performance/assessment'}
-							<p class="text-sm leading-relaxed text-muted-foreground">
-								Not sure where to start?
-								<a href="/performance/assessment" class="font-semibold text-dci-teal underline underline-offset-4">
-									Take the free Blueprint Assessment
-								</a>
-								and see what the patterns say.
-							</p>
-						{/if}
-						</div>
-						<a
-							href={activePath.href}
-							target={activePath.href.startsWith('http') ? '_blank' : undefined}
-							rel={activePath.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+						<span class="font-serif text-lg text-dci-cream/50">0{index + 1}</span>
+						<span
 							class={cn(
-								'group inline-flex shrink-0 items-center justify-center gap-2 rounded-full text-sm font-semibold transition active:scale-[0.98]',
-								ctaIsRed
-									? 'h-12 bg-dci-burgundy px-6 text-dci-cream shadow-dci-lift hover:bg-dci-burgundy/90'
-									: 'h-11 bg-dci-teal-deep px-6 text-dci-cream hover:bg-dci-teal-mid'
+								'font-serif text-2xl transition sm:text-3xl',
+								open ? 'text-dci-cream' : 'text-dci-cream/80 group-hover:text-dci-cream'
 							)}
 						>
-							{#if ctaIsAssessment}
-								<span
-									class="rounded-full bg-dci-cream/20 px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide"
-								>Free</span
-								>
-							{/if}
-							{activePath.cta}
-							<ArrowUpRightIcon
-								class="size-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-								weight="regular"
-							/>
-						</a>
+							{path.label}
+						</span>
+						<span class="hidden text-base text-dci-cream/75 sm:block">{path.kicker}</span>
+						<ArrowRightIcon
+							class={cn(
+								'size-6 transition duration-300',
+								open ? 'rotate-90 text-dci-clay' : 'text-dci-cream/60'
+							)}
+							weight="regular"
+						/>
+					</button>
+					{#if open}
+						<div id={`door-${path.id}`} class="pb-8">
+							{@render detail()}
+						</div>
+					{/if}
+				</li>
+			{/each}
+		</ol>
+	</div>
+</section>
+
+{#snippet detail()}
+	<div class="relative overflow-hidden rounded-4xl bg-dci-cream p-6 text-foreground sm:p-8 lg:p-10">
+		<SpotIllustration
+			variant={activePath.illustration}
+			class="dci-float-slow pointer-events-none absolute -right-28 -bottom-6 hidden w-[27rem] opacity-16 [--float-rotate:2deg] lg:block"
+		/>
+		<div class="relative z-10 max-w-3xl">
+			<h3 class="max-w-xl text-3xl leading-tight font-normal tracking-tight sm:text-4xl">
+				{activePath.title}
+			</h3>
+			<p class="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+				{activePath.description}
+			</p>
+			<div class="mt-8">
+				{#if 'options' in activePath && activePath.options}
+					<!-- Two routes in, each buyable in place. -->
+					<div class="grid gap-3 sm:grid-cols-2">
+						{#each activePath.options as option (option.slug)}
+							<article
+								class="flex flex-col justify-between rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-4"
+							>
+								<div>
+									<p class="text-sm font-semibold leading-tight text-foreground">{option.name}</p>
+									<p class="mt-2 text-xs leading-relaxed text-muted-foreground">{option.body}</p>
+									<p class="mt-3 text-base font-bold text-dci-teal-deep">{option.price}</p>
+									<p class="mt-1 text-xs text-muted-foreground">{option.note}</p>
+								</div>
+								<div class="mt-4 space-y-2">
+									<button
+										type="button"
+										onclick={() => (buying = { slug: option.slug, name: option.name, price: option.price })}
+										class="inline-flex h-10 w-full items-center justify-center rounded-full bg-dci-teal-deep px-4 text-xs font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98]"
+									>
+										{option.cta}
+									</button>
+								</div>
+							</article>
+						{/each}
 					</div>
+				{:else if 'video' in activePath && activePath.video}
+					<!-- Click to play, so no YouTube request is made until it is wanted. -->
+					<div class="max-w-md overflow-hidden rounded-2xl border border-dci-teal/12 bg-dci-ink">
+						{#if playing}
+							<div class="aspect-video w-full">
+								<iframe
+									src={`https://www.youtube-nocookie.com/embed/${activePath.video.id}?autoplay=1&rel=0`}
+									title={activePath.video.title}
+									frameborder="0"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+									allowfullscreen
+									class="h-full w-full"
+								></iframe>
+							</div>
+						{:else}
+							<button
+								type="button"
+								onclick={() => (playing = true)}
+								aria-label={`Play video: ${activePath.video.title}`}
+								class="group relative flex aspect-video w-full items-center justify-center"
+							>
+								<img
+									src="/photos/ann-banya.jpg"
+									alt=""
+									loading="lazy"
+									class="absolute inset-0 h-full w-full object-cover opacity-70 transition group-hover:opacity-80"
+								/>
+								<span
+									class="relative flex size-14 items-center justify-center rounded-full bg-dci-cream/95 text-dci-teal-deep shadow-dci-lift transition group-hover:scale-105"
+								>
+									<PlayIcon class="ml-0.5 size-6" weight="fill" />
+								</span>
+								<span class="absolute bottom-3 left-4 right-4 text-left text-sm font-semibold text-dci-cream">
+									{activePath.video.title}
+								</span>
+							</button>
+						{/if}
+					</div>
+				<p class="mt-2 text-xs text-muted-foreground">
+					Video not loading?
+					<a
+						href={`https://www.youtube.com/watch?v=${activePath.video.id}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="font-semibold text-dci-teal underline underline-offset-4"
+					>Watch it on YouTube</a>
+				</p>
+				{:else if 'products' in activePath && activePath.products}
+					<!-- Buyable inline. Horizontal rows on phones, three columns above that,
+					     so the panel does not balloon on small screens. -->
+					<div class="grid gap-3 sm:grid-cols-3">
+						{#each activePath.products as product (product.slug)}
+							<article
+								class="flex items-center gap-3 rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-3 sm:flex-col sm:items-stretch sm:gap-2"
+							>
+								<!-- object-contain, so no product is cropped despite the three
+								     photo sets having different aspect ratios. -->
+								<ProductCarousel
+									images={product.photos}
+									alt={product.name}
+									showDots={false}
+									class="size-16 shrink-0 rounded-xl sm:hidden"
+								/>
+								<ProductCarousel
+									images={product.photos}
+									alt={product.name}
+									class="hidden aspect-[4/3] w-full rounded-xl sm:block"
+								/>
+								<div class="min-w-0 flex-1 sm:flex-none">
+									<p class="text-sm font-semibold leading-tight text-foreground">{product.name}</p>
+									<p class="mt-0.5 text-xs font-semibold text-dci-teal-deep">
+										{product.price} · {product.miles}
+									</p>
+									<p class="mt-1 text-xs leading-snug text-muted-foreground">{product.line}</p>
+								</div>
+								<button
+									type="button"
+									onclick={() => (buying = { slug: product.slug, name: product.name, price: product.price })}
+									class="inline-flex h-9 shrink-0 items-center justify-center rounded-full bg-dci-teal-deep px-4 text-xs font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98] sm:w-full"
+								>
+									Buy
+								</button>
+							</article>
+						{/each}
+					</div>
+				{:else if 'offer' in activePath && activePath.offer}
+					<article
+						class="rounded-2xl border border-dci-teal/15 bg-dci-paper/65 p-5 sm:flex sm:items-center sm:justify-between sm:gap-6"
+					>
+						<div class="min-w-0">
+							<p class="text-sm font-semibold leading-tight text-foreground">
+								{activePath.offer.name}
+							</p>
+							<p class="mt-2 text-xs leading-relaxed text-muted-foreground">{activePath.offer.body}</p>
+							<p class="mt-3 text-sm font-semibold text-dci-teal-deep">
+								{activePath.offer.deposit} deposit
+								<span class="font-normal text-muted-foreground">of {activePath.offer.total}</span>
+							</p>
+							<p class="mt-1 text-xs leading-snug text-muted-foreground">
+								{activePath.offer.depositNote}
+							</p>
+						</div>
+						<a
+							href={activePath.offer.href}
+							class="mt-4 inline-flex h-11 shrink-0 items-center justify-center rounded-full bg-dci-teal-deep px-6 text-sm font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98] sm:mt-0"
+						>
+							{activePath.offer.cta}
+						</a>
+					</article>
+				{:else}
+					<div class="grid gap-3 sm:grid-cols-3">
+						{#each activePath.steps as step, index (step)}
+							<div class="rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-4">
+								<p class="text-xs font-semibold text-dci-burgundy/70">0{index + 1}</p>
+								<p class="mt-3 text-sm font-semibold leading-snug text-dci-teal-deep">{step}</p>
+							</div>
+						{/each}
+					</div>
+				{/if}
+
+				<div class="mt-8 flex flex-col gap-3 border-t border-dci-teal/12 pt-6 sm:flex-row sm:items-center sm:justify-between">
+					<div class="max-w-sm space-y-2">
+						<p class="text-sm leading-relaxed text-muted-foreground">{activePath.helper}</p>
+						{#if activePath.href !== '/performance/assessment'}
+						<p class="text-sm leading-relaxed text-muted-foreground">
+							Not sure where to start?
+							<a href="/performance/assessment" class="font-semibold text-dci-teal underline underline-offset-4">
+								Take the free Blueprint Assessment
+							</a>
+							and see what the patterns say.
+						</p>
+					{/if}
+					</div>
+					<a
+						href={activePath.href}
+						target={activePath.href.startsWith('http') ? '_blank' : undefined}
+						rel={activePath.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+						class={cn(
+							'group inline-flex shrink-0 items-center justify-center gap-2 rounded-full text-sm font-semibold transition active:scale-[0.98]',
+							ctaIsRed
+								? 'h-12 bg-dci-burgundy px-6 text-dci-cream shadow-dci-lift hover:bg-dci-burgundy/90'
+								: 'h-11 bg-dci-teal-deep px-6 text-dci-cream hover:bg-dci-teal-mid'
+						)}
+					>
+						{#if ctaIsAssessment}
+							<span
+								class="rounded-full bg-dci-cream/20 px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide"
+							>Free</span
+							>
+						{/if}
+						{activePath.cta}
+						<ArrowUpRightIcon
+							class="size-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+							weight="regular"
+						/>
+					</a>
 				</div>
 			</div>
 		</div>
 	</div>
-</section>
+{/snippet}
 
 <CheckoutDrawer bind:product={buying} />

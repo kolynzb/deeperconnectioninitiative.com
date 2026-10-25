@@ -35,11 +35,18 @@ Tints use opacity suffixes: `bg-dci-teal/5`, `bg-dci-burgundy/10`.
 
 Fraunces (serif) for `h1`–`h6`, applied automatically. Outfit (sans) for everything else.
 
+Editorial direction (chosen 2026-10, modelled on wisprflow.ai): headings are large and
+**regular weight** (`font-normal`), never bold. Size carries the hierarchy. A heading may
+put one phrase in italics as its accent, `<em class="text-dci-burgundy">` on light and
+`<em class="text-dci-clay">` on dark. Use at most one per heading and no underlines or
+highlights besides it. Homepage hero and path finder follow this; other sections are
+being moved over.
+
 | Role | Classes |
 |---|---|
-| Page title (`h1`) | `text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.95]` |
-| Section title (`h2`) | `text-4xl sm:text-5xl font-semibold tracking-tight leading-tight` |
-| Card title (`h3`) | `text-xl` or `text-2xl font-semibold` |
+| Page title (`h1`) | `text-6xl sm:text-7xl lg:text-8xl font-normal tracking-tight leading-[0.98]` |
+| Section title (`h2`) | `text-5xl sm:text-6xl font-normal tracking-tight leading-[1.04]` |
+| Card title (`h3`) | `text-3xl sm:text-4xl font-normal` (large) or `text-xl font-semibold` (small cards) |
 | Lead paragraph | `text-base sm:text-lg leading-relaxed text-muted-foreground` |
 | Body | `text-base` or `text-sm leading-relaxed` |
 | Eyebrow / label | `text-xs font-semibold uppercase tracking-wide text-dci-teal` |
