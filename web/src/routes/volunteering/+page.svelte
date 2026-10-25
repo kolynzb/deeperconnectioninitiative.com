@@ -60,7 +60,7 @@
 		</Button>
 	{/snippet}
 	{#snippet aside()}
-		<div class="relative overflow-hidden rounded-[2rem] bg-dci-teal-deep p-6 text-dci-cream sm:p-8">
+		<div class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-6 text-dci-cream sm:p-8">
 			<SpotIllustration
 				variant="community"
 				class="pointer-events-none absolute -right-14 bottom-0 hidden w-72 rotate-2 opacity-24 lg:block"
@@ -86,13 +86,13 @@
 				{@const Icon = role.icon}
 				<article
 					use:reveal={{ delay: index * 70, y: 18 }}
-					class="dci-soft-hover rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift"
+					class="dci-soft-hover rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift"
 				>
 					<div class="mb-8 flex size-12 items-center justify-center rounded-xl bg-white/65 text-dci-teal">
 						<Icon class="size-6" weight="duotone" />
 					</div>
-					<h2 class="text-2xl font-semibold leading-tight text-slate-950">{role.title}</h2>
-					<p class="mt-3 text-sm leading-relaxed text-slate-700">{role.description}</p>
+					<h2 class="text-2xl font-semibold leading-tight text-foreground">{role.title}</h2>
+					<p class="mt-3 text-sm leading-relaxed text-muted-foreground">{role.description}</p>
 				</article>
 			{/each}
 		</div>
@@ -100,15 +100,15 @@
 		<!-- DCI Angels Shirt -->
 		<div
 			use:reveal={{ delay: 0, y: 18 }}
-			class="mt-12 grid items-center gap-8 rounded-[2rem] border border-dci-teal/12 bg-white p-6 sm:p-8 md:grid-cols-[auto_1fr]"
+			class="mt-12 grid items-center gap-8 rounded-4xl border border-dci-teal/12 bg-white p-6 sm:p-8 md:grid-cols-[auto_1fr]"
 		>
 			<div class="flex size-16 items-center justify-center rounded-2xl bg-dci-teal/8 text-dci-teal">
 				<TShirtIcon class="size-8" weight="duotone" />
 			</div>
 			<div class="flex flex-wrap items-center justify-between gap-6">
 				<div>
-					<h3 class="text-xl font-semibold text-slate-950">DCI Angels Shirt</h3>
-					<p class="mt-1 max-w-lg text-sm leading-relaxed text-slate-600">
+					<h3 class="text-xl font-semibold text-foreground">DCI Angels Shirt</h3>
+					<p class="mt-1 max-w-lg text-sm leading-relaxed text-muted-foreground">
 						Wear it. You become the signal. Mental health is talked about openly here, and
 						you're the reason someone feels safe enough to start.
 					</p>

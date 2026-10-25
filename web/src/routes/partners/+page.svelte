@@ -57,7 +57,7 @@
 		<img
 			src="/photos/partner-training-room.jpg"
 			alt="DCI running a session at a partner organisation"
-			class="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-dci-panel"
+			class="aspect-[4/3] w-full rounded-4xl object-cover shadow-dci-panel"
 		/>
 	{/snippet}
 </PageHero>
@@ -101,7 +101,7 @@
 		</div>
 		<div
 			use:reveal={{ delay: 120, y: 18 }}
-			class="rounded-[2rem] border border-dci-cream/12 bg-dci-cream/6 p-8"
+			class="rounded-4xl border border-dci-cream/12 bg-dci-cream/6 p-8"
 		>
 			<div class="flex size-11 items-center justify-center rounded-xl bg-dci-cream/10 text-dci-cream">
 				<ShieldCheck class="size-5" weight="duotone" />

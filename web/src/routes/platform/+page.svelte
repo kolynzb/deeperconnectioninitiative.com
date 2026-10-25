@@ -42,10 +42,10 @@
 <section class="relative flex min-h-[70vh] items-center overflow-hidden px-4 pt-32 pb-20 sm:px-6 lg:px-8">
 	<div class="mx-auto flex max-w-2xl flex-col items-center space-y-7 text-center" use:reveal={{ delay: 0, y: 18 }}>
 		<Eyebrow label="Coming soon" icon={Waveform} />
-		<h1 class="text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+		<h1 class="text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
 			The DCI Early Warning System
 		</h1>
-		<p class="max-w-xl text-base leading-relaxed text-slate-700 sm:text-lg">
+		<p class="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
 			Real-time emotional data, aggregated and analysed by AI, across a whole community. Log in,
 			check your Connection Miles, and follow your community's Early Warning System.
 		</p>
@@ -68,13 +68,13 @@
 				{@const Icon = feature.icon}
 				<div
 					use:reveal={{ delay: index * 70, y: 18 }}
-					class="rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-7 sm:p-8"
+					class="rounded-4xl border border-dci-teal/12 bg-dci-cream p-7 sm:p-8"
 				>
 					<div class="mb-5 flex size-12 items-center justify-center rounded-2xl bg-dci-teal/8 text-dci-teal">
 						<Icon class="size-6" weight="duotone" />
 					</div>
-					<h3 class="text-lg font-semibold text-slate-950">{feature.title}</h3>
-					<p class="mt-2 text-sm leading-relaxed text-slate-600">{feature.description}</p>
+					<h3 class="text-lg font-semibold text-foreground">{feature.title}</h3>
+					<p class="mt-2 text-sm leading-relaxed text-muted-foreground">{feature.description}</p>
 				</div>
 			{/each}
 		</div>

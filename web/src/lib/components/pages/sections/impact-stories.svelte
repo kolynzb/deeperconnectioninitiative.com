@@ -45,13 +45,13 @@
 						What this makes possible
 					</span>
 				</div>
-				<h2 class="max-w-2xl text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl">
+				<h2 class="max-w-2xl text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
 					Small tools, real moments of connection.
 				</h2>
 			</div>
 			<p
 				use:reveal={{ delay: 100, y: 18 }}
-				class="max-w-2xl text-base leading-relaxed text-slate-700 sm:text-lg"
+				class="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
 			>
 				DCI works best when it gives people a concrete way to begin: a prompt, a page, a
 				check-in, or a trained person who knows how to hold the space responsibly.
@@ -61,7 +61,7 @@
 		<div class="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
 			<article
 				use:reveal={{ delay: 0, y: 22 }}
-				class="relative min-h-[34rem] overflow-hidden rounded-[2rem] bg-dci-teal-deep p-6 text-dci-cream shadow-dci-panel sm:p-8 lg:p-10"
+				class="relative min-h-[34rem] overflow-hidden rounded-4xl bg-dci-teal-deep p-6 text-dci-cream shadow-dci-panel sm:p-8 lg:p-10"
 			>
 				<div
 					class="pointer-events-none absolute inset-0 opacity-10"
@@ -116,7 +116,7 @@
 					{@const Icon = note.icon}
 					<article
 						use:reveal={{ delay: index * 90, y: 18 }}
-						class="dci-soft-hover rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift"
+						class="dci-soft-hover rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift"
 					>
 						<div class="mb-5 flex items-center justify-between gap-4">
 							<div
@@ -127,21 +127,21 @@
 							</div>
 							<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">{note.label}</p>
 						</div>
-						<h3 class="text-2xl font-semibold leading-tight text-slate-950">{note.title}</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-700">{note.body}</p>
+						<h3 class="text-2xl font-semibold leading-tight text-foreground">{note.title}</h3>
+						<p class="mt-3 text-sm leading-relaxed text-muted-foreground">{note.body}</p>
 					</article>
 				{/each}
 
 				<a
 					href="/events"
 					use:reveal={{ delay: 280, y: 18 }}
-					class="group flex items-center justify-between gap-4 rounded-[2rem] border border-dci-burgundy/15 bg-dci-paper/75 p-6 text-dci-teal-deep transition hover:bg-dci-cream"
+					class="group flex items-center justify-between gap-4 rounded-4xl border border-dci-burgundy/15 bg-dci-paper/75 p-6 text-dci-teal-deep transition hover:bg-dci-cream"
 				>
 					<span>
 						<span class="block text-sm font-semibold uppercase tracking-wide text-dci-burgundy">
 							See it in practice
 						</span>
-						<span class="mt-2 block text-2xl font-semibold leading-tight text-slate-950">
+						<span class="mt-2 block text-2xl font-semibold leading-tight text-foreground">
 							Clinics, demos, and community sessions
 						</span>
 					</span>

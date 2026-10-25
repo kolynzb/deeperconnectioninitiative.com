@@ -66,12 +66,12 @@
 						>The Prevention Model</span
 					>
 				</div>
-				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900">
+				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground">
 					Most crises are preventable. DCI works upstream.
 				</h2>
 			</div>
 			<div class="flex items-end">
-				<p class="text-base lg:text-lg leading-relaxed text-slate-600">
+				<p class="text-base lg:text-lg leading-relaxed text-muted-foreground">
 					Mental health emergencies rarely come out of nowhere. They follow a pattern: pressure,
 					signals, a support gap, then crisis. DCI's ecosystem targets the first three stages so
 					the fourth rarely happens.
@@ -86,7 +86,7 @@
 				<div
 					use:reveal={{ delay: index * 80, y: 18 }}
 					class={cn(
-						'relative rounded-[2rem] border p-5 sm:p-6 transition-all duration-300',
+						'relative rounded-4xl border p-5 sm:p-6 transition-all duration-300',
 						stage.crisis
 							? 'border-dci-burgundy/25 bg-dci-burgundy/8'
 							: 'border-dci-teal/12 bg-white/70'
@@ -125,8 +125,8 @@
 					>
 						{stage.label}
 					</p>
-					<h3 class="text-xl font-semibold text-slate-900 mb-2">{stage.title}</h3>
-					<p class="text-sm leading-relaxed text-slate-600">{stage.description}</p>
+					<h3 class="text-xl font-semibold text-foreground mb-2">{stage.title}</h3>
+					<p class="text-sm leading-relaxed text-muted-foreground">{stage.description}</p>
 
 					{#if stage.crisis}
 						<div

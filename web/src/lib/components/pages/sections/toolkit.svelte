@@ -87,15 +87,15 @@
 			</div>
 			<div class="space-y-4">
 				<h2
-					class="max-w-lg text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl"
+					class="max-w-lg text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl"
 				>
 					Physical tools for conversations people can actually start.
 				</h2>
-				<p class="max-w-md text-base leading-relaxed text-slate-700 sm:text-lg">
+				<p class="max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
 					Designed for homes, schools, clinics, youth groups, and community circles where support
 					needs to work without perfect internet, expert language, or a formal therapy room.
 				</p>
-				<p class="max-w-md text-sm leading-relaxed text-slate-600">
+				<p class="max-w-md text-sm leading-relaxed text-muted-foreground">
 					Every tool is measured in
 					<a
 						href="/connection-miles"
@@ -107,7 +107,7 @@
 				</p>
 			</div>
 
-			<div class="grid max-w-md grid-cols-2 gap-3 text-sm text-slate-700">
+			<div class="grid max-w-md grid-cols-2 gap-3 text-sm text-muted-foreground">
 				<div class="rounded-2xl border border-dci-teal/15 bg-white/45 p-4">
 					<QrCode class="mb-5 size-5 text-dci-teal" weight="duotone" />
 					QR access to low-data digital resources.
@@ -140,7 +140,7 @@
 			{#each products as product, index}
 				<article
 					use:reveal={{ delay: index * 90, y: 22 }}
-					class={`group grid overflow-hidden rounded-[2rem] border bg-dci-paper shadow-dci-lift transition duration-500 hover:-translate-y-1 md:grid-cols-[0.82fr_1fr] md:min-h-[22rem] ${product.border}`}
+					class={`group grid overflow-hidden rounded-4xl border bg-dci-paper shadow-dci-lift transition duration-500 hover:-translate-y-1 md:grid-cols-[0.82fr_1fr] md:min-h-[22rem] ${product.border}`}
 				>
 					<div class={`relative min-h-72 overflow-hidden ${index % 2 === 1 ? 'md:order-2' : ''}`}>
 						{#if product.images}
@@ -172,7 +172,7 @@
 							/>
 						{/if}
 						<div
-							class="absolute top-4 left-4 rounded-full bg-dci-paper/90 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest text-slate-700"
+							class="absolute top-4 left-4 rounded-full bg-dci-paper/90 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest text-muted-foreground"
 						>
 							{product.kicker}
 						</div>
@@ -180,10 +180,10 @@
 
 					<div class="flex flex-col justify-between gap-8 p-6 sm:p-8 lg:p-10">
 						<div class="space-y-4">
-							<h3 class="text-3xl font-semibold leading-tight text-slate-950">{product.name}</h3>
-							<p class="max-w-md text-base leading-relaxed text-slate-700">{product.description}</p>
+							<h3 class="text-3xl font-semibold leading-tight text-foreground">{product.name}</h3>
+							<p class="max-w-md text-base leading-relaxed text-muted-foreground">{product.description}</p>
 							{#if product.credit}
-								<p class="max-w-md text-sm italic leading-relaxed text-slate-500">{product.credit}</p>
+								<p class="max-w-md text-sm italic leading-relaxed text-muted-foreground">{product.credit}</p>
 							{/if}
 							<div class="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
 								<span
@@ -191,7 +191,7 @@
 								>
 									{product.miles}
 								</span>
-								<span class="text-sm text-slate-500">{product.impact}</span>
+								<span class="text-sm text-muted-foreground">{product.impact}</span>
 							</div>
 						</div>
 
@@ -208,7 +208,7 @@
 
 			<article
 				use:reveal={{ delay: 120, y: 22 }}
-				class="overflow-hidden rounded-[2rem] border border-dci-cream/15 bg-dci-ink text-dci-cream"
+				class="overflow-hidden rounded-4xl border border-dci-cream/15 bg-dci-ink text-dci-cream"
 			>
 				<img
 					src="/photos/product-full-toolkit.jpg"

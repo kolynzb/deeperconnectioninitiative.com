@@ -62,11 +62,11 @@
 				</div>
 				<div class="space-y-5">
 					<h1
-						class="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl"
+						class="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
 					>
 						Explore the tools before choosing what fits.
 					</h1>
-					<p class="max-w-2xl text-base leading-relaxed text-slate-700 sm:text-lg">
+					<p class="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
 						The DCI toolkit is designed to be tactile and practical: cards to open conversation, a
 						journal to shape reflection, and a mood tracker to notice patterns.
 					</p>
@@ -75,12 +75,12 @@
 
 			<div
 				use:reveal={{ delay: 120, y: 18 }}
-				class="rounded-[2rem] bg-dci-cream p-6 shadow-dci-lift sm:p-8"
+				class="rounded-4xl bg-dci-cream p-6 shadow-dci-lift sm:p-8"
 			>
 				<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">
 					How to use this page
 				</p>
-				<p class="mt-4 text-2xl font-semibold leading-tight text-slate-950">
+				<p class="mt-4 text-2xl font-semibold leading-tight text-foreground">
 					Tap through the kit demo, then choose the individual tool or full kit that matches your
 					setting.
 				</p>
@@ -95,7 +95,7 @@
 	<div class="mx-auto max-w-7xl">
 		<div class="mb-8 max-w-3xl space-y-3" use:reveal={{ delay: 0, y: 18 }}>
 			<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Choose a tool</p>
-			<h2 class="text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl">
+			<h2 class="text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
 				Buy one piece or support access to the full kit.
 			</h2>
 		</div>
@@ -104,7 +104,7 @@
 			{#each products as product, index}
 				<article
 					use:reveal={{ delay: index * 80, y: 18 }}
-					class="dci-soft-hover flex min-h-72 flex-col overflow-hidden rounded-[2rem] border border-dci-teal/12 bg-dci-cream shadow-dci-lift"
+					class="dci-soft-hover flex min-h-72 flex-col overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream shadow-dci-lift"
 				>
 					<div
 						class={`relative overflow-hidden ${product.bg} ${product.images ? '' : 'aspect-[4/3]'}`}
@@ -140,8 +140,8 @@
 					</div>
 					<div class="flex flex-1 flex-col justify-between p-6">
 						<div>
-							<h3 class="text-2xl font-semibold leading-tight text-slate-950">{product.name}</h3>
-							<p class="mt-3 text-sm leading-relaxed text-slate-700">{product.description}</p>
+							<h3 class="text-2xl font-semibold leading-tight text-foreground">{product.name}</h3>
+							<p class="mt-3 text-sm leading-relaxed text-muted-foreground">{product.description}</p>
 						</div>
 						<div class="mt-8">
 							<p class="text-lg font-bold text-dci-teal-deep">{product.price}</p>
@@ -161,7 +161,7 @@
 
 			<article
 				use:reveal={{ delay: 260, y: 18 }}
-				class="flex min-h-72 flex-col justify-between rounded-[2rem] bg-dci-teal-deep p-6 text-dci-cream shadow-dci-lift"
+				class="flex min-h-72 flex-col justify-between rounded-4xl bg-dci-teal-deep p-6 text-dci-cream shadow-dci-lift"
 			>
 				<div>
 					<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">

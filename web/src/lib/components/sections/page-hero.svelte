@@ -28,12 +28,12 @@
 				{/if}
 				<div class="space-y-5">
 					<h1
-						class="max-w-3xl text-5xl font-semibold leading-[0.95] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl"
+						class="max-w-3xl text-5xl font-semibold leading-[0.95] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
 					>
 						{title}
 					</h1>
 					{#if description}
-						<p class="max-w-2xl text-base leading-relaxed text-slate-700 sm:text-lg">
+						<p class="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
 							{description}
 						</p>
 					{/if}

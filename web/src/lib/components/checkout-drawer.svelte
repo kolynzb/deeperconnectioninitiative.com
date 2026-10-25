@@ -41,18 +41,18 @@
 				e.preventDefault();
 				emailField?.focus();
 			}}
-			class="fixed inset-x-0 bottom-0 z-[80] mx-auto w-full max-w-md rounded-t-[2rem] border border-dci-teal/15 bg-dci-cream p-6 shadow-dci-lift sm:top-1/2 sm:bottom-auto sm:-translate-y-1/2 sm:rounded-[2rem] sm:p-8"
+			class="fixed inset-x-0 bottom-0 z-[80] mx-auto w-full max-w-md rounded-t-4xl border border-dci-teal/15 bg-dci-cream p-6 shadow-dci-lift sm:top-1/2 sm:bottom-auto sm:-translate-y-1/2 sm:rounded-4xl sm:p-8"
 		>
 			{#if product}
 				<Dialog.Close
 					aria-label="Close"
-					class="absolute right-5 top-5 flex size-9 items-center justify-center rounded-full text-slate-500 transition hover:bg-dci-teal/8 hover:text-slate-800"
+					class="absolute right-5 top-5 flex size-9 items-center justify-center rounded-full text-muted-foreground transition hover:bg-dci-teal/8 hover:text-foreground"
 				>
 					<X class="size-4" weight="bold" />
 				</Dialog.Close>
 
 				<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Secure checkout</p>
-				<Dialog.Title class="mt-2 pr-10 text-2xl font-semibold leading-tight text-slate-950">
+				<Dialog.Title class="mt-2 pr-10 text-2xl font-semibold leading-tight text-foreground">
 					{product.name}
 				</Dialog.Title>
 				<p class="mt-2 text-2xl font-bold text-dci-teal-deep">{product.price}</p>
@@ -73,7 +73,7 @@
 					/>
 
 					<div class="space-y-2">
-						<label for="drawer-email" class="text-sm font-semibold text-slate-950">
+						<label for="drawer-email" class="text-sm font-semibold text-foreground">
 							Email for your receipt
 						</label>
 						<input
@@ -84,7 +84,7 @@
 							autocomplete="email"
 							required
 							placeholder="you@example.com"
-							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 						/>
 					</div>
 
@@ -97,7 +97,7 @@
 						{submitting ? 'Taking you to payment…' : `Pay ${product.price}`}
 					</button>
 
-					<p class="flex items-center justify-center gap-2 text-center text-xs text-slate-600">
+					<p class="flex items-center justify-center gap-2 text-center text-xs text-muted-foreground">
 						<ShieldCheck class="size-4 shrink-0 text-dci-teal" weight="duotone" />
 						Mobile Money or card, on Flutterwave's secure page.
 					</p>

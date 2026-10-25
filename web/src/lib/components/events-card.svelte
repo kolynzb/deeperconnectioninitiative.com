@@ -31,7 +31,7 @@
 </script>
 
 <article
-	class="group dci-soft-hover flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-5 shadow-dci-lift transition duration-300 sm:p-6"
+	class="group dci-soft-hover flex h-full flex-col justify-between overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream p-5 shadow-dci-lift transition duration-300 sm:p-6"
 >
 	<div>
 		<div class="flex items-start justify-between gap-4">
@@ -44,7 +44,7 @@
 				</div>
 				<div class="pt-1">
 					<p class="text-xs font-semibold uppercase tracking-wide text-dci-burgundy">{event.type}</p>
-					<p class="mt-2 flex items-center gap-1.5 text-sm text-slate-600">
+					<p class="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
 						<CalendarDays class="size-3.5" weight="regular" />
 						{timeLabel}
 					</p>
@@ -52,8 +52,8 @@
 			</div>
 		</div>
 
-		<h3 class="mt-8 text-2xl font-semibold leading-tight text-slate-950">{event.title}</h3>
-		<p class="mt-3 text-sm leading-relaxed text-slate-700">{event.description}</p>
+		<h3 class="mt-8 text-2xl font-semibold leading-tight text-foreground">{event.title}</h3>
+		<p class="mt-3 text-sm leading-relaxed text-muted-foreground">{event.description}</p>
 		<p class="mt-5 flex items-start gap-2 text-sm font-medium text-dci-teal-deep">
 			<MapPin class="mt-0.5 size-4 shrink-0" weight="regular" />
 			<span>{event.location}</span>

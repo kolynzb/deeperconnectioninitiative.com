@@ -10,11 +10,11 @@
 	import { reveal } from '$lib/actions/reveal';
 </script>
 
-<section id="get-involved" class="relative w-full overflow-hidden bg-slate-50 py-24 rounded-b-4xl">
+<section id="get-involved" class="relative w-full overflow-hidden bg-dci-paper py-24 rounded-b-4xl">
 	<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<!-- <div class="text-center mb-16 gsap-reveal">
-          <h2 class="text-4xl font-bold text-slate-900">There is a place for you here.</h2>
-          <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Whether you are a venue owner, mental health professional, volunteer, or sponsor, there is a place for you in the DeeperConnection ecosystem.</p>
+          <h2 class="text-4xl font-bold text-foreground">There is a place for you here.</h2>
+          <p class="text-muted-foreground mt-4 max-w-2xl mx-auto">Whether you are a venue owner, mental health professional, volunteer, or sponsor, there is a place for you in the DeeperConnection ecosystem.</p>
         </div> -->
 		<div
 			class="mb-16 grid gap-8 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start lg:gap-12"
@@ -25,10 +25,10 @@
 					Get involved
 				</p>
 				<h2
-					class="text-2xl sm:text-3xl font-semibold tracking-tight text-slate-900"				>
+					class="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground"				>
 					There is a place for you here
 				</h2>
-				<p class="text-base sm:text-lg font-normal leading-relaxed text-slate-800/95">
+				<p class="text-base sm:text-lg font-normal leading-relaxed text-foreground/95">
 					Whether you are a venue owner, mental health professional, volunteer, or sponsor, there is a
 					place for you in the DeeperConnection ecosystem.
 				</p>
@@ -46,7 +46,7 @@
 			<!-- Cards... -->
 			<div
 				use:reveal={{ delay: 0, y: 18 }}
-				class="involved-card dci-soft-hover bg-white p-6 rounded-xl border border-slate-200 hover:border-dci-teal transition-all cursor-pointer h-full flex flex-col overflow-hidden"
+				class="involved-card dci-soft-hover bg-white p-6 rounded-xl border border-border hover:border-dci-teal transition-all cursor-pointer h-full flex flex-col overflow-hidden"
 			>
 				<img
 					src="/photos/section7-venue.jpg"
@@ -59,8 +59,8 @@
 				>
 					<Building2 class="size-6" weight="duotone" />
 				</div>
-				<h3 class="font-bold text-slate-900 mb-2">Venue Partner</h3>
-				<p class="text-sm text-slate-600 mb-4 flex-grow">
+				<h3 class="font-bold text-foreground mb-2">Venue Partner</h3>
+				<p class="text-sm text-muted-foreground mb-4 flex-grow">
 					Turn your café, studio, or space into a certified wellness hub hosting DCI clinics.
 				</p>
 				<span class="text-xs font-bold text-dci-teal">Apply now &rarr;</span>
@@ -68,7 +68,7 @@
 
 			<div
 				use:reveal={{ delay: 70, y: 18 }}
-				class="involved-card dci-soft-hover bg-white p-6 rounded-xl border border-slate-200 hover:border-dci-burgundy transition-all cursor-pointer h-full flex flex-col overflow-hidden"
+				class="involved-card dci-soft-hover bg-white p-6 rounded-xl border border-border hover:border-dci-burgundy transition-all cursor-pointer h-full flex flex-col overflow-hidden"
 			>
 				<img
 					src="/photos/champion-training-hero.jpg"
@@ -81,8 +81,8 @@
 				>
 					<Sparkles class="size-6" weight="duotone" />
 				</div>
-				<h3 class="font-bold text-slate-900 mb-2">DCI Angel</h3>
-				<p class="text-sm text-slate-600 mb-4 flex-grow">
+				<h3 class="font-bold text-foreground mb-2">DCI Angel</h3>
+				<p class="text-sm text-muted-foreground mb-4 flex-grow">
 					Join monthly missions, support clinics, and help deliver emotional first aid.
 				</p>
 				<span class="text-xs font-bold text-dci-burgundy">Join squad &rarr;</span>
@@ -90,7 +90,7 @@
 
 			<div
 				use:reveal={{ delay: 140, y: 18 }}
-				class="involved-card dci-soft-hover bg-white p-6 rounded-xl border border-slate-200 hover:border-dci-teal transition-all cursor-pointer h-full flex flex-col overflow-hidden"
+				class="involved-card dci-soft-hover bg-white p-6 rounded-xl border border-border hover:border-dci-teal transition-all cursor-pointer h-full flex flex-col overflow-hidden"
 			>
 				<img
 					src="/photos/section7-clinics.jpg"
@@ -103,8 +103,8 @@
 				>
 					<Stethoscope class="size-6" weight="duotone" />
 				</div>
-				<h3 class="font-bold text-slate-900 mb-2">Provider Network</h3>
-				<p class="text-sm text-slate-600 mb-4 flex-grow">
+				<h3 class="font-bold text-foreground mb-2">Provider Network</h3>
+				<p class="text-sm text-muted-foreground mb-4 flex-grow">
 					Join our responsible referral network and collaborate on trauma-aware care.
 				</p>
 				<span class="text-xs font-bold text-dci-teal">Join network &rarr;</span>
@@ -112,7 +112,7 @@
 
 			<div
 				use:reveal={{ delay: 210, y: 18 }}
-				class="involved-card dci-soft-hover bg-dci-teal p-6 rounded-xl border border-dci-teal hover:bg-dci-teal-mid transition-all cursor-pointer h-full flex flex-col"
+				class="involved-card dci-soft-hover bg-dci-teal-deep p-6 rounded-xl border border-dci-teal hover:bg-dci-teal-mid transition-all cursor-pointer h-full flex flex-col"
 			>
 				<div
 					class="h-12 w-12 rounded-lg bg-white/20 flex items-center justify-center text-white mb-4"
@@ -132,12 +132,12 @@
 		<!-- Newsletter -->
 		<!-- <div class="mt-16 rounded-3xl bg-dci-sand border border-dci-teal/20 p-8 flex flex-col md:flex-row items-center justify-between gap-6 gsap-reveal">
           <div class="space-y-1 text-center md:text-left">
-             <h4 class="font-bold text-slate-900 text-lg">Stay Connected</h4>
-             <p class="text-sm text-slate-700">Receive monthly mission briefs and stories from the field.</p>
+             <h4 class="font-bold text-foreground text-lg">Stay Connected</h4>
+             <p class="text-sm text-muted-foreground">Receive monthly mission briefs and stories from the field.</p>
           </div>
           <form class="flex w-full md:w-auto gap-2">
-             <input type="email" placeholder="you@example.org" class="w-full md:w-64 rounded-full border border-slate-300 px-4 py-2 text-sm focus:ring-2 focus:ring-dci-teal focus:outline-none">
-             <button class="rounded-full bg-dci-teal px-6 py-2 text-sm font-bold text-white hover:bg-dci-teal-mid">Subscribe</button>
+             <input type="email" placeholder="you@example.org" class="w-full md:w-64 rounded-full border border-border px-4 py-2 text-sm focus:ring-2 focus:ring-dci-teal focus:outline-none">
+             <button class="rounded-full bg-dci-teal-deep px-6 py-2 text-sm font-bold text-white hover:bg-dci-teal-mid">Subscribe</button>
           </form>
         </div> -->
 	</div>

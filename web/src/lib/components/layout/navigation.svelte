@@ -304,14 +304,14 @@
 											<Icon class="size-5" weight="duotone" aria-hidden="true" />
 										</span>
 										<span>
-											<span class="flex items-center gap-2 text-sm font-semibold text-slate-950">
+											<span class="flex items-center gap-2 text-sm font-semibold text-foreground">
 												{child.label}
 												<ArrowUpRight
 													class="size-3.5 opacity-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
 													weight="regular"
 												/>
 											</span>
-											<span class="mt-1 block text-sm leading-snug text-slate-600">
+											<span class="mt-1 block text-sm leading-snug text-muted-foreground">
 												{child.description}
 											</span>
 										</span>
@@ -421,13 +421,13 @@
 															<span>
 																<span
 																	class={cn(
-																		'block text-sm font-semibold text-slate-950',
+																		'block text-sm font-semibold text-foreground',
 																		isHrefActive(child.href) && 'text-dci-burgundy'
 																	)}
 																>
 																	{child.label}
 																</span>
-																<span class="mt-1 block text-sm leading-snug text-slate-600">
+																<span class="mt-1 block text-sm leading-snug text-muted-foreground">
 																	{child.description}
 																</span>
 															</span>

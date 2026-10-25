@@ -188,7 +188,7 @@
 	const activeRows = $derived(boards[activeBoard].rows);
 	const leaderMiles = $derived(activeRows[0].miles);
 
-	const rankTone = ['bg-dci-burgundy text-dci-cream', 'bg-dci-teal text-dci-cream', 'bg-dci-clay text-dci-cream'];
+	const rankTone = ['bg-dci-burgundy text-dci-cream', 'bg-dci-teal-deep text-dci-cream', 'bg-dci-clay text-dci-cream'];
 
 	const initials = (name: string) =>
 		name
@@ -221,7 +221,7 @@
 	{/snippet}
 	{#snippet aside()}
 		<div
-			class="grid gap-3 rounded-[2rem] border border-dci-teal/12 bg-dci-teal-deep p-4 text-dci-cream shadow-dci-panel sm:grid-cols-3 sm:p-5"
+			class="grid gap-3 rounded-4xl border border-dci-teal/12 bg-dci-teal-deep p-4 text-dci-cream shadow-dci-panel sm:grid-cols-3 sm:p-5"
 		>
 			{#each campaignStats as stat}
 				<div class="rounded-2xl border border-dci-cream/10 bg-dci-cream/8 p-5">
@@ -240,25 +240,25 @@
 	<div class="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.06fr_0.94fr]">
 		<div
 			use:reveal={{ delay: 0, y: 18 }}
-			class="relative min-h-[560px] overflow-hidden rounded-[2rem] border border-dci-teal/12 bg-dci-paper p-5 shadow-dci-lift sm:p-8"
+			class="relative min-h-[560px] overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-paper p-5 shadow-dci-lift sm:p-8"
 		>
 			<div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
 				<div>
 					<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Connection map</p>
 					<h2
-						class="mt-3 max-w-xl text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl"
+						class="mt-3 max-w-xl text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl"
 					>
 						Where toolkits are moving into use.
 					</h2>
 				</div>
-				<p class="max-w-xs text-sm leading-relaxed text-slate-600">
+				<p class="max-w-xs text-sm leading-relaxed text-muted-foreground">
 					Each marker combines sponsored kits and reported Connection Miles from local activity.
 				</p>
 			</div>
 
 			<div
 				bind:this={mapEl}
-				class="dci-map relative z-0 h-[420px] w-full overflow-hidden rounded-[1.5rem] border border-dci-teal/12 sm:h-[480px]"
+				class="dci-map relative z-0 h-[420px] w-full overflow-hidden rounded-3xl border border-dci-teal/12 sm:h-[480px]"
 				aria-label="Interactive map of DCI field activity across Uganda"
 			></div>
 		</div>
@@ -266,7 +266,7 @@
 		<div class="space-y-6">
 			<div
 				use:reveal={{ delay: 90, y: 18 }}
-				class="rounded-[2rem] bg-dci-teal-deep p-6 text-dci-cream shadow-dci-lift sm:p-8"
+				class="rounded-4xl bg-dci-teal-deep p-6 text-dci-cream shadow-dci-lift sm:p-8"
 			>
 				<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">The rubric</p>
 				<h2 class="mt-3 text-4xl font-semibold leading-tight text-white">
@@ -293,8 +293,8 @@
 								<Icon class="size-6" weight="duotone" />
 							</div>
 							<div class="min-w-0 flex-1">
-								<h3 class="text-2xl font-semibold leading-tight text-slate-950">{item.name}</h3>
-								<p class="mt-1 text-sm leading-relaxed text-slate-600">{item.description}</p>
+								<h3 class="text-2xl font-semibold leading-tight text-foreground">{item.name}</h3>
+								<p class="mt-1 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
 								<div class="mt-4 grid gap-2">
 									{#each item.items as score}
 										<div
@@ -327,12 +327,12 @@
 					The leaderboard
 				</p>
 				<h2
-					class="max-w-2xl text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl"
+					class="max-w-2xl text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl"
 				>
 					Every mile is one life. Here's who's moving the most.
 				</h2>
 			</div>
-			<p class="max-w-2xl text-base leading-relaxed text-slate-700" use:reveal={{ delay: 90, y: 18 }}>
+			<p class="max-w-2xl text-base leading-relaxed text-muted-foreground" use:reveal={{ delay: 90, y: 18 }}>
 				Champions and partner organizations earn Connection Miles for every reflection, clinic, and
 				kit that reaches the field. The public leaderboard mirrors what they see on their DCI
 				dashboard: recognition that the quiet work is counted.
@@ -341,7 +341,7 @@
 
 		<div
 			use:reveal={{ delay: 120, y: 18 }}
-			class="overflow-hidden rounded-[2rem] border border-dci-teal/12 bg-dci-cream shadow-dci-lift"
+			class="overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream shadow-dci-lift"
 		>
 			<!-- Board toggle -->
 			<div class="flex flex-wrap items-center justify-between gap-4 border-b border-dci-teal/10 p-5 sm:p-6">
@@ -363,7 +363,7 @@
 						</button>
 					{/each}
 				</div>
-				<p class="text-xs font-medium uppercase tracking-wide text-slate-500">
+				<p class="text-xs font-medium uppercase tracking-wide text-muted-foreground">
 					Total Connection Miles · this season
 				</p>
 			</div>
@@ -391,11 +391,11 @@
 						</span>
 
 						<div class="min-w-0 flex-1">
-							<p class="truncate text-base font-semibold text-slate-950 sm:text-lg">{row.name}</p>
-							<p class="truncate text-xs text-slate-600 sm:text-sm">{row.meta}</p>
+							<p class="truncate text-base font-semibold text-foreground sm:text-lg">{row.name}</p>
+							<p class="truncate text-xs text-muted-foreground sm:text-sm">{row.meta}</p>
 							<div class="mt-2 h-1.5 w-full max-w-xs overflow-hidden rounded-full bg-dci-paper">
 								<div
-									class="h-full rounded-full bg-dci-teal transition-[width] duration-500"
+									class="h-full rounded-full bg-dci-teal-deep transition-[width] duration-500"
 									style={`width:${Math.round((row.miles / leaderMiles) * 100)}%`}
 								></div>
 							</div>
@@ -405,13 +405,13 @@
 							<p class="text-xl font-bold text-dci-teal-deep sm:text-2xl">
 								{row.miles.toLocaleString()}
 							</p>
-							<p class="text-[0.65rem] font-semibold uppercase tracking-wide text-slate-500">miles</p>
+							<p class="text-[0.65rem] font-semibold uppercase tracking-wide text-muted-foreground">miles</p>
 						</div>
 					</li>
 				{/each}
 			</ol>
 
-			<p class="border-t border-dci-teal/10 px-5 py-4 text-xs leading-relaxed text-slate-500 sm:px-6">
+			<p class="border-t border-dci-teal/10 px-5 py-4 text-xs leading-relaxed text-muted-foreground sm:px-6">
 				1 Connection Mile = 1 life meaningfully impacted. Figures shown are representative field
 				numbers; live rankings open with the DCI platform.
 			</p>
@@ -425,11 +425,11 @@
 			<div class="space-y-5" use:reveal={{ delay: 0, y: 18 }}>
 				<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Open the kit</p>
 				<h2
-					class="max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl"
+					class="max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl"
 				>
 					See the tools before choosing what to put in the field.
 				</h2>
-				<p class="max-w-2xl text-base leading-relaxed text-slate-700">
+				<p class="max-w-2xl text-base leading-relaxed text-muted-foreground">
 					Cards open conversation, journals shape reflection, and mood trackers help people notice
 					patterns. Together they create the activity behind the Connection Miles.
 				</p>
@@ -437,12 +437,12 @@
 
 			<div
 				use:reveal={{ delay: 120, y: 18 }}
-				class="rounded-[2rem] bg-dci-cream p-6 shadow-dci-lift sm:p-8"
+				class="rounded-4xl bg-dci-cream p-6 shadow-dci-lift sm:p-8"
 			>
 				<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">
 					Field-ready support
 				</p>
-				<p class="mt-4 text-2xl font-semibold leading-tight text-slate-950">
+				<p class="mt-4 text-2xl font-semibold leading-tight text-foreground">
 					Tap through the kit demo, then choose an individual tool, buy a full kit, or sponsor one
 					into a community setting.
 				</p>
@@ -457,7 +457,7 @@
 	<div class="mx-auto max-w-7xl">
 		<div class="mb-8 max-w-3xl space-y-3" use:reveal={{ delay: 0, y: 18 }}>
 			<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Choose a tool</p>
-			<h2 class="text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl">
+			<h2 class="text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
 				Buy one piece or support access to the full kit.
 			</h2>
 		</div>
@@ -467,7 +467,7 @@
 				{@const Icon = product.icon}
 				<article
 					use:reveal={{ delay: index * 80, y: 18 }}
-					class="dci-soft-hover flex min-h-72 flex-col justify-between rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift"
+					class="dci-soft-hover flex min-h-72 flex-col justify-between rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift"
 				>
 					<div>
 						<div
@@ -476,8 +476,8 @@
 						>
 							<Icon class="size-6" weight="duotone" />
 						</div>
-						<h3 class="text-2xl font-semibold leading-tight text-slate-950">{product.name}</h3>
-						<p class="mt-3 text-sm leading-relaxed text-slate-700">{product.description}</p>
+						<h3 class="text-2xl font-semibold leading-tight text-foreground">{product.name}</h3>
+						<p class="mt-3 text-sm leading-relaxed text-muted-foreground">{product.description}</p>
 					</div>
 					<div class="mt-8">
 						<p class="text-lg font-bold text-dci-teal-deep">{product.price}</p>
@@ -491,7 +491,7 @@
 
 			<article
 				use:reveal={{ delay: 260, y: 18 }}
-				class="flex min-h-72 flex-col justify-between rounded-[2rem] bg-dci-teal-deep p-6 text-dci-cream shadow-dci-lift"
+				class="flex min-h-72 flex-col justify-between rounded-4xl bg-dci-teal-deep p-6 text-dci-cream shadow-dci-lift"
 			>
 				<div>
 					<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">

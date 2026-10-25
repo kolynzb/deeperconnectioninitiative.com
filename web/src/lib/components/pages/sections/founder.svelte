@@ -51,7 +51,7 @@
 			></div>
 
 			<div
-				class="relative overflow-hidden rounded-[2rem] border-[6px] border-dci-cream bg-dci-cream shadow-dci-teal"
+				class="relative overflow-hidden rounded-4xl border-[6px] border-dci-cream bg-dci-cream shadow-dci-teal"
 			>
 				<img
 					src="/photos/ann-banya.jpg"
@@ -65,7 +65,7 @@
 			<div
 				class="absolute -bottom-5 right-4 max-w-[15rem] rounded-2xl border border-dci-sand bg-dci-paper/95 px-5 py-3 shadow-dci-soft backdrop-blur-sm"
 			>
-				<p class="font-semibold text-slate-900">Ann Banya</p>
+				<p class="font-semibold text-foreground">Ann Banya</p>
 				<p class="mt-0.5 text-sm leading-snug text-dci-teal">
 					Early Child Development Specialist &middot; 40+ years
 				</p>
@@ -81,11 +81,11 @@
 				>
 			</div>
 
-			<h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-slate-900">
+			<h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
 				40+ years of experience started this journey
 			</h2>
 
-			<p class="text-base leading-relaxed text-slate-700">
+			<p class="text-base leading-relaxed text-muted-foreground">
 				DCI is built on four decades of behavioural practice, not an emerging idea. Every toolkit, clinic, and
 				training carries decades of behavioural-health experience behind it.
 			</p>
@@ -104,13 +104,13 @@
 			</button>
 
 			<div class="pt-3">
-				<p class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-3">
+				<p class="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
 					Trusted alongside
 				</p>
 				<ul class="flex flex-wrap gap-2">
 					{#each affiliations as name}
 						<li
-							class="rounded-full border border-dci-sand bg-dci-cream/60 px-4 py-1.5 text-sm font-medium text-slate-800"
+							class="rounded-full border border-dci-sand bg-dci-cream/60 px-4 py-1.5 text-sm font-medium text-foreground"
 						>
 							{name}
 						</li>

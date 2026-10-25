@@ -44,7 +44,7 @@
 		<div class="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
 			<aside
 				use:reveal={{ delay: 0, y: 18 }}
-				class="relative overflow-hidden rounded-[2rem] bg-dci-teal-deep p-8 text-dci-cream lg:sticky lg:top-28 lg:p-10"
+				class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-8 text-dci-cream lg:sticky lg:top-28 lg:p-10"
 			>
 				<div
 					class="pointer-events-none absolute inset-0 opacity-10"
@@ -145,7 +145,7 @@
 
 			<div
 				use:reveal={{ delay: 120, y: 18 }}
-				class="relative overflow-hidden rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-5 shadow-dci-lift sm:p-8 lg:p-10"
+				class="relative overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream p-5 shadow-dci-lift sm:p-8 lg:p-10"
 			>
 				<SpotIllustration
 					variant="care"
@@ -154,11 +154,11 @@
 				<div class="relative z-10 mb-8 max-w-2xl space-y-3">
 					<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Send a message</p>
 					<h2
-						class="text-3xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-4xl"
+						class="text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl"
 					>
 						Start with the basics. We will follow up with care.
 					</h2>
-					<p class="text-base leading-relaxed text-slate-600">
+					<p class="text-base leading-relaxed text-muted-foreground">
 						Use this form for general inquiries. If someone is in immediate danger, contact local
 						emergency services or a trusted crisis support provider.
 					</p>
@@ -170,7 +170,7 @@
 						role="status"
 					>
 						<p class="font-semibold">Thanks, your message is in.</p>
-						<p class="mt-1 text-slate-700">We'll follow up at the email you provided. For anything urgent, call {siteConfig.contacts.tele}.</p>
+						<p class="mt-1 text-muted-foreground">We'll follow up at the email you provided. For anything urgent, call {siteConfig.contacts.tele}.</p>
 					</div>
 				{/if}
 				{#if form?.errors?.form}
@@ -205,7 +205,7 @@
 
 					<div class="grid gap-5 sm:grid-cols-2">
 						<div class="space-y-2">
-							<label for="name" class="text-sm font-semibold text-slate-950">Your name</label>
+							<label for="name" class="text-sm font-semibold text-foreground">Your name</label>
 							<input
 								id="name"
 								name="name"
@@ -215,7 +215,7 @@
 								value={form?.values?.name ?? ''}
 								aria-invalid={form?.errors?.name ? 'true' : undefined}
 								placeholder="Full name"
-								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 							/>
 							{#if form?.errors?.name}
 								<p class="text-sm text-dci-burgundy">{form.errors.name}</p>
@@ -223,7 +223,7 @@
 						</div>
 
 						<div class="space-y-2">
-							<label for="email" class="text-sm font-semibold text-slate-950">Email address</label>
+							<label for="email" class="text-sm font-semibold text-foreground">Email address</label>
 							<input
 								id="email"
 								name="email"
@@ -233,7 +233,7 @@
 								value={form?.values?.email ?? ''}
 								aria-invalid={form?.errors?.email ? 'true' : undefined}
 								placeholder="you@example.com"
-								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 							/>
 							{#if form?.errors?.email}
 								<p class="text-sm text-dci-burgundy">{form.errors.email}</p>
@@ -243,26 +243,26 @@
 
 					<div class="grid gap-5 sm:grid-cols-2">
 						<div class="space-y-2">
-							<label for="phone" class="text-sm font-semibold text-slate-950">Phone number</label>
+							<label for="phone" class="text-sm font-semibold text-foreground">Phone number</label>
 							<input
 								id="phone"
 								name="phone"
 								type="tel"
 								autocomplete="tel"
 								placeholder="+256..."
-								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 							/>
 						</div>
 
 						<div class="space-y-2">
-							<label for="topic" class="text-sm font-semibold text-slate-950"
+							<label for="topic" class="text-sm font-semibold text-foreground"
 								>What is this about?</label
 							>
 							<select
 								id="topic"
 								name="topic"
 								bind:value={topic}
-								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-slate-950 outline-none transition focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 							>
 								{#each supportPaths as path}
 									<option>{path}</option>
@@ -272,7 +272,7 @@
 					</div>
 
 					<div class="space-y-2">
-						<label for="message" class="text-sm font-semibold text-slate-950">Message</label>
+						<label for="message" class="text-sm font-semibold text-foreground">Message</label>
 						<textarea
 							id="message"
 							name="message"
@@ -280,7 +280,7 @@
 							required
 							aria-invalid={form?.errors?.message ? 'true' : undefined}
 							placeholder="Tell us what you are hoping to do, who the support is for, and the best way to reach you."
-							class="w-full resize-y rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 py-4 text-base leading-relaxed text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+							class="w-full resize-y rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 py-4 text-base leading-relaxed text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 							>{form?.values?.message ?? aboutParam}</textarea>
 						{#if form?.errors?.message}
 							<p class="text-sm text-dci-burgundy">{form.errors.message}</p>
@@ -290,7 +290,7 @@
 					<div
 						class="flex flex-col gap-4 border-t border-dci-teal/10 pt-6 sm:flex-row sm:items-center sm:justify-between"
 					>
-						<p class="max-w-md text-sm leading-relaxed text-slate-600">
+						<p class="max-w-md text-sm leading-relaxed text-muted-foreground">
 							Please avoid sending sensitive clinical details through this form.
 						</p>
 						<Button type="submit" size="lg" disabled={submitting} class="rounded-full px-8">

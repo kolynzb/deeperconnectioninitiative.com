@@ -156,7 +156,7 @@
 >
 	<div
 		use:reveal={{ delay: 0, y: 18 }}
-		class="mx-auto grid max-w-7xl overflow-hidden rounded-[2rem] bg-dci-teal-deep text-dci-cream shadow-dci-panel lg:grid-cols-[0.82fr_1.18fr]"
+		class="mx-auto grid max-w-7xl overflow-hidden rounded-4xl bg-dci-teal-deep text-dci-cream shadow-dci-panel lg:grid-cols-[0.82fr_1.18fr]"
 	>
 		<div class="relative p-6 sm:p-8 lg:p-10">
 			<div
@@ -213,7 +213,7 @@
 			</div>
 		</div>
 
-		<div class="relative min-h-[34rem] overflow-hidden bg-dci-cream p-6 text-slate-950 sm:p-8 lg:p-10">
+		<div class="relative min-h-[34rem] overflow-hidden bg-dci-cream p-6 text-foreground sm:p-8 lg:p-10">
 			<SpotIllustration
 				variant={activePath.illustration}
 				class="dci-float-slow pointer-events-none absolute -right-28 -bottom-6 hidden w-[27rem] opacity-16 [--float-rotate:2deg] lg:block"
@@ -230,7 +230,7 @@
 					<h3 class="mt-5 max-w-xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
 						{activePath.title}
 					</h3>
-					<p class="mt-5 max-w-xl text-base leading-relaxed text-slate-700 sm:text-lg">
+					<p class="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
 						{activePath.description}
 					</p>
 				</div>
@@ -244,10 +244,10 @@
 									class="flex flex-col justify-between rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-4"
 								>
 									<div>
-										<p class="text-sm font-semibold leading-tight text-slate-950">{option.name}</p>
-										<p class="mt-2 text-xs leading-relaxed text-slate-600">{option.body}</p>
+										<p class="text-sm font-semibold leading-tight text-foreground">{option.name}</p>
+										<p class="mt-2 text-xs leading-relaxed text-muted-foreground">{option.body}</p>
 										<p class="mt-3 text-base font-bold text-dci-teal-deep">{option.price}</p>
-										<p class="mt-1 text-xs text-slate-500">{option.note}</p>
+										<p class="mt-1 text-xs text-muted-foreground">{option.note}</p>
 									</div>
 									<div class="mt-4 space-y-2">
 										<button
@@ -299,7 +299,7 @@
 								</button>
 							{/if}
 						</div>
-					<p class="mt-2 text-xs text-slate-500">
+					<p class="mt-2 text-xs text-muted-foreground">
 						Video not loading?
 						<a
 							href={`https://www.youtube.com/watch?v=${activePath.video.id}`}
@@ -330,11 +330,11 @@
 										class="hidden aspect-[4/3] w-full rounded-xl sm:block"
 									/>
 									<div class="min-w-0 flex-1 sm:flex-none">
-										<p class="text-sm font-semibold leading-tight text-slate-950">{product.name}</p>
+										<p class="text-sm font-semibold leading-tight text-foreground">{product.name}</p>
 										<p class="mt-0.5 text-xs font-semibold text-dci-teal-deep">
 											{product.price} · {product.miles}
 										</p>
-										<p class="mt-1 text-xs leading-snug text-slate-600">{product.line}</p>
+										<p class="mt-1 text-xs leading-snug text-muted-foreground">{product.line}</p>
 									</div>
 									<button
 										type="button"
@@ -351,15 +351,15 @@
 							class="rounded-2xl border border-dci-teal/15 bg-dci-paper/65 p-5 sm:flex sm:items-center sm:justify-between sm:gap-6"
 						>
 							<div class="min-w-0">
-								<p class="text-sm font-semibold leading-tight text-slate-950">
+								<p class="text-sm font-semibold leading-tight text-foreground">
 									{activePath.offer.name}
 								</p>
-								<p class="mt-2 text-xs leading-relaxed text-slate-600">{activePath.offer.body}</p>
+								<p class="mt-2 text-xs leading-relaxed text-muted-foreground">{activePath.offer.body}</p>
 								<p class="mt-3 text-sm font-semibold text-dci-teal-deep">
 									{activePath.offer.deposit} deposit
-									<span class="font-normal text-slate-500">of {activePath.offer.total}</span>
+									<span class="font-normal text-muted-foreground">of {activePath.offer.total}</span>
 								</p>
-								<p class="mt-1 text-xs leading-snug text-slate-600">
+								<p class="mt-1 text-xs leading-snug text-muted-foreground">
 									{activePath.offer.depositNote}
 								</p>
 							</div>
@@ -383,9 +383,9 @@
 
 					<div class="mt-8 flex flex-col gap-3 border-t border-dci-teal/12 pt-6 sm:flex-row sm:items-center sm:justify-between">
 						<div class="max-w-sm space-y-2">
-							<p class="text-sm leading-relaxed text-slate-600">{activePath.helper}</p>
+							<p class="text-sm leading-relaxed text-muted-foreground">{activePath.helper}</p>
 							{#if activePath.href !== '/performance/assessment'}
-							<p class="text-sm leading-relaxed text-slate-600">
+							<p class="text-sm leading-relaxed text-muted-foreground">
 								Not sure where to start?
 								<a href="/performance/assessment" class="font-semibold text-dci-teal underline underline-offset-4">
 									Take the free Blueprint Assessment

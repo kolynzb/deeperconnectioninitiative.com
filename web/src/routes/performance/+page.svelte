@@ -102,7 +102,7 @@
 	{/snippet}
 	{#snippet aside()}
 		<div
-			class="relative overflow-hidden rounded-[2rem] bg-dci-teal-deep p-8 text-dci-cream shadow-dci-panel lg:p-10"
+			class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-8 text-dci-cream shadow-dci-panel lg:p-10"
 		>
 			<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">
 				Start here
@@ -158,7 +158,7 @@
 		{/each}
 		<div
 			use:reveal={{ delay: facets.length * 70, y: 22 }}
-			class="flex h-full flex-col justify-center rounded-[2rem] bg-dci-teal-deep p-7 text-dci-cream"
+			class="flex h-full flex-col justify-center rounded-4xl bg-dci-teal-deep p-7 text-dci-cream"
 		>
 			<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">Who it's for</p>
 			<p class="mt-4 text-lg font-semibold leading-relaxed text-white">
@@ -182,17 +182,17 @@
 		{#each otherTiers as tier, index (tier.name)}
 			<article
 				use:reveal={{ delay: index * 70, y: 22 }}
-				class={`dci-soft-hover relative flex h-full flex-col overflow-hidden rounded-[2rem] border bg-dci-paper p-6 shadow-dci-lift ${tier.popular ? 'border-dci-burgundy/35 lg:-mt-4 lg:mb-4' : 'border-dci-teal/12'}`}
+				class={`dci-soft-hover relative flex h-full flex-col overflow-hidden rounded-4xl border bg-dci-paper p-6 shadow-dci-lift ${tier.popular ? 'border-dci-burgundy/35 lg:-mt-4 lg:mb-4' : 'border-dci-teal/12'}`}
 			>
 				{#if tier.popular}
 					<div class="absolute right-5 top-5 rounded-full bg-dci-burgundy px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
 						Most chosen
 					</div>
 				{/if}
-				<h3 class="max-w-[80%] text-xl font-semibold leading-tight text-slate-950">{tier.name}</h3>
+				<h3 class="max-w-[80%] text-xl font-semibold leading-tight text-foreground">{tier.name}</h3>
 				<p class="mt-4 text-3xl font-bold" style={`color:${tier.accent}`}>{tier.price}</p>
-				<p class="mt-1 text-sm font-medium text-slate-600">{tier.lead}</p>
-				<p class="mt-4 flex-grow text-sm leading-relaxed text-slate-700">{tier.blurb}</p>
+				<p class="mt-1 text-sm font-medium text-muted-foreground">{tier.lead}</p>
+				<p class="mt-4 flex-grow text-sm leading-relaxed text-muted-foreground">{tier.blurb}</p>
 				<Button href={tier.href ?? '/contact'} class="mt-6 rounded-full">
 					{tier.cta}
 					<ArrowUpRight class="size-4" weight="regular" />
@@ -200,7 +200,7 @@
 			</article>
 		{/each}
 	</div>
-	<p class="mt-6 max-w-3xl text-sm text-slate-600">
+	<p class="mt-6 max-w-3xl text-sm text-muted-foreground">
 		Prices shown are per engagement. The premium tiers begin with an application and a fit
 		conversation, not instant checkout. This is coaching, not a substitute for therapy.
 	</p>
@@ -213,22 +213,22 @@
 		class="mb-12"
 	/>
 	<div class="grid gap-6 md:grid-cols-2">
-		<article use:reveal={{ delay: 0, y: 22 }} class="flex flex-col gap-6 rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-6 sm:flex-row sm:p-7">
+		<article use:reveal={{ delay: 0, y: 22 }} class="flex flex-col gap-6 rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 sm:flex-row sm:p-7">
 			<img src="/photos/emily.jpg" alt="Emily" class="size-28 shrink-0 rounded-2xl object-cover" />
 			<div>
-				<h3 class="text-2xl font-semibold text-slate-950">Emily</h3>
-				<p class="mt-3 text-sm leading-relaxed text-slate-700">
+				<h3 class="text-2xl font-semibold text-foreground">Emily</h3>
+				<p class="mt-3 text-sm leading-relaxed text-muted-foreground">
 					Co-founder of Utalii Creative, DCI Wellness, and Akatuuti. Built three ventures through
 					burnout, anxiety, grief, and self-sabotage, and redesigned the systems beneath her own
 					performance to survive it. Lived experience, and systems design.
 				</p>
 			</div>
 		</article>
-		<article use:reveal={{ delay: 90, y: 22 }} class="flex flex-col gap-6 rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-6 sm:flex-row sm:p-7">
+		<article use:reveal={{ delay: 90, y: 22 }} class="flex flex-col gap-6 rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 sm:flex-row sm:p-7">
 			<img src="/photos/ann-banya.jpg" alt="Ann Banya" class="size-28 shrink-0 rounded-2xl object-cover" />
 			<div>
-				<h3 class="text-2xl font-semibold text-slate-950">Ann</h3>
-				<p class="mt-3 text-sm leading-relaxed text-slate-700">
+				<h3 class="text-2xl font-semibold text-foreground">Ann</h3>
+				<p class="mt-3 text-sm leading-relaxed text-muted-foreground">
 					40+ years as an Early Childhood Development and behavioural specialist. Four decades of
 					practice, brought to every engagement she leads or supports.
 				</p>

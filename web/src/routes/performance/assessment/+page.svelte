@@ -90,7 +90,7 @@
 				>
 					Discover the hidden patterns shaping your performance.
 				</h1>
-				<p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-slate-700">
+				<p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
 					Free. About 10 minutes. Twenty short statements across five facets of how you operate: how
 					you think, recover, decide, communicate, and lead under pressure. At the end, you'll get a
 					personal Blueprint snapshot to keep.
@@ -102,7 +102,7 @@
 				>
 					Begin
 				</button>
-				<p class="mx-auto mt-9 max-w-md text-sm leading-relaxed text-slate-500">
+				<p class="mx-auto mt-9 max-w-md text-sm leading-relaxed text-muted-foreground">
 					This is a reflection tool, not a clinical assessment. If you're struggling, DCI can point
 					you to real support.
 				</p>
@@ -122,7 +122,7 @@
 					<div class="mt-10 space-y-10">
 						{#each currentStatements as statement (statement.id)}
 							<div>
-								<p class="text-lg leading-relaxed text-slate-800">{statement.prompt}</p>
+								<p class="text-lg leading-relaxed text-foreground">{statement.prompt}</p>
 								<div class="mt-4 flex gap-2">
 									{#each scale as option (option.value)}
 										<button
@@ -132,14 +132,14 @@
 											class={`flex h-10 flex-1 items-center justify-center rounded-xl border text-sm font-semibold transition-colors ${
 												answers[statement.id] === option.value
 													? 'border-dci-burgundy bg-dci-burgundy text-dci-cream'
-													: 'border-dci-teal/15 text-slate-500 hover:border-dci-burgundy/40'
+													: 'border-dci-teal/15 text-muted-foreground hover:border-dci-burgundy/40'
 											}`}
 										>
 											{option.value}
 										</button>
 									{/each}
 								</div>
-								<div class="mt-2 flex justify-between text-xs text-slate-400">
+								<div class="mt-2 flex justify-between text-xs text-muted-foreground">
 									<span>{scale[0].label}</span>
 									<span>{scale[scale.length - 1].label}</span>
 								</div>
@@ -151,7 +151,7 @@
 						<button
 							type="button"
 							onclick={() => goToFacet(facetIndex - 1)}
-							class="text-sm font-semibold text-slate-500 transition-colors hover:text-dci-teal-deep"
+							class="text-sm font-semibold text-muted-foreground transition-colors hover:text-dci-teal-deep"
 						>
 							← Back
 						</button>
@@ -176,7 +176,7 @@
 				<h2 class="mt-3 font-serif text-3xl font-light text-dci-teal-deep sm:text-4xl">
 					Save your Blueprint and get your results.
 				</h2>
-				<p class="mt-4 text-base leading-relaxed text-slate-600">
+				<p class="mt-4 text-base leading-relaxed text-muted-foreground">
 					We'll send you a copy and show you your personal snapshot right now.
 				</p>
 
@@ -212,7 +212,7 @@
 						autocomplete="name"
 						required
 						placeholder="Your name"
-						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-white px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
+						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-white px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
 					/>
 					<input
 						bind:value={email}
@@ -221,21 +221,21 @@
 						autocomplete="email"
 						required
 						placeholder="you@email.com"
-						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-white px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
+						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-white px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
 					/>
 					<input
 						bind:value={role}
 						name="role"
 						type="text"
 						placeholder="Role (optional)"
-						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-white px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
+						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-white px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
 					/>
 					<input
 						bind:value={company}
 						name="company"
 						type="text"
 						placeholder="Company (optional)"
-						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-white px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
+						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-white px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
 					/>
 
 					{#if form?.errors?.email}
@@ -257,7 +257,7 @@
 				<button
 					type="button"
 					onclick={() => goToFacet(facets.length - 1)}
-					class="mt-6 text-sm font-semibold text-slate-500 transition-colors hover:text-dci-teal-deep"
+					class="mt-6 text-sm font-semibold text-muted-foreground transition-colors hover:text-dci-teal-deep"
 				>
 					← Back
 				</button>
@@ -279,7 +279,7 @@
 					{#each facets as facet (facet.key)}
 						{@const value = scores[facet.key]}
 						{@const band = bandFor(value)}
-						<div class="rounded-[1.5rem] bg-white p-7 shadow-dci-lift">
+						<div class="rounded-3xl bg-white p-7 shadow-dci-lift">
 							<div class="flex items-start justify-between gap-4">
 								<h3 class="font-serif text-xl text-dci-teal-deep">{facet.label}</h3>
 								<span class="text-xs font-semibold uppercase tracking-[0.18em] text-dci-teal">
@@ -292,14 +292,14 @@
 									style={`width:${(value / 5) * 100}%`}
 								></div>
 							</div>
-							<p class="mt-4 text-sm leading-relaxed text-slate-600">
+							<p class="mt-4 text-sm leading-relaxed text-muted-foreground">
 								{interpretations[facet.key][band]}
 							</p>
 						</div>
 					{/each}
 				</div>
 
-				<div class="mt-14 rounded-[1.5rem] bg-dci-teal-deep px-7 py-10 text-center">
+				<div class="mt-14 rounded-3xl bg-dci-teal-deep px-7 py-10 text-center">
 					<p class="font-serif text-xl font-light text-dci-cream">This is the map.</p>
 					<p class="font-serif text-xl font-light text-dci-cream">
 						Coaching is where you redesign it.
@@ -313,7 +313,7 @@
 					</a>
 				</div>
 
-				<p class="mx-auto mt-10 max-w-md text-center text-sm leading-relaxed text-slate-500">
+				<p class="mx-auto mt-10 max-w-md text-center text-sm leading-relaxed text-muted-foreground">
 					This is a reflection tool, not a clinical assessment. If you're struggling, DCI can point
 					you to real support.
 				</p>

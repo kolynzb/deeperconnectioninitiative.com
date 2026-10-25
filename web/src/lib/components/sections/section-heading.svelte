@@ -36,7 +36,7 @@
 	<h2
 		class={cn(
 			'text-4xl font-semibold leading-tight tracking-tight sm:text-5xl',
-			tone === 'dark' ? 'text-white' : 'text-slate-950'
+			tone === 'dark' ? 'text-white' : 'text-foreground'
 		)}
 	>
 		{title}
@@ -45,7 +45,7 @@
 		<p
 			class={cn(
 				'text-base leading-relaxed',
-				tone === 'dark' ? 'text-dci-cream/75' : 'text-slate-700'
+				tone === 'dark' ? 'text-dci-cream/75' : 'text-muted-foreground'
 			)}
 		>
 			{description}

@@ -22,7 +22,7 @@
 	<div class="mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[0.88fr_1.12fr] lg:px-8 lg:py-24">
 		<aside
 			use:reveal={{ delay: 0, y: 18 }}
-			class="relative overflow-hidden rounded-[2rem] bg-dci-teal-deep p-8 text-dci-cream lg:p-10"
+			class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-8 text-dci-cream lg:p-10"
 		>
 			<SpotIllustration
 				variant="community"
@@ -47,11 +47,11 @@
 
 		<div
 			use:reveal={{ delay: 120, y: 18 }}
-			class="rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-5 shadow-dci-lift sm:p-8 lg:p-10"
+			class="rounded-4xl border border-dci-teal/12 bg-dci-cream p-5 shadow-dci-lift sm:p-8 lg:p-10"
 		>
 			<div class="mb-8 space-y-3">
 				<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Account details</p>
-				<h2 class="text-3xl font-semibold leading-tight tracking-tight text-slate-950">
+				<h2 class="text-3xl font-semibold leading-tight tracking-tight text-foreground">
 					Start with your basic information.
 				</h2>
 			</div>
@@ -65,7 +65,7 @@
 
 				<div class="grid gap-5 sm:grid-cols-2">
 					<div class="space-y-2">
-						<label for="name" class="text-sm font-semibold text-slate-950">Full name</label>
+						<label for="name" class="text-sm font-semibold text-foreground">Full name</label>
 						<div class="relative">
 							<UserRound class="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-dci-teal" weight="regular" aria-hidden="true" />
 							<input
@@ -75,12 +75,12 @@
 								autocomplete="name"
 								required
 								placeholder="Your name"
-								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper pl-11 pr-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper pl-11 pr-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 							/>
 						</div>
 					</div>
 					<div class="space-y-2">
-						<label for="email" class="text-sm font-semibold text-slate-950">Email address</label>
+						<label for="email" class="text-sm font-semibold text-foreground">Email address</label>
 						<div class="relative">
 							<Mail class="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-dci-teal" weight="regular" aria-hidden="true" />
 							<input
@@ -90,7 +90,7 @@
 								autocomplete="email"
 								required
 								placeholder="you@example.com"
-								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper pl-11 pr-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper pl-11 pr-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 							/>
 						</div>
 					</div>
@@ -98,7 +98,7 @@
 
 				<div class="grid gap-5 sm:grid-cols-2">
 					<div class="space-y-2">
-						<label for="password" class="text-sm font-semibold text-slate-950">Password</label>
+						<label for="password" class="text-sm font-semibold text-foreground">Password</label>
 						<input
 							id="password"
 							name="password"
@@ -106,15 +106,15 @@
 							autocomplete="new-password"
 							required
 							placeholder="Create a password"
-							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 						/>
 					</div>
 					<div class="space-y-2">
-						<label for="pathway" class="text-sm font-semibold text-slate-950">Pathway</label>
+						<label for="pathway" class="text-sm font-semibold text-foreground">Pathway</label>
 						<select
 							id="pathway"
 							name="pathway"
-							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-slate-950 outline-none transition focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 						>
 							<option>Community Champion</option>
 							<option>Volunteer</option>
@@ -126,7 +126,7 @@
 				</div>
 
 				<div class="flex flex-col gap-4 border-t border-dci-teal/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-					<p class="text-sm text-slate-600">
+					<p class="text-sm text-muted-foreground">
 						Already have a profile? <a href="/signin" class="font-semibold text-dci-teal underline underline-offset-4">Sign in</a>
 					</p>
 					<Button type="submit" size="lg" class="rounded-full px-8">

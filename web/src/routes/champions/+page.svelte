@@ -59,7 +59,7 @@
 		<img
 			src="/photos/champion-training-hero.jpg"
 			alt="A Community Champion training a room of young people"
-			class="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-dci-panel"
+			class="aspect-[4/3] w-full rounded-4xl object-cover shadow-dci-panel"
 		/>
 	{/snippet}
 </PageHero>
@@ -86,7 +86,7 @@
 			eyebrow="Training of Trainers"
 			title="What the certification covers."
 		/>
-		<div use:reveal={{ delay: 120, y: 18 }} class="rounded-[2rem] border border-dci-cream/12 bg-dci-cream/6 p-8">
+		<div use:reveal={{ delay: 120, y: 18 }} class="rounded-4xl border border-dci-cream/12 bg-dci-cream/6 p-8">
 			<CheckList items={covers} accent="#F6ECD9" class="[&_span]:text-dci-cream/80" />
 			<div class="mt-8 border-t border-dci-cream/12 pt-6">
 				<div class="flex flex-wrap items-end justify-between gap-4">

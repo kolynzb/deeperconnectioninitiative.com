@@ -9,13 +9,13 @@
 		use:reveal={{ delay: 0, y: 18 }}
 	>
 		<div
-			class="flex flex-col items-center justify-between gap-6 rounded-[2rem] border border-dci-teal/12 bg-white p-8 sm:flex-row sm:p-10"
+			class="flex flex-col items-center justify-between gap-6 rounded-4xl border border-dci-teal/12 bg-white p-8 sm:flex-row sm:p-10"
 		>
 			<div>
-				<h2 class="text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">
+				<h2 class="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
 					Running a school, company, or NGO?
 				</h2>
-				<p class="mt-2 max-w-lg text-base leading-relaxed text-slate-600">
+				<p class="mt-2 max-w-lg text-base leading-relaxed text-muted-foreground">
 					See how organisations use DCI to build internal wellness infrastructure their people
 					actually use.
 				</p>

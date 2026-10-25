@@ -82,7 +82,7 @@
 			type="button"
 			aria-label="Previous photo"
 			onclick={prev}
-			class="absolute top-1/2 left-3 z-20 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-dci-paper/85 text-slate-800 opacity-0 shadow-sm backdrop-blur transition hover:bg-white focus-visible:opacity-100 group-hover/gallery:opacity-100 max-lg:opacity-100"
+			class="absolute top-1/2 left-3 z-20 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-dci-paper/85 text-foreground opacity-0 shadow-sm backdrop-blur transition hover:bg-white focus-visible:opacity-100 group-hover/gallery:opacity-100 max-lg:opacity-100"
 		>
 			<CaretLeft class="size-4" weight="bold" />
 		</button>
@@ -90,7 +90,7 @@
 			type="button"
 			aria-label="Next photo"
 			onclick={next}
-			class="absolute top-1/2 right-3 z-20 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-dci-paper/85 text-slate-800 opacity-0 shadow-sm backdrop-blur transition hover:bg-white focus-visible:opacity-100 group-hover/gallery:opacity-100 max-lg:opacity-100"
+			class="absolute top-1/2 right-3 z-20 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-dci-paper/85 text-foreground opacity-0 shadow-sm backdrop-blur transition hover:bg-white focus-visible:opacity-100 group-hover/gallery:opacity-100 max-lg:opacity-100"
 		>
 			<CaretRight class="size-4" weight="bold" />
 		</button>

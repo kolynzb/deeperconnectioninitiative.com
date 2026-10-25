@@ -59,11 +59,11 @@
 					</span>
 				</div>
 				<h1
-					class="max-w-2xl text-5xl font-semibold leading-[0.95] tracking-tight text-slate-950 sm:text-6xl"
+					class="max-w-2xl text-5xl font-semibold leading-[0.95] tracking-tight text-foreground sm:text-6xl"
 				>
 					A room where the conversation is already started.
 				</h1>
-				<p class="max-w-xl text-base leading-relaxed text-slate-700 sm:text-lg">
+				<p class="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
 					The Conversation Clinic is a monthly meet-up in Kampala. A trained Champion, the DCI card
 					game, and a small group of people who came for the same reason you did. You do not need
 					the right words. The cards do that part.
@@ -72,7 +72,7 @@
 
 			<div
 				use:reveal={{ delay: 120, y: 18 }}
-				class="relative overflow-hidden rounded-[2rem] bg-dci-teal-deep p-7 text-dci-cream shadow-dci-panel sm:p-9"
+				class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-7 text-dci-cream shadow-dci-panel sm:p-9"
 			>
 				<div
 					class="pointer-events-none absolute inset-0 opacity-10"
@@ -127,15 +127,15 @@
 			{@const Icon = step.icon}
 			<div
 				use:reveal={{ delay: index * 80, y: 22 }}
-				class="rounded-[2rem] border border-dci-teal/12 bg-dci-paper p-7"
+				class="rounded-4xl border border-dci-teal/12 bg-dci-paper p-7"
 			>
 				<span
 					class="flex size-11 items-center justify-center rounded-xl bg-dci-teal/10 text-dci-teal"
 				>
 					<Icon class="size-5" weight="duotone" />
 				</span>
-				<h3 class="mt-5 text-xl font-semibold leading-tight text-slate-950">{step.title}</h3>
-				<p class="mt-3 text-sm leading-relaxed text-slate-700">{step.body}</p>
+				<h3 class="mt-5 text-xl font-semibold leading-tight text-foreground">{step.title}</h3>
+				<p class="mt-3 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
 			</div>
 		{/each}
 	</div>
@@ -146,7 +146,7 @@
 		{#each dates as date, index (date.getTime())}
 			<article
 				use:reveal={{ delay: index * 60, y: 18 }}
-				class={`grid gap-4 rounded-[2rem] border p-5 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:p-6 ${
+				class={`grid gap-4 rounded-4xl border p-5 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:p-6 ${
 					index === 0
 						? 'border-dci-teal/25 bg-dci-paper shadow-dci-lift'
 						: 'border-dci-teal/12 bg-dci-cream'
@@ -162,7 +162,7 @@
 				</div>
 
 				<div class="min-w-0">
-					<p class="text-lg font-semibold leading-tight text-slate-950">
+					<p class="text-lg font-semibold leading-tight text-foreground">
 						{formatClinicDate(date)}
 						{#if index === 0}
 							<span
@@ -171,10 +171,10 @@
 							>
 						{/if}
 					</p>
-					<p class="mt-1 text-sm text-slate-600">
+					<p class="mt-1 text-sm text-muted-foreground">
 						{CLINIC_START} to {CLINIC_END} · {CLINIC_VENUE}
 					</p>
-					<p class="mt-1 text-sm text-slate-600">
+					<p class="mt-1 text-sm text-muted-foreground">
 						{price} · earns 1 Connection Mile, issued when you check in on the day.
 					</p>
 				</div>
@@ -188,11 +188,11 @@
 			</article>
 		{/each}
 	</div>
-	<p class="mt-6 max-w-2xl text-sm leading-relaxed text-slate-600">
+	<p class="mt-6 max-w-2xl text-sm leading-relaxed text-muted-foreground">
 		Conversation Clinics are peer-led. They are not therapy and do not replace care from a
 		professional.
 	</p>
-	<p class="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">
+	<p class="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
 		Bringing a group, or want a clinic hosted at your school, workplace, or venue?
 		<a
 			href="/contact?topic=Community%20clinic%20or%20event"
@@ -205,13 +205,13 @@
 <Section>
 	<div
 		use:reveal={{ delay: 0, y: 22 }}
-		class="grid gap-8 rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center"
+		class="grid gap-8 rounded-4xl border border-dci-teal/12 bg-dci-cream p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center"
 	>
 		<div>
-			<h2 class="text-3xl font-semibold leading-tight tracking-tight text-slate-950">
+			<h2 class="text-3xl font-semibold leading-tight tracking-tight text-foreground">
 				Take the conversation home.
 			</h2>
-			<p class="mt-3 max-w-xl text-base leading-relaxed text-slate-700">
+			<p class="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
 				The card game on the table at every clinic is the same one you can take home. Most people
 				meet it here first, then keep using it with the people they live with.
 			</p>

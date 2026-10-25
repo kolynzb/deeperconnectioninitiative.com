@@ -79,7 +79,7 @@
 	description="DCI events are built around practical mental wellness: conversation clinics, facilitator orientations, toolkit demos, and partner sessions."
 >
 	{#snippet aside()}
-		<div class="relative overflow-hidden rounded-[2rem] bg-dci-teal-deep p-6 text-dci-cream sm:p-8">
+		<div class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-6 text-dci-cream sm:p-8">
 			<SpotIllustration
 				variant="care"
 				class="pointer-events-none absolute -right-20 bottom-0 hidden w-80 rotate-2 opacity-24 lg:block"
@@ -106,7 +106,7 @@
 
 <section class="px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
 	<div class="mx-auto max-w-7xl">
-		<h2 class="mb-6 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+		<h2 class="mb-6 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
 			Upcoming sessions
 		</h2>
 		{#if upcoming.length > 0}
@@ -118,8 +118,8 @@
 				{/each}
 			</div>
 		{:else}
-			<div class="rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-8 text-slate-700">
-				<p class="text-lg font-semibold text-slate-950">No sessions on the calendar right now.</p>
+			<div class="rounded-4xl border border-dci-teal/12 bg-dci-cream p-8 text-muted-foreground">
+				<p class="text-lg font-semibold text-foreground">No sessions on the calendar right now.</p>
 				<p class="mt-2 max-w-xl">
 					New clinics and demos are added regularly. Want to host one, or hear when the next is
 					scheduled? <a href="/contact" class="font-semibold text-dci-teal underline underline-offset-4">Get in touch</a>.
@@ -128,7 +128,7 @@
 		{/if}
 
 		{#if past.length > 0}
-			<h2 class="mt-16 mb-6 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+			<h2 class="mt-16 mb-6 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
 				Past sessions
 			</h2>
 			<div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -149,10 +149,10 @@
 						From the field
 					</span>
 				</div>
-				<h2 class="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+				<h2 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
 					Moments from recent clinics and gatherings
 				</h2>
-				<p class="text-base leading-relaxed text-slate-700">
+				<p class="text-base leading-relaxed text-muted-foreground">
 					Real sessions, real conversations. This is what connection looks like when a community
 					holds space for itself.
 				</p>

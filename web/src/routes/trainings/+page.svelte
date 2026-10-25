@@ -142,7 +142,7 @@
 	{/snippet}
 	{#snippet aside()}
 		<div
-			class="relative overflow-hidden rounded-[2rem] bg-dci-teal-deep p-6 text-dci-cream shadow-dci-panel sm:p-8"
+			class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-6 text-dci-cream shadow-dci-panel sm:p-8"
 		>
 			<SpotIllustration
 				variant="toolkit"
@@ -175,7 +175,7 @@
 <section id="tiers" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
 	<div class="mb-12 max-w-3xl space-y-3" use:reveal={{ delay: 0, y: 18 }}>
 		<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Certification tiers</p>
-		<h2 class="text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl">
+		<h2 class="text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
 			Choose the training depth that matches your setting.
 		</h2>
 	</div>
@@ -185,7 +185,7 @@
 			{@const Icon = tier.icon}
 			<article
 				use:reveal={{ delay: index * 80, y: 22 }}
-				class={`dci-soft-hover relative flex h-full flex-col overflow-hidden rounded-[2rem] border bg-dci-cream p-6 shadow-dci-lift sm:p-7 ${tier.popular ? 'border-dci-burgundy/35 lg:-mt-4 lg:mb-4' : 'border-dci-teal/12'}`}
+				class={`dci-soft-hover relative flex h-full flex-col overflow-hidden rounded-4xl border bg-dci-cream p-6 shadow-dci-lift sm:p-7 ${tier.popular ? 'border-dci-burgundy/35 lg:-mt-4 lg:mb-4' : 'border-dci-teal/12'}`}
 			>
 				{#if tier.popular}
 					<div
@@ -199,17 +199,17 @@
 				</div>
 				<div class="space-y-4">
 					<div>
-						<h3 class="text-3xl font-semibold leading-tight text-slate-950">{tier.name}</h3>
-						<p class="mt-1 text-sm font-semibold uppercase tracking-wide text-slate-600">
+						<h3 class="text-3xl font-semibold leading-tight text-foreground">{tier.name}</h3>
+						<p class="mt-1 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
 							{tier.subtitle}
 						</p>
 					</div>
 					<div>
 						<p class="text-3xl font-bold text-dci-teal-deep">{tier.price}</p>
-						<p class="mt-1 text-sm text-slate-600">{tier.duration}</p>
+						<p class="mt-1 text-sm text-muted-foreground">{tier.duration}</p>
 					</div>
-					<p class="rounded-2xl border border-dci-teal/12 bg-white/45 p-4 text-sm text-slate-700">
-						<span class="font-semibold text-slate-950">Best for:</span> {tier.bestFor}
+					<p class="rounded-2xl border border-dci-teal/12 bg-white/45 p-4 text-sm text-muted-foreground">
+						<span class="font-semibold text-foreground">Best for:</span> {tier.bestFor}
 					</p>
 				</div>
 
@@ -218,7 +218,7 @@
 						<p class="mb-3 text-xs font-bold uppercase tracking-wide text-dci-teal">Includes</p>
 						<ul class="space-y-3">
 							{#each tier.includes as item}
-								<li class="flex gap-3 text-sm leading-relaxed text-slate-700">
+								<li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
 									<Check class="mt-0.5 size-4 shrink-0 text-dci-teal" weight="bold" />
 									<span>{item}</span>
 								</li>
@@ -229,7 +229,7 @@
 						<p class="mb-3 text-xs font-bold uppercase tracking-wide text-dci-burgundy">Outcomes</p>
 						<ul class="space-y-3">
 							{#each tier.outcomes as item}
-								<li class="flex gap-3 text-sm leading-relaxed text-slate-700">
+								<li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
 									<Check class="mt-0.5 size-4 shrink-0 text-dci-burgundy" weight="bold" />
 									<span>{item}</span>
 								</li>
@@ -256,7 +256,7 @@
 			</h2>
 		</div>
 
-		<div class="grid gap-px overflow-hidden rounded-[2rem] border border-dci-cream/12 bg-dci-cream/12 md:grid-cols-5">
+		<div class="grid gap-px overflow-hidden rounded-4xl border border-dci-cream/12 bg-dci-cream/12 md:grid-cols-5">
 			{#each processSteps as step, index}
 				{@const Icon = step.icon}
 				<div class="bg-dci-teal-deep p-6" use:reveal={{ delay: index * 70, y: 18 }}>
@@ -277,14 +277,14 @@
 <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
 	<div
 		use:reveal={{ delay: 80, y: 18 }}
-		class="mx-auto grid max-w-7xl gap-8 rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center lg:p-10"
+		class="mx-auto grid max-w-7xl gap-8 rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center lg:p-10"
 	>
 		<div class="max-w-3xl space-y-3">
 			<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Need help choosing?</p>
-			<h2 class="text-4xl font-semibold leading-tight tracking-tight text-slate-950">
+			<h2 class="text-4xl font-semibold leading-tight tracking-tight text-foreground">
 				We can help match the certification to your community context.
 			</h2>
-			<p class="text-base leading-relaxed text-slate-700">
+			<p class="text-base leading-relaxed text-muted-foreground">
 				Use the contact page if you are training a team, sponsoring Champions, or adapting the model
 				for a school, clinic, recovery space, or venue.
 			</p>

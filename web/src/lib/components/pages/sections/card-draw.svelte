@@ -93,7 +93,7 @@
 	}
 
 	function toneClasses(tone: Tone) {
-		if (tone === 'teal') return { text: 'text-dci-teal', chip: 'bg-dci-teal/10 text-dci-teal', bar: 'bg-dci-teal' };
+		if (tone === 'teal') return { text: 'text-dci-teal', chip: 'bg-dci-teal/10 text-dci-teal', bar: 'bg-dci-teal-deep' };
 		if (tone === 'clay') return { text: 'text-dci-clay', chip: 'bg-dci-clay/20 text-[#9a5a28]', bar: 'bg-dci-clay' };
 		return { text: 'text-dci-burgundy', chip: 'bg-dci-burgundy/10 text-dci-burgundy', bar: 'bg-dci-burgundy' };
 	}
@@ -102,7 +102,7 @@
 {#snippet cardFace(p: Prompt, isBack: boolean)}
 	{@const tc = toneClasses(p.tone)}
 	<div
-		class="absolute inset-0 flex flex-col overflow-hidden rounded-[1.5rem] border border-dci-teal/12 bg-dci-paper p-7 shadow-dci-soft [backface-visibility:hidden]"
+		class="absolute inset-0 flex flex-col overflow-hidden rounded-3xl border border-dci-teal/12 bg-dci-paper p-7 shadow-dci-soft [backface-visibility:hidden]"
 		style="transform: rotateY({isBack ? 180 : 0}deg);"
 	>
 		<!-- accent header bar -->
@@ -139,7 +139,7 @@
 
 {#snippet deckBack(rot: number, tx: string, ty: string, z: number)}
 	<div
-		class="absolute inset-0 overflow-hidden rounded-[1.5rem] border border-dci-teal/10 bg-gradient-to-br from-[#7a2822] to-dci-teal-deep shadow-dci-soft"
+		class="absolute inset-0 overflow-hidden rounded-3xl border border-dci-teal/10 bg-gradient-to-br from-[#7a2822] to-dci-teal-deep shadow-dci-soft"
 		style="transform: rotate({rot}deg) translate({tx}, {ty}); z-index: {z};"
 		aria-hidden="true"
 	>
@@ -165,7 +165,7 @@
 <section id="card-draw" class="w-full bg-dci-cream relative z-10 overflow-hidden">
 	<div use:reveal={{ delay: 80, y: 22 }} class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6">
 		<div
-			class="relative overflow-hidden rounded-[2rem] border border-dci-teal/12 bg-dci-teal-deep text-dci-cream shadow-dci-panel"
+			class="relative overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-teal-deep text-dci-cream shadow-dci-panel"
 		>
 			<!-- Dot pattern background -->
 			<div
