@@ -12,6 +12,11 @@
 	}: { videoId: string; title: string; class?: string } = $props();
 
 	let playing = $state(false);
+
+	// Keyboard focus would otherwise fall to <body> when the button is replaced.
+	function focusOnMount(node: HTMLElement) {
+		node.focus();
+	}
 </script>
 
 <div
@@ -29,6 +34,7 @@
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 			allowfullscreen
 			class="absolute inset-0 h-full w-full"
+			use:focusOnMount
 		></iframe>
 	{:else}
 		<button
@@ -37,10 +43,18 @@
 			class="group absolute inset-0 h-full w-full cursor-pointer"
 			aria-label={`Play video: ${title}`}
 		>
+			<!-- Above the fold, so it loads eagerly. sddefault is 640px; hqdefault is
+			     the fallback for videos that never had an SD thumbnail. -->
 			<img
-				src="https://i.ytimg.com/vi/{videoId}/hqdefault.jpg"
+				src="https://i.ytimg.com/vi/{videoId}/sddefault.jpg"
 				alt=""
-				loading="lazy"
+				width="640"
+				height="480"
+				fetchpriority="high"
+				onerror={(e) => {
+					const img = e.currentTarget as HTMLImageElement;
+					if (!img.src.includes('hqdefault')) img.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+				}}
 				class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
 			/>
 			<span class="absolute inset-0 bg-black/20 transition group-hover:bg-black/10"></span>
@@ -54,17 +68,18 @@
 </div>
 
 <style>
-	/* Draws the eye on arrival: the box rises in, then a glow ring keeps pulsing out of it
-	   for as long as the visitor stays. Only runs before the video is played. */
+	/* Draws the eye on arrival: the box rises in, then a glow ring pulses out of it a few
+	   times and settles. Finite on purpose: endless motion beside the headline needs a
+	   pause control under WCAG 2.2.2 and repaints box-shadow every frame on phones.
+	   No opacity in the rise, so the poster paints immediately. Only runs before play. */
 	.video-attract {
 		animation:
-			video-rise 800ms cubic-bezier(0.2, 0.7, 0.2, 1) 250ms both,
-			video-glow 2.4s ease-out 1.1s infinite;
+			video-rise 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both,
+			video-glow 2.4s ease-out 1.1s 4;
 	}
 
 	@keyframes video-rise {
 		from {
-			opacity: 0;
 			transform: translateY(18px) scale(0.97);
 		}
 		to {
@@ -87,7 +102,7 @@
 		}
 	}
 
-	/* Two staggered rings spreading out from the play button, for as long as it is waiting. */
+	/* Two staggered rings spreading out from the play button, in step with the glow. */
 	.play-ripple::before,
 	.play-ripple::after {
 		content: '';
@@ -97,11 +112,11 @@
 		border: 2px solid rgba(255, 255, 255, 0.85);
 		opacity: 0;
 		pointer-events: none;
-		animation: play-ripple 2.4s ease-out infinite;
+		animation: play-ripple 2.4s ease-out 1.1s 4;
 	}
 
 	.play-ripple::after {
-		animation-delay: 1.2s;
+		animation-delay: 2.3s;
 	}
 
 	@keyframes play-ripple {
