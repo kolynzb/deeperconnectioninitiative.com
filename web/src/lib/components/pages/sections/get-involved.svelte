@@ -10,7 +10,7 @@
 	import { reveal } from '$lib/actions/reveal';
 </script>
 
-<section id="get-involved" class="relative w-full overflow-hidden bg-dci-paper py-24 rounded-b-4xl">
+<section id="get-involved" class="relative w-full overflow-hidden bg-dci-cream py-24 rounded-b-4xl">
 	<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<!-- <div class="text-center mb-16 gsap-reveal">
           <h2 class="text-4xl font-bold text-foreground">There is a place for you here.</h2>
@@ -21,12 +21,12 @@
 		>
 			<div class="max-w-3xl space-y-3" use:reveal={{ delay: 0, y: 18 }}>
 				<p
-					class="text-xs font-medium uppercase tracking-tight text-dci-teal"				>
+					class="text-xs font-semibold uppercase tracking-wide text-dci-teal"				>
 					Get involved
 				</p>
 				<h2
-					class="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground"				>
-					There is a place for you here
+					class="text-5xl sm:text-6xl font-normal tracking-tight leading-[1.04] text-balance text-foreground"				>
+					There is a place <em class="text-dci-burgundy">for you</em> here
 				</h2>
 				<p class="text-base sm:text-lg font-normal leading-relaxed text-foreground/95">
 					Whether you are a venue owner, mental health professional, volunteer, or sponsor, there is a
@@ -46,7 +46,7 @@
 			<!-- Cards... -->
 			<div
 				use:reveal={{ delay: 0, y: 18 }}
-				class="involved-card dci-soft-hover bg-white p-6 rounded-xl border border-border hover:border-dci-teal transition-all cursor-pointer h-full flex flex-col overflow-hidden"
+				class="involved-card dci-soft-hover bg-dci-paper p-6 rounded-2xl border border-dci-teal/15 hover:border-dci-teal transition-all cursor-pointer h-full flex flex-col overflow-hidden"
 			>
 				<img
 					src="/photos/section7-venue.jpg"
@@ -59,7 +59,7 @@
 				>
 					<Building2 class="size-6" weight="duotone" />
 				</div>
-				<h3 class="font-bold text-foreground mb-2">Venue Partner</h3>
+				<h3 class="text-xl font-semibold text-foreground mb-2">Venue Partner</h3>
 				<p class="text-sm text-muted-foreground mb-4 flex-grow">
 					Turn your café, studio, or space into a certified wellness hub hosting DCI clinics.
 				</p>
@@ -68,7 +68,7 @@
 
 			<div
 				use:reveal={{ delay: 70, y: 18 }}
-				class="involved-card dci-soft-hover bg-white p-6 rounded-xl border border-border hover:border-dci-burgundy transition-all cursor-pointer h-full flex flex-col overflow-hidden"
+				class="involved-card dci-soft-hover bg-dci-paper p-6 rounded-2xl border border-dci-teal/15 hover:border-dci-burgundy transition-all cursor-pointer h-full flex flex-col overflow-hidden"
 			>
 				<img
 					src="/photos/champion-training-hero.jpg"
@@ -81,7 +81,7 @@
 				>
 					<Sparkles class="size-6" weight="duotone" />
 				</div>
-				<h3 class="font-bold text-foreground mb-2">DCI Angel</h3>
+				<h3 class="text-xl font-semibold text-foreground mb-2">DCI Angel</h3>
 				<p class="text-sm text-muted-foreground mb-4 flex-grow">
 					Join monthly missions, support clinics, and help deliver emotional first aid.
 				</p>
@@ -90,7 +90,7 @@
 
 			<div
 				use:reveal={{ delay: 140, y: 18 }}
-				class="involved-card dci-soft-hover bg-white p-6 rounded-xl border border-border hover:border-dci-teal transition-all cursor-pointer h-full flex flex-col overflow-hidden"
+				class="involved-card dci-soft-hover bg-dci-paper p-6 rounded-2xl border border-dci-teal/15 hover:border-dci-teal transition-all cursor-pointer h-full flex flex-col overflow-hidden"
 			>
 				<img
 					src="/photos/section7-clinics.jpg"
@@ -103,7 +103,7 @@
 				>
 					<Stethoscope class="size-6" weight="duotone" />
 				</div>
-				<h3 class="font-bold text-foreground mb-2">Provider Network</h3>
+				<h3 class="text-xl font-semibold text-foreground mb-2">Provider Network</h3>
 				<p class="text-sm text-muted-foreground mb-4 flex-grow">
 					Join our responsible referral network and collaborate on trauma-aware care.
 				</p>
@@ -115,16 +115,16 @@
 				class="involved-card dci-soft-hover bg-dci-teal-deep p-6 rounded-xl border border-dci-teal hover:bg-dci-teal-mid transition-all cursor-pointer h-full flex flex-col"
 			>
 				<div
-					class="h-12 w-12 rounded-lg bg-white/20 flex items-center justify-center text-white mb-4"
+					class="h-12 w-12 rounded-full bg-dci-cream/20 flex items-center justify-center text-dci-cream mb-4"
 				>
 					<Heart class="size-6" weight="duotone" />
 				</div>
-				<h3 class="font-bold text-white mb-2">Sponsor</h3>
+				<h3 class="text-xl font-semibold text-dci-cream mb-2">Sponsor</h3>
 				<p class="text-sm text-dci-sand/80 mb-4 flex-grow">
 					Fund toolkits and clinics so more people can access mental health support.
 				</p>
 				<a href={paymentLinks.donation} target="_blank" rel="noopener noreferrer">
-					<span class="text-xs font-bold text-white">Sponsor a kit &rarr;</span>
+					<span class="text-xs font-bold text-dci-cream">Sponsor a kit &rarr;</span>
 				</a>
 			</div>
 		</div>
@@ -137,7 +137,7 @@
           </div>
           <form class="flex w-full md:w-auto gap-2">
              <input type="email" placeholder="you@example.org" class="w-full md:w-64 rounded-full border border-border px-4 py-2 text-sm focus:ring-2 focus:ring-dci-teal focus:outline-none">
-             <button class="rounded-full bg-dci-teal-deep px-6 py-2 text-sm font-bold text-white hover:bg-dci-teal-mid">Subscribe</button>
+             <button class="rounded-full bg-dci-teal-deep px-6 py-2 text-sm font-bold text-dci-cream hover:bg-dci-teal-mid">Subscribe</button>
           </form>
         </div> -->
 	</div>

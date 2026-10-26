@@ -39,7 +39,7 @@
 
 <svelte:window on:keydown={onKeydown} />
 
-<section id="founder" class="w-full bg-white relative z-10 overflow-hidden">
+<section id="founder" class="w-full bg-dci-cream relative z-10 overflow-hidden">
 	<div
 		class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24 grid md:grid-cols-[0.92fr_1.08fr] gap-y-14 gap-x-12 lg:gap-x-16 items-center"
 	>
@@ -81,8 +81,8 @@
 				>
 			</div>
 
-			<h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
-				40+ years of experience started this journey
+			<h2 class="text-5xl sm:text-6xl font-normal tracking-tight leading-[1.04] text-balance text-foreground">
+				<em class="text-dci-burgundy">40+ years</em> of experience started this journey
 			</h2>
 
 			<p class="text-base leading-relaxed text-muted-foreground">
@@ -93,7 +93,7 @@
 			<button
 				type="button"
 				onclick={() => (showVideo = true)}
-				class="group inline-flex items-center gap-3 rounded-full border border-dci-teal/25 bg-dci-cream/60 py-1.5 pr-5 pl-1.5 text-left transition hover:border-dci-teal/40 hover:bg-dci-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dci-teal focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+				class="group inline-flex items-center gap-3 rounded-full border border-dci-teal/25 bg-dci-cream/60 py-1.5 pr-5 pl-1.5 text-left transition hover:border-dci-teal/40 hover:bg-dci-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dci-teal focus-visible:ring-offset-2 focus-visible:ring-offset-dci-cream"
 			>
 				<span
 					class="flex size-9 items-center justify-center rounded-full bg-dci-teal-deep text-dci-cream transition group-hover:scale-105"

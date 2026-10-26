@@ -87,9 +87,9 @@
 			</div>
 			<div class="space-y-4">
 				<h2
-					class="max-w-lg text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl"
+					class="max-w-xl text-5xl sm:text-6xl font-normal tracking-tight leading-[1.04] text-balance text-foreground"
 				>
-					Physical tools for conversations people can actually start.
+					Physical tools for conversations people can <em class="text-dci-burgundy">actually start.</em>
 				</h2>
 				<p class="max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
 					Designed for homes, schools, clinics, youth groups, and community circles where support
@@ -108,11 +108,11 @@
 			</div>
 
 			<div class="grid max-w-md grid-cols-2 gap-3 text-sm text-muted-foreground">
-				<div class="rounded-2xl border border-dci-teal/15 bg-white/45 p-4">
+				<div class="rounded-2xl border border-dci-teal/15 bg-dci-paper/60 p-4">
 					<QrCode class="mb-5 size-5 text-dci-teal" weight="duotone" />
 					QR access to low-data digital resources.
 				</div>
-				<div class="rounded-2xl border border-dci-burgundy/15 bg-white/45 p-4">
+				<div class="rounded-2xl border border-dci-burgundy/15 bg-dci-paper/60 p-4">
 					<HeartHandshake class="mb-5 size-5 text-dci-burgundy" weight="duotone" />
 					10% supports training and donated kits.
 				</div>
@@ -172,7 +172,7 @@
 							/>
 						{/if}
 						<div
-							class="absolute top-4 left-4 rounded-full bg-dci-paper/90 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest text-muted-foreground"
+							class="absolute top-4 left-4 rounded-full bg-dci-paper/90 px-3 py-1 text-xs font-bold uppercase tracking-widest text-muted-foreground"
 						>
 							{product.kicker}
 						</div>
@@ -180,14 +180,14 @@
 
 					<div class="flex flex-col justify-between gap-8 p-6 sm:p-8 lg:p-10">
 						<div class="space-y-4">
-							<h3 class="text-3xl font-semibold leading-tight text-foreground">{product.name}</h3>
+							<h3 class="text-3xl sm:text-4xl font-normal leading-tight text-foreground">{product.name}</h3>
 							<p class="max-w-md text-base leading-relaxed text-muted-foreground">{product.description}</p>
 							{#if product.credit}
 								<p class="max-w-md text-sm italic leading-relaxed text-muted-foreground">{product.credit}</p>
 							{/if}
 							<div class="flex flex-wrap items-center gap-x-2.5 gap-y-1.5">
 								<span
-									class={`inline-flex items-center whitespace-nowrap rounded-full border px-3 py-1 text-[0.7rem] font-bold uppercase tracking-widest ${product.badge}`}
+									class={`inline-flex items-center whitespace-nowrap rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-widest ${product.badge}`}
 								>
 									{product.miles}
 								</span>
@@ -219,12 +219,12 @@
 				<div class="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_0.78fr] lg:p-10">
 					<div class="space-y-5">
 						<div
-							class="inline-flex items-center gap-2 rounded-full border border-dci-cream/20 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest text-dci-cream/75"
+							class="inline-flex items-center gap-2 rounded-full border border-dci-cream/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-dci-cream/75"
 						>
 							<Sparkles class="size-3.5" weight="duotone" />
 							Recommended
 						</div>
-						<h3 class="text-4xl font-semibold leading-tight text-white">The full toolkit</h3>
+						<h3 class="text-4xl sm:text-5xl font-normal leading-tight text-dci-cream">The <em class="text-dci-clay">full</em> toolkit</h3>
 						<p class="max-w-xl text-base leading-relaxed text-dci-cream/75">
 							Card Game, Reflection Journal, Mood Tracker, and QR access bundled for everyday
 							self-awareness, group facilitation, and community support.
@@ -237,7 +237,7 @@
 						<div>
 							<p class="text-sm uppercase tracking-widest text-dci-cream/70">Complete kit</p>
 							<div class="mt-2 flex items-end gap-3">
-								<span class="text-5xl font-bold text-white">200k</span>
+								<span class="font-serif text-5xl text-dci-cream">200k</span>
 								<span class="mb-2 text-sm text-dci-cream/60">UGX</span>
 							</div>
 							<p class="mt-3 text-xs text-dci-cream/70">10% funds community champion training.</p>
@@ -247,7 +247,7 @@
 							<Button
 								href={paymentLinks.toolkit} target="_blank" rel="noopener noreferrer"
 								size="lg"
-								class="rounded-full bg-dci-cream text-dci-ink hover:bg-white"
+								class="rounded-full bg-dci-cream text-dci-ink hover:bg-dci-paper"
 							>
 								Buy complete kit
 							</Button>

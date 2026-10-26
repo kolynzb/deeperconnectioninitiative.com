@@ -103,8 +103,8 @@
 							>The DCI Ecosystem</span
 						>
 					</div>
-					<h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
-						Built for the places care already happens.
+					<h2 class="text-5xl sm:text-6xl font-normal tracking-tight leading-[1.04] text-balance text-dci-cream mb-6">
+						Built for the places care <em class="text-dci-clay">already happens.</em>
 					</h2>
 					<p class="text-lg text-dci-sand/90">
 						DCI exists to shift mental health from a passive service model to an active, self-led
@@ -164,7 +164,7 @@
 						>
 							<svelte:component this={item.icon} class="w-6 h-6 text-secondary" weight="duotone" />
 						</div>
-						<h3 class="text-lg font-bold mb-1 text-white">{item.title}</h3>
+						<h3 class="text-xl font-normal mb-1 text-dci-cream">{item.title}</h3>
 
 						<p class="text-xs text-secondary font-semibold mb-3 uppercase tracking-wide">
 							{item.subtitle}

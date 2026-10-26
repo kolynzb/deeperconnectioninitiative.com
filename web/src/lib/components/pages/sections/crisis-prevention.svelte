@@ -66,8 +66,8 @@
 						>The Prevention Model</span
 					>
 				</div>
-				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground">
-					Most crises are preventable. DCI works upstream.
+				<h2 class="text-5xl sm:text-6xl font-normal tracking-tight leading-[1.04] text-balance text-foreground">
+					Most crises are preventable. DCI works <em class="text-dci-burgundy">upstream.</em>
 				</h2>
 			</div>
 			<div class="flex items-end">
@@ -89,7 +89,7 @@
 						'relative rounded-4xl border p-5 sm:p-6 transition-all duration-300',
 						stage.crisis
 							? 'border-dci-burgundy/25 bg-dci-burgundy/8'
-							: 'border-dci-teal/12 bg-white/70'
+							: 'border-dci-teal/12 bg-dci-paper/70'
 					)}
 				>
 					<div class="mb-4 flex items-start justify-between">
@@ -119,13 +119,13 @@
 
 					<p
 						class={cn(
-							'text-[0.65rem] font-bold uppercase tracking-widest mb-2',
+							'text-xs font-bold uppercase tracking-widest mb-2',
 							stage.crisis ? 'text-dci-burgundy/70' : 'text-dci-teal/70'
 						)}
 					>
 						{stage.label}
 					</p>
-					<h3 class="text-xl font-semibold text-foreground mb-2">{stage.title}</h3>
+					<h3 class="font-serif text-2xl font-normal text-foreground mb-2">{stage.title}</h3>
 					<p class="text-sm leading-relaxed text-muted-foreground">{stage.description}</p>
 
 					{#if stage.crisis}

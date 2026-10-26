@@ -397,7 +397,7 @@
 					>
 						{#if ctaIsAssessment}
 							<span
-								class="rounded-full bg-dci-cream/20 px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide"
+								class="rounded-full bg-dci-cream/20 px-2 py-0.5 text-xs font-bold uppercase tracking-wide"
 							>Free</span
 							>
 						{/if}

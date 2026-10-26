@@ -39,8 +39,8 @@ Editorial direction (chosen 2026-10, modelled on wisprflow.ai): headings are lar
 **regular weight** (`font-normal`), never bold. Size carries the hierarchy. A heading may
 put one phrase in italics as its accent, `<em class="text-dci-burgundy">` on light and
 `<em class="text-dci-clay">` on dark. Use at most one per heading and no underlines or
-highlights besides it. Homepage hero and path finder follow this; other sections are
-being moved over.
+highlights besides it. The whole homepage follows this; inner pages are
+still being moved over.
 
 | Role | Classes |
 |---|---|

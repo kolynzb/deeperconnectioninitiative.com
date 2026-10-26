@@ -45,8 +45,8 @@
 						What this makes possible
 					</span>
 				</div>
-				<h2 class="max-w-2xl text-4xl font-semibold leading-tight tracking-tight text-foreground sm:text-5xl">
-					Small tools, real moments of connection.
+				<h2 class="max-w-3xl text-5xl sm:text-6xl font-normal tracking-tight leading-[1.04] text-balance text-foreground">
+					Small tools, <em class="text-dci-burgundy">real moments</em> of connection.
 				</h2>
 			</div>
 			<p
@@ -83,8 +83,8 @@
 						<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">
 							Field note
 						</p>
-						<h3 class="mt-4 max-w-lg text-4xl font-semibold leading-tight text-white sm:text-5xl">
-							Support feels less abstract when people can hold the next step.
+						<h3 class="mt-4 max-w-lg text-4xl font-normal leading-[1.04] tracking-tight text-dci-cream sm:text-5xl">
+							Support feels less abstract when people can <em class="text-dci-clay">hold the next step.</em>
 						</h3>
 					</div>
 
@@ -127,7 +127,7 @@
 							</div>
 							<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">{note.label}</p>
 						</div>
-						<h3 class="text-2xl font-semibold leading-tight text-foreground">{note.title}</h3>
+						<h3 class="text-2xl font-normal leading-tight text-foreground">{note.title}</h3>
 						<p class="mt-3 text-sm leading-relaxed text-muted-foreground">{note.body}</p>
 					</article>
 				{/each}

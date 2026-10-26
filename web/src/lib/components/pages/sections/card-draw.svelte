@@ -115,7 +115,7 @@
 
 		<div class="relative flex items-start justify-between">
 			<span class="font-serif text-6xl leading-[0.6] {tc.text}/60">&ldquo;</span>
-			<span class="mt-1 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-dci-teal/40">
+			<span class="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-dci-teal/40">
 				{String(p.no).padStart(2, '0')} / 60
 			</span>
 		</div>
@@ -126,11 +126,11 @@
 
 		<div class="relative mt-auto flex items-center justify-between pt-6">
 			<span
-				class="inline-flex items-center rounded-full px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-wider {tc.chip}"
+				class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold uppercase tracking-wider {tc.chip}"
 			>
 				{p.theme}
 			</span>
-			<span class="text-[0.58rem] font-semibold uppercase tracking-[0.22em] text-dci-teal/40">
+			<span class="text-xs font-semibold uppercase tracking-[0.22em] text-dci-teal/40">
 				DCI Card
 			</span>
 		</div>
@@ -155,7 +155,7 @@
 				<div class="absolute inset-2 rounded-full border border-dci-cream/20"></div>
 				<div class="absolute inset-[1.15rem] rounded-full bg-dci-cream/30"></div>
 			</div>
-			<span class="text-[0.55rem] font-semibold uppercase tracking-[0.3em] text-dci-cream/40">
+			<span class="text-xs font-semibold uppercase tracking-[0.3em] text-dci-cream/40">
 				Deeper Connection
 			</span>
 		</div>
@@ -187,8 +187,8 @@
 						</span>
 						Draw a card
 					</div>
-					<h3 class="max-w-md text-3xl sm:text-4xl font-semibold leading-tight text-white">
-						Start a conversation people actually want to have.
+					<h3 class="max-w-md text-4xl sm:text-5xl font-normal leading-[1.04] tracking-tight text-dci-cream">
+						Start a conversation people <em class="text-dci-clay">actually want</em> to have.
 					</h3>
 					<p class="mt-4 max-w-md text-base leading-relaxed text-dci-cream/72">
 						Every DCI conversation card carries a real prompt, not a therapy question, just an
@@ -213,7 +213,7 @@
 						href={paymentLinks.cardGame}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="mt-8 inline-flex h-11 w-fit items-center justify-center gap-2 rounded-full bg-dci-cream px-6 text-sm font-semibold text-dci-teal-deep transition hover:bg-white active:scale-[0.98]"
+						class="mt-8 inline-flex h-11 w-fit items-center justify-center gap-2 rounded-full bg-dci-cream px-6 text-sm font-semibold text-dci-teal-deep transition hover:bg-dci-paper active:scale-[0.98]"
 					>
 						Get the card game
 						<ArrowUpRightIcon class="size-4" weight="regular" />
