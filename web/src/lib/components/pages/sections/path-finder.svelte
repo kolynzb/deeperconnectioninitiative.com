@@ -1,15 +1,12 @@
 <script lang="ts">
 	import { reveal } from '$lib/actions/reveal';
 	import SpotIllustration from '$lib/components/spot-illustration.svelte';
-	import ProductCarousel from '$lib/components/product-carousel.svelte';
 	import CheckoutDrawer from '$lib/components/checkout-drawer.svelte';
-	import { toolkitProducts } from '$lib/toolkit-products';
 	import { cn } from '$lib/utils';
 
 	import {
 		ArrowRightIcon,
 		ArrowUpRightIcon,
-		BookOpenTextIcon,
 		BuildingsIcon,
 		GraduationCapIcon,
 		HandshakeIcon,
@@ -37,24 +34,6 @@
 	}
 
 	const pathways = [
-		{
-			id: 'tools',
-			label: 'I want tools',
-			kicker: 'Own your healing',
-			icon: BookOpenTextIcon,
-			illustration: 'toolkit',
-			title: 'I am ready to own my healing.',
-			description:
-				'Three tools that give you somewhere to start. Everything works on paper, so a conversation can happen anywhere, with anyone, without waiting for an appointment.',
-			// Products render inline instead of the three step labels.
-			products: toolkitProducts,
-			steps: [],
-			helper: 'Want all three? The full toolkit is 200,000 UGX and earns 10 Connection Miles.',
-			href: '/clinics',
-			cta: 'Attend a clinic',
-			ctaRed: true,
-			accent: '#2A6268'
-		},
 		{
 			id: 'lead',
 			label: 'I want to lead',
@@ -152,22 +131,21 @@
 </script>
 
 <!--
-	A dark band of four numbered doors. The open door unfolds its detail
-	(products, offer, video or options) directly beneath its row. The band
-	tucks up behind the hero video, so it starts with a negative margin.
+	A dark band of three numbered doors, the homepage's one place to join. The open door unfolds its detail
+	(offer, video or options) directly beneath its row.
 -->
 <section
-	id="find-your-path"
-	class="relative -mt-40 scroll-mt-28 bg-dci-teal-deep px-4 pt-56 pb-20 text-dci-cream sm:px-6 lg:-mt-64 lg:px-8 lg:pt-80 lg:pb-28"
+	id="get-involved"
+	class="relative mb-6 scroll-mt-28 rounded-b-4xl bg-dci-teal-deep px-4 pt-20 pb-20 text-dci-cream sm:px-6 lg:px-8 lg:pt-28 lg:pb-28"
 >
 	<div class="mx-auto max-w-6xl">
 		<div use:reveal={{ delay: 0, y: 18 }}>
-			<p class="text-xs font-semibold tracking-wide text-dci-cream/75 uppercase">Find your path</p>
+			<p class="text-xs font-semibold tracking-wide text-dci-cream/75 uppercase">Get involved</p>
 			<h2 class="mt-4 max-w-3xl text-5xl leading-[1.04] font-normal tracking-tight text-balance sm:text-6xl">
 				Start <em class="text-dci-clay">where you are.</em>
 			</h2>
 			<p class="mt-6 max-w-xl text-base leading-relaxed text-dci-cream/75 sm:text-lg">
-				DCI can be a toolkit, a training path, a measurement system, or a way to sponsor access.
+				DCI can be a training path, a measurement system, or a way to sponsor access.
 				Choose the entry point that matches what brought you here.
 			</p>
 		</div>
@@ -298,44 +276,6 @@
 						class="font-semibold text-dci-teal underline underline-offset-4"
 					>Watch it on YouTube</a>
 				</p>
-				{:else if 'products' in activePath && activePath.products}
-					<!-- Buyable inline. Horizontal rows on phones, three columns above that,
-					     so the panel does not balloon on small screens. -->
-					<div class="grid gap-3 sm:grid-cols-3">
-						{#each activePath.products as product (product.slug)}
-							<article
-								class="flex items-center gap-3 rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-3 sm:flex-col sm:items-stretch sm:gap-2"
-							>
-								<!-- object-contain, so no product is cropped despite the three
-								     photo sets having different aspect ratios. -->
-								<ProductCarousel
-									images={product.photos}
-									alt={product.name}
-									showDots={false}
-									class="size-16 shrink-0 rounded-xl sm:hidden"
-								/>
-								<ProductCarousel
-									images={product.photos}
-									alt={product.name}
-									class="hidden aspect-[4/3] w-full rounded-xl sm:block"
-								/>
-								<div class="min-w-0 flex-1 sm:flex-none">
-									<p class="text-sm font-semibold leading-tight text-foreground">{product.name}</p>
-									<p class="mt-0.5 text-xs font-semibold text-dci-teal-deep">
-										{product.price} · {product.miles}
-									</p>
-									<p class="mt-1 text-xs leading-snug text-muted-foreground">{product.line}</p>
-								</div>
-								<button
-									type="button"
-									onclick={() => (buying = { slug: product.slug, name: product.name, price: product.price })}
-									class="inline-flex h-9 shrink-0 items-center justify-center rounded-full bg-dci-teal-deep px-4 text-xs font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98] sm:w-full"
-								>
-									Buy
-								</button>
-							</article>
-						{/each}
-					</div>
 				{:else if 'offer' in activePath && activePath.offer}
 					<article
 						class="rounded-2xl border border-dci-teal/15 bg-dci-paper/65 p-5 sm:flex sm:items-center sm:justify-between sm:gap-6"

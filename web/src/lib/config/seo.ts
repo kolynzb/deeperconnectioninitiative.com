@@ -75,6 +75,11 @@ export const PAGE_META: Record<string, PageMeta> = {
 		description:
 			'DCI certifications equip community champions, institutions, and trainers to facilitate grounded mental health conversations with clear referral boundaries.'
 	},
+	'/about': {
+		title: `About DCI${SUFFIX}`,
+		description:
+			'DCI shifts mental health from a passive service model to an active, self-led journey: toolkits, Conversation Clinics, Community Champions and a referral network, built for the places care already happens.'
+	},
 	'/volunteering': {
 		title: `Volunteer with DCI${SUFFIX}`,
 		description:

@@ -92,7 +92,7 @@
 				}
 			]
 		},
-		{ label: 'About', href: '/#about' }
+		{ label: 'About', href: '/about' }
 	];
 
 	let isOpen = $state(false);
