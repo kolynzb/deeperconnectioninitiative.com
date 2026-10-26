@@ -162,7 +162,7 @@
 	</div>
 {/snippet}
 
-<section id="card-draw" class="w-full bg-dci-cream relative z-10 overflow-hidden">
+<section id="card-draw" class="w-full relative z-10 overflow-hidden">
 	<div use:reveal={{ delay: 80, y: 22 }} class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6">
 		<div
 			class="relative overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-teal-deep text-dci-cream shadow-dci-panel"

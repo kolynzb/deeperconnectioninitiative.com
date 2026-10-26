@@ -208,13 +208,13 @@
 
 			<article
 				use:reveal={{ delay: 120, y: 22 }}
-				class="overflow-hidden rounded-4xl border border-dci-cream/15 bg-dci-ink text-dci-cream"
+				class="overflow-hidden rounded-4xl border border-dci-cream/15 bg-dci-teal-deep text-dci-cream"
 			>
 				<img
 					src="/photos/product-full-toolkit.jpg"
 					alt="The complete DCI toolkit: card game, reflection journal, and mood tracker"
 					loading="lazy"
-					class="h-56 w-full object-cover sm:h-64 lg:h-72"
+					class="h-56 w-full object-cover object-[center_72%] sm:h-64 lg:h-72"
 				/>
 				<div class="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_0.78fr] lg:p-10">
 					<div class="space-y-5">

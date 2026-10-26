@@ -50,7 +50,7 @@
 
 <section
 	id="crisis-prevention"
-	class="w-full bg-dci-cream relative z-10 overflow-hidden"
+	class="w-full relative z-10 overflow-hidden"
 >
 	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
 		<!-- Asymmetric header -->

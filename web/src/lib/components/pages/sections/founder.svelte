@@ -39,7 +39,7 @@
 
 <svelte:window on:keydown={onKeydown} />
 
-<section id="founder" class="w-full bg-dci-cream relative z-10 overflow-hidden">
+<section id="founder" class="w-full relative z-10 overflow-hidden">
 	<div
 		class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24 grid md:grid-cols-[0.92fr_1.08fr] gap-y-14 gap-x-12 lg:gap-x-16 items-center"
 	>
