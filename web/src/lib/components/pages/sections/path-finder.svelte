@@ -132,11 +132,12 @@
 
 <!--
 	A dark band of three numbered doors, the homepage's one place to join or sponsor. The open door unfolds its detail
-	(offer, video or options) directly beneath its row.
+	(offer, video or options) directly beneath its row. The band
+	tucks up behind the hero video, so it starts with a negative margin.
 -->
 <section
 	id="find-your-path"
-	class="relative mb-6 scroll-mt-28 rounded-b-4xl bg-dci-teal-deep px-4 pt-20 pb-20 text-dci-cream sm:px-6 lg:px-8 lg:pt-28 lg:pb-28"
+	class="relative -mt-40 scroll-mt-28 bg-dci-teal-deep px-4 pt-56 pb-20 text-dci-cream sm:px-6 lg:-mt-64 lg:px-8 lg:pt-80 lg:pb-28"
 >
 	<div class="mx-auto max-w-6xl">
 		<div use:reveal={{ delay: 0, y: 18 }}>
