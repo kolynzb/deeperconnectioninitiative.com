@@ -10,15 +10,15 @@
 </script>
 
 <!--
-	Each thing is said once: promise → the problem → the tools (the only place
-	products appear) → proof → join (the only place roles and sponsoring appear).
-	How DCI works lives on /about.
+	The client's order, with duplicates removed: promise → pick your path → the
+	problem → who's behind it → proof → the tools. Products appear only in the
+	Toolkit section; How DCI works lives on /about.
 -->
 <HeroV2 />
 <div class="py-12 lg:py-16"><FlowingThoughts /></div>
+<PathFinder />
 <CrisisPrevention />
+<Founder />
+<ImpactStories />
 <Toolkit />
 <CardDraw />
-<ImpactStories />
-<Founder />
-<PathFinder />
