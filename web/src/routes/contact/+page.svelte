@@ -22,9 +22,14 @@
 
 	// CTAs across the site link here with ?topic= and ?about= so the form
 	// arrives already knowing what the visitor wants.
-	const topicParam = page.url.searchParams.get('topic') ?? '';
-	const aboutParam = page.url.searchParams.get('about') ?? '';
-	let topic = $state(supportPaths.includes(topicParam) ? topicParam : supportPaths[0]);
+	const topicParam = $derived(page.url.searchParams.get('topic') ?? '');
+	const aboutParam = $derived(page.url.searchParams.get('about') ?? '');
+	const pick = (t: string | null) => (t && supportPaths.includes(t) ? t : supportPaths[0]);
+	let topic = $state(pick(page.url.searchParams.get('topic')));
+	// An effect, not a one-off read, so same-page links (the Get involved cards) also switch it.
+	$effect(() => {
+		topic = pick(topicParam);
+	});
 </script>
 
 <PageHero

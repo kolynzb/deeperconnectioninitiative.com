@@ -29,7 +29,7 @@
 				<p class="mt-3 flex-grow text-sm leading-relaxed text-muted-foreground">
 					Turn your café, studio, or space into a certified wellness hub hosting DCI clinics.
 				</p>
-				<span class="mt-5 text-sm font-semibold text-dci-teal">Apply now &rarr;</span>
+				<a href="/contact?topic=Community%20clinic%20or%20event#name" class="mt-5 text-sm font-semibold text-dci-teal underline-offset-4 hover:underline">Apply now &rarr;</a>
 			</div>
 		</div>
 
@@ -48,7 +48,7 @@
 				<p class="mt-3 flex-grow text-sm leading-relaxed text-muted-foreground">
 					Join monthly missions, support clinics, and help deliver emotional first aid.
 				</p>
-				<span class="mt-5 text-sm font-semibold text-dci-teal">Join squad &rarr;</span>
+				<a href="/volunteering" class="mt-5 text-sm font-semibold text-dci-teal underline-offset-4 hover:underline">Join squad &rarr;</a>
 			</div>
 		</div>
 
@@ -67,7 +67,7 @@
 				<p class="mt-3 flex-grow text-sm leading-relaxed text-muted-foreground">
 					Join our responsible referral network and collaborate on trauma-aware care.
 				</p>
-				<span class="mt-5 text-sm font-semibold text-dci-teal">Join network &rarr;</span>
+				<a href="/contact?topic=Provider%20network#name" class="mt-5 text-sm font-semibold text-dci-teal underline-offset-4 hover:underline">Join network &rarr;</a>
 			</div>
 		</div>
 
