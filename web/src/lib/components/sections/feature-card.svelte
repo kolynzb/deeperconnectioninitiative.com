@@ -2,19 +2,15 @@
 	import { cn } from '$lib/utils';
 
 	let {
-		icon: Icon,
 		kicker,
 		title,
 		description,
-		accent = '#2A6268',
 		class: className,
 		children
 	}: {
-		icon?: any;
 		kicker?: string;
 		title: string;
 		description?: string;
-		accent?: string;
 		class?: string;
 		children?: import('svelte').Snippet;
 	} = $props();
@@ -26,14 +22,6 @@
 		className
 	)}
 >
-	{#if Icon}
-		<div
-			class="mb-6 flex size-11 items-center justify-center rounded-full bg-dci-teal/8"
-			style={`color:${accent}`}
-		>
-			<Icon class="size-5" weight="regular" aria-hidden="true" />
-		</div>
-	{/if}
 	{#if kicker}
 		<p class="type-eyebrow mb-2 text-dci-teal">{kicker}</p>
 	{/if}

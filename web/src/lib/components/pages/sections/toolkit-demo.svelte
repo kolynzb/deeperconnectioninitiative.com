@@ -74,7 +74,7 @@
 
 <section
 	use:reveal={{ delay: 80, y: 22 }}
-	class="relative overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-teal-deep text-dci-cream shadow-dci-panel"
+	class="relative overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-teal-deep text-dci-cream"
 >
 
 	<div class="relative grid gap-0 xl:grid-cols-[0.92fr_1.08fr]">
@@ -133,7 +133,7 @@
 		<div class="relative overflow-hidden bg-dci-cream p-6 text-foreground sm:p-8 lg:p-10">
 			<div class="grid gap-8 2xl:grid-cols-[0.9fr_1fr] 2xl:items-center">
 				<div
-					class="relative min-h-[20rem] overflow-hidden rounded-4xl bg-dci-paper/70 shadow-dci-lift 2xl:min-h-[23rem]"
+					class="relative min-h-[20rem] overflow-hidden rounded-4xl bg-dci-paper/70 2xl:min-h-[23rem]"
 				>
 					{#key activeTool.id}
 						<div class="absolute inset-0" in:fade={{ duration: 320 }}>

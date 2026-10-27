@@ -72,7 +72,7 @@
 
 			<div
 				use:reveal={{ delay: 120, y: 18 }}
-				class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-7 text-dci-cream shadow-dci-panel sm:p-9"
+				class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-7 text-dci-cream sm:p-9"
 			>
 				<div class="relative space-y-6">
 					<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">Next clinic</p>
@@ -142,7 +142,7 @@
 				use:reveal={{ delay: index * 60, y: 18 }}
 				class={`grid gap-4 rounded-4xl border p-5 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:p-6 ${
 					index === 0
-						? 'border-dci-teal/25 bg-dci-paper shadow-dci-lift'
+						? 'border-dci-teal/25 bg-dci-paper'
 						: 'border-dci-teal/12 bg-dci-cream'
 				}`}
 			>

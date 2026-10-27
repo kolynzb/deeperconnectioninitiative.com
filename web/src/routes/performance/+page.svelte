@@ -100,7 +100,7 @@
 	{/snippet}
 	{#snippet aside()}
 		<div
-			class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-8 text-dci-cream shadow-dci-panel lg:p-10"
+			class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-8 text-dci-cream lg:p-10"
 		>
 			<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">
 				Start here
@@ -149,7 +149,7 @@
 	<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		{#each facets as item, index}
 			<div use:reveal={{ delay: index * 70, y: 22 }} class="h-full">
-				<FeatureCard icon={item.icon} title={item.title} description={item.description} />
+				<FeatureCard title={item.title} description={item.description} />
 			</div>
 		{/each}
 		<div
@@ -178,7 +178,7 @@
 		{#each otherTiers as tier, index (tier.name)}
 			<article
 				use:reveal={{ delay: index * 70, y: 22 }}
-				class={`dci-soft-hover relative flex h-full flex-col overflow-hidden rounded-4xl border bg-dci-paper p-6 shadow-dci-lift ${tier.popular ? 'border-dci-burgundy/35 lg:-mt-4 lg:mb-4' : 'border-dci-teal/12'}`}
+				class={`dci-soft-hover relative flex h-full flex-col overflow-hidden rounded-4xl border bg-dci-paper p-6 ${tier.popular ? 'border-dci-burgundy/35 lg:-mt-4 lg:mb-4' : 'border-dci-teal/12'}`}
 			>
 				{#if tier.popular}
 					<div class="absolute right-5 top-5 rounded-full bg-dci-burgundy px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">

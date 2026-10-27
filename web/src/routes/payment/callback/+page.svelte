@@ -19,7 +19,7 @@
 <section class="relative overflow-hidden pt-28">
 	<div class="mx-auto w-full max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
 		<div
-			class="relative overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream p-8 text-center shadow-dci-lift sm:p-12"
+			class="relative overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream p-8 text-center sm:p-12"
 		>
 			{#if data.state === 'success'}
 				<CheckCircle class="mx-auto size-16 text-dci-teal" weight="duotone" />

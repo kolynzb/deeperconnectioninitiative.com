@@ -102,7 +102,7 @@
 
 {#snippet cardFace(p: Prompt, isBack: boolean)}
 	<div
-		class="absolute inset-0 flex flex-col rounded-2xl border border-dci-teal/15 bg-dci-paper p-7 shadow-dci-soft [backface-visibility:hidden]"
+		class="absolute inset-0 flex flex-col rounded-2xl border border-dci-teal/15 bg-dci-paper p-7 [backface-visibility:hidden]"
 		style="transform: rotateY({isBack ? 180 : 0}deg);"
 	>
 		<div class="flex items-center justify-between">
@@ -116,7 +116,7 @@
 
 {#snippet deckBack(rot: number, tx: string, ty: string, z: number)}
 	<div
-		class="absolute inset-0 flex items-center justify-center rounded-2xl bg-dci-burgundy shadow-dci-soft"
+		class="absolute inset-0 flex items-center justify-center rounded-2xl bg-dci-burgundy"
 		style="transform: rotate({rot}deg) translate({tx}, {ty}); z-index: {z};"
 		aria-hidden="true"
 	>

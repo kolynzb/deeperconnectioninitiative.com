@@ -110,7 +110,7 @@
 			</button>
 
 			<div class="relative z-10 w-full max-w-4xl">
-				<div class="aspect-video w-full overflow-hidden rounded-2xl bg-black shadow-dci-panel">
+				<div class="aspect-video w-full overflow-hidden rounded-2xl bg-black">
 					<iframe
 						src="https://www.youtube-nocookie.com/embed/{videoId}?autoplay=1&rel=0"
 						title="Ann Banya: Deeper Connection Initiative"

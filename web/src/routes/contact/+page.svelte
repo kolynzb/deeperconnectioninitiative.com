@@ -141,7 +141,7 @@
 
 			<div
 				use:reveal={{ delay: 120, y: 18 }}
-				class="relative overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream p-5 shadow-dci-lift sm:p-8 lg:p-10"
+				class="relative overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream p-5 sm:p-8 lg:p-10"
 			>
 				<SpotIllustration
 					variant="care"

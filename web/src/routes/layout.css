@@ -85,12 +85,8 @@
 	--color-dci-mist: var(--dci-mist);
 	--color-dci-oat: var(--dci-oat);
 
-	/* Shadow scale — replaces ~20 near-identical arbitrary values.
-	   Neutral lifts (lift/panel) + teal-tinted family (teal/soft). */
-	--shadow-dci-lift: 0 24px 70px -58px rgba(0, 0, 0, 0.72); /* large neutral lift */
-	--shadow-dci-panel: 0 28px 90px -60px rgba(0, 0, 0, 0.75); /* XL neutral panel */
-	--shadow-dci-teal: 0 24px 72px -54px rgba(26, 60, 64, 0.55); /* large teal-tinted */
-	--shadow-dci-soft: 0 16px 44px -26px rgba(26, 60, 64, 0.5); /* small/tight teal-tinted */
+	/* Only for things that float over the page: header, menus, drawers. */
+	--shadow-dci-overlay: 0 24px 70px -40px rgba(0, 0, 0, 0.45);
 }
 
 @layer base {
@@ -171,8 +167,7 @@ a {
 		transition:
 			transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
 			border-color 280ms cubic-bezier(0.16, 1, 0.3, 1),
-			background-color 280ms cubic-bezier(0.16, 1, 0.3, 1),
-			box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1);
+			background-color 280ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.dci-soft-hover:hover {

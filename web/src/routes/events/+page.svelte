@@ -163,7 +163,7 @@
 						{src}
 						alt={`DCI community moment ${index + 1}`}
 						loading="lazy"
-						class="w-full break-inside-avoid rounded-2xl object-cover shadow-dci-lift"
+						class="w-full break-inside-avoid rounded-2xl object-cover"
 					/>
 				{/each}
 			</div>

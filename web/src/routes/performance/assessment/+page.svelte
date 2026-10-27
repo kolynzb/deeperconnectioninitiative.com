@@ -279,7 +279,7 @@
 					{#each facets as facet (facet.key)}
 						{@const value = scores[facet.key]}
 						{@const band = bandFor(value)}
-						<div class="rounded-3xl bg-white p-7 shadow-dci-lift">
+						<div class="rounded-3xl bg-white p-7">
 							<div class="flex items-start justify-between gap-4">
 								<h3 class="font-serif text-xl text-dci-teal-deep">{facet.label}</h3>
 								<span class="text-xs font-semibold uppercase tracking-[0.18em] text-dci-teal">

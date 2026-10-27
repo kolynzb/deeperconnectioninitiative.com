@@ -219,7 +219,7 @@
 	{/snippet}
 	{#snippet aside()}
 		<div
-			class="grid gap-3 rounded-4xl border border-dci-teal/12 bg-dci-teal-deep p-4 text-dci-cream shadow-dci-panel sm:grid-cols-3 sm:p-5"
+			class="grid gap-3 rounded-4xl border border-dci-teal/12 bg-dci-teal-deep p-4 text-dci-cream sm:grid-cols-3 sm:p-5"
 		>
 			{#each campaignStats as stat}
 				<div class="rounded-2xl border border-dci-cream/10 bg-dci-cream/8 p-5">
@@ -238,7 +238,7 @@
 	<div class="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.06fr_0.94fr]">
 		<div
 			use:reveal={{ delay: 0, y: 18 }}
-			class="relative min-h-[560px] overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-paper p-5 shadow-dci-lift sm:p-8"
+			class="relative min-h-[560px] overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-paper p-5 sm:p-8"
 		>
 			<div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
 				<div>
@@ -264,7 +264,7 @@
 		<div class="space-y-6">
 			<div
 				use:reveal={{ delay: 90, y: 18 }}
-				class="rounded-4xl bg-dci-teal-deep p-6 text-dci-cream shadow-dci-lift sm:p-8"
+				class="rounded-4xl bg-dci-teal-deep p-6 text-dci-cream sm:p-8"
 			>
 				<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">The rubric</p>
 				<h2 class="mt-3 text-4xl font-semibold leading-tight text-white">
@@ -282,7 +282,7 @@
 					{@const Icon = item.icon}
 					<article
 						use:reveal={{ delay: 150 + index * 70, y: 18 }}
-						class="rounded-2xl border border-dci-teal/12 bg-dci-cream p-5 shadow-dci-lift"
+						class="rounded-2xl border border-dci-teal/12 bg-dci-cream p-5"
 					>
 						<div class="flex gap-4">
 							<div
@@ -339,7 +339,7 @@
 
 		<div
 			use:reveal={{ delay: 120, y: 18 }}
-			class="overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream shadow-dci-lift"
+			class="overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream"
 		>
 			<!-- Board toggle -->
 			<div class="flex flex-wrap items-center justify-between gap-4 border-b border-dci-teal/10 p-5 sm:p-6">
@@ -351,7 +351,7 @@
 							onclick={() => (activeBoard = key as 'champions' | 'organizations')}
 							class={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition ${
 								activeBoard === key
-									? 'bg-dci-teal-deep text-dci-cream shadow-dci-soft'
+									? 'bg-dci-teal-deep text-dci-cream'
 									: 'text-dci-teal-deep hover:bg-dci-teal/8'
 							}`}
 							aria-pressed={activeBoard === key}
@@ -435,7 +435,7 @@
 
 			<div
 				use:reveal={{ delay: 120, y: 18 }}
-				class="rounded-4xl bg-dci-cream p-6 shadow-dci-lift sm:p-8"
+				class="rounded-4xl bg-dci-cream p-6 sm:p-8"
 			>
 				<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">
 					Field-ready support
@@ -465,7 +465,7 @@
 				{@const Icon = product.icon}
 				<article
 					use:reveal={{ delay: index * 80, y: 18 }}
-					class="dci-soft-hover flex min-h-72 flex-col justify-between rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift"
+					class="dci-soft-hover flex min-h-72 flex-col justify-between rounded-4xl border border-dci-teal/12 bg-dci-cream p-6"
 				>
 					<div>
 						<div
@@ -489,7 +489,7 @@
 
 			<article
 				use:reveal={{ delay: 260, y: 18 }}
-				class="flex min-h-72 flex-col justify-between rounded-4xl bg-dci-teal-deep p-6 text-dci-cream shadow-dci-lift"
+				class="flex min-h-72 flex-col justify-between rounded-4xl bg-dci-teal-deep p-6 text-dci-cream"
 			>
 				<div>
 					<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">
@@ -559,7 +559,7 @@
 		border-radius: 1rem;
 		background: var(--dci-cream);
 		border: 1px solid rgba(42, 98, 104, 0.15);
-		box-shadow: var(--shadow-dci-lift);
+		box-shadow: var(--);
 	}
 	:global(.leaflet-popup-tip) {
 		background: var(--dci-cream);

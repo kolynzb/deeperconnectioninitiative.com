@@ -140,7 +140,7 @@
 	{/snippet}
 	{#snippet aside()}
 		<div
-			class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-6 text-dci-cream shadow-dci-panel sm:p-8"
+			class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-6 text-dci-cream sm:p-8"
 		>
 			<SpotIllustration
 				variant="toolkit"
@@ -183,7 +183,7 @@
 			{@const Icon = tier.icon}
 			<article
 				use:reveal={{ delay: index * 80, y: 22 }}
-				class={`dci-soft-hover relative flex h-full flex-col overflow-hidden rounded-4xl border bg-dci-cream p-6 shadow-dci-lift sm:p-7 ${tier.popular ? 'border-dci-burgundy/35 lg:-mt-4 lg:mb-4' : 'border-dci-teal/12'}`}
+				class={`dci-soft-hover relative flex h-full flex-col overflow-hidden rounded-4xl border bg-dci-cream p-6 sm:p-7 ${tier.popular ? 'border-dci-burgundy/35 lg:-mt-4 lg:mb-4' : 'border-dci-teal/12'}`}
 			>
 				{#if tier.popular}
 					<div
@@ -275,7 +275,7 @@
 <section class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
 	<div
 		use:reveal={{ delay: 80, y: 18 }}
-		class="mx-auto grid max-w-7xl gap-8 rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center lg:p-10"
+		class="mx-auto grid max-w-7xl gap-8 rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center lg:p-10"
 	>
 		<div class="max-w-3xl space-y-3">
 			<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Need help choosing?</p>

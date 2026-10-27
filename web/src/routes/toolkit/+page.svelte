@@ -75,7 +75,7 @@
 
 			<div
 				use:reveal={{ delay: 120, y: 18 }}
-				class="rounded-4xl bg-dci-cream p-6 shadow-dci-lift sm:p-8"
+				class="rounded-4xl bg-dci-cream p-6 sm:p-8"
 			>
 				<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">
 					How to use this page
@@ -104,7 +104,7 @@
 			{#each products as product, index}
 				<article
 					use:reveal={{ delay: index * 80, y: 18 }}
-					class="dci-soft-hover flex min-h-72 flex-col overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream shadow-dci-lift"
+					class="dci-soft-hover flex min-h-72 flex-col overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream"
 				>
 					<div
 						class={`relative overflow-hidden ${product.bg} ${product.images ? '' : 'aspect-[4/3]'}`}
@@ -160,7 +160,7 @@
 
 			<article
 				use:reveal={{ delay: 260, y: 18 }}
-				class="flex min-h-72 flex-col justify-between rounded-4xl bg-dci-teal-deep p-6 text-dci-cream shadow-dci-lift"
+				class="flex min-h-72 flex-col justify-between rounded-4xl bg-dci-teal-deep p-6 text-dci-cream"
 			>
 				<div>
 					<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">

@@ -57,7 +57,7 @@
 		<img
 			src="/photos/champion-training-hero.jpg"
 			alt="A Community Champion training a room of young people"
-			class="aspect-[4/3] w-full rounded-4xl object-cover shadow-dci-panel"
+			class="aspect-[4/3] w-full rounded-4xl object-cover"
 		/>
 	{/snippet}
 </PageHero>
@@ -71,7 +71,7 @@
 	<div class="grid gap-6 md:grid-cols-3">
 		{#each does as item, index}
 			<div use:reveal={{ delay: index * 80, y: 22 }} class="h-full">
-				<FeatureCard icon={item.icon} title={item.title} description={item.description} />
+				<FeatureCard title={item.title} description={item.description} />
 			</div>
 		{/each}
 	</div>

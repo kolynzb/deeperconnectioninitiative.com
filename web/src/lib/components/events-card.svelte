@@ -31,7 +31,7 @@
 </script>
 
 <article
-	class="group dci-soft-hover flex h-full flex-col justify-between overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream p-5 shadow-dci-lift transition duration-300 sm:p-6"
+	class="group dci-soft-hover flex h-full flex-col justify-between overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream p-5 transition duration-300 sm:p-6"
 >
 	<div>
 		<div class="flex items-start justify-between gap-4">

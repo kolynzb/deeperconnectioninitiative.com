@@ -20,7 +20,7 @@
 <section class="relative overflow-hidden pt-28">
 	<div class="mx-auto w-full max-w-xl px-4 py-16 sm:px-6 lg:px-8">
 		<div
-			class="relative overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift sm:p-10"
+			class="relative overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 sm:p-10"
 		>
 			<div class="mb-7 space-y-3">
 				<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Secure checkout</p>

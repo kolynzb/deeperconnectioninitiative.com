@@ -37,7 +37,7 @@
 
 		<div
 			use:reveal={{ delay: 120, y: 18 }}
-			class="rounded-4xl border border-dci-teal/12 bg-dci-cream p-5 shadow-dci-lift sm:p-8 lg:p-10"
+			class="rounded-4xl border border-dci-teal/12 bg-dci-cream p-5 sm:p-8 lg:p-10"
 		>
 			<div class="mb-8 space-y-3">
 				<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Welcome back</p>

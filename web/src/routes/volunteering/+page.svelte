@@ -84,7 +84,7 @@
 				{@const Icon = role.icon}
 				<article
 					use:reveal={{ delay: index * 70, y: 18 }}
-					class="dci-soft-hover rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift"
+					class="dci-soft-hover rounded-4xl border border-dci-teal/12 bg-dci-cream p-6"
 				>
 					<div class="mb-8 flex size-12 items-center justify-center rounded-xl bg-white/65 text-dci-teal">
 						<Icon class="size-6" weight="duotone" />

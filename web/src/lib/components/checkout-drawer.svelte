@@ -41,7 +41,7 @@
 				e.preventDefault();
 				emailField?.focus();
 			}}
-			class="fixed inset-x-0 bottom-0 z-[80] mx-auto w-full max-w-md rounded-t-4xl border border-dci-teal/15 bg-dci-cream p-6 shadow-dci-lift sm:top-1/2 sm:bottom-auto sm:-translate-y-1/2 sm:rounded-4xl sm:p-8"
+			class="fixed inset-x-0 bottom-0 z-[80] mx-auto w-full max-w-md rounded-t-4xl border border-dci-teal/15 bg-dci-cream p-6 shadow-dci-overlay sm:top-1/2 sm:bottom-auto sm:-translate-y-1/2 sm:rounded-4xl sm:p-8"
 		>
 			{#if product}
 				<Dialog.Close

@@ -61,7 +61,7 @@
 			/>
 			<span class="absolute inset-0 bg-dci-ink/20 transition group-hover:bg-dci-ink/10"></span>
 			<span
-				class="absolute top-1/2 left-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-dci-cream text-dci-teal-deep shadow-dci-lift transition group-hover:bg-dci-paper sm:size-20"
+				class="absolute top-1/2 left-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-dci-cream text-dci-teal-deep transition group-hover:bg-dci-paper sm:size-20"
 			>
 				<PlayIcon weight="fill" class="ml-1 size-7 sm:size-9" />
 			</span>

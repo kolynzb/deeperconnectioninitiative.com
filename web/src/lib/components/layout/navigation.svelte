@@ -187,7 +187,7 @@
 	<!-- Fixed height per breakpoint, 78px easing to 60px once scrolled. Overflow
 	     stays visible: the desktop dropdown hangs below this box. -->
 	<div
-		class={`dci-header-shell relative overflow-visible rounded-2xl border border-dci-teal/12 bg-dci-cream/92 px-3 shadow-dci-lift backdrop-blur-xl sm:px-4${
+		class={`dci-header-shell relative overflow-visible rounded-2xl border border-dci-teal/12 bg-dci-cream/92 px-3 shadow-dci-overlay backdrop-blur-xl sm:px-4${
 			header.compact ? ' is-compact' : ''
 		}`}
 	>
@@ -257,7 +257,7 @@
 						id="desktop-navigation-viewport"
 						role="region"
 						aria-label={`${activeItem.label} navigation`}
-						class="absolute top-[calc(100%+0.85rem)] left-1/2 z-50 w-[680px] -translate-x-1/2 overflow-hidden rounded-2xl border border-dci-teal/10 bg-dci-cream p-4 text-popover-foreground shadow-dci-panel duration-200 animate-in fade-in-0 zoom-in-95"
+						class="absolute top-[calc(100%+0.85rem)] left-1/2 z-50 w-[680px] -translate-x-1/2 overflow-hidden rounded-2xl border border-dci-teal/10 bg-dci-cream p-4 text-popover-foreground shadow-dci-overlay duration-200 animate-in fade-in-0 zoom-in-95"
 						onmouseenter={() => openDesktopMenu(activeItem.label)}
 						onmouseleave={scheduleDesktopClose}
 						onfocusin={cancelDesktopClose}
