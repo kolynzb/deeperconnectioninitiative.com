@@ -31,53 +31,41 @@
 </script>
 
 <article
-	class="group dci-soft-hover flex h-full flex-col justify-between overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-cream p-5 transition duration-300 sm:p-6"
+	class="flex h-full flex-col justify-between rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8"
 >
 	<div>
-		<div class="flex items-start justify-between gap-4">
-			<div class="flex gap-3">
-				<div
-					class="flex size-14 shrink-0 flex-col items-center justify-center rounded-xl bg-dci-teal-deep text-dci-cream"
-				>
-					<span class="text-[0.65rem] font-bold uppercase tracking-wide">{monthLabel}</span>
-					<span class="text-2xl font-semibold leading-none">{dayLabel}</span>
-				</div>
-				<div class="pt-1">
-					<p class="text-xs font-semibold uppercase tracking-wide text-dci-burgundy">{event.type}</p>
-					<p class="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
-						<CalendarDays class="size-3.5" weight="regular" />
-						{timeLabel}
-					</p>
-				</div>
+		<div class="flex items-end gap-4">
+			<div class="w-14 shrink-0 text-center">
+				<p class="type-eyebrow text-dci-teal">{monthLabel}</p>
+				<p class="font-serif text-3xl leading-none text-foreground">{dayLabel}</p>
+			</div>
+			<div>
+				<p class="type-eyebrow text-dci-burgundy">{event.type}</p>
+				<p class="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
+					<CalendarDays class="size-3.5" weight="regular" />
+					{timeLabel}
+				</p>
 			</div>
 		</div>
 
-		<h3 class="mt-8 text-2xl font-semibold leading-tight text-foreground">{event.title}</h3>
+		<h3 class="type-subtitle mt-8 text-foreground">{event.title}</h3>
 		<p class="mt-3 text-sm leading-relaxed text-muted-foreground">{event.description}</p>
 		<p class="mt-5 flex items-start gap-2 text-sm font-medium text-dci-teal-deep">
 			<MapPin class="mt-0.5 size-4 shrink-0" weight="regular" />
 			<span>{event.location}</span>
 		</p>
-		{#if event.price || event.miles}
-			<div class="mt-4 flex flex-wrap gap-2">
-				{#if event.price}
-					<span class="rounded-full bg-dci-teal-deep px-3 py-1 text-xs font-semibold text-dci-cream">
-						{event.price}
-					</span>
-				{/if}
-				{#if event.miles}
-					<span class="rounded-full border border-dci-teal/20 bg-dci-teal/5 px-3 py-1 text-xs font-semibold text-dci-teal">
-						{event.miles}
-					</span>
-				{/if}
-			</div>
+		{#if event.price}
+			<p class="mt-5 font-serif text-3xl text-dci-teal-deep">{event.price}</p>
+		{/if}
+		{#if event.miles}
+			<p class="mt-1 text-sm text-muted-foreground">{event.miles}</p>
 		{/if}
 	</div>
 
 	<Button
 		href={event.url}
 		variant={event.cta ? 'default' : 'outline'}
-		class={`mt-8 w-fit rounded-full ${event.cta ? '' : 'border-dci-teal/20 bg-transparent text-dci-teal-deep hover:bg-dci-teal/7'}`}
+		class="mt-8 self-start"
 		title={`${event.cta ?? 'View event'}: ${event.title}`}
 		aria-label={`${event.cta ?? 'View event'}: ${event.title}`}
 	>

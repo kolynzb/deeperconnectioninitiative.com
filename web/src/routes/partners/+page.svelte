@@ -1,33 +1,23 @@
 <script lang="ts">
-	import {
-		BuildingsIcon as Building2,
-		ChatCircleTextIcon as MessageCircle,
-		ToolboxIcon as Toolbox,
-		WaveformIcon as Waveform,
-		ShieldCheckIcon as ShieldCheck,
-		ArrowUpRightIcon as ArrowUpRight
-	} from 'phosphor-svelte';
+	import { ArrowUpRightIcon as ArrowUpRight } from 'phosphor-svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { reveal } from '$lib/actions/reveal';
 	import { PageHero, Section, SectionHeading, FeatureCard, CtaBand } from '$lib/components/sections';
 
 	const pillars = [
 		{
-			icon: MessageCircle,
 			kicker: 'Connect',
 			title: 'Space for honest conversation',
 			description:
 				'Community Champions and Conversation Clinics create the room your people need to say what usually goes unsaid.'
 		},
 		{
-			icon: Toolbox,
 			kicker: 'Equip',
 			title: 'Language and daily practice',
 			description:
 				'The Mood Tracker, Journal, and Card Game give your people the tools to notice patterns and process what they feel.'
 		},
 		{
-			icon: Waveform,
 			kicker: 'Understand',
 			title: 'Patterns across your organisation',
 			description:
@@ -38,7 +28,6 @@
 
 <PageHero
 	eyebrow="For organisations"
-	eyebrowIcon={Building2}
 	title="Your organisation already has the people. DCI gives them a system."
 	description="Crisis is expensive. Connection is cheap. Schools, corporates, NGOs, faith communities, and hospitality spaces: this is your entry point."
 >
@@ -82,32 +71,23 @@
 
 <Section tone="dark">
 	<div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-		<div use:reveal={{ delay: 0, y: 18 }} class="space-y-5">
-			<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">Engagements</p>
-			<h2 class="text-4xl font-semibold leading-tight text-white sm:text-5xl">
-				Scoped to fit your context.
-			</h2>
-			<p class="max-w-xl text-base leading-relaxed text-dci-cream/75">
-				Organisations start from USD 20,000 annually. We scope every engagement around your people,
-				your setting, and the outcomes you report on.
-			</p>
+		<SectionHeading
+			tone="dark"
+			eyebrow="Engagements"
+			title="Scoped to fit your context."
+			description="Organisations start from USD 20,000 annually. We scope every engagement around your people, your setting, and the outcomes you report on."
+		>
 			<Button variant="inverse" href="/contact?topic=Partner%20training">
 				Request a call
 				<ArrowUpRight class="size-4" weight="regular" />
 			</Button>
-		</div>
-		<div
-			use:reveal={{ delay: 120, y: 18 }}
-			class="rounded-4xl border border-dci-cream/12 bg-dci-cream/6 p-8"
-		>
-			<div class="flex size-11 items-center justify-center rounded-xl bg-dci-cream/10 text-dci-cream">
-				<ShieldCheck class="size-5" weight="duotone" />
-			</div>
-			<p class="mt-6 text-lg font-semibold leading-relaxed text-white">
+		</SectionHeading>
+		<div use:reveal={{ delay: 120, y: 18 }} class="rounded-2xl border border-dci-cream/15 p-6 sm:p-8">
+			<p class="type-subtitle text-dci-cream">
 				For funders: every Connection Mile is independently verified, permanently recorded, and never
 				inflated.
 			</p>
-			<p class="mt-3 text-sm leading-relaxed text-dci-cream/70">
+			<p class="mt-3 text-sm leading-relaxed text-dci-cream/75">
 				It's the kind of impact data that makes reporting to your own stakeholders easier, not
 				harder.
 			</p>

@@ -1,47 +1,32 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import SpotIllustration from '$lib/components/spot-illustration.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { paymentLinks } from '$lib/payment-links';
-	import { PageHero } from '$lib/components/sections';
-	import {
-		ArrowUpRightIcon as ArrowUpRight,
-		CalendarCheckIcon as CalendarCheck,
-		HandshakeIcon as HeartHandshake,
-		MapTrifoldIcon as MapPinned,
-		ChatCircleDotsIcon as MessageCircleHeart,
-		ShieldCheckIcon as ShieldCheck,
-		TShirtIcon,
-		UsersThreeIcon as UsersRound
-	} from 'phosphor-svelte';
+	import { PageHero, Section, FeatureCard } from '$lib/components/sections';
+	import { ArrowUpRightIcon as ArrowUpRight } from 'phosphor-svelte';
 
 	const roles = [
 		{
 			title: 'Clinic Support',
-			description: 'Help set up conversation spaces, welcome participants, and support smooth sessions.',
-			icon: MessageCircleHeart
+			description: 'Help set up conversation spaces, welcome participants, and support smooth sessions.'
 		},
 		{
 			title: 'Community Champion',
-			description: 'Train to facilitate DCI toolkit conversations in your neighborhood, school, or venue.',
-			icon: UsersRound
+			description: 'Train to facilitate DCI toolkit conversations in your neighborhood, school, or venue.'
 		},
 		{
 			title: 'Referral Steward',
-			description: 'Support responsible signposting to trained providers and crisis-safe resources.',
-			icon: ShieldCheck
+			description: 'Support responsible signposting to trained providers and crisis-safe resources.'
 		},
 		{
 			title: 'Venue Connector',
-			description: 'Help identify cafes, studios, schools, and community spaces that can host DCI work.',
-			icon: MapPinned
+			description: 'Help identify cafes, studios, schools, and community spaces that can host DCI work.'
 		}
 	];
 </script>
 
 <PageHero
 	eyebrow="Volunteer with DCI"
-	eyebrowIcon={HeartHandshake}
 	title="Help make emotional support easier to reach."
 	description="DCI volunteers help create warm, grounded, and practical spaces where people can talk, reflect, learn, and find the next right support."
 >
@@ -58,69 +43,42 @@
 		</Button>
 	{/snippet}
 	{#snippet aside()}
-		<div class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-6 text-dci-cream sm:p-8">
-			<SpotIllustration
-				variant="community"
-				class="pointer-events-none absolute -right-14 bottom-0 hidden w-72 rotate-2 opacity-24 lg:block"
-			/>
-			<div class="relative z-10 max-w-lg">
-				<CalendarCheck class="size-8 text-dci-cream" weight="duotone" />
-				<p class="mt-6 text-2xl font-semibold leading-tight text-white">
-					Volunteer orientation is the first step before facilitating or supporting a DCI clinic.
-				</p>
-				<p class="mt-4 text-sm leading-relaxed text-dci-cream/70">
-					We match people based on availability, care experience, language, location, and comfort
-					with group support work.
-				</p>
-			</div>
+		<div class="rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8 lg:ml-auto lg:max-w-lg">
+			<p class="type-subtitle text-foreground">
+				Volunteer orientation is the first step before facilitating or supporting a DCI clinic.
+			</p>
+			<p class="mt-4 text-sm leading-relaxed text-muted-foreground">
+				We match people based on availability, care experience, language, location, and comfort
+				with group support work.
+			</p>
 		</div>
 	{/snippet}
 </PageHero>
 
-<section class="px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
-	<div class="mx-auto max-w-7xl">
-		<div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-			{#each roles as role, index}
-				{@const Icon = role.icon}
-				<article
-					use:reveal={{ delay: index * 70, y: 18 }}
-					class="dci-soft-hover rounded-4xl border border-dci-teal/12 bg-dci-cream p-6"
-				>
-					<div class="mb-8 flex size-12 items-center justify-center rounded-xl bg-white/65 text-dci-teal">
-						<Icon class="size-6" weight="duotone" />
-					</div>
-					<h2 class="text-2xl font-semibold leading-tight text-foreground">{role.title}</h2>
-					<p class="mt-3 text-sm leading-relaxed text-muted-foreground">{role.description}</p>
-				</article>
-			{/each}
-		</div>
-
-		<!-- DCI Angels Shirt -->
-		<div
-			use:reveal={{ delay: 0, y: 18 }}
-			class="mt-12 grid items-center gap-8 rounded-4xl border border-dci-teal/12 bg-white p-6 sm:p-8 md:grid-cols-[auto_1fr]"
-		>
-			<div class="flex size-16 items-center justify-center rounded-2xl bg-dci-teal/8 text-dci-teal">
-				<TShirtIcon class="size-8" weight="duotone" />
+<Section>
+	<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+		{#each roles as role, index}
+			<div use:reveal={{ delay: index * 70, y: 18 }} class="h-full">
+				<FeatureCard title={role.title} description={role.description} />
 			</div>
-			<div class="flex flex-wrap items-center justify-between gap-6">
-				<div>
-					<h3 class="text-xl font-semibold text-foreground">DCI Angels Shirt</h3>
-					<p class="mt-1 max-w-lg text-sm leading-relaxed text-muted-foreground">
-						Wear it. You become the signal. Mental health is talked about openly here, and
-						you're the reason someone feels safe enough to start.
-					</p>
-					<p class="mt-2 text-lg font-bold text-dci-teal">UGX 50,000</p>
-				</div>
-				<Button
-					href={paymentLinks.tShirt}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Get the shirt
-					<ArrowUpRight class="size-4" weight="regular" />
-				</Button>
-			</div>
-		</div>
+		{/each}
 	</div>
-</section>
+
+	<div
+		use:reveal={{ delay: 0, y: 18 }}
+		class="mt-12 flex flex-wrap items-center justify-between gap-6 rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8"
+	>
+		<div>
+			<h3 class="type-subtitle text-foreground">DCI Angels Shirt</h3>
+			<p class="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
+				Wear it. You become the signal. Mental health is talked about openly here, and
+				you're the reason someone feels safe enough to start.
+			</p>
+			<p class="mt-4 font-serif text-3xl text-dci-teal-deep">UGX 50,000</p>
+		</div>
+		<Button href={paymentLinks.tShirt} target="_blank" rel="noopener noreferrer">
+			Get the shirt
+			<ArrowUpRight class="size-4" weight="regular" />
+		</Button>
+	</div>
+</Section>

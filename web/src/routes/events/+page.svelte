@@ -1,10 +1,9 @@
 <script lang="ts">
 	import EventsCard from '$lib/components/events-card.svelte';
 	import { Button } from '$lib/components/ui/button';
-	import SpotIllustration from '$lib/components/spot-illustration.svelte';
 	import { reveal } from '$lib/actions/reveal';
-	import { ArrowUpRightIcon as ArrowUpRight, CalendarDotsIcon as CalendarDays } from 'phosphor-svelte';
-	import { PageHero } from '$lib/components/sections';
+	import { ArrowUpRightIcon as ArrowUpRight } from 'phosphor-svelte';
+	import { PageHero, Section, SectionHeading } from '$lib/components/sections';
 	import { eventsStructuredData } from '$lib/config/structured-data';
 
 	const events = [
@@ -74,99 +73,71 @@
 
 <PageHero
 	eyebrow="Events and clinics"
-	eyebrowIcon={CalendarDays}
 	title="Places to practice connection in real life."
 	description="DCI events are built around practical mental wellness: conversation clinics, facilitator orientations, toolkit demos, and partner sessions."
 >
 	{#snippet aside()}
-		<div class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-6 text-dci-cream sm:p-8">
-			<SpotIllustration
-				variant="care"
-				class="pointer-events-none absolute -right-20 bottom-0 hidden w-80 rotate-2 opacity-24 lg:block"
-			/>
-			<div class="relative z-10 max-w-lg">
-				<p class="text-sm font-semibold uppercase tracking-wide text-dci-cream/70">
-					Host a DCI session
-				</p>
-				<p class="mt-4 text-2xl font-semibold leading-tight text-white">
-					Bring a clinic, demo, or champion orientation into your school, venue, clinic, or youth
-					group.
-				</p>
-				<Button variant="inverse"
-					href="/contact?topic=Community%20clinic%20or%20event" class="mt-7"
-				>
-					Request an event
-					<ArrowUpRight class="size-4" weight="regular" />
-				</Button>
-			</div>
+		<div class="rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8 lg:ml-auto lg:max-w-lg">
+			<p class="type-eyebrow text-dci-teal">Host a DCI session</p>
+			<p class="type-subtitle mt-4 text-foreground">
+				Bring a clinic, demo, or champion orientation into your school, venue, clinic, or youth
+				group.
+			</p>
+			<Button href="/contact?topic=Community%20clinic%20or%20event" class="mt-7">
+				Request an event
+				<ArrowUpRight class="size-4" weight="regular" />
+			</Button>
 		</div>
 	{/snippet}
 </PageHero>
 
-<section class="px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
-	<div class="mx-auto max-w-7xl">
-		<h2 class="mb-6 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-			Upcoming sessions
-		</h2>
-		{#if upcoming.length > 0}
-			<div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-				{#each upcoming as event, index}
-					<div use:reveal={{ delay: index * 80, y: 20 }}>
-						<EventsCard {event} />
-					</div>
-				{/each}
-			</div>
-		{:else}
-			<div class="rounded-4xl border border-dci-teal/12 bg-dci-cream p-8 text-muted-foreground">
-				<p class="text-lg font-semibold text-foreground">No sessions on the calendar right now.</p>
-				<p class="mt-2 max-w-xl">
-					New clinics and demos are added regularly. Want to host one, or hear when the next is
-					scheduled? <a href="/contact" class="font-semibold text-dci-teal underline underline-offset-4">Get in touch</a>.
-				</p>
-			</div>
-		{/if}
-
-		{#if past.length > 0}
-			<h2 class="mt-16 mb-6 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-				Past sessions
-			</h2>
-			<div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-				{#each past as event, index}
-					<div use:reveal={{ delay: index * 80, y: 20 }} class="opacity-75">
-						<EventsCard {event} />
-					</div>
-				{/each}
-			</div>
-		{/if}
-
-		<div class="mt-20" use:reveal={{ delay: 0, y: 18 }}>
-			<div class="max-w-2xl space-y-3">
-				<div
-					class="inline-flex items-center rounded-full border border-dci-teal/20 bg-dci-teal/5 px-3 py-1"
-				>
-					<span class="text-xs font-semibold uppercase tracking-wide text-dci-teal">
-						From the field
-					</span>
+<Section>
+	<SectionHeading title="Upcoming sessions" />
+	{#if upcoming.length > 0}
+		<div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+			{#each upcoming as event, index}
+				<div use:reveal={{ delay: index * 80, y: 20 }}>
+					<EventsCard {event} />
 				</div>
-				<h2 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-					Moments from recent clinics and gatherings
-				</h2>
-				<p class="text-base leading-relaxed text-muted-foreground">
-					Real sessions, real conversations. This is what connection looks like when a community
-					holds space for itself.
-				</p>
-			</div>
-
-			<div class="mt-8 columns-2 gap-4 lg:columns-3 [&>*]:mb-4">
-				{#each gallery as src, index}
-					<img
-						{src}
-						alt={`DCI community moment ${index + 1}`}
-						loading="lazy"
-						class="w-full break-inside-avoid rounded-2xl object-cover"
-					/>
-				{/each}
-			</div>
+			{/each}
 		</div>
+	{:else}
+		<div class="mt-12 rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 text-muted-foreground sm:p-8">
+			<p class="type-subtitle text-foreground">No sessions on the calendar right now.</p>
+			<p class="mt-2 max-w-xl">
+				New clinics and demos are added regularly. Want to host one, or hear when the next is
+				scheduled? <a href="/contact" class="font-semibold text-dci-teal underline underline-offset-4">Get in touch</a>.
+			</p>
+		</div>
+	{/if}
+
+	{#if past.length > 0}
+		<SectionHeading title="Past sessions" class="mt-24" />
+		<div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+			{#each past as event, index}
+				<div use:reveal={{ delay: index * 80, y: 20 }} class="opacity-75">
+					<EventsCard {event} />
+				</div>
+			{/each}
+		</div>
+	{/if}
+</Section>
+
+<Section>
+	<SectionHeading
+		eyebrow="From the field"
+		title="Moments from recent clinics and gatherings"
+		description="Real sessions, real conversations. This is what connection looks like when a community holds space for itself."
+	/>
+
+	<div class="mt-12 columns-2 gap-4 lg:columns-3 [&>*]:mb-4">
+		{#each gallery as src, index}
+			<img
+				{src}
+				alt={`DCI community moment ${index + 1}`}
+				loading="lazy"
+				class="w-full break-inside-avoid rounded-2xl object-cover"
+			/>
+		{/each}
 	</div>
-</section>
+</Section>

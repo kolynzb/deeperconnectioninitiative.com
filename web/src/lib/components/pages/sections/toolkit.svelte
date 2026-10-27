@@ -83,35 +83,38 @@
 				class="group grid overflow-hidden rounded-4xl border border-dci-teal/15 bg-dci-paper md:min-h-[22rem] md:grid-cols-2"
 			>
 				<div class={`relative min-h-72 overflow-hidden ${index % 2 === 1 ? 'md:order-2' : ''}`}>
-					{#if product.images}
-						<ProductGallery
-							images={product.images}
-							alt={product.name}
-							video={product.video}
-							poster={product.image}
-							imgClass="min-h-72"
-							cover
-						/>
-					{:else if product.video}
-						<video
-							src={product.video}
-							poster={product.image}
-							autoplay={allowMotion}
-							loop
-							muted
-							playsinline
-							preload="none"
-							aria-label={product.name}
-							class={`h-full min-h-72 w-full object-cover transition duration-700 group-hover:scale-[1.03] ${index === 0 ? 'bg-dci-blush' : index === 1 ? 'bg-dci-mist' : 'bg-dci-oat'}`}
-						></video>
-					{:else}
-						<img
-							src={product.image}
-							alt={product.name}
-							loading="lazy"
-							class={`h-full min-h-72 w-full object-cover transition duration-700 group-hover:scale-[1.03] ${index === 0 ? 'bg-dci-blush' : index === 1 ? 'bg-dci-mist' : 'bg-dci-oat'}`}
-						/>
-					{/if}
+					<!-- Absolute so the photo fills the row instead of setting its height. -->
+					<div class="absolute inset-0">
+						{#if product.images}
+							<ProductGallery
+								images={product.images}
+								alt={product.name}
+								video={product.video}
+								poster={product.image}
+								imgClass="min-h-72"
+								cover
+							/>
+						{:else if product.video}
+							<video
+								src={product.video}
+								poster={product.image}
+								autoplay={allowMotion}
+								loop
+								muted
+								playsinline
+								preload="none"
+								aria-label={product.name}
+								class={`h-full min-h-72 w-full object-cover transition duration-700 group-hover:scale-[1.03] ${index === 0 ? 'bg-dci-blush' : index === 1 ? 'bg-dci-mist' : 'bg-dci-oat'}`}
+							></video>
+						{:else}
+							<img
+								src={product.image}
+								alt={product.name}
+								loading="lazy"
+								class={`h-full min-h-72 w-full object-cover transition duration-700 group-hover:scale-[1.03] ${index === 0 ? 'bg-dci-blush' : index === 1 ? 'bg-dci-mist' : 'bg-dci-oat'}`}
+							/>
+						{/if}
+					</div>
 				</div>
 
 				<div class="flex flex-col justify-between gap-8 p-6 sm:p-8 lg:p-10">

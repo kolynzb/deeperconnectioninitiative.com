@@ -1,29 +1,21 @@
 <script lang="ts">
-	import {
-		UsersThreeIcon as Users,
-		ChartLineUpIcon as ChartLineUp,
-		HeartIcon as Heart,
-		ArrowUpRightIcon as ArrowUpRight
-	} from 'phosphor-svelte';
+	import { ArrowUpRightIcon as ArrowUpRight } from 'phosphor-svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { reveal } from '$lib/actions/reveal';
 	import { PageHero, Section, SectionHeading, FeatureCard, CheckList, CtaBand } from '$lib/components/sections';
 
 	const does = [
 		{
-			icon: Users,
 			title: 'Run Conversation Clinics',
 			description:
 				'Peer-led wellness meetups in your community, school, or organisation. No clinician required, just a trained Champion and the toolkit.'
 		},
 		{
-			icon: ChartLineUp,
 			title: 'Monitor mood data',
 			description:
 				'Read patterns across your community and get a quiet alert when something needs attention, before it becomes a crisis.'
 		},
 		{
-			icon: Heart,
 			title: 'Hold space that matters',
 			description:
 				'Create room for the honest conversations most groups never have the structure to start.'
@@ -40,7 +32,6 @@
 
 <PageHero
 	eyebrow="Community Champions"
-	eyebrowIcon={Users}
 	title="Become the infrastructure in your community."
 	description="A certified DCI facilitator trained through the Training of Trainers program to run clinics, hold space, and monitor mood data across their community."
 >
@@ -84,18 +75,14 @@
 			eyebrow="Training of Trainers"
 			title="What the certification covers."
 		/>
-		<div use:reveal={{ delay: 120, y: 18 }} class="rounded-4xl border border-dci-cream/12 bg-dci-cream/6 p-8">
+		<div use:reveal={{ delay: 120, y: 18 }} class="rounded-2xl border border-dci-cream/15 p-6 sm:p-8">
 			<CheckList items={covers} accent="#F6ECD9" class="[&_span]:text-dci-cream/80" />
-			<div class="mt-8 border-t border-dci-cream/12 pt-6">
-				<div class="flex flex-wrap items-end justify-between gap-4">
-					<div>
-						<p class="text-4xl font-bold text-white">UGX 500,000</p>
-						<p class="mt-1 text-sm text-dci-cream/60">per person · one certified Champion</p>
-					</div>
-					<p class="rounded-full bg-dci-cream/10 px-4 py-1.5 text-sm font-semibold text-dci-cream">
-						50+ compounding miles
-					</p>
+			<div class="mt-8 flex flex-wrap items-end justify-between gap-4 border-t border-dci-cream/15 pt-6">
+				<div>
+					<p class="font-serif text-3xl text-dci-cream">UGX 500,000</p>
+					<p class="mt-1 text-sm text-dci-cream/75">per person · one certified Champion</p>
 				</div>
+				<p class="type-eyebrow text-dci-cream/75">50+ compounding miles</p>
 			</div>
 		</div>
 	</div>

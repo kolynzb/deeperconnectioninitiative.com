@@ -1,14 +1,10 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import { Section, SectionHeading } from '$lib/components/sections';
+	import { PageHero, Section, SectionHeading, FeatureCard } from '$lib/components/sections';
 	import { reveal } from '$lib/actions/reveal';
 	import {
-		CalendarDotsIcon as CalendarDays,
 		MapPinIcon as MapPin,
 		ClockIcon as Clock,
-		ChatCircleTextIcon as MessageCircle,
-		UsersThreeIcon as Users,
-		HandHeartIcon as HandHeart,
 		ArrowUpRightIcon as ArrowUpRight
 	} from 'phosphor-svelte';
 	import {
@@ -29,86 +25,55 @@
 
 	const howItWorks = [
 		{
-			icon: Users,
 			title: 'You arrive and you sit down',
 			body: 'A small group, a trained Champion holding the room, and a set of cards on the table. Nobody is put on the spot.'
 		},
 		{
-			icon: MessageCircle,
 			title: 'A card opens the conversation',
 			body: 'Someone draws a question. You answer if you want to. Listening counts as taking part, and plenty of people start there.'
 		},
 		{
-			icon: HandHeart,
 			title: 'You leave with something practical',
 			body: 'A way of naming what you are carrying, and people who now know your name. Many come back the following month.'
 		}
 	];
 </script>
 
-<section class="relative overflow-hidden pt-28">
-	<div class="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
-		<div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-			<div class="space-y-6" use:reveal={{ delay: 0, y: 18 }}>
-				<div
-					class="inline-flex items-center gap-2 rounded-full border border-dci-teal/20 bg-dci-teal/5 px-3 py-1"
-				>
-					<CalendarDays class="size-4 text-dci-teal" weight="duotone" />
-					<span class="text-xs font-semibold uppercase tracking-wide text-dci-teal">
-						Every last Wednesday
-					</span>
-				</div>
-				<h1
-					class="max-w-2xl text-5xl font-semibold leading-[0.95] tracking-tight text-foreground sm:text-6xl"
-				>
-					A room where the conversation is already started.
-				</h1>
-				<p class="max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-					The Conversation Clinic is a monthly meet-up in Kampala. A trained Champion, the DCI card
-					game, and a small group of people who came for the same reason you did. You do not need
-					the right words. The cards do that part.
+<PageHero
+	eyebrow="Every last Wednesday"
+	title="A room where the conversation is already started."
+	description="The Conversation Clinic is a monthly meet-up in Kampala. A trained Champion, the DCI card game, and a small group of people who came for the same reason you did. You do not need the right words. The cards do that part."
+>
+	{#snippet aside()}
+		<div class="rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8 lg:ml-auto lg:max-w-md">
+			<p class="type-eyebrow text-dci-teal">Next clinic</p>
+			<p class="type-title mt-3 text-foreground">{formatClinicDate(next)}</p>
+
+			<div class="mt-6 space-y-3 border-t border-dci-teal/15 pt-5 text-sm text-muted-foreground">
+				<p class="flex items-center gap-2.5">
+					<Clock class="size-4 shrink-0" weight="regular" />
+					{CLINIC_START} to {CLINIC_END}
+				</p>
+				<p class="flex items-start gap-2.5">
+					<MapPin class="mt-0.5 size-4 shrink-0" weight="regular" />
+					{CLINIC_VENUE}
 				</p>
 			</div>
 
-			<div
-				use:reveal={{ delay: 120, y: 18 }}
-				class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-7 text-dci-cream sm:p-9"
-			>
-				<div class="relative space-y-6">
-					<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">Next clinic</p>
-					<p class="text-3xl font-semibold leading-tight text-white sm:text-4xl">
-						{formatClinicDate(next)}
-					</p>
-
-					<div class="space-y-3 border-t border-dci-cream/15 pt-5 text-sm">
-						<p class="flex items-center gap-2.5 text-dci-cream/85">
-							<Clock class="size-4 shrink-0" weight="regular" />
-							{CLINIC_START} to {CLINIC_END}
-						</p>
-						<p class="flex items-start gap-2.5 text-dci-cream/85">
-							<MapPin class="mt-0.5 size-4 shrink-0" weight="regular" />
-							{CLINIC_VENUE}
-						</p>
-					</div>
-
-					<div class="border-t border-dci-cream/15 pt-5">
-						<p class="text-3xl font-bold text-white">{price}</p>
-						<p class="mt-1 text-sm text-dci-cream/70">Per seat, includes the session.</p>
-					</div>
-
-					<Button variant="inverse"
-						href={`/checkout/clinic?date=${clinicKey(next)}`} class="w-full"
-					>
-						Book your seat
-					</Button>
-					<p class="text-center text-xs text-dci-cream/60">
-						Pay by Mobile Money or card. Seats are limited.
-					</p>
-				</div>
+			<div class="mt-6 border-t border-dci-teal/15 pt-5">
+				<p class="font-serif text-3xl text-dci-teal-deep">{price}</p>
+				<p class="mt-1 text-sm text-muted-foreground">Per seat, includes the session.</p>
 			</div>
+
+			<Button href={`/checkout/clinic?date=${clinicKey(next)}`} class="mt-6 w-full">
+				Book your seat
+			</Button>
+			<p class="mt-3 text-center text-xs text-muted-foreground">
+				Pay by Mobile Money or card. Seats are limited.
+			</p>
 		</div>
-	</div>
-</section>
+	{/snippet}
+</PageHero>
 
 <Section tone="cream">
 	<SectionHeading
@@ -118,18 +83,8 @@
 	/>
 	<div class="grid gap-6 md:grid-cols-3">
 		{#each howItWorks as step, index (step.title)}
-			{@const Icon = step.icon}
-			<div
-				use:reveal={{ delay: index * 80, y: 22 }}
-				class="rounded-4xl border border-dci-teal/12 bg-dci-paper p-7"
-			>
-				<span
-					class="flex size-11 items-center justify-center rounded-xl bg-dci-teal/10 text-dci-teal"
-				>
-					<Icon class="size-5" weight="duotone" />
-				</span>
-				<h3 class="mt-5 text-xl font-semibold leading-tight text-foreground">{step.title}</h3>
-				<p class="mt-3 text-sm leading-relaxed text-muted-foreground">{step.body}</p>
+			<div use:reveal={{ delay: index * 80, y: 22 }} class="h-full">
+				<FeatureCard title={step.title} description={step.body} />
 			</div>
 		{/each}
 	</div>
@@ -140,31 +95,20 @@
 		{#each dates as date, index (date.getTime())}
 			<article
 				use:reveal={{ delay: index * 60, y: 18 }}
-				class={`grid gap-4 rounded-4xl border p-5 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:p-6 ${
-					index === 0
-						? 'border-dci-teal/25 bg-dci-paper'
-						: 'border-dci-teal/12 bg-dci-cream'
-				}`}
+				class="grid gap-4 rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-5 sm:grid-cols-[auto_1fr_auto] sm:items-center sm:gap-6 sm:p-6"
 			>
-				<div
-					class="flex size-16 shrink-0 flex-col items-center justify-center rounded-2xl bg-dci-teal-deep text-dci-cream"
-				>
-					<span class="text-[0.65rem] font-bold uppercase tracking-wide">
+				<div class="w-16 shrink-0 text-center">
+					<p class="type-eyebrow text-dci-teal">
 						{date.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' })}
-					</span>
-					<span class="text-2xl font-semibold leading-none">{date.getUTCDate()}</span>
+					</p>
+					<p class="font-serif text-3xl leading-none text-foreground">{date.getUTCDate()}</p>
 				</div>
 
 				<div class="min-w-0">
-					<p class="text-lg font-semibold leading-tight text-foreground">
-						{formatClinicDate(date)}
-						{#if index === 0}
-							<span
-								class="ml-2 rounded-full bg-dci-teal/10 px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-dci-teal"
-								>Next</span
-							>
-						{/if}
-					</p>
+					{#if index === 0}
+						<p class="type-eyebrow mb-1 text-dci-burgundy">Next</p>
+					{/if}
+					<p class="type-subtitle text-foreground">{formatClinicDate(date)}</p>
 					<p class="mt-1 text-sm text-muted-foreground">
 						{CLINIC_START} to {CLINIC_END} · {CLINIC_VENUE}
 					</p>
@@ -198,10 +142,10 @@
 <Section>
 	<div
 		use:reveal={{ delay: 0, y: 22 }}
-		class="grid gap-8 rounded-4xl border border-dci-teal/12 bg-dci-cream p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center"
+		class="grid gap-8 rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center"
 	>
 		<div>
-			<h2 class="text-3xl font-semibold leading-tight tracking-tight text-foreground">
+			<h2 class="type-title text-foreground">
 				Take the conversation home.
 			</h2>
 			<p class="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
-	import SpotIllustration from '$lib/components/spot-illustration.svelte';
+	import { Section } from '$lib/components/sections';
 	import { reveal } from '$lib/actions/reveal';
 	import { ArrowUpRightIcon as ArrowUpRight, LockKeyIcon as LockKeyhole, EnvelopeIcon as Mail } from 'phosphor-svelte';
 
@@ -13,37 +13,24 @@
 	}
 </script>
 
-<section class="relative overflow-hidden pt-28">
-	<div class="mx-auto grid max-w-6xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:py-24">
-		<aside
-			use:reveal={{ delay: 0, y: 18 }}
-			class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-8 text-dci-cream lg:p-10"
-		>
-			<SpotIllustration
-				variant="toolkit"
-				class="pointer-events-none absolute -right-20 bottom-0 hidden w-80 rotate-2 opacity-20 lg:block"
-			/>
-			<div class="relative z-10">
-				<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">DCI access</p>
-				<h1 class="mt-4 max-w-lg text-5xl font-semibold leading-[0.95] tracking-tight text-white sm:text-6xl">
-					Sign in to continue your DCI work.
-				</h1>
-				<p class="mt-5 max-w-lg text-base leading-relaxed text-dci-cream/72">
-					Access profile details, training materials, toolkit resources, and community program
-					follow-ups from one place.
-				</p>
-			</div>
-		</aside>
+<Section class="pt-44 lg:pt-52">
+	<div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+		<div use:reveal={{ delay: 0, y: 18 }} class="space-y-6">
+			<p class="type-eyebrow text-dci-teal">DCI access</p>
+			<h1 class="type-headline max-w-lg text-foreground">Sign in to continue your DCI work.</h1>
+			<p class="type-lede max-w-lg text-muted-foreground">
+				Access profile details, training materials, toolkit resources, and community program
+				follow-ups from one place.
+			</p>
+		</div>
 
 		<div
 			use:reveal={{ delay: 120, y: 18 }}
-			class="rounded-4xl border border-dci-teal/12 bg-dci-cream p-5 sm:p-8 lg:p-10"
+			class="rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8 lg:p-10"
 		>
 			<div class="mb-8 space-y-3">
-				<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Welcome back</p>
-				<h2 class="text-3xl font-semibold leading-tight tracking-tight text-foreground">
-					Use your email and password.
-				</h2>
+				<p class="type-eyebrow text-dci-teal">Welcome back</p>
+				<h2 class="type-title text-foreground">Use your email and password.</h2>
 			</div>
 
 			<form class="space-y-6" onsubmit={handleSubmit}>
@@ -91,10 +78,10 @@
 					</p>
 					<Button type="submit">
 						Sign in
-						<ArrowUpRight class="size-4" weight="regular" />
+						<ArrowUpRight weight="regular" />
 					</Button>
 				</div>
 			</form>
 		</div>
 	</div>
-</section>
+</Section>
