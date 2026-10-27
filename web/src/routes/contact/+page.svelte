@@ -289,7 +289,7 @@
 						<p class="max-w-md text-sm leading-relaxed text-muted-foreground">
 							Please avoid sending sensitive clinical details through this form.
 						</p>
-						<Button type="submit" size="lg" disabled={submitting} class="rounded-full px-8">
+						<Button type="submit" disabled={submitting}>
 							{submitting ? 'Sending…' : 'Send message'}
 						</Button>
 					</div>

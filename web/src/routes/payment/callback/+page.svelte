@@ -40,8 +40,8 @@
 					<p class="mt-3 text-xs text-muted-foreground">Reference: {data.txRef}</p>
 				{/if}
 				<div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-					<Button href="/" size="lg" class="rounded-full px-8">Back to home</Button>
-					<Button href="/toolkit" size="lg" variant="outline" class="rounded-full px-8">
+					<Button href="/">Back to home</Button>
+					<Button href="/toolkit" variant="outline">
 						Explore the toolkit
 					</Button>
 				</div>
@@ -54,8 +54,8 @@
 					No charge was made. You can pick up where you left off whenever you are ready.
 				</p>
 				<div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-					<Button href="/toolkit" size="lg" class="rounded-full px-8">Back to the toolkit</Button>
-					<Button href="/contact" size="lg" variant="outline" class="rounded-full px-8">
+					<Button href="/toolkit">Back to the toolkit</Button>
+					<Button href="/contact" variant="outline">
 						Need help? Contact us
 					</Button>
 				</div>
@@ -72,8 +72,8 @@
 					<p class="mt-3 text-xs text-muted-foreground">Reference: {data.txRef}</p>
 				{/if}
 				<div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-					<Button href="/contact" size="lg" class="rounded-full px-8">Contact us</Button>
-					<Button href="/" size="lg" variant="outline" class="rounded-full px-8">Back to home</Button>
+					<Button href="/contact">Contact us</Button>
+					<Button href="/" variant="outline">Back to home</Button>
 				</div>
 			{/if}
 		</div>

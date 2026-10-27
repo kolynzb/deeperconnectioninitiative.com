@@ -92,9 +92,8 @@
 					Bring a clinic, demo, or champion orientation into your school, venue, clinic, or youth
 					group.
 				</p>
-				<Button
-					href="/contact?topic=Community%20clinic%20or%20event"
-					class="mt-7 rounded-full bg-dci-cream text-dci-teal-deep hover:bg-white"
+				<Button variant="inverse"
+					href="/contact?topic=Community%20clinic%20or%20event" class="mt-7"
 				>
 					Request an event
 					<ArrowUpRight class="size-4" weight="regular" />

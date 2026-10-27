@@ -88,14 +88,12 @@
 	description="Discover the system behind how you think, lead, and perform. For founders and leaders who are winning on the outside and fighting themselves on the inside."
 >
 	{#snippet actions()}
-		<Button href={featured.href ?? '/contact'} size="lg" class="rounded-full px-7">
+		<Button href={featured.href ?? '/contact'}>
 			Apply for the Guided Toolkit
 		</Button>
 		<Button
 			href="/performance/assessment"
-			size="lg"
 			variant="outline"
-			class="rounded-full border-dci-teal/25 bg-transparent px-7 text-dci-teal-deep hover:bg-dci-teal/7"
 		>
 			Take the free assessment
 		</Button>
@@ -113,10 +111,8 @@
 			<p class="mt-4 text-4xl font-bold text-white">{featured.price}</p>
 			<p class="mt-1 text-sm text-dci-cream/70">Led by {featured.lead}</p>
 			<p class="mt-5 text-sm leading-relaxed text-dci-cream/75">{featured.blurb}</p>
-			<Button
-				href={featured.href ?? '/contact'}
-				size="lg"
-				class="mt-7 w-full rounded-full bg-dci-cream text-dci-teal-deep hover:bg-white"
+			<Button variant="inverse"
+				href={featured.href ?? '/contact'} class="mt-7 w-full"
 			>
 				{featured.cta}
 				<ArrowUpRight class="size-4" weight="regular" />
@@ -193,7 +189,7 @@
 				<p class="mt-4 text-3xl font-bold" style={`color:${tier.accent}`}>{tier.price}</p>
 				<p class="mt-1 text-sm font-medium text-muted-foreground">{tier.lead}</p>
 				<p class="mt-4 flex-grow text-sm leading-relaxed text-muted-foreground">{tier.blurb}</p>
-				<Button href={tier.href ?? '/contact'} class="mt-6 rounded-full">
+				<Button href={tier.href ?? '/contact'} class="mt-6">
 					{tier.cta}
 					<ArrowUpRight class="size-4" weight="regular" />
 				</Button>
@@ -243,10 +239,8 @@
 	description="The Blueprint is where you redesign how you perform. The DCI Inner Circle is where you sustain it, a private circle of high performers on the same path. Coaching clients are first in."
 >
 	{#snippet actions()}
-		<Button
+		<Button variant="inverse"
 			href={`/contact?topic=${encodeURIComponent('Performance Blueprint application')}&about=${encodeURIComponent('Please add me to the DCI Inner Circle waitlist.')}`}
-			size="lg"
-			class="rounded-full px-8"
 		>
 			Join the waitlist
 		</Button>

@@ -45,12 +45,10 @@
 	description="A certified DCI facilitator trained through the Training of Trainers program to run clinics, hold space, and monitor mood data across their community."
 >
 	{#snippet actions()}
-		<Button href="/contact?topic=Community%20Champion%20application" size="lg" class="rounded-full px-7">Apply for the next cohort</Button>
+		<Button href="/contact?topic=Community%20Champion%20application">Apply for the next cohort</Button>
 		<Button
 			href="/trainings"
-			size="lg"
 			variant="outline"
-			class="rounded-full border-dci-teal/25 bg-transparent px-7 text-dci-teal-deep hover:bg-dci-teal/7"
 		>
 			See training tiers
 		</Button>
@@ -109,7 +107,7 @@
 	description="You don't just help one person, you change the texture of a whole community. And your miles keep compounding as it grows."
 >
 	{#snippet actions()}
-		<Button href="/contact?topic=Community%20Champion%20application" size="lg" class="rounded-full px-8">
+		<Button href="/contact?topic=Community%20Champion%20application" variant="inverse">
 			Submit application
 			<ArrowUpRight class="size-4" weight="regular" />
 		</Button>

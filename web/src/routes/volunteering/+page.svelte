@@ -46,15 +46,13 @@
 	description="DCI volunteers help create warm, grounded, and practical spaces where people can talk, reflect, learn, and find the next right support."
 >
 	{#snippet actions()}
-		<Button href="/contact" size="lg" class="rounded-full px-7">
+		<Button href="/contact">
 			Apply to volunteer
 			<ArrowUpRight class="size-4" weight="regular" />
 		</Button>
 		<Button
 			href="/trainings"
-			size="lg"
 			variant="outline"
-			class="rounded-full border-dci-teal/25 bg-transparent px-7 text-dci-teal-deep hover:bg-dci-teal/7"
 		>
 			See trainings
 		</Button>
@@ -118,7 +116,6 @@
 					href={paymentLinks.tShirt}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="rounded-full px-6"
 				>
 					Get the shirt
 					<ArrowUpRight class="size-4" weight="regular" />

@@ -1,54 +1,72 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import { cn } from '$lib/utils';
 	import { reveal } from '$lib/actions/reveal';
+	import Eyebrow from './eyebrow.svelte';
 
+	// Every section title on the site. Pass `title` as a snippet to italicise one
+	// phrase: <em> picks up the accent colour for the tone automatically.
 	let {
 		eyebrow,
 		title,
 		description,
 		tone = 'light',
 		align = 'left',
-		class: className
+		split = false,
+		class: className,
+		children
 	}: {
 		eyebrow?: string;
-		title: string;
+		title: string | Snippet;
 		description?: string;
 		tone?: 'light' | 'dark';
 		align?: 'left' | 'center';
+		/** Description sits beside the heading on large screens. */
+		split?: boolean;
 		class?: string;
+		/** Extra content under the description, e.g. a button. */
+		children?: Snippet;
 	} = $props();
 </script>
 
 <div
 	use:reveal={{ delay: 0, y: 18 }}
-	class={cn('max-w-3xl space-y-3', align === 'center' && 'mx-auto text-center', className)}
+	class={cn(
+		split ? 'grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-12' : 'max-w-3xl',
+		align === 'center' && 'mx-auto text-center',
+		className
+	)}
 >
-	{#if eyebrow}
-		<p
+	<div class="space-y-4">
+		{#if eyebrow}
+			<Eyebrow label={eyebrow} {tone} />
+		{/if}
+		<h2
 			class={cn(
-				'text-xs font-semibold uppercase tracking-wide',
-				tone === 'dark' ? 'text-dci-cream/70' : 'text-dci-teal'
+				'type-headline max-w-3xl',
+				tone === 'dark'
+					? 'text-dci-cream [&_em]:text-dci-clay'
+					: 'text-foreground [&_em]:text-dci-burgundy',
+				align === 'center' && 'mx-auto'
 			)}
 		>
-			{eyebrow}
-		</p>
-	{/if}
-	<h2
-		class={cn(
-			'text-4xl font-semibold leading-tight tracking-tight sm:text-5xl',
-			tone === 'dark' ? 'text-white' : 'text-foreground'
-		)}
-	>
-		{title}
-	</h2>
-	{#if description}
-		<p
-			class={cn(
-				'text-base leading-relaxed',
-				tone === 'dark' ? 'text-dci-cream/75' : 'text-muted-foreground'
-			)}
-		>
-			{description}
-		</p>
+			{#if typeof title === 'string'}{title}{:else}{@render title()}{/if}
+		</h2>
+	</div>
+	{#if description || children}
+		<div class={cn('space-y-6', !split && 'mt-6')}>
+			{#if description}
+				<p
+					class={cn(
+						'type-lede max-w-xl',
+						tone === 'dark' ? 'text-dci-cream/75' : 'text-muted-foreground',
+						align === 'center' && 'mx-auto'
+					)}
+				>
+					{description}
+				</p>
+			{/if}
+			{@render children?.()}
+		</div>
 	{/if}
 </div>

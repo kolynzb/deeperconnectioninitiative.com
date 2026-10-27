@@ -3,6 +3,8 @@
 	import { browser } from '$app/environment';
 	import { reveal } from '$lib/actions/reveal';
 	import { PlayIcon, XIcon } from 'phosphor-svelte';
+	import { Button } from '$lib/components/ui/button';
+	import { Eyebrow } from '$lib/components/sections';
 
 	let showVideo = $state(false);
 	let closeButton = $state<HTMLButtonElement | null>(null);
@@ -39,70 +41,40 @@
 
 <svelte:window on:keydown={onKeydown} />
 
-<section id="founder" class="w-full relative z-10 overflow-hidden">
-	<div
-		class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24 grid md:grid-cols-[0.92fr_1.08fr] gap-y-14 gap-x-12 lg:gap-x-16 items-center"
-	>
-		<div class="relative isolate w-full max-w-md md:mx-0 mx-auto" use:reveal={{ delay: 0, y: 18 }}>
-			<!-- Offset backing panel grounds the frame so it reads as composed, not floating -->
-			<div
-				class="pointer-events-none absolute -bottom-5 -left-5 -z-10 h-[92%] w-[88%] rounded-[2.25rem] bg-dci-clay/15"
-				aria-hidden="true"
-			></div>
+<section id="founder" class="relative px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+	<div class="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+		<figure class="mx-auto w-full max-w-md md:mx-0" use:reveal={{ delay: 0, y: 18 }}>
+			<img
+				src="/photos/ann-banya.jpg"
+				alt="Ann Banya, Early Child Development Specialist"
+				loading="lazy"
+				class="aspect-[4/5] w-full rounded-4xl object-cover object-top"
+			/>
+			<figcaption class="mt-4 flex items-baseline justify-between gap-4 border-t border-dci-teal/15 pt-4">
+				<span class="font-serif text-xl text-foreground">Ann Banya</span>
+				<span class="text-sm text-muted-foreground">Early Child Development Specialist</span>
+			</figcaption>
+		</figure>
 
-			<div
-				class="relative overflow-hidden rounded-4xl border-[6px] border-dci-cream bg-dci-cream shadow-dci-teal"
-			>
-				<img
-					src="/photos/ann-banya.jpg"
-					alt="Ann Banya, Early Child Development Specialist"
-					loading="lazy"
-					class="aspect-[4/5] w-full object-cover object-top"
-				/>
-			</div>
-
-			<!-- Caption plaque ties the name to the face and anchors the frame's lower edge -->
-			<div
-				class="absolute -bottom-5 right-4 max-w-[15rem] rounded-2xl border border-dci-sand bg-dci-paper/95 px-5 py-3 shadow-dci-soft backdrop-blur-sm"
-			>
-				<p class="font-semibold text-foreground">Ann Banya</p>
-				<p class="mt-0.5 text-sm leading-snug text-dci-teal">
-					Early Child Development Specialist &middot; 40+ years
-				</p>
-			</div>
-		</div>
-
-		<div class="space-y-5" use:reveal={{ delay: 120, y: 18 }}>
-			<p class="text-xs font-semibold tracking-wide text-dci-teal uppercase">The founder</p>
-
-			<h2 class="text-5xl sm:text-6xl font-normal tracking-tight leading-[1.04] text-balance text-foreground">
+		<div class="space-y-6" use:reveal={{ delay: 120, y: 18 }}>
+			<Eyebrow label="The founder" />
+			<h2 class="type-headline text-foreground">
 				<em class="text-dci-burgundy">40+ years</em> of experience started this journey
 			</h2>
-
-			<p class="text-base leading-relaxed text-muted-foreground">
-				DCI is built on four decades of behavioural practice, not an emerging idea. Every toolkit, clinic, and
-				training carries decades of behavioural-health experience behind it.
+			<p class="type-lede text-muted-foreground">
+				DCI is built on four decades of behavioural practice, not an emerging idea. Every toolkit,
+				clinic, and training carries that experience behind it.
 			</p>
 
-			<button
-				type="button"
-				onclick={() => (showVideo = true)}
-				class="group inline-flex items-center gap-3 rounded-full border border-dci-teal/25 bg-dci-cream/60 py-1.5 pr-5 pl-1.5 text-left transition hover:border-dci-teal/40 hover:bg-dci-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dci-teal focus-visible:ring-offset-2 focus-visible:ring-offset-dci-cream"
-			>
-				<span
-					class="flex size-9 items-center justify-center rounded-full bg-dci-teal-deep text-dci-cream transition group-hover:scale-105"
-				>
-					<PlayIcon class="size-4 ml-0.5" weight="fill" />
-				</span>
-				<span class="text-sm font-semibold text-dci-teal-deep">Watch her story</span>
-			</button>
+			<Button variant="outline" onclick={() => (showVideo = true)}>
+				<PlayIcon weight="fill" />
+				Watch her story
+			</Button>
 
-			<div class="pt-3">
-				<p class="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
-					Trusted alongside
-				</p>
+			<div class="pt-4">
+				<p class="type-eyebrow mb-3 text-muted-foreground">Trusted alongside</p>
 				<!-- Plain names, not pills, so they don't read as buttons. Swap for logos once we have them. -->
-				<ul class="divide-y divide-dci-teal/12 border-y border-dci-teal/12">
+				<ul class="divide-y divide-dci-teal/15 border-y border-dci-teal/15">
 					{#each affiliations as name (name)}
 						<li class="py-3 font-serif text-xl text-foreground">{name}</li>
 					{/each}

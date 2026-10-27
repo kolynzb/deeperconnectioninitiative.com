@@ -89,7 +89,7 @@
 					<p class="text-sm text-muted-foreground">
 						New here? <a href="/signup" class="font-semibold text-dci-teal underline underline-offset-4">Create a profile</a>
 					</p>
-					<Button type="submit" size="lg" class="rounded-full px-8">
+					<Button type="submit">
 						Sign in
 						<ArrowUpRight class="size-4" weight="regular" />
 					</Button>

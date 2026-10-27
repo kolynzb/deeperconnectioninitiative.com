@@ -7,7 +7,8 @@
 	import ImpactStories from '@/lib/components/pages/sections/impact-stories.svelte';
 	import Founder from '@/lib/components/pages/sections/founder.svelte';
 	import PathFinder from '@/lib/components/pages/sections/path-finder.svelte';
-	import ClosingCta from '@/lib/components/pages/sections/closing-cta.svelte';
+	import { CtaBand } from '$lib/components/sections';
+	import { Button } from '$lib/components/ui/button';
 </script>
 
 <!--
@@ -24,4 +25,10 @@
 <Toolkit />
 <CardDraw />
 <div class="py-12 lg:py-16"><FlowingThoughts /></div>
-<ClosingCta />
+<CtaBand description="Get a toolkit for yourself, or put one in the hands of someone who can't buy their own.">
+	{#snippet title()}Ready to <em>start talking?</em>{/snippet}
+	{#snippet actions()}
+		<Button href="/toolkit#toolkit-products" variant="inverse">Buy a toolkit</Button>
+		<Button href="/checkout/donate" variant="inverse-outline">Sponsor a toolkit</Button>
+	{/snippet}
+</CtaBand>

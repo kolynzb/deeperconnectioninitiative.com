@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { paymentLinks } from '$lib/payment-links';
-	import { ArrowsClockwiseIcon, ArrowUpRightIcon, HandTapIcon } from 'phosphor-svelte';
+	import { ArrowsClockwiseIcon, ArrowUpRightIcon } from 'phosphor-svelte';
+	import { Button } from '$lib/components/ui/button';
 
 	type Tone = 'burgundy' | 'teal' | 'clay';
 	type Prompt = { text: string; theme: string; tone: Tone; no: number };
@@ -92,195 +93,95 @@
 		rotation += 180;
 	}
 
-	function toneClasses(tone: Tone) {
-		if (tone === 'teal') return { text: 'text-dci-teal', chip: 'bg-dci-teal/10 text-dci-teal', bar: 'bg-dci-teal-deep' };
-		if (tone === 'clay') return { text: 'text-dci-clay', chip: 'bg-dci-clay/20 text-[#9a5a28]', bar: 'bg-dci-clay' };
-		return { text: 'text-dci-burgundy', chip: 'bg-dci-burgundy/10 text-dci-burgundy', bar: 'bg-dci-burgundy' };
-	}
+	const toneText: Record<Tone, string> = {
+		teal: 'text-dci-teal',
+		clay: 'text-dci-burgundy',
+		burgundy: 'text-dci-burgundy'
+	};
 </script>
 
 {#snippet cardFace(p: Prompt, isBack: boolean)}
-	{@const tc = toneClasses(p.tone)}
 	<div
-		class="absolute inset-0 flex flex-col overflow-hidden rounded-3xl border border-dci-teal/12 bg-dci-paper p-7 shadow-dci-soft [backface-visibility:hidden]"
+		class="absolute inset-0 flex flex-col rounded-2xl border border-dci-teal/15 bg-dci-paper p-7 shadow-dci-soft [backface-visibility:hidden]"
 		style="transform: rotateY({isBack ? 180 : 0}deg);"
 	>
-		<!-- accent header bar -->
-		<div class="absolute inset-x-0 top-0 h-1.5 {tc.bar}"></div>
-
-		<div class="relative flex items-start justify-between">
-			<span class="font-serif text-6xl leading-[0.6] {tc.text}/60">&ldquo;</span>
-			<span class="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-dci-teal/40">
-				{String(p.no).padStart(2, '0')} / 60
-			</span>
+		<div class="flex items-center justify-between">
+			<span class="type-eyebrow {toneText[p.tone]}">{p.theme}</span>
+			<span class="type-eyebrow text-muted-foreground">{String(p.no).padStart(2, '0')} / 60</span>
 		</div>
-
-		<p class="relative my-auto py-4 font-serif text-2xl leading-snug text-dci-ink">
-			{p.text}
-		</p>
-
-		<div class="relative flex items-center justify-between">
-			<span
-				class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold uppercase tracking-wider {tc.chip}"
-			>
-				{p.theme}
-			</span>
-			<span class="text-xs font-semibold uppercase tracking-[0.22em] text-dci-teal/40">
-				DCI Card
-			</span>
-		</div>
+		<p class="my-auto font-serif text-2xl leading-snug text-foreground">{p.text}</p>
+		<p class="type-eyebrow text-muted-foreground">Deeper Connection</p>
 	</div>
 {/snippet}
 
 {#snippet deckBack(rot: number, tx: string, ty: string, z: number)}
 	<div
-		class="absolute inset-0 overflow-hidden rounded-3xl border border-dci-teal/10 bg-dci-burgundy shadow-dci-soft"
+		class="absolute inset-0 flex items-center justify-center rounded-2xl bg-dci-burgundy shadow-dci-soft"
 		style="transform: rotate({rot}deg) translate({tx}, {ty}); z-index: {z};"
 		aria-hidden="true"
 	>
-		<div class="absolute inset-3 rounded-[1.15rem] border border-dci-cream/15"></div>
-		<div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
-			<!-- pulse / breathing emblem - the brand's living-body motif -->
-			<div class="relative size-14 {z === 2 ? 'dci-breathe' : ''}">
-				<div class="absolute inset-0 rounded-full border border-dci-cream/25"></div>
-				<div class="absolute inset-2 rounded-full border border-dci-cream/20"></div>
-				<div class="absolute inset-[1.15rem] rounded-full bg-dci-cream/30"></div>
-			</div>
-			<span class="text-xs font-semibold uppercase tracking-[0.3em] text-dci-cream/40">
-				Deeper Connection
-			</span>
-		</div>
+		<span class="font-serif text-xl text-dci-cream/80 italic">Deeper Connection</span>
 	</div>
 {/snippet}
 
-<section id="card-draw" class="w-full relative z-10 overflow-hidden">
-	<div use:reveal={{ delay: 80, y: 22 }} class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-6">
-		<div
-			class="relative overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-teal-deep text-dci-cream shadow-dci-panel"
-		>
+<section id="card-draw" class="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+	<div
+		use:reveal={{ delay: 0, y: 18 }}
+		class="mx-auto grid max-w-7xl overflow-hidden rounded-4xl bg-dci-teal-deep text-dci-cream lg:grid-cols-[0.9fr_1.1fr]"
+	>
+		<div class="flex flex-col justify-center p-8 sm:p-10 lg:p-14">
+			<p class="type-eyebrow text-dci-cream/75">Draw a card</p>
+			<h2 class="type-headline mt-4 max-w-md">
+				Start a conversation people <em class="text-dci-clay">actually want</em> to have.
+			</h2>
+			<p class="type-lede mt-6 max-w-md text-dci-cream/75">
+				Every card carries a real prompt, not a therapy question, just an honest one. 60 cards,
+				solo or in a group, no screens needed.
+			</p>
+			<Button
+				href={paymentLinks.cardGame}
+				target="_blank"
+				rel="noopener noreferrer"
+				variant="inverse"
+				class="mt-9 self-start"
+			>
+				Get the card game
+				<ArrowUpRightIcon weight="regular" />
+			</Button>
+		</div>
 
-			<div class="relative grid gap-0 lg:grid-cols-[0.9fr_1.1fr]">
-				<!-- Left panel: intro text -->
-				<div class="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
-					<p class="mb-6 text-xs font-semibold uppercase tracking-wide text-dci-cream/70">Draw a card</p>
-					<h3 class="max-w-md text-4xl sm:text-5xl font-normal leading-[1.04] tracking-tight text-dci-cream">
-						Start a conversation people <em class="text-dci-clay">actually want</em> to have.
-					</h3>
-					<p class="mt-4 max-w-md text-base leading-relaxed text-dci-cream/72">
-						Every DCI conversation card carries a real prompt, not a therapy question, just an
-						honest one. Draw one and see what surfaces.
-					</p>
+		<div class="flex flex-col items-center bg-dci-cream p-8 sm:p-10 lg:p-14">
+			<div class="relative h-[23rem] w-full max-w-[21rem] [perspective:1600px] sm:h-[25rem]">
+				{@render deckBack(-7, '-13px', '11px', 0)}
+				{@render deckBack(5, '11px', '7px', 1)}
+				{@render deckBack(-3, '-4px', '3px', 2)}
 
-					<div
-						class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium text-dci-cream/55"
-					>
-						<span class="inline-flex items-center gap-1.5">
-							<span class="size-1 rounded-full bg-dci-clay"></span>60 cards
-						</span>
-						<span class="inline-flex items-center gap-1.5">
-							<span class="size-1 rounded-full bg-dci-clay"></span>Solo or in a group
-						</span>
-						<span class="inline-flex items-center gap-1.5">
-							<span class="size-1 rounded-full bg-dci-clay"></span>No screens needed
-						</span>
-					</div>
-
-					<a
-						href={paymentLinks.cardGame}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="mt-8 inline-flex h-11 w-fit items-center justify-center gap-2 rounded-full bg-dci-cream px-6 text-sm font-semibold text-dci-teal-deep transition hover:bg-dci-paper active:scale-[0.98]"
-					>
-						Get the card game
-						<ArrowUpRightIcon class="size-4" weight="regular" />
-					</a>
-				</div>
-
-				<!-- Right panel: interactive deck -->
-				<div class="relative overflow-hidden bg-dci-cream p-8 sm:p-10 lg:p-12">
-
-					<div class="relative flex flex-col items-center">
-						<div class="relative flex w-full items-center justify-center py-5 [perspective:1600px]">
-							<div class="relative w-full max-w-[21rem] h-[23rem] sm:h-[25rem]">
-								<!-- ground shadow -->
-								<div
-									class="pointer-events-none absolute -bottom-[7%] left-1/2 h-8 w-4/5 -translate-x-1/2 rounded-[100%] bg-dci-teal-deep/20 blur-2xl"
-								></div>
-
-								<!-- fanned deck of card-backs -->
-								{@render deckBack(-7, '-13px', '11px', 0)}
-								{@render deckBack(5, '11px', '7px', 1)}
-								{@render deckBack(-3, '-4px', '3px', 2)}
-
-								<!-- active flip card -->
-								<div
-									class="absolute inset-0 z-10 cursor-pointer [transform-style:preserve-3d] focus-visible:outline-none"
-									style="transform: rotateY({rotation}deg); transition: transform {allowMotion
-										? 620
-										: 0}ms cubic-bezier(0.2, 0.85, 0.25, 1);"
-									role="button"
-									tabindex="0"
-									aria-label="Draw another conversation card"
-									onclick={drawCard}
-									onkeydown={(e) => {
-										if (e.key === 'Enter' || e.key === ' ') {
-											e.preventDefault();
-											drawCard();
-										}
-									}}
-								>
-									{@render cardFace(prompts[idxA], false)}
-									{@render cardFace(prompts[idxB], true)}
-								</div>
-							</div>
-						</div>
-
-						<!-- controls -->
-						<button
-							type="button"
-							onclick={drawCard}
-							class="group mt-8 inline-flex items-center gap-2 rounded-full border border-dci-teal/20 bg-dci-teal-deep px-5 py-2.5 text-sm font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.97]"
-						>
-							<ArrowsClockwiseIcon
-								class="size-4 transition-transform duration-500 group-hover:rotate-180"
-								weight="bold"
-							/>
-							Draw another
-						</button>
-						<p
-							class="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-dci-teal/50"
-						>
-							<HandTapIcon class="size-3.5" weight="duotone" />
-							Tap the card to flip
-						</p>
-					</div>
+				<!-- The active card flips to reveal a fresh prompt on each draw. -->
+				<div
+					class="absolute inset-0 z-10 cursor-pointer [transform-style:preserve-3d] focus-visible:outline-none"
+					style="transform: rotateY({rotation}deg); transition: transform {allowMotion
+						? 620
+						: 0}ms cubic-bezier(0.16, 1, 0.3, 1);"
+					role="button"
+					tabindex="0"
+					aria-label="Draw another conversation card"
+					onclick={drawCard}
+					onkeydown={(e) => {
+						if (e.key === 'Enter' || e.key === ' ') {
+							e.preventDefault();
+							drawCard();
+						}
+					}}
+				>
+					{@render cardFace(prompts[idxA], false)}
+					{@render cardFace(prompts[idxB], true)}
 				</div>
 			</div>
+
+			<Button size="sm" class="mt-10" onclick={drawCard}>
+				<ArrowsClockwiseIcon weight="regular" />
+				Draw another
+			</Button>
 		</div>
 	</div>
 </section>
-
-<style>
-	.dci-breathe {
-		animation: dci-breathe 4.5s ease-in-out infinite;
-		will-change: transform, opacity;
-	}
-
-	@keyframes dci-breathe {
-		0%,
-		100% {
-			transform: scale(1);
-			opacity: 0.85;
-		}
-		50% {
-			transform: scale(1.12);
-			opacity: 1;
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.dci-breathe {
-			animation: none;
-		}
-	}
-</style>

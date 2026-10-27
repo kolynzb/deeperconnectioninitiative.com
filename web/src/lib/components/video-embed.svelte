@@ -22,10 +22,9 @@
 
 <div
 	class={cn(
-		'relative aspect-video w-full overflow-hidden rounded-2xl bg-black shadow-dci-panel',
+		'relative aspect-video w-full overflow-hidden rounded-2xl bg-dci-ink',
 		className
 	)}
-	class:video-attract={!playing}
 >
 	{#if playing}
 		<iframe
@@ -62,7 +61,7 @@
 			/>
 			<span class="absolute inset-0 bg-dci-ink/20 transition group-hover:bg-dci-ink/10"></span>
 			<span
-				class="play-ripple absolute top-1/2 left-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-dci-cream text-dci-teal-deep shadow-dci-lift transition group-hover:scale-110 sm:size-20"
+				class="absolute top-1/2 left-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-dci-cream text-dci-teal-deep shadow-dci-lift transition group-hover:bg-dci-paper sm:size-20"
 			>
 				<PlayIcon weight="fill" class="ml-1 size-7 sm:size-9" />
 			</span>
@@ -70,76 +69,3 @@
 	{/if}
 </div>
 
-<style>
-	/* Draws the eye on arrival: the box rises in, then a glow ring pulses out of it a few
-	   times and settles. Finite on purpose: endless motion beside the headline needs a
-	   pause control under WCAG 2.2.2 and repaints box-shadow every frame on phones.
-	   No opacity in the rise, so the poster paints immediately. Only runs before play. */
-	.video-attract {
-		animation:
-			video-rise 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both,
-			video-glow 2.4s ease-out 1.1s 4;
-	}
-
-	@keyframes video-rise {
-		from {
-			transform: translateY(18px) scale(0.97);
-		}
-		to {
-			opacity: 1;
-			transform: none;
-		}
-	}
-
-	@keyframes video-glow {
-		0% {
-			box-shadow:
-				0 28px 90px -60px rgba(0, 0, 0, 0.75),
-				0 0 0 0 rgba(111, 35, 30, 0.45);
-		}
-		70%,
-		100% {
-			box-shadow:
-				0 28px 90px -60px rgba(0, 0, 0, 0.75),
-				0 0 0 22px rgba(111, 35, 30, 0);
-		}
-	}
-
-	/* Two staggered rings spreading out from the play button, in step with the glow. */
-	.play-ripple::before,
-	.play-ripple::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		border-radius: 9999px;
-		border: 2px solid rgba(246, 236, 217, 0.85);
-		opacity: 0;
-		pointer-events: none;
-		animation: play-ripple 2.4s ease-out 1.1s 4;
-	}
-
-	.play-ripple::after {
-		animation-delay: 2.3s;
-	}
-
-	@keyframes play-ripple {
-		0% {
-			transform: scale(1);
-			opacity: 0.8;
-		}
-		100% {
-			transform: scale(1.9);
-			opacity: 0;
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.video-attract {
-			animation: none;
-		}
-		.play-ripple::before,
-		.play-ripple::after {
-			animation: none;
-		}
-	}
-</style>

@@ -327,7 +327,7 @@
 			     and the get-involved block, where it reads as a choice rather than
 			     as competition for the purchase. -->
 			<div class="hidden shrink-0 items-center lg:flex">
-				<a href="/toolkit#toolkit-products" class={cn(buttonVariants(), 'rounded-full px-5')}>
+				<a href="/toolkit#toolkit-products" class={buttonVariants({ size: 'sm' })}>
 					Get the toolkit
 				</a>
 			</div>
@@ -455,7 +455,7 @@
 							<div class="grid gap-3">
 								<a
 									href="/toolkit#toolkit-products"
-									class={cn(buttonVariants({ size: 'lg' }), 'w-full rounded-full')}
+									class={cn(buttonVariants(), 'w-full')}
 									onclick={closeMobileMenu}
 								>
 									Get the toolkit

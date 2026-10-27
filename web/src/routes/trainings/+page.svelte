@@ -130,12 +130,10 @@
 	description="DCI certifications equip community champions, institutions, and trainers to facilitate grounded mental health conversations with practical tools and clear referral boundaries."
 >
 	{#snippet actions()}
-		<Button href="#tiers" size="lg" class="rounded-full px-7">Compare tiers</Button>
+		<Button href="#tiers">Compare tiers</Button>
 		<Button
 			href="/contact"
-			size="lg"
 			variant="outline"
-			class="rounded-full border-dci-teal/25 bg-transparent px-7 text-dci-teal-deep hover:bg-dci-teal/7"
 		>
 			Talk to DCI
 		</Button>
@@ -238,7 +236,7 @@
 					</div>
 				</div>
 
-				<Button href={tier.paymentLink} target="_blank" rel="noopener noreferrer" class="mt-8 rounded-full">
+				<Button href={tier.paymentLink} target="_blank" rel="noopener noreferrer" class="mt-8">
 					Start this tier
 					<ArrowUpRight class="size-4" weight="regular" />
 				</Button>
@@ -289,6 +287,6 @@
 				for a school, clinic, recovery space, or venue.
 			</p>
 		</div>
-		<Button href="/contact" size="lg" class="rounded-full px-8">Contact DCI</Button>
+		<Button href="/contact">Contact DCI</Button>
 	</div>
 </section>

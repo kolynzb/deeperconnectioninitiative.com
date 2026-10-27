@@ -134,7 +134,7 @@
 					{/if}
 				</div>
 
-				<Button type="submit" size="lg" disabled={submitting} class="w-full rounded-full">
+				<Button type="submit" disabled={submitting} class="w-full">
 					<LockSimple class="size-4" weight="bold" />
 					{submitting
 						? 'Preparing payment…'

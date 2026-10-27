@@ -1,45 +1,41 @@
 <script lang="ts">
+	import type { Snippet } from 'svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import Eyebrow from './eyebrow.svelte';
 
+	// The top of every inner page. Pass `title` as a snippet to italicise one phrase.
 	let {
 		eyebrow,
-		eyebrowIcon,
 		title,
 		description,
 		actions,
 		aside
 	}: {
 		eyebrow?: string;
-		eyebrowIcon?: any;
-		title: string;
+		/** Kept for older call sites; eyebrows no longer show icons. */
+		eyebrowIcon?: unknown;
+		title: string | Snippet;
 		description?: string;
-		actions?: import('svelte').Snippet;
-		aside?: import('svelte').Snippet;
+		actions?: Snippet;
+		aside?: Snippet;
 	} = $props();
 </script>
 
-<section class="relative overflow-hidden pt-28">
+<section class="relative pt-28">
 	<div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
 		<div class={aside ? 'grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end' : ''}>
 			<div class="space-y-6" use:reveal={{ delay: 0, y: 18 }}>
 				{#if eyebrow}
-					<Eyebrow label={eyebrow} icon={eyebrowIcon} />
+					<Eyebrow label={eyebrow} />
 				{/if}
-				<div class="space-y-5">
-					<h1
-						class="max-w-3xl text-5xl font-semibold leading-[0.95] tracking-tight text-foreground sm:text-6xl lg:text-7xl"
-					>
-						{title}
-					</h1>
-					{#if description}
-						<p class="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-							{description}
-						</p>
-					{/if}
-				</div>
+				<h1 class="type-headline max-w-4xl text-foreground lg:text-7xl [&_em]:text-dci-burgundy">
+					{#if typeof title === 'string'}{title}{:else}{@render title()}{/if}
+				</h1>
+				{#if description}
+					<p class="type-lede max-w-2xl text-muted-foreground">{description}</p>
+				{/if}
 				{#if actions}
-					<div class="flex flex-col gap-3 sm:flex-row">
+					<div class="flex flex-col gap-3 pt-2 sm:flex-row">
 						{@render actions()}
 					</div>
 				{/if}

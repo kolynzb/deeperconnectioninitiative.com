@@ -129,7 +129,7 @@
 					<p class="text-sm text-muted-foreground">
 						Already have a profile? <a href="/signin" class="font-semibold text-dci-teal underline underline-offset-4">Sign in</a>
 					</p>
-					<Button type="submit" size="lg" class="rounded-full px-8">
+					<Button type="submit">
 						Create profile
 						<ArrowUpRight class="size-4" weight="regular" />
 					</Button>

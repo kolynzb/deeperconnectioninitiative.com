@@ -22,22 +22,22 @@
 
 <article
 	class={cn(
-		'dci-soft-hover flex h-full flex-col rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift sm:p-7',
+		'flex h-full flex-col rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8',
 		className
 	)}
 >
 	{#if Icon}
 		<div
-			class="mb-6 flex size-12 items-center justify-center rounded-xl bg-white/65"
+			class="mb-6 flex size-11 items-center justify-center rounded-full bg-dci-teal/8"
 			style={`color:${accent}`}
 		>
-			<Icon class="size-6" weight="duotone" aria-hidden="true" />
+			<Icon class="size-5" weight="regular" aria-hidden="true" />
 		</div>
 	{/if}
 	{#if kicker}
-		<p class="mb-2 text-xs font-bold uppercase tracking-wide" style={`color:${accent}`}>{kicker}</p>
+		<p class="type-eyebrow mb-2 text-dci-teal">{kicker}</p>
 	{/if}
-	<h3 class="text-2xl font-semibold leading-tight text-foreground">{title}</h3>
+	<h3 class="type-subtitle text-foreground">{title}</h3>
 	{#if description}
 		<p class="mt-3 text-base leading-relaxed text-muted-foreground">{description}</p>
 	{/if}

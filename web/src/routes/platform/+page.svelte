@@ -52,8 +52,6 @@
 		<Button
 			href="/"
 			variant="outline"
-			size="lg"
-			class="rounded-full border-dci-teal/25 bg-transparent px-7 text-dci-teal-deep hover:bg-dci-teal/7"
 		>
 			<ArrowLeft class="size-4" weight="regular" />
 			Back to DCI Wellness

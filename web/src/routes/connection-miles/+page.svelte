@@ -206,15 +206,13 @@
 	description="Track how sponsored DCI toolkits, Conversation Clinics, journal entries, and mood check-ins are building measurable Connection Miles across the field."
 >
 	{#snippet actions()}
-		<Button href={paymentLinks.toolkit} target="_blank" rel="noopener noreferrer" size="lg" class="rounded-full">
+		<Button href={paymentLinks.toolkit} target="_blank" rel="noopener noreferrer">
 			Buy a toolkit
 			<ArrowUpRight class="size-4" weight="regular" />
 		</Button>
 		<Button
 			href={paymentLinks.donation} target="_blank" rel="noopener noreferrer"
-			size="lg"
 			variant="outline"
-			class="rounded-full border-dci-teal/25 bg-transparent px-7 text-dci-teal-deep hover:bg-dci-teal/7"
 		>
 			Sponsor a field kit
 		</Button>
@@ -481,7 +479,7 @@
 					</div>
 					<div class="mt-8">
 						<p class="text-lg font-bold text-dci-teal-deep">{product.price}</p>
-						<Button href={product.href} class="mt-4 rounded-full">
+						<Button href={product.href} class="mt-4">
 							Get this tool
 							<ArrowUpRight class="size-4" weight="regular" />
 						</Button>
@@ -504,18 +502,14 @@
 					</p>
 				</div>
 				<div class="mt-8 flex flex-col gap-3">
-					<Button
+					<Button variant="inverse"
 						href={paymentLinks.toolkit} target="_blank" rel="noopener noreferrer"
-						size="lg"
-						class="rounded-full bg-dci-cream text-dci-teal-deep hover:bg-white"
 					>
 						Buy complete kit
 					</Button>
 					<Button
 						href={paymentLinks.donation} target="_blank" rel="noopener noreferrer"
-						size="lg"
-						variant="outline"
-						class="rounded-full border-dci-cream/30 bg-transparent text-dci-cream hover:bg-dci-cream/10"
+						variant="inverse-outline"
 					>
 						Sponsor a kit
 					</Button>

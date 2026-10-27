@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { reveal } from '$lib/actions/reveal';
 	import CheckoutDrawer from '$lib/components/checkout-drawer.svelte';
 	import { cn } from '$lib/utils';
+	import { Button } from '$lib/components/ui/button';
+	import { SectionHeading } from '$lib/components/sections';
 
 	import {
 		ArrowRightIcon,
@@ -139,17 +140,14 @@
 	id="find-your-path"
 	class="relative -mt-40 scroll-mt-28 bg-dci-teal-deep px-4 pt-56 pb-20 text-dci-cream sm:px-6 lg:-mt-64 lg:px-8 lg:pt-80 lg:pb-28"
 >
-	<div class="mx-auto max-w-6xl">
-		<div use:reveal={{ delay: 0, y: 18 }}>
-			<p class="text-xs font-semibold tracking-wide text-dci-cream/75 uppercase">Find your path</p>
-			<h2 class="mt-4 max-w-3xl text-5xl leading-[1.04] font-normal tracking-tight text-balance sm:text-6xl">
-				Start <em class="text-dci-clay">where you are.</em>
-			</h2>
-			<p class="mt-6 max-w-xl text-base leading-relaxed text-dci-cream/75 sm:text-lg">
-				DCI can be tools for yourself, a training path, a measurement system, or a way to sponsor access.
-				Choose the entry point that matches what brought you here.
-			</p>
-		</div>
+	<div class="mx-auto max-w-7xl">
+		<SectionHeading
+			eyebrow="Find your path"
+			tone="dark"
+			description="DCI can be tools for yourself, a training path, a measurement system, or a way to sponsor access. Choose the entry point that matches what brought you here."
+		>
+			{#snippet title()}Start <em>where you are.</em>{/snippet}
+		</SectionHeading>
 
 		<ol class="mt-14 border-t border-dci-cream/15">
 			{#each pathways as path, index (path.id)}
@@ -194,10 +192,10 @@
 {#snippet detail()}
 	<div class="relative overflow-hidden rounded-4xl bg-dci-cream p-6 text-foreground sm:p-8 lg:p-10">
 		<div class="relative z-10 max-w-3xl">
-			<h3 class="max-w-xl text-3xl leading-tight font-normal tracking-tight sm:text-4xl">
+			<h3 class="type-title max-w-xl">
 				{activePath.title}
 			</h3>
-			<p class="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+			<p class="type-lede mt-4 max-w-xl text-muted-foreground">
 				{activePath.description}
 			</p>
 			<div class="mt-8">
@@ -215,13 +213,14 @@
 									<p class="mt-1 text-xs text-muted-foreground">{option.note}</p>
 								</div>
 								<div class="mt-4 space-y-2">
-									<button
-										type="button"
+									<Button
+										variant="outline"
+										size="sm"
+										class="w-full"
 										onclick={() => (buying = { slug: option.slug, name: option.name, price: option.price })}
-										class="inline-flex h-10 w-full items-center justify-center rounded-full bg-dci-teal-deep px-4 text-xs font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98]"
 									>
 										{option.cta}
-									</button>
+									</Button>
 								</div>
 							</article>
 						{/each}
@@ -254,7 +253,7 @@
 									class="absolute inset-0 h-full w-full object-cover opacity-70 transition group-hover:opacity-80"
 								/>
 								<span
-									class="relative flex size-14 items-center justify-center rounded-full bg-dci-cream/95 text-dci-teal-deep shadow-dci-lift transition group-hover:scale-105"
+									class="relative flex size-14 items-center justify-center rounded-full bg-dci-cream text-dci-teal-deep transition group-hover:bg-dci-paper"
 								>
 									<PlayIcon class="ml-0.5 size-6" weight="fill" />
 								</span>
@@ -311,18 +310,15 @@
 							and see what the patterns say.
 						</p>
 					</div>
-					<a
+					<Button
+						variant="accent"
 						href={activePath.href}
 						target={activePath.href.startsWith('http') ? '_blank' : undefined}
 						rel={activePath.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-						class="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full text-sm font-semibold transition active:scale-[0.98] h-12 bg-dci-burgundy px-6 text-dci-cream shadow-dci-lift hover:bg-dci-burgundy/90"
 					>
 						{activePath.cta}
-						<ArrowUpRightIcon
-							class="size-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-							weight="regular"
-						/>
-					</a>
+						<ArrowUpRightIcon weight="regular" />
+					</Button>
 				</div>
 			</div>
 		</div>

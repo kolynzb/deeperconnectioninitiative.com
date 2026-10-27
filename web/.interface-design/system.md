@@ -15,7 +15,7 @@ Only these names exist. Never Tailwind's `slate`/`gray`/`stone`/`zinc`, never he
 
 | Token | Hex | Use |
 |---|---|---|
-| `dci-sand` (= `background`) | `#EFE5D0` | Page background (textured, set on `body`) |
+| `dci-sand` (= `background`) | `#EFE5D0` | Page background (flat, set on `body`) |
 | `dci-cream` | `#F6ECD9` | Warm panels; text on dark surfaces |
 | `dci-paper` | `#FFF9EA` | Cards, form fields |
 | `dci-teal-deep` | `#1A3C40` | Dark panels and bands, prices, logo |
@@ -42,14 +42,17 @@ put one phrase in italics as its accent, `<em class="text-dci-burgundy">` on lig
 highlights besides it. The whole homepage follows this; inner pages are
 still being moved over.
 
-| Role | Classes |
+Use the type utilities from `layout.css`. Never hand-write heading sizes.
+
+| Role | Utility |
 |---|---|
-| Page title (`h1`) | `text-6xl sm:text-7xl lg:text-8xl font-normal tracking-tight leading-[0.98]` |
-| Section title (`h2`) | `text-5xl sm:text-6xl font-normal tracking-tight leading-[1.04]` |
-| Card title (`h3`) | `text-3xl sm:text-4xl font-normal` (large) or `text-xl font-semibold` (small cards) |
-| Lead paragraph | `text-base sm:text-lg leading-relaxed text-muted-foreground` |
+| Homepage headline (`h1`) | `type-display` |
+| Section title (`h2`), inner page title | `type-headline` (inner page `h1` adds `lg:text-7xl`, via `PageHero`) |
+| Large card title (`h3`) | `type-title` |
+| Small card title | `type-subtitle` |
+| Lead paragraph | `type-lede` + a colour |
+| Eyebrow / label | `type-eyebrow` + a colour (`text-dci-teal`, `text-dci-cream/75` on dark) |
 | Body | `text-base` or `text-sm leading-relaxed` |
-| Eyebrow / label | `text-xs font-semibold uppercase tracking-wide text-dci-teal` |
 
 Nothing smaller than `text-xs` (12px). Use `text-balance` on headings, `text-pretty` on paragraphs.
 Don't set `font-family` inline.
@@ -59,8 +62,9 @@ Don't set `font-family` inline.
 - Build pages from the section kit in `$lib/components/sections`:
   - `PageHero` for the top of every inner page.
   - `Section` for every band after the hero.
-  - `SectionHeading` for every section title.
-  - `CtaBand` for the closing call to action.
+  - `SectionHeading` for every section title (`split` puts the intro beside it; pass
+    `title` as a snippet to italicise one phrase with `<em>`).
+  - `CtaBand` for the closing call to action (burgundy; use `inverse` buttons).
 
   Don't hand-roll `<section class="px-4 ... max-w-7xl">`.
 - Page frame is `max-w-7xl` with `px-4 sm:px-6 lg:px-8`. Section rhythm is `py-16 lg:py-24`.
@@ -85,27 +89,38 @@ or `shadow-[…]`.
 
 ## Components
 
-- **Button:** `$lib/components/ui/button`. Brand CTA is a pill:
-  `rounded-full bg-dci-teal px-6 text-sm font-semibold text-dci-cream hover:bg-dci-teal-mid`.
-  One primary CTA per section; secondary actions are outline or text links.
-- **Eyebrow:** `sections/eyebrow.svelte` (`tone="dark"` on dark bands).
-- **Card:** `rounded-2xl border border-dci-teal/15 bg-dci-paper p-6 sm:p-8`, optional
-  `dci-soft-hover`.
+- **Button:** always `$lib/components/ui/button` (or `buttonVariants()` on a raw `<a>`).
+  Never hand-roll a pill, and never pass colours, padding or radius through `class`
+  (layout only: `w-full`, `mt-*`, `self-start`).
+  - Variants: `default` (teal), `accent` (burgundy, one per view), `outline`,
+    `inverse` / `inverse-outline` (on dark or burgundy), `link`.
+  - Sizes: `default` (h-12) and `sm` (h-10). That's all.
+  - One primary CTA per section; the rest are `outline` or text links.
+- **Eyebrow:** `sections/eyebrow.svelte`. Plain text, no pill, no icon.
+- **Card:** `rounded-2xl border border-dci-teal/15 bg-dci-paper p-6 sm:p-8`. No shadow unless
+  it floats over something. Cards that aren't links don't react to hover.
 - **Form field:**
   `h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground placeholder:text-muted-foreground/60`
   and a visible teal focus ring.
 - **Toolkit product card:**
-  - Media and copy sit side by side, alternating sides per row.
+  - Media and copy sit side by side, alternating sides per row; photos fill their frame.
   - Use `md:min-h-*`, never a fixed height; content must be able to grow.
-  - The product's accent colour lives only in its Connection Miles™ badge
-    (`border-dci-burgundy/25 bg-dci-burgundy/10 text-dci-burgundy`, or the teal equivalents).
-  - The pill holds only the metric. The gloss ("8 lives impacted") sits beside it as plain text.
-  - Prices stay `text-dci-teal-deep`.
+  - Connection Miles is one plain line of text ("Earns 8 Connection Miles"), not a badge.
+  - Prices are `font-serif text-3xl text-dci-teal-deep`.
+
+## Never
+
+These are what make a site look generated. Don't add them back:
+- dot-grid or noise textures, blurred colour blobs, glows, gradient fills on solid objects;
+- pill badges on labels, sparkle or "live" pinging dots, icons in a tinted square above every card;
+- floating or looping decorative art, hover lifts on things you can't click;
+- offset "backing" panels behind photos, glassy floating name tags;
+- three or more competing buttons in one block.
 
 ## Motion
 
 - House easing is `cubic-bezier(0.16, 1, 0.3, 1)`.
 - Use `use:reveal` from `$lib/actions/reveal` for scroll entrances.
-- `dci-soft-hover` is for hover lift and `dci-float-slow` for ambient decoration.
+- `dci-soft-hover` only darkens a border on hover; nothing lifts or floats.
 - Nothing loops forever.
 - Every animation must stop under `prefers-reduced-motion` (the reduce block in `layout.css`).

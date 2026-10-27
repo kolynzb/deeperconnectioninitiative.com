@@ -96,10 +96,8 @@
 						<p class="mt-1 text-sm text-dci-cream/70">Per seat, includes the session.</p>
 					</div>
 
-					<Button
-						href={`/checkout/clinic?date=${clinicKey(next)}`}
-						size="lg"
-						class="w-full rounded-full bg-dci-cream text-dci-teal-deep hover:bg-white"
+					<Button variant="inverse"
+						href={`/checkout/clinic?date=${clinicKey(next)}`} class="w-full"
 					>
 						Book your seat
 					</Button>
@@ -176,8 +174,7 @@
 				</div>
 
 				<Button
-					href={`/checkout/clinic?date=${clinicKey(date)}`}
-					class="w-full shrink-0 rounded-full sm:w-auto"
+					href={`/checkout/clinic?date=${clinicKey(date)}`} class="w-full shrink-0 sm:w-auto"
 				>
 					Book this date
 				</Button>
@@ -212,7 +209,7 @@
 				meet it here first, then keep using it with the people they live with.
 			</p>
 		</div>
-		<Button href="/toolkit#toolkit-products" size="lg" class="shrink-0 rounded-full px-7">
+		<Button href="/toolkit#toolkit-products" class="shrink-0">
 			See the toolkit
 			<ArrowUpRight class="size-4" weight="regular" />
 		</Button>
