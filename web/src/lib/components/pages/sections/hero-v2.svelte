@@ -29,7 +29,7 @@
 		<VideoEmbed
 			videoId="wMUYQ6uZn0Q"
 			poster="/photos/events/event-7.webp"
-			posterSrcset="/photos/events/event-7-640.webp 640w, /photos/events/event-7.webp 1100w"
+			posterSrcset="/photos/events/event-7-800.webp 800w, /photos/events/event-7.webp 1100w"
 			title="The Airbnb of Mental Health: Uganda's New Early Warning System"
 			class="rounded-4xl"
 		/>

@@ -125,7 +125,10 @@ need an exception (floating UI, the logo), add the file to its `allowed` list.
 - Photos are WebP in `static/photos`. Convert new ones (`cwebp -q 78`), and give
   above-the-fold photos a phone-sized copy via `srcset`.
 - Fonts are self-hosted in `static/fonts` (Fraunces roman + italic, Outfit) and declared
-  in `layout.css`. Don't add a Google Fonts link back.
+  in `layout.css`. Fraunces is trimmed to weight 400 (the only one used), which halves
+  its size. Don't add a Google Fonts link back.
+- `vercel.json` caches fonts for a year and photos for a day. To change a font, give
+  the file a new name, or returning visitors keep the old one.
 
 ## Motion
 
