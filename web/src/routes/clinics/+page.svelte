@@ -74,10 +74,6 @@
 				use:reveal={{ delay: 120, y: 18 }}
 				class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-7 text-dci-cream shadow-dci-panel sm:p-9"
 			>
-				<div
-					class="pointer-events-none absolute inset-0 opacity-10"
-					style="background-image: radial-gradient(#F6ECD9 1px, transparent 1px); background-size: 26px 26px;"
-				></div>
 				<div class="relative space-y-6">
 					<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">Next clinic</p>
 					<p class="text-3xl font-semibold leading-tight text-white sm:text-4xl">

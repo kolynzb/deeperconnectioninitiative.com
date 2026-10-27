@@ -86,11 +86,6 @@
 	id="about"
 	class="w-full bg-dci-teal-deep text-dci-sand relative rounded-t-4xl overflow-hidden"
 >
-	<!-- Background Pattern -->
-	<div
-		class="absolute inset-0 opacity-10 pointer-events-none rounded-t-4xl"
-		style="background-image: radial-gradient(#2A6268 1px, transparent 1px); background-size: 30px 30px;"
-	></div>
 
 	<div class="grid grid-cols-1 lg:grid-cols-[0.92fr_1.08fr] lg:divide-x-2 lg:divide-accent/10">
 		<div class="p-8 lg:px-20">

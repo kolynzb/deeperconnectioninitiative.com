@@ -44,16 +44,6 @@
 {/if}
 <NoiseOverlay />
 <div class="flex min-h-screen flex-col">
-	<!-- Subtle radial background accents -->
-	<div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-		<div
-			class="absolute -right-32 -top-32 h-[24rem] w-[24rem] rounded-full bg-primary/10 blur-3xl"
-		></div>
-		<div
-			class="absolute -left-40 top-1/2 size-[28rem] -translate-y-1/2 rounded-full bg-accent/10 blur-3xl"
-		></div>
-	</div>
-
 	<main id="main" class="flex-1">
 		{@render children()}
 	</main>

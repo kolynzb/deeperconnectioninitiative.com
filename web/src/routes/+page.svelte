@@ -11,16 +11,17 @@
 </script>
 
 <!--
-	The client's order, with duplicates removed: promise → pick your path → what
-	people carry → the problem → who's behind it → proof → the tools. Products appear only in the
+	The client's order, with duplicates removed: promise → pick your path → the problem →
+	who's behind it → proof → the tools → what people carry, leading into the last call
+	to action. Products appear only in the
 	Toolkit section; How DCI works lives on /about.
 -->
 <HeroV2 />
 <PathFinder />
-<div class="py-12 lg:py-16"><FlowingThoughts /></div>
 <CrisisPrevention />
 <Founder />
 <ImpactStories />
 <Toolkit />
 <CardDraw />
+<div class="py-12 lg:py-16"><FlowingThoughts /></div>
 <ClosingCta />

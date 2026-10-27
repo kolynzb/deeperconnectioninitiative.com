@@ -20,13 +20,7 @@
 	<div class="mx-auto max-w-7xl">
 		<div class="mb-10 grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
 			<div class="space-y-4" use:reveal={{ delay: 0, y: 18 }}>
-				<div
-					class="inline-flex items-center rounded-full border border-dci-teal/20 bg-dci-teal/5 px-3 py-1"
-				>
-					<span class="text-xs font-semibold uppercase tracking-wide text-dci-teal">
-						What this makes possible
-					</span>
-				</div>
+				<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">What this makes possible</p>
 				<h2 class="max-w-3xl text-5xl sm:text-6xl font-normal tracking-tight leading-[1.04] text-balance text-foreground">
 					Small tools, <em class="text-dci-burgundy">real moments</em> of connection.
 				</h2>
@@ -91,7 +85,7 @@
 				{#each fieldNotes as note, index (note.label)}
 					<article
 						use:reveal={{ delay: index * 90, y: 18 }}
-						class="dci-soft-hover rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift"
+						class="rounded-4xl border border-dci-teal/12 bg-dci-paper/70 p-6"
 					>
 						<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-dci-teal">{note.label}</p>
 						<h3 class="text-2xl font-normal leading-tight text-foreground">{note.title}</h3>

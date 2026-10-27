@@ -45,13 +45,7 @@
 			use:reveal={{ delay: 0, y: 18 }}
 		>
 			<div>
-				<div
-					class="inline-flex items-center gap-2 rounded-full border border-dci-teal/20 bg-dci-teal/5 px-3 py-1 mb-4"
-				>
-					<span class="text-xs font-semibold tracking-wide text-dci-teal uppercase"
-						>The Prevention Model</span
-					>
-				</div>
+				<p class="text-xs font-semibold tracking-wide text-dci-teal uppercase mb-4">The Prevention Model</p>
 				<h2 class="text-5xl sm:text-6xl font-normal tracking-tight leading-[1.04] text-balance text-foreground">
 					Most crises are preventable. DCI works <em class="text-dci-burgundy">upstream.</em>
 				</h2>

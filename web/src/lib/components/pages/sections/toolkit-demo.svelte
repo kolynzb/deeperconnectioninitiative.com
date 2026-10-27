@@ -76,10 +76,6 @@
 	use:reveal={{ delay: 80, y: 22 }}
 	class="relative overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-teal-deep text-dci-cream shadow-dci-panel"
 >
-	<div
-		class="pointer-events-none absolute inset-0 opacity-10"
-		style="background-image: radial-gradient(#F6ECD9 1px, transparent 1px); background-size: 28px 28px;"
-	></div>
 
 	<div class="relative grid gap-0 xl:grid-cols-[0.92fr_1.08fr]">
 		<div class="p-6 sm:p-8 lg:p-10">

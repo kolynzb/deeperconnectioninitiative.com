@@ -46,10 +46,6 @@
 				use:reveal={{ delay: 0, y: 18 }}
 				class="relative overflow-hidden rounded-4xl bg-dci-teal-deep p-8 text-dci-cream lg:sticky lg:top-28 lg:p-10"
 			>
-				<div
-					class="pointer-events-none absolute inset-0 opacity-10"
-					style="background-image: radial-gradient(#F6ECD9 1px, transparent 1px); background-size: 26px 26px;"
-				></div>
 				<div class="relative space-y-10">
 					<div class="space-y-5">
 						<div

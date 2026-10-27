@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { reveal } from '$lib/actions/reveal';
-	import SpotIllustration from '$lib/components/spot-illustration.svelte';
 	import CheckoutDrawer from '$lib/components/checkout-drawer.svelte';
 	import { cn } from '$lib/utils';
 
@@ -40,7 +39,6 @@
 			label: 'I want tools',
 			kicker: 'Own your healing',
 			icon: BookOpenTextIcon,
-			illustration: 'toolkit',
 			title: 'I am ready to own my healing.',
 			description:
 				'Three paper tools that give you somewhere to start. A conversation can happen anywhere, with anyone, without waiting for an appointment.',
@@ -55,7 +53,6 @@
 			label: 'I want to lead',
 			kicker: 'Become a champion',
 			icon: GraduationCapIcon,
-			illustration: 'community',
 			title: 'I am a mental health advocate.',
 			description:
 				'There will never be enough counsellors. There are already enough people who care.',
@@ -78,7 +75,6 @@
 			label: 'I run an organisation',
 			kicker: 'Early Warning System',
 			icon: BuildingsIcon,
-			illustration: 'care',
 			title: 'I am an organisation or a funder.',
 			description:
 				'You can count who showed up. We help you see what changed. Participants complete a paper mood tracker themselves, trained champions collect them, and we turn them into cohort-level measures with a documented referral procedure attached. You see the pattern. Never the person.',
@@ -98,7 +94,6 @@
 			label: 'I want to support',
 			kicker: 'Sponsor access',
 			icon: HandshakeIcon,
-			illustration: 'community',
 			title: "I want to fund someone else's start.",
 			description:
 				'Two ways in. Show up as a volunteer, or fund the tools and training for someone who cannot pay for them.',
@@ -198,10 +193,6 @@
 
 {#snippet detail()}
 	<div class="relative overflow-hidden rounded-4xl bg-dci-cream p-6 text-foreground sm:p-8 lg:p-10">
-		<SpotIllustration
-			variant={activePath.illustration}
-			class="dci-float-slow pointer-events-none absolute -right-28 -bottom-6 hidden w-[27rem] opacity-16 [--float-rotate:2deg] lg:block"
-		/>
 		<div class="relative z-10 max-w-3xl">
 			<h3 class="max-w-xl text-3xl leading-tight font-normal tracking-tight sm:text-4xl">
 				{activePath.title}

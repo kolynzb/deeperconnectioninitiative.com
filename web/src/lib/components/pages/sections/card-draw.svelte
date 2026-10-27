@@ -107,11 +107,6 @@
 	>
 		<!-- accent header bar -->
 		<div class="absolute inset-x-0 top-0 h-1.5 {tc.bar}"></div>
-		<!-- paper texture -->
-		<div
-			class="pointer-events-none absolute inset-0 opacity-[0.05]"
-			style="background-image: radial-gradient(#1a3c40 1px, transparent 1px); background-size: 18px 18px;"
-		></div>
 
 		<div class="relative flex items-start justify-between">
 			<span class="font-serif text-6xl leading-[0.6] {tc.text}/60">&ldquo;</span>
@@ -139,14 +134,10 @@
 
 {#snippet deckBack(rot: number, tx: string, ty: string, z: number)}
 	<div
-		class="absolute inset-0 overflow-hidden rounded-3xl border border-dci-teal/10 bg-gradient-to-br from-[#7a2822] to-dci-teal-deep shadow-dci-soft"
+		class="absolute inset-0 overflow-hidden rounded-3xl border border-dci-teal/10 bg-dci-burgundy shadow-dci-soft"
 		style="transform: rotate({rot}deg) translate({tx}, {ty}); z-index: {z};"
 		aria-hidden="true"
 	>
-		<div
-			class="absolute inset-0 opacity-20"
-			style="background-image: radial-gradient(#F6ECD9 1px, transparent 1px); background-size: 14px 14px;"
-		></div>
 		<div class="absolute inset-3 rounded-[1.15rem] border border-dci-cream/15"></div>
 		<div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
 			<!-- pulse / breathing emblem - the brand's living-body motif -->
@@ -167,26 +158,11 @@
 		<div
 			class="relative overflow-hidden rounded-4xl border border-dci-teal/12 bg-dci-teal-deep text-dci-cream shadow-dci-panel"
 		>
-			<!-- Dot pattern background -->
-			<div
-				class="pointer-events-none absolute inset-0 opacity-10"
-				style="background-image: radial-gradient(#F6ECD9 1px, transparent 1px); background-size: 28px 28px;"
-			></div>
 
 			<div class="relative grid gap-0 lg:grid-cols-[0.9fr_1.1fr]">
 				<!-- Left panel: intro text -->
 				<div class="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
-					<div
-						class="inline-flex items-center gap-2 rounded-full border border-dci-cream/18 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-dci-cream/70 w-fit mb-6"
-					>
-						<span class="relative flex size-1.5">
-							<span
-								class="absolute inline-flex h-full w-full animate-ping rounded-full bg-dci-clay opacity-70"
-							></span>
-							<span class="relative inline-flex size-1.5 rounded-full bg-dci-clay"></span>
-						</span>
-						Draw a card
-					</div>
+					<p class="mb-6 text-xs font-semibold uppercase tracking-wide text-dci-cream/70">Draw a card</p>
 					<h3 class="max-w-md text-4xl sm:text-5xl font-normal leading-[1.04] tracking-tight text-dci-cream">
 						Start a conversation people <em class="text-dci-clay">actually want</em> to have.
 					</h3>
@@ -222,11 +198,6 @@
 
 				<!-- Right panel: interactive deck -->
 				<div class="relative overflow-hidden bg-dci-cream p-8 sm:p-10 lg:p-12">
-					<!-- warm spotlight -->
-					<div
-						class="pointer-events-none absolute inset-0"
-						style="background: radial-gradient(58% 52% at 50% 42%, rgba(212,156,112,0.22), transparent 72%);"
-					></div>
 
 					<div class="relative flex flex-col items-center">
 						<div class="relative flex w-full items-center justify-center py-5 [perspective:1600px]">

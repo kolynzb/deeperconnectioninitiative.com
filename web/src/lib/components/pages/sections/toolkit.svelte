@@ -1,7 +1,6 @@
 <script lang="ts">
 	import {
-		ArrowUpRightIcon as ArrowUpRight,
-		SparkleIcon as Sparkles
+		ArrowUpRightIcon as ArrowUpRight
 	} from 'phosphor-svelte';
 	import { onMount } from 'svelte';
 	import { Button } from '$lib/components/ui/button';
@@ -115,7 +114,7 @@
 			{#each products as product, index}
 				<article
 					use:reveal={{ delay: index * 90, y: 22 }}
-					class={`group grid overflow-hidden rounded-4xl border bg-dci-paper shadow-dci-lift transition duration-500 hover:-translate-y-1 md:grid-cols-2 md:min-h-[22rem] ${product.border}`}
+					class={`group grid overflow-hidden rounded-4xl border bg-dci-paper shadow-dci-lift md:grid-cols-2 md:min-h-[22rem] ${product.border}`}
 				>
 					<div class={`relative min-h-72 overflow-hidden ${index % 2 === 1 ? 'md:order-2' : ''}`}>
 						{#if product.images}
@@ -194,12 +193,6 @@
 				/>
 				<div class="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_0.78fr] lg:p-10">
 					<div class="space-y-5">
-						<div
-							class="inline-flex items-center gap-2 rounded-full border border-dci-cream/20 px-3 py-1 text-xs font-bold uppercase tracking-widest text-dci-cream/75"
-						>
-							<Sparkles class="size-3.5" weight="duotone" />
-							Recommended
-						</div>
 						<h3 class="text-4xl sm:text-5xl font-normal leading-tight text-dci-cream">The <em class="text-dci-clay">full</em> toolkit</h3>
 						<p class="max-w-xl text-base leading-relaxed text-dci-cream/75">
 							Card Game, Reflection Journal, Mood Tracker, and QR access bundled for everyday

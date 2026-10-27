@@ -32,11 +32,6 @@ const complianceLinks = [
 </script>
 
 <footer class="relative bg-dci-teal-deep text-dci-sand rounded-t-4xl overflow-hidden">
-	<!-- Dot-pattern overlay -->
-	<div
-		class="pointer-events-none absolute inset-0 opacity-10"
-		style="background-image: radial-gradient(#2A6268 1px, transparent 1px); background-size: 30px 30px;"
-	></div>
 
 	<div class="relative max-w-7xl mx-auto px-6 sm:px-8 pt-16 pb-8 2xl:max-w-400">
 		<!-- Main grid -->
