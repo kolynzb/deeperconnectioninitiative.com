@@ -8,8 +8,6 @@
 		class: className
 	}: {
 		label: string;
-		/** Kept for older call sites; eyebrows no longer show icons. */
-		icon?: unknown;
 		tone?: 'light' | 'dark';
 		class?: string;
 	} = $props();

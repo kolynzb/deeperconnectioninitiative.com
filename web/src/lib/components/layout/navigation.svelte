@@ -18,7 +18,7 @@
 		ChartLineUpIcon as ChartLineUp,
 		HandshakeIcon as HeartHandshake,
 		ListIcon as Menu,
-		SparkleIcon as Sparkles,
+		CardsThreeIcon as Cards,
 		UsersThreeIcon as Users
 	} from 'phosphor-svelte';
 
@@ -36,7 +36,7 @@
 					label: 'Open the kit',
 					href: '/toolkit',
 					description: 'See how the cards, journal, and mood tracker work.',
-					icon: Sparkles
+					icon: Cards
 				},
 				{
 					label: 'Buy a tool',

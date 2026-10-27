@@ -92,7 +92,6 @@
 								video={product.video}
 								poster={product.image}
 								imgClass="min-h-72"
-								cover
 							/>
 						{:else if product.video}
 							<video

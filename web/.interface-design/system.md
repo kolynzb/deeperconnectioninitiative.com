@@ -83,9 +83,8 @@ Retire `rounded-xl`/`lg`/`3xl` when you touch a file.
 
 ## Depth
 
-Borders first. When something must float, use one of the four shadow tokens:
-`shadow-dci-soft`, `shadow-dci-lift`, `shadow-dci-teal`, `shadow-dci-panel`. Never `shadow-lg`
-or `shadow-[…]`.
+Borders, not shadows. The one shadow, `shadow-dci-overlay`, is only for things that float
+over the page: the header, menus and drawers. Cards, photos and panels never get one.
 
 ## Components
 
@@ -100,7 +99,7 @@ or `shadow-[…]`.
 - **Card:** `rounded-2xl border border-dci-teal/15 bg-dci-paper p-6 sm:p-8`. No shadow unless
   it floats over something. Cards that aren't links don't react to hover.
 - **Form field:**
-  `h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground placeholder:text-muted-foreground/60`
+  `h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground placeholder:text-muted-foreground`
   and a visible teal focus ring.
 - **Toolkit product card:**
   - Media and copy sit side by side, alternating sides per row; photos fill their frame.
@@ -115,7 +114,18 @@ These are what make a site look generated. Don't add them back:
 - pill badges on labels, sparkle or "live" pinging dots, icons in a tinted square above every card;
 - floating or looping decorative art, hover lifts on things you can't click;
 - offset "backing" panels behind photos, glassy floating name tags;
-- three or more competing buttons in one block.
+- three or more competing buttons in one block;
+- spot or cartoon illustrations, dark "side panels" of stats next to a page title.
+
+`npm run check` runs `scripts/check-design.js`, which fails on most of these. If you
+need an exception (floating UI, the logo), add the file to its `allowed` list.
+
+## Assets
+
+- Photos are WebP in `static/photos`. Convert new ones (`cwebp -q 78`), and give
+  above-the-fold photos a phone-sized copy via `srcset`.
+- Fonts are self-hosted in `static/fonts` (Fraunces roman + italic, Outfit) and declared
+  in `layout.css`. Don't add a Google Fonts link back.
 
 ## Motion
 

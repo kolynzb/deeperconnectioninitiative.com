@@ -86,7 +86,7 @@
 	{#if showVideo}
 		<!-- Video lightbox: kept separate from the portrait so the photo and film stand on their own -->
 		<div
-			class="fixed inset-0 z-50 flex items-center justify-center bg-dci-teal-deep/80 p-4 backdrop-blur-sm"
+			class="fixed inset-0 z-50 flex items-center justify-center bg-dci-teal-deep/90 p-4"
 			role="dialog"
 			aria-modal="true"
 			aria-label="Ann Banya: video"

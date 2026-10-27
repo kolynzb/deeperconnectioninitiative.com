@@ -12,8 +12,6 @@
 		aside
 	}: {
 		eyebrow?: string;
-		/** Kept for older call sites; eyebrows no longer show icons. */
-		eyebrowIcon?: unknown;
 		title: string | Snippet;
 		description?: string;
 		actions?: Snippet;

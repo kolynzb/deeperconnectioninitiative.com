@@ -80,7 +80,6 @@
 							video={product.video}
 							poster={product.image}
 							imgClass="min-h-72"
-							cover
 						/>
 					</div>
 				</div>

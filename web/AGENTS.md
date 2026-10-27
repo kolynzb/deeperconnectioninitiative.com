@@ -9,4 +9,4 @@ Before changing any UI, read `.interface-design/system.md` and follow it. It is 
 Other rules:
 - Page titles and descriptions live in `src/lib/config/seo.ts`. Don't add `<svelte:head>` titles in pages.
 - Clinic dates come from `src/lib/clinics.ts`. Never hardcode a date.
-- Run `npx svelte-check` and `npm run build` before committing.
+- Run `npm run check` (types and the design rules) and `npm run build` before committing.
