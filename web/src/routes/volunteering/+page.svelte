@@ -2,7 +2,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { reveal } from '$lib/actions/reveal';
 	import { paymentLinks } from '$lib/payment-links';
-	import { PageHero, Section, FeatureCard } from '$lib/components/sections';
+	import { PageHero, Section, SectionHeading, FeatureCard } from '$lib/components/sections';
 	import { ArrowUpRightIcon as ArrowUpRight } from 'phosphor-svelte';
 
 	const roles = [
@@ -56,6 +56,7 @@
 </PageHero>
 
 <Section>
+	<SectionHeading eyebrow="Roles" title="Four ways to help." class="mb-10" />
 	<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
 		{#each roles as role, index}
 			<div use:reveal={{ delay: index * 70, y: 18 }} class="h-full">

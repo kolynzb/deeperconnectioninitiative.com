@@ -89,7 +89,7 @@
 		{/each}
 	</div>
 </Section>
-<Section tone="cream">
+<Section>
 	<SectionHeading eyebrow="Attend a clinic" title="Upcoming clinics." class="mb-10" />
 	<div class="space-y-3">
 		{#each dates as date, index (date.getTime())}
@@ -139,7 +139,7 @@
 	</p>
 </Section>
 
-<Section>
+<Section tone="cream">
 	<div
 		use:reveal={{ delay: 0, y: 22 }}
 		class="grid gap-8 rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center"

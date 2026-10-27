@@ -65,8 +65,7 @@
 	class="grid overflow-hidden rounded-4xl border border-dci-teal/15 bg-dci-paper/70 xl:grid-cols-[0.92fr_1.08fr]"
 >
 	<div class="p-6 sm:p-8 lg:p-10">
-		<p class="type-eyebrow text-dci-teal">Open the kit</p>
-		<h2 class="type-title mt-4 max-w-lg text-foreground">A tool for the moment you are in.</h2>
+		<h2 class="type-title max-w-lg text-foreground">A tool for the moment you are in.</h2>
 		<p class="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
 			Each piece has a different job: opening a conversation, making reflection easier, or helping
 			someone notice patterns over time.
