@@ -195,3 +195,29 @@
 [2026-10-27T03:52:15.769Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
 [2026-10-27T03:52:15.769Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /connection-miles, path: /connection-miles}
 [2026-10-27T03:52:15.769Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/connection-miles color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/connection-miles, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /connection-miles} /_vercel/insights/view
+[2026-10-27T03:52:37.898Z] [debug] [vite] connecting...
+[2026-10-27T03:52:38.155Z] [debug] [vite] connected.
+[2026-10-27T03:52:38.877Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:52:38.877Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /connection-miles, path: /connection-miles}
+[2026-10-27T03:52:38.877Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/connection-miles color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/connection-miles, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /connection-miles} /_vercel/insights/view
+[2026-10-27T03:52:41.373Z] [debug] [vite] connecting...
+[2026-10-27T03:52:41.388Z] [debug] [vite] connected.
+[2026-10-27T03:52:41.453Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:52:41.453Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:52:41.453Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:52:59.420Z] [debug] [vite] hot updated: /src/routes/+layout.svelte
+[2026-10-27T03:52:59.420Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:52:59.428Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:52:59.439Z] [debug] [vite] hot updated: /src/lib/components/layout/navigation.svelte
+[2026-10-27T03:52:59.439Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:53:03.876Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:53:08.541Z] [debug] [vite] connecting...
+[2026-10-27T03:53:08.541Z] [debug] [vite] connected.
+[2026-10-27T03:53:08.562Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:53:08.562Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:53:08.562Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:53:22.038Z] [debug] [vite] connecting...
+[2026-10-27T03:53:22.041Z] [debug] [vite] connected.
+[2026-10-27T03:53:22.099Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:53:22.099Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:53:22.099Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view

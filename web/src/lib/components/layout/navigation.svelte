@@ -21,7 +21,6 @@
 		SparkleIcon as Sparkles,
 		UsersThreeIcon as Users
 	} from 'phosphor-svelte';
-	import NoiseOverlay from './overlays/noise-overlay.svelte';
 
 	// Five top-level items and one primary CTA. The nav is a decision path, not a
 	// directory: every item either sells something or explains who we are.
@@ -192,7 +191,6 @@
 			header.compact ? ' is-compact' : ''
 		}`}
 	>
-		<NoiseOverlay />
 		<div class="relative flex h-full items-center justify-between gap-4">
 			<div class="flex min-w-0 items-center">
 				<DciMark compact={header.compact} />

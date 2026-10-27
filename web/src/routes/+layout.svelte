@@ -3,7 +3,6 @@
 	import { page } from '$app/state';
 	import Navigation from '@/lib/components/layout/navigation.svelte';
 	import Footer from '@/lib/components/layout/footer.svelte';
-	import NoiseOverlay from '@/lib/components/layout/overlays/noise-overlay.svelte';
 	import Seo from '@/lib/components/seo.svelte';
 	import '@/lib/components/dci-mark/dci-mark.css';
 	import { injectAnalytics } from '@vercel/analytics/sveltekit';
@@ -42,7 +41,6 @@
 {#if !minimalChrome}
 	<Navigation />
 {/if}
-<NoiseOverlay />
 <div class="flex min-h-screen flex-col">
 	<main id="main" class="flex-1">
 		{@render children()}
