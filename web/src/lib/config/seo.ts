@@ -7,7 +7,7 @@ export const SITE_URL = 'https://deeperconnectioninitiative.com';
 export const SITE_NAME = 'DCI Wellness';
 // Registered legal entity name (used in structured data / legal pages).
 export const LEGAL_NAME = 'Deeper Connection Initiative';
-export const OG_IMAGE = `${SITE_URL}/og-image.png`;
+export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 export const TWITTER_HANDLE = '@dci_wellness';
 // Date of the last meaningful content update. Bump when pages change
 // substantially so the sitemap's <lastmod> stays honest for crawlers.

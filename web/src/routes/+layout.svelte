@@ -7,6 +7,7 @@
 	import '@/lib/components/dci-mark/dci-mark.css';
 	import { injectAnalytics } from '@vercel/analytics/sveltekit';
 	import { dev } from '$app/environment';
+	import { IconContext } from 'phosphor-svelte';
 
 	// Vercel Web Analytics: cookieless, so no consent banner is required.
 	injectAnalytics({ mode: dev ? 'development' : 'production' });
@@ -27,7 +28,6 @@
 	<link rel="manifest" href="/site.webmanifest" />
 
 	<meta name="theme-color" content="#F6ECD9" />
-	<meta name="robots" content="index, follow" />
 </svelte:head>
 
 <Seo />
@@ -38,14 +38,17 @@
 >
 	Skip to content
 </a>
-{#if !minimalChrome}
-	<Navigation />
-{/if}
-<div class="flex min-h-screen flex-col">
-	<main id="main" class="flex-1">
-		{@render children()}
-	</main>
+<!-- Icons sit next to text that already says what they mean, so screen readers skip them. -->
+<IconContext values={{ 'aria-hidden': 'true' }}>
 	{#if !minimalChrome}
-		<Footer />
+		<Navigation />
 	{/if}
-</div>
+	<div class="flex min-h-screen flex-col">
+		<main id="main" class="flex-1">
+			{@render children()}
+		</main>
+		{#if !minimalChrome}
+			<Footer />
+		{/if}
+	</div>
+</IconContext>
