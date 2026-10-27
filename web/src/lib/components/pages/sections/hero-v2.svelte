@@ -42,6 +42,7 @@
 	<div class="mx-auto mt-16 max-w-5xl lg:mt-20" use:reveal={{ delay: 120, y: 18 }}>
 		<VideoEmbed
 			videoId="wMUYQ6uZn0Q"
+			poster="/photos/events/event-7.jpg"
 			title="The Airbnb of Mental Health: Uganda's New Early Warning System"
 			class="rounded-4xl"
 		/>

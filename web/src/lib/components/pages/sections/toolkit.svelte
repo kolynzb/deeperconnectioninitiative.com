@@ -1,15 +1,12 @@
 <script lang="ts">
 	import {
 		ArrowUpRightIcon as ArrowUpRight,
-		HandshakeIcon as HeartHandshake,
-		QrCodeIcon as QrCode,
 		SparkleIcon as Sparkles
 	} from 'phosphor-svelte';
 	import { onMount } from 'svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { paymentLinks } from '$lib/payment-links';
 	import ProductGallery from '$lib/components/product-gallery.svelte';
-	import SpotIllustration from '$lib/components/spot-illustration.svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { cardGamePhotos, journalPhotos, moodTrackerPhotos } from '$lib/product-photos';
 
@@ -75,63 +72,41 @@
 	];
 </script>
 
+<!--
+	Heading on top like every other section, then the products full width so
+	each card has room for its photo and its text side by side.
+-->
 <section id="toolkit" class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
-	<div class="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
-		<header class="relative space-y-6 lg:sticky lg:top-28 lg:self-start" use:reveal={{ delay: 0, y: 18 }}>
-			<div
-				class="inline-flex items-center gap-2 rounded-full border border-dci-teal/20 bg-dci-teal/5 px-3 py-1"
-			>
-				<span class="text-xs font-semibold uppercase tracking-wide text-dci-teal">
-					The DCI Wellness Toolkit
-				</span>
-			</div>
+	<div class="space-y-12">
+		<header class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end" use:reveal={{ delay: 0, y: 18 }}>
 			<div class="space-y-4">
+				<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">
+					The DCI Wellness Toolkit
+				</p>
 				<h2
-					class="max-w-xl text-5xl sm:text-6xl font-normal tracking-tight leading-[1.04] text-balance text-foreground"
+					class="max-w-2xl text-5xl sm:text-6xl font-normal tracking-tight leading-[1.04] text-balance text-foreground"
 				>
 					Physical tools for conversations people can <em class="text-dci-burgundy">actually start.</em>
 				</h2>
+			</div>
+			<div class="space-y-5">
 				<p class="max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
 					Designed for homes, schools, clinics, youth groups, and community circles where support
 					needs to work without perfect internet, expert language, or a formal therapy room.
-				</p>
-				<p class="max-w-md text-sm leading-relaxed text-muted-foreground">
 					Every tool is measured in
 					<a
 						href="/connection-miles"
-						class="font-semibold text-dci-teal underline-offset-2 hover:underline"
-					>
-						Connection Miles™
-					</a>
-					, our way of tracking the real connection each purchase puts into the world.
+						class="font-semibold text-dci-teal underline-offset-2 hover:underline">Connection Miles™</a
+					>.
 				</p>
-			</div>
-
-			<div class="grid max-w-md grid-cols-2 gap-3 text-sm text-muted-foreground">
-				<div class="rounded-2xl border border-dci-teal/15 bg-dci-paper/60 p-4">
-					<QrCode class="mb-5 size-5 text-dci-teal" weight="duotone" />
-					QR access to low-data digital resources.
-				</div>
-				<div class="rounded-2xl border border-dci-burgundy/15 bg-dci-paper/60 p-4">
-					<HeartHandshake class="mb-5 size-5 text-dci-burgundy" weight="duotone" />
-					10% supports training and donated kits.
-				</div>
-			</div>
-
-			<Button
-				href="/toolkit"
-				variant="outline"
-				class="rounded-full border-dci-teal/25 bg-dci-paper/60 px-5 text-dci-teal-deep hover:bg-dci-teal/7"
-			>
-				Open the kit
-				<ArrowUpRight class="size-4" weight="regular" />
-			</Button>
-
-			<div class="pointer-events-none relative hidden h-44 max-w-md lg:block">
-				<SpotIllustration
-					variant="toolkit"
-					class="dci-float-slow absolute -left-8 -top-5 w-80 opacity-95 [--float-rotate:-3deg]"
-				/>
+				<Button
+					href="/toolkit"
+					variant="outline"
+					class="rounded-full border-dci-teal/25 bg-dci-paper/60 px-5 text-dci-teal-deep hover:bg-dci-teal/7"
+				>
+					Open the kit
+					<ArrowUpRight class="size-4" weight="regular" />
+				</Button>
 			</div>
 		</header>
 
@@ -140,7 +115,7 @@
 			{#each products as product, index}
 				<article
 					use:reveal={{ delay: index * 90, y: 22 }}
-					class={`group grid overflow-hidden rounded-4xl border bg-dci-paper shadow-dci-lift transition duration-500 hover:-translate-y-1 md:grid-cols-[0.82fr_1fr] md:min-h-[22rem] ${product.border}`}
+					class={`group grid overflow-hidden rounded-4xl border bg-dci-paper shadow-dci-lift transition duration-500 hover:-translate-y-1 md:grid-cols-2 md:min-h-[22rem] ${product.border}`}
 				>
 					<div class={`relative min-h-72 overflow-hidden ${index % 2 === 1 ? 'md:order-2' : ''}`}>
 						{#if product.images}
@@ -150,6 +125,7 @@
 								video={product.video}
 								poster={product.image}
 								imgClass="min-h-72"
+								cover
 							/>
 						{:else if product.video}
 							<video
@@ -181,7 +157,7 @@
 					<div class="flex flex-col justify-between gap-8 p-6 sm:p-8 lg:p-10">
 						<div class="space-y-4">
 							<h3 class="text-3xl sm:text-4xl font-normal leading-tight text-foreground">{product.name}</h3>
-							<p class="max-w-md text-base leading-relaxed text-muted-foreground">{product.description}</p>
+							<p class="max-w-lg text-base leading-relaxed text-muted-foreground">{product.description}</p>
 							{#if product.credit}
 								<p class="max-w-md text-sm italic leading-relaxed text-muted-foreground">{product.credit}</p>
 							{/if}

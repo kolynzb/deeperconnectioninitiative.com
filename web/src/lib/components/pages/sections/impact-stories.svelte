@@ -1,35 +1,17 @@
 <script lang="ts">
 	import { reveal } from '$lib/actions/reveal';
-	import {
-		ArrowUpRightIcon,
-		ChatCircleTextIcon,
-		HeartIcon,
-		MapPinIcon,
-		NotebookIcon,
-		UsersThreeIcon
-	} from 'phosphor-svelte';
+	import { ArrowUpRightIcon } from 'phosphor-svelte';
 
 	const fieldNotes = [
 		{
 			label: 'School group',
 			title: 'A counselor opens a circle without asking students to explain everything at once.',
-			body: 'The card prompts create enough structure for quiet students to participate without turning the room into a formal therapy session.',
-			icon: ChatCircleTextIcon,
-			accent: '#2A6268'
+			body: 'The card prompts create enough structure for quiet students to participate without turning the room into a formal therapy session.'
 		},
 		{
 			label: 'Recovery space',
 			title: 'A weekly check-in becomes easier to repeat.',
-			body: 'Mood tracking gives the team a shared language for patterns, triggers, and small shifts that might otherwise go unnoticed.',
-			icon: HeartIcon,
-			accent: '#6F231E'
-		},
-		{
-			label: 'Community venue',
-			title: 'A trusted place becomes a gentle entry point for support.',
-			body: 'Instead of waiting for people to find a clinic, DCI helps bring conversation tools into spaces people already visit.',
-			icon: MapPinIcon,
-			accent: '#2A6268'
+			body: 'Mood tracking gives the team a shared language for patterns, triggers, and small shifts that might otherwise go unnoticed.'
 		}
 	];
 </script>
@@ -63,23 +45,17 @@
 				use:reveal={{ delay: 0, y: 22 }}
 				class="relative min-h-[34rem] overflow-hidden rounded-4xl bg-dci-teal-deep p-6 text-dci-cream shadow-dci-panel sm:p-8 lg:p-10"
 			>
-				<div
-					class="pointer-events-none absolute inset-0 opacity-10"
-					style="background-image: radial-gradient(#F6ECD9 1px, transparent 1px); background-size: 28px 28px;"
-				></div>
 				<img
 					src="/photos/champion-training-hero.jpg"
 					alt="A Community Champion training a group"
 					loading="lazy"
-					class="pointer-events-none absolute inset-y-0 right-0 hidden h-full w-[55%] object-cover opacity-40 [mask-image:linear-gradient(to_right,transparent,black_60%)] lg:block"
+					class="pointer-events-none absolute inset-0 h-full w-full object-cover"
 				/>
-				<div class="relative z-10 flex min-h-[30rem] max-w-xl flex-col justify-between">
+				<div
+					class="pointer-events-none absolute inset-0 bg-gradient-to-t from-dci-teal-deep via-dci-teal-deep/85 to-dci-teal-deep/10"
+				></div>
+				<div class="relative z-10 flex min-h-[30rem] max-w-xl flex-col justify-end">
 					<div>
-						<div
-							class="mb-8 flex size-12 items-center justify-center rounded-xl bg-dci-cream/10 text-dci-cream"
-						>
-							<UsersThreeIcon class="size-6" weight="duotone" />
-						</div>
 						<p class="text-xs font-semibold uppercase tracking-wide text-dci-cream/70">
 							Field note
 						</p>
@@ -112,21 +88,12 @@
 			</article>
 
 			<div class="grid gap-5">
-				{#each fieldNotes as note, index}
-					{@const Icon = note.icon}
+				{#each fieldNotes as note, index (note.label)}
 					<article
 						use:reveal={{ delay: index * 90, y: 18 }}
 						class="dci-soft-hover rounded-4xl border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift"
 					>
-						<div class="mb-5 flex items-center justify-between gap-4">
-							<div
-								class="flex size-11 items-center justify-center rounded-xl bg-dci-paper"
-								style={`color:${note.accent}`}
-							>
-								<Icon class="size-5" weight="duotone" />
-							</div>
-							<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">{note.label}</p>
-						</div>
+						<p class="mb-4 text-xs font-semibold uppercase tracking-wide text-dci-teal">{note.label}</p>
 						<h3 class="text-2xl font-normal leading-tight text-foreground">{note.title}</h3>
 						<p class="mt-3 text-sm leading-relaxed text-muted-foreground">{note.body}</p>
 					</article>
@@ -141,7 +108,7 @@
 						<span class="block text-sm font-semibold uppercase tracking-wide text-dci-burgundy">
 							See it in practice
 						</span>
-						<span class="mt-2 block text-2xl font-semibold leading-tight text-foreground">
+						<span class="mt-2 block font-serif text-2xl leading-tight text-foreground">
 							Clinics, demos, and community sessions
 						</span>
 					</span>

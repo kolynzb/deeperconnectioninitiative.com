@@ -1,25 +1,29 @@
-[2026-07-20T13:00:32.489Z] [error] Failed to load resource: the server responded with a status of 404 ()
-[2026-07-20T13:00:32.975Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:00:32.975Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:00:32.975Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:00:33.031Z] [log] Adobe Analytics configured: trackExternalLinks = false
-[2026-07-20T13:00:33.181Z] [error] Failed to load resource: the server responded with a status of 403 ()
-[2026-07-20T13:00:33.182Z] [error] Failed to load resource: the server responded with a status of 403 ()
-[2026-07-20T13:00:34.127Z] [warning] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://aws.demdex.net') does not match the recipient window's origin ('null').
-[2026-07-20T13:00:37.984Z] [log] Adobe Analytics configured: trackExternalLinks = false
-[2026-07-20T13:00:44.164Z] [log] Adobe Analytics configured: trackExternalLinks = false
-[2026-07-20T13:01:00.757Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:01:00.757Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:01:00.759Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:01:00.847Z] [log] Adobe Analytics configured: trackExternalLinks = false
-[2026-07-20T13:01:21.507Z] [error] Failed to load resource: the server responded with a status of 404 ()
-[2026-07-20T13:01:21.565Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:01:21.565Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:01:21.566Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:01:21.601Z] [log] Adobe Analytics configured: trackExternalLinks = false
-[2026-07-20T13:01:37.210Z] [error] Blocked script execution in 'https://raw.githubusercontent.com/github/awesome-copilot/main/README.md' because the document's frame is sandboxed and the 'allow-scripts' permission is not set.
-[2026-07-20T13:01:45.030Z] [error] Blocked script execution in 'https://raw.githubusercontent.com/github/spec-kit/main/templates/plan-template.md' because the document's frame is sandboxed and the 'allow-scripts' permission is not set.
-[2026-07-20T13:01:54.677Z] [error] Blocked script execution in 'https://raw.githubusercontent.com/kirodotdev/Kiro/main/README.md' because the document's frame is sandboxed and the 'allow-scripts' permission is not set.
-[2026-07-20T13:01:55.220Z] [error] Failed to load resource: the server responded with a status of 404 ()
-[2026-07-20T13:01:55.220Z] [error] Blocked script execution in 'https://raw.githubusercontent.com/dotcursorrules/awesome-cursorrules/main/README.md' because the document's frame is sandboxed and the 'allow-scripts' permission is not set.
-[2026-07-20T13:02:00.891Z] [error] Failed to load resource: the server responded with a status of 401 ()
+[2026-10-27T03:31:24.533Z] [debug] [vite] connecting...
+[2026-10-27T03:31:24.547Z] [debug] [vite] connected.
+[2026-10-27T03:31:25.403Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:31:25.404Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:31:25.404Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:31:52.174Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/toolkit.svelte
+[2026-10-27T03:31:52.174Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:32:01.475Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/path-finder.svelte
+[2026-10-27T03:32:01.476Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:32:02.241Z] [debug] [vite] connecting...
+[2026-10-27T03:32:02.245Z] [debug] [vite] connected.
+[2026-10-27T03:32:02.331Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:32:02.331Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:32:02.331Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:32:14.849Z] [debug] [vite] connecting...
+[2026-10-27T03:32:14.859Z] [debug] [vite] connected.
+[2026-10-27T03:32:14.944Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:32:14.945Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:32:14.945Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:32:34.692Z] [debug] [vite] connecting...
+[2026-10-27T03:32:34.693Z] [debug] [vite] connected.
+[2026-10-27T03:32:34.823Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:32:34.823Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:32:34.823Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:32:51.774Z] [debug] [vite] connecting...
+[2026-10-27T03:32:51.776Z] [debug] [vite] connected.
+[2026-10-27T03:32:51.878Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:32:51.878Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:32:51.878Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view

@@ -7,7 +7,8 @@
 		video = null,
 		poster = undefined,
 		imgClass = '',
-		dynamicAspect = false
+		dynamicAspect = false,
+		cover = false
 	}: {
 		images: string[];
 		alt: string;
@@ -17,7 +18,11 @@
 		poster?: string;
 		imgClass?: string;
 		dynamicAspect?: boolean;
+		/** Fill the frame (cropping) instead of fitting the photo over a blurred backdrop. */
+		cover?: boolean;
 	} = $props();
+
+	const fit = $derived(cover ? 'object-cover' : 'object-contain');
 
 	let index = $state(0);
 	// Aspect ratio of the currently shown photo, so containers can reshape to
@@ -48,6 +53,7 @@
 	style={dynamicAspect && ratio ? `aspect-ratio: ${ratio}; height: auto;` : ''}
 >
 	<!-- Blurred fill behind the photo, so uncropped images never sit on empty bars -->
+	{#if !cover}
 	<img
 		src={backdropSrc}
 		alt=""
@@ -55,6 +61,7 @@
 		loading="lazy"
 		class="absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-2xl"
 	/>
+	{/if}
 	{#if onVideoSlide}
 		<video
 			src={video}
@@ -65,7 +72,7 @@
 			playsinline
 			preload="none"
 			aria-label={`${alt} video preview`}
-			class="relative z-10 h-full w-full object-contain"
+			class={`relative z-10 h-full w-full ${fit}`}
 		></video>
 	{:else}
 		<img
@@ -73,7 +80,7 @@
 			alt={index === 0 ? alt : `${alt}, photo ${index + 1} of ${images.length}`}
 			loading="lazy"
 			onload={onImgLoad}
-			class={`relative z-10 h-full w-full object-contain transition-transform duration-700 group-hover/gallery:scale-[1.02] ${imgClass}`}
+			class={`relative z-10 h-full w-full ${fit} transition-transform duration-700 group-hover/gallery:scale-[1.02] ${imgClass}`}
 		/>
 	{/if}
 

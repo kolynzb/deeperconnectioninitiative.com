@@ -73,13 +73,7 @@
 		</div>
 
 		<div class="space-y-5" use:reveal={{ delay: 120, y: 18 }}>
-			<div
-				class="inline-flex items-center gap-2 rounded-full border border-dci-teal/20 bg-dci-teal/5 px-3 py-1"
-			>
-				<span class="text-xs font-semibold tracking-wide text-dci-teal uppercase"
-					>Recognised infrastructure</span
-				>
-			</div>
+			<p class="text-xs font-semibold tracking-wide text-dci-teal uppercase">The founder</p>
 
 			<h2 class="text-5xl sm:text-6xl font-normal tracking-tight leading-[1.04] text-balance text-foreground">
 				<em class="text-dci-burgundy">40+ years</em> of experience started this journey
@@ -107,13 +101,10 @@
 				<p class="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
 					Trusted alongside
 				</p>
-				<ul class="flex flex-wrap gap-2">
-					{#each affiliations as name}
-						<li
-							class="rounded-full border border-dci-sand bg-dci-cream/60 px-4 py-1.5 text-sm font-medium text-foreground"
-						>
-							{name}
-						</li>
+				<!-- Plain names, not pills, so they don't read as buttons. Swap for logos once we have them. -->
+				<ul class="divide-y divide-dci-teal/12 border-y border-dci-teal/12">
+					{#each affiliations as name (name)}
+						<li class="py-3 font-serif text-xl text-foreground">{name}</li>
 					{/each}
 				</ul>
 			</div>

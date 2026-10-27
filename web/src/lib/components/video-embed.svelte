@@ -8,8 +8,9 @@
 	let {
 		videoId,
 		title,
+		poster,
 		class: className
-	}: { videoId: string; title: string; class?: string } = $props();
+	}: { videoId: string; title: string; poster?: string; class?: string } = $props();
 
 	let playing = $state(false);
 
@@ -43,24 +44,25 @@
 			class="group absolute inset-0 h-full w-full cursor-pointer"
 			aria-label={`Play video: ${title}`}
 		>
-			<!-- Above the fold, so it loads eagerly. sddefault is 640px; hqdefault is
-			     the fallback for videos that never had an SD thumbnail. -->
+			<!-- Above the fold, so it loads eagerly. Without our own poster, YouTube's
+			     sddefault (640px) is used, falling back to hqdefault for videos that
+			     never had an SD thumbnail. -->
 			<img
-				src="https://i.ytimg.com/vi/{videoId}/sddefault.jpg"
+				src={poster ?? `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`}
 				alt=""
-				width="640"
-				height="480"
+				width="1100"
+				height="733"
 				fetchpriority="high"
 				onerror={(e) => {
 					const img = e.currentTarget as HTMLImageElement;
-					if (!img.src.includes('hqdefault'))
+					if (!poster && !img.src.includes('hqdefault'))
 						img.src = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 				}}
 				class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
 			/>
-			<span class="absolute inset-0 bg-black/20 transition group-hover:bg-black/10"></span>
+			<span class="absolute inset-0 bg-dci-ink/20 transition group-hover:bg-dci-ink/10"></span>
 			<span
-				class="play-ripple absolute top-1/2 left-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-dci-burgundy text-white shadow-lg transition group-hover:scale-110 sm:size-20"
+				class="play-ripple absolute top-1/2 left-1/2 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-dci-cream text-dci-teal-deep shadow-dci-lift transition group-hover:scale-110 sm:size-20"
 			>
 				<PlayIcon weight="fill" class="ml-1 size-7 sm:size-9" />
 			</span>
@@ -110,7 +112,7 @@
 		position: absolute;
 		inset: 0;
 		border-radius: 9999px;
-		border: 2px solid rgba(255, 255, 255, 0.85);
+		border: 2px solid rgba(246, 236, 217, 0.85);
 		opacity: 0;
 		pointer-events: none;
 		animation: play-ripple 2.4s ease-out 1.1s 4;

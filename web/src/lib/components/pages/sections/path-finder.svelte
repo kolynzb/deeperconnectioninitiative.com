@@ -7,6 +7,7 @@
 	import {
 		ArrowRightIcon,
 		ArrowUpRightIcon,
+		BookOpenTextIcon,
 		BuildingsIcon,
 		GraduationCapIcon,
 		HandshakeIcon,
@@ -35,6 +36,21 @@
 
 	const pathways = [
 		{
+			id: 'tools',
+			label: 'I want tools',
+			kicker: 'Own your healing',
+			icon: BookOpenTextIcon,
+			illustration: 'toolkit',
+			title: 'I am ready to own my healing.',
+			description:
+				'Three paper tools that give you somewhere to start. A conversation can happen anywhere, with anyone, without waiting for an appointment.',
+			steps: ['Draw a card and start talking', 'Track your mood each day', 'Write it out in the journal'],
+			helper: 'The full toolkit is 200,000 UGX and earns 10 Connection Miles.',
+			href: '#toolkit',
+			cta: 'See the toolkit',
+			accent: '#2A6268'
+		},
+		{
 			id: 'lead',
 			label: 'I want to lead',
 			kicker: 'Become a champion',
@@ -51,13 +67,10 @@
 				total: '500,000 UGX',
 				deposit: '150,000 UGX',
 				depositNote: 'A 30 per cent deposit reserves your place on the waitlist. The balance of 350,000 UGX is due before training begins.',
-				href: '/checkout/champion-deposit',
-				cta: 'Pay deposit and join the waitlist'
 			},
 			helper: 'Training days are announced at the next Conversation Clinic.',
-			href: '/performance/assessment',
-			cta: 'Take the Blueprint Assessment',
-			ctaRed: true,
+			href: '/checkout/champion-deposit',
+			cta: 'Pay deposit and join the waitlist',
 			accent: '#6F231E'
 		},
 		{
@@ -78,7 +91,6 @@
 				"The Early Warning System earns no Connection Miles of its own. It is what makes everyone else's countable.",
 			href: WHATSAPP_ORG,
 			cta: 'Talk to us on WhatsApp',
-			ctaRed: true,
 			accent: '#2A6268'
 		},
 		{
@@ -114,7 +126,6 @@
 				'Ten per cent of every toolkit sold already funds Champion training. Venue partners, DCI Angels and the provider network start at Volunteering.',
 			href: '/checkout/sponsor-scholarship',
 			cta: 'Fund a scholarship',
-			ctaRed: true,
 			accent: '#6F231E'
 		}
 	] as const;
@@ -122,16 +133,10 @@
 	type Pathway = (typeof pathways)[number];
 
 	let activePath = $state<Pathway>(pathways[0]);
-
-	// The free assessment gets a distinct treatment, since it asks for nothing
-	// and is the softest way into the funnel.
-	const ctaIsAssessment = $derived(activePath.href === '/performance/assessment');
-	// Doors can ask for the DCI red treatment on their button.
-	const ctaIsRed = $derived(ctaIsAssessment || ('ctaRed' in activePath && activePath.ctaRed));
 </script>
 
 <!--
-	A dark band of three numbered doors, the homepage's one place to join or sponsor. The open door unfolds its detail
+	A dark band of four numbered doors, the homepage's one place to join or sponsor. The open door unfolds its detail
 	(offer, video or options) directly beneath its row. The band
 	tucks up behind the hero video, so it starts with a negative margin.
 -->
@@ -146,7 +151,7 @@
 				Start <em class="text-dci-clay">where you are.</em>
 			</h2>
 			<p class="mt-6 max-w-xl text-base leading-relaxed text-dci-cream/75 sm:text-lg">
-				DCI can be a training path, a measurement system, or a way to sponsor access.
+				DCI can be tools for yourself, a training path, a measurement system, or a way to sponsor access.
 				Choose the entry point that matches what brought you here.
 			</p>
 		</div>
@@ -278,9 +283,7 @@
 					>Watch it on YouTube</a>
 				</p>
 				{:else if 'offer' in activePath && activePath.offer}
-					<article
-						class="rounded-2xl border border-dci-teal/15 bg-dci-paper/65 p-5 sm:flex sm:items-center sm:justify-between sm:gap-6"
-					>
+					<article class="rounded-2xl border border-dci-teal/15 bg-dci-paper/65 p-5">
 						<div class="min-w-0">
 							<p class="text-sm font-semibold leading-tight text-foreground">
 								{activePath.offer.name}
@@ -294,12 +297,6 @@
 								{activePath.offer.depositNote}
 							</p>
 						</div>
-						<a
-							href={activePath.offer.href}
-							class="mt-4 inline-flex h-11 shrink-0 items-center justify-center rounded-full bg-dci-teal-deep px-6 text-sm font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.98] sm:mt-0"
-						>
-							{activePath.offer.cta}
-						</a>
 					</article>
 				{:else}
 					<div class="grid gap-3 sm:grid-cols-3">
@@ -315,7 +312,6 @@
 				<div class="mt-8 flex flex-col gap-3 border-t border-dci-teal/12 pt-6 sm:flex-row sm:items-center sm:justify-between">
 					<div class="max-w-sm space-y-2">
 						<p class="text-sm leading-relaxed text-muted-foreground">{activePath.helper}</p>
-						{#if activePath.href !== '/performance/assessment'}
 						<p class="text-sm leading-relaxed text-muted-foreground">
 							Not sure where to start?
 							<a href="/performance/assessment" class="font-semibold text-dci-teal underline underline-offset-4">
@@ -323,25 +319,13 @@
 							</a>
 							and see what the patterns say.
 						</p>
-					{/if}
 					</div>
 					<a
 						href={activePath.href}
 						target={activePath.href.startsWith('http') ? '_blank' : undefined}
 						rel={activePath.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-						class={cn(
-							'group inline-flex shrink-0 items-center justify-center gap-2 rounded-full text-sm font-semibold transition active:scale-[0.98]',
-							ctaIsRed
-								? 'h-12 bg-dci-burgundy px-6 text-dci-cream shadow-dci-lift hover:bg-dci-burgundy/90'
-								: 'h-11 bg-dci-teal-deep px-6 text-dci-cream hover:bg-dci-teal-mid'
-						)}
+						class="group inline-flex shrink-0 items-center justify-center gap-2 rounded-full text-sm font-semibold transition active:scale-[0.98] h-12 bg-dci-burgundy px-6 text-dci-cream shadow-dci-lift hover:bg-dci-burgundy/90"
 					>
-						{#if ctaIsAssessment}
-							<span
-								class="rounded-full bg-dci-cream/20 px-2 py-0.5 text-xs font-bold uppercase tracking-wide"
-							>Free</span
-							>
-						{/if}
 						{activePath.cta}
 						<ArrowUpRightIcon
 							class="size-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

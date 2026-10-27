@@ -120,11 +120,11 @@
 			</span>
 		</div>
 
-		<p class="relative mt-3 font-serif text-lg leading-snug text-dci-ink sm:text-xl">
+		<p class="relative my-auto py-4 font-serif text-2xl leading-snug text-dci-ink">
 			{p.text}
 		</p>
 
-		<div class="relative mt-auto flex items-center justify-between pt-6">
+		<div class="relative flex items-center justify-between">
 			<span
 				class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold uppercase tracking-wider {tc.chip}"
 			>

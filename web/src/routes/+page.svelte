@@ -7,6 +7,7 @@
 	import ImpactStories from '@/lib/components/pages/sections/impact-stories.svelte';
 	import Founder from '@/lib/components/pages/sections/founder.svelte';
 	import PathFinder from '@/lib/components/pages/sections/path-finder.svelte';
+	import ClosingCta from '@/lib/components/pages/sections/closing-cta.svelte';
 </script>
 
 <!--
@@ -22,3 +23,4 @@
 <ImpactStories />
 <Toolkit />
 <CardDraw />
+<ClosingCta />
