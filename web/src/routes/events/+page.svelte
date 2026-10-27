@@ -63,7 +63,7 @@
 		.filter((e) => new Date(e.endDate).getTime() < now)
 		.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
 
-	const gallery = Array.from({ length: 8 }, (_, i) => `/photos/events/event-${i + 1}.jpg`);
+	const gallery = Array.from({ length: 8 }, (_, i) => `/photos/events/event-${i + 1}.webp`);
 </script>
 
 <svelte:head>

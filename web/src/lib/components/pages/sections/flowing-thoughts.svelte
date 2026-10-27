@@ -19,7 +19,7 @@
 	const HEAD_SIZE = 360;
 
 	// The head does not sit in the middle of its own PNG: crown at row 63 and
-	// neck at row 361 of dci-mark-2026.png, so its centre is 0.424 down the frame.
+	// neck at row 361 of the mark image, so its centre is 0.424 down the frame.
 	const HEAD_CENTRE_FRAC = 0.424;
 
 	const BAND_W = 64;
@@ -81,7 +81,7 @@
 
 		<!-- 3. The head, in front, so the face is never covered -->
 		<image
-			href="/photos/dci-mark-2026.png"
+			href="/photos/dci-mark-large.webp"
 			x={HEAD_CX - HEAD_SIZE / 2}
 			y={HEAD_CY - HEAD_SIZE * HEAD_CENTRE_FRAC}
 			width={HEAD_SIZE}

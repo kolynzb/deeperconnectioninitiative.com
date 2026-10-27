@@ -45,7 +45,7 @@
 	<div class="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-[0.9fr_1.1fr] lg:gap-20">
 		<figure class="mx-auto w-full max-w-md md:mx-0" use:reveal={{ delay: 0, y: 18 }}>
 			<img
-				src="/photos/ann-banya.jpg"
+				src="/photos/ann-banya.webp"
 				alt="Ann Banya, Early Child Development Specialist"
 				loading="lazy"
 				class="aspect-[4/5] w-full rounded-4xl object-cover object-top"

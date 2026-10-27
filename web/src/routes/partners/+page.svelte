@@ -42,7 +42,7 @@
 	{/snippet}
 	{#snippet aside()}
 		<img
-			src="/photos/partner-training-room.jpg"
+			src="/photos/partner-training-room.webp"
 			alt="DCI running a session at a partner organisation"
 			class="aspect-[4/3] w-full rounded-4xl object-cover"
 		/>

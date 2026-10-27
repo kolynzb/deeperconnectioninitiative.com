@@ -1,9 +1,9 @@
 import { cardGamePhotos, journalPhotos, moodTrackerPhotos } from './product-photos';
 
 // The inline cards show photos at thumbnail size, so they use the 480px WebP
-// copies in each photo folder's thumbs/ instead of the 1080px JPEGs.
+// copies in each photo folder's thumbs/ instead of the full 1080px photos.
 const thumbs = (photos: string[]) =>
-	photos.map((src) => src.replace(/([^/]+)\.jpg$/, 'thumbs/$1.webp'));
+	photos.map((src) => src.replace(/([^/]+)\.webp$/, 'thumbs/$1.webp'));
 
 /**
  * The three toolkit products, for places that show them inline.

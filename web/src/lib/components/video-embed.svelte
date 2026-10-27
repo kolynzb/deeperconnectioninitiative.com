@@ -9,8 +9,16 @@
 		videoId,
 		title,
 		poster,
+		posterSrcset,
 		class: className
-	}: { videoId: string; title: string; poster?: string; class?: string } = $props();
+	}: {
+		videoId: string;
+		title: string;
+		poster?: string;
+		/** Smaller copies of the poster so phones don't download the desktop size. */
+		posterSrcset?: string;
+		class?: string;
+	} = $props();
 
 	let playing = $state(false);
 
@@ -48,6 +56,8 @@
 			     never had an SD thumbnail. -->
 			<img
 				src={poster ?? `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`}
+				srcset={posterSrcset}
+				sizes={posterSrcset ? '(min-width: 1024px) 1024px, 100vw' : undefined}
 				alt=""
 				width="1100"
 				height="733"

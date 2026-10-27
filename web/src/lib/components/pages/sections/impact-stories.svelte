@@ -33,7 +33,7 @@
 			class="relative flex min-h-[32rem] items-end overflow-hidden rounded-4xl bg-dci-teal-deep p-6 text-dci-cream sm:p-8 lg:p-10"
 		>
 			<img
-				src="/photos/champion-training-hero.jpg"
+				src="/photos/champion-training-hero.webp"
 				alt="A Community Champion training a group"
 				loading="lazy"
 				class="pointer-events-none absolute inset-0 h-full w-full object-cover"

@@ -18,7 +18,7 @@
 			cta: 'See card game',
 			href: '#toolkit-products',
 			video: null as string | null,
-			poster: '/photos/product-card-game.jpg'
+			poster: '/photos/product-card-game.webp'
 		},
 		{
 			id: 'journal',
@@ -31,7 +31,7 @@
 			cta: 'See journal',
 			href: '#toolkit-products',
 			video: '/videos/journal.mp4' as string | null,
-			poster: '/photos/product-journal.jpg'
+			poster: '/photos/product-journal.webp'
 		},
 		{
 			id: 'mood',
@@ -44,7 +44,7 @@
 			cta: 'See tracker',
 			href: '#toolkit-products',
 			video: '/videos/mood-tracker.mp4' as string | null,
-			poster: '/photos/product-mood-tracker.jpg'
+			poster: '/photos/product-mood-tracker.webp'
 		}
 	];
 
@@ -66,7 +66,7 @@
 >
 	<div class="p-6 sm:p-8 lg:p-10">
 		<p class="type-eyebrow text-dci-teal">Open the kit</p>
-		<h3 class="type-title mt-4 max-w-lg text-foreground">A tool for the moment you are in.</h3>
+		<h2 class="type-title mt-4 max-w-lg text-foreground">A tool for the moment you are in.</h2>
 		<p class="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
 			Each piece has a different job: opening a conversation, making reflection easier, or helping
 			someone notice patterns over time.
@@ -126,7 +126,7 @@
 
 			<div>
 				<p class="type-eyebrow text-dci-teal">{activeTool.kicker}</p>
-				<h4 class="type-subtitle mt-4 text-foreground">{activeTool.title}</h4>
+				<h3 class="type-subtitle mt-4 text-foreground">{activeTool.title}</h3>
 				<p class="mt-4 text-base leading-relaxed text-muted-foreground">{activeTool.description}</p>
 				<p class="mt-6 border-t border-dci-teal/15 pt-4 text-sm leading-relaxed text-dci-teal-deep">
 					{activeTool.detail}

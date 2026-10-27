@@ -19,7 +19,7 @@
 			class="flex h-full flex-col overflow-hidden rounded-2xl border border-dci-teal/15 bg-dci-paper/70"
 		>
 			<img
-				src="/photos/section7-venue.jpg"
+				src="/photos/section7-venue.webp"
 				alt="A wellness hub hosting a DCI clinic"
 				loading="lazy"
 				class="block h-40 w-full object-cover"
@@ -38,7 +38,7 @@
 			class="flex h-full flex-col overflow-hidden rounded-2xl border border-dci-teal/15 bg-dci-paper/70"
 		>
 			<img
-				src="/photos/champion-training-hero.jpg"
+				src="/photos/champion-training-hero.webp"
 				alt="DCI Angels supporting a clinic"
 				loading="lazy"
 				class="block h-40 w-full object-cover"
@@ -57,7 +57,7 @@
 			class="flex h-full flex-col overflow-hidden rounded-2xl border border-dci-teal/15 bg-dci-paper/70"
 		>
 			<img
-				src="/photos/section7-clinics.jpg"
+				src="/photos/section7-clinics.webp"
 				alt="A Conversation Clinic in session"
 				loading="lazy"
 				class="block h-40 w-full object-cover"

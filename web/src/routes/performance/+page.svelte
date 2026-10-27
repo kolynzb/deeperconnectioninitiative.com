@@ -173,7 +173,7 @@
 	/>
 	<div class="grid gap-6 md:grid-cols-2">
 		<article use:reveal={{ delay: 0, y: 22 }} class="flex flex-col gap-6 rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:flex-row sm:p-8">
-			<img src="/photos/emily.jpg" alt="Emily" class="size-28 shrink-0 rounded-2xl object-cover" />
+			<img src="/photos/emily.webp" alt="Emily" class="size-28 shrink-0 rounded-2xl object-cover" />
 			<div>
 				<h3 class="type-subtitle text-foreground">Emily</h3>
 				<p class="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -184,7 +184,7 @@
 			</div>
 		</article>
 		<article use:reveal={{ delay: 90, y: 22 }} class="flex flex-col gap-6 rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:flex-row sm:p-8">
-			<img src="/photos/ann-banya.jpg" alt="Ann Banya" class="size-28 shrink-0 rounded-2xl object-cover" />
+			<img src="/photos/ann-banya.webp" alt="Ann Banya" class="size-28 shrink-0 rounded-2xl object-cover" />
 			<div>
 				<h3 class="type-subtitle text-foreground">Ann</h3>
 				<p class="mt-3 text-sm leading-relaxed text-muted-foreground">

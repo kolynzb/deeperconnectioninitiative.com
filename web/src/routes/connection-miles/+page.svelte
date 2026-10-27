@@ -61,8 +61,8 @@
 				const icon = L.divIcon({
 					className: 'dci-map-pin',
 					html: `<span class="dci-pin-dot" style="--pin:${loc.color}"></span>`,
-					iconSize: [20, 20],
-					iconAnchor: [10, 10]
+					iconSize: [32, 32],
+					iconAnchor: [16, 16]
 				});
 				L.marker([loc.lat, loc.lng], { icon, title: loc.name })
 					.addTo(map)
@@ -404,6 +404,7 @@
 
 	:global(.dci-pin-dot) {
 		display: block;
+		margin: 6px;
 		width: 20px;
 		height: 20px;
 		border-radius: 9999px;

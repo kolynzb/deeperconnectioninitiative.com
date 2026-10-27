@@ -247,7 +247,7 @@
 								class="group relative flex aspect-video w-full items-center justify-center"
 							>
 								<img
-									src="/photos/ann-banya.jpg"
+									src="/photos/ann-banya.webp"
 									alt=""
 									loading="lazy"
 									class="absolute inset-0 h-full w-full object-cover opacity-70 transition group-hover:opacity-80"

@@ -14,7 +14,7 @@
 			description: 'Conversation prompts for low-pressure emotional check-ins.',
 			price: '69,000 UGX',
 			href: paymentLinks.cardGame,
-			image: '/photos/product-card-game.jpg',
+			image: '/photos/product-card-game.webp',
 			images: cardGamePhotos,
 			video: null as string | null
 		},
@@ -23,7 +23,7 @@
 			description: 'Guided pages for processing, naming, and noticing what is happening.',
 			price: '100,000 UGX',
 			href: paymentLinks.journal,
-			image: '/photos/product-journal.jpg',
+			image: '/photos/product-journal.webp',
 			images: journalPhotos,
 			video: '/videos/journal.mp4'
 		},
@@ -32,7 +32,7 @@
 			description: 'A simple daily rhythm for noticing emotional patterns over time.',
 			price: '31,000 UGX',
 			href: paymentLinks.moodTracker,
-			image: '/photos/product-mood-tracker.jpg',
+			image: '/photos/product-mood-tracker.webp',
 			images: moodTrackerPhotos,
 			video: '/videos/mood-tracker.mp4'
 		}
@@ -109,7 +109,7 @@
 			class="overflow-hidden rounded-4xl bg-dci-teal-deep text-dci-cream"
 		>
 			<img
-				src="/photos/product-full-toolkit.jpg"
+				src="/photos/product-full-toolkit.webp"
 				alt="The complete DCI toolkit: card game, reflection journal, and mood tracker"
 				loading="lazy"
 				class="h-56 w-full object-cover object-[center_72%] sm:h-64 lg:h-72"

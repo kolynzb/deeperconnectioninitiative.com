@@ -26,7 +26,7 @@
 					string | null,
 			miles: '8 Connection Miles',
 			price: '69,000 UGX',
-			image: '/photos/product-card-game.jpg',
+			image: '/photos/product-card-game.webp',
 			images: cardGamePhotos as string[] | null,
 			video: null as string | null,
 			paymentLink: paymentLinks.cardGame
@@ -38,7 +38,7 @@
 			credit: null as string | null,
 			miles: '1 Connection Mile',
 			price: '100,000 UGX',
-			image: '/photos/product-journal.jpg',
+			image: '/photos/product-journal.webp',
 			images: journalPhotos as string[] | null,
 			video: '/videos/journal.mp4',
 			paymentLink: paymentLinks.journal
@@ -50,7 +50,7 @@
 			credit: null as string | null,
 			miles: '1 Connection Mile',
 			price: '31,000 UGX',
-			image: '/photos/product-mood-tracker.jpg',
+			image: '/photos/product-mood-tracker.webp',
 			images: moodTrackerPhotos as string[] | null,
 			video: '/videos/mood-tracker.mp4',
 			paymentLink: paymentLinks.moodTracker
@@ -151,7 +151,7 @@
 			class="overflow-hidden rounded-4xl border border-dci-cream/15 bg-dci-teal-deep text-dci-cream"
 		>
 			<img
-				src="/photos/product-full-toolkit.jpg"
+				src="/photos/product-full-toolkit.webp"
 				alt="The complete DCI toolkit: card game, reflection journal, and mood tracker"
 				loading="lazy"
 				class="h-56 w-full object-cover object-[center_72%] sm:h-64 lg:h-72"

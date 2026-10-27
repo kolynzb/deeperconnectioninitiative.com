@@ -1,6 +1,5 @@
 <script lang="ts">
 	import VideoEmbed from '@/lib/components/video-embed.svelte';
-	import { reveal } from '@/lib/actions/reveal';
 	import { Button } from '$lib/components/ui/button';
 </script>
 
@@ -10,7 +9,7 @@
 	path finder's dark band, which tucks up behind its lower half.
 -->
 <section class="relative z-10 w-full px-4 pt-32 sm:px-6 lg:px-8 lg:pt-40">
-	<div class="mx-auto max-w-5xl text-center" use:reveal={{ delay: 0, y: 18 }}>
+	<div class="mx-auto max-w-5xl text-center">
 		<h1 class="type-display text-foreground">
 			Tools that put healing back in <em class="text-dci-burgundy">your hands.</em>
 		</h1>
@@ -26,10 +25,11 @@
 		</div>
 	</div>
 
-	<div class="mx-auto mt-16 max-w-5xl lg:mt-20" use:reveal={{ delay: 120, y: 18 }}>
+	<div class="mx-auto mt-16 max-w-5xl lg:mt-20">
 		<VideoEmbed
 			videoId="wMUYQ6uZn0Q"
-			poster="/photos/events/event-7.jpg"
+			poster="/photos/events/event-7.webp"
+			posterSrcset="/photos/events/event-7-640.webp 640w, /photos/events/event-7.webp 1100w"
 			title="The Airbnb of Mental Health: Uganda's New Early Warning System"
 			class="rounded-4xl"
 		/>

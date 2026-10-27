@@ -46,7 +46,7 @@
 	{/snippet}
 	{#snippet aside()}
 		<img
-			src="/photos/champion-training-hero.jpg"
+			src="/photos/champion-training-hero.webp"
 			alt="A Community Champion training a room of young people"
 			class="aspect-[4/3] w-full rounded-4xl object-cover"
 		/>

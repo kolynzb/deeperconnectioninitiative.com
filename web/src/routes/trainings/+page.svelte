@@ -116,7 +116,7 @@
 	{/snippet}
 	{#snippet aside()}
 		<img
-			src="/photos/section7-champions.jpg"
+			src="/photos/section7-champions.webp"
 			alt="A DCI trainer holding the reflection journal while leading a session with young people"
 			class="aspect-[4/3] w-full rounded-4xl object-cover"
 		/>
