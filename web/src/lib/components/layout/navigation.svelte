@@ -272,7 +272,7 @@
 								onclick={closeDesktopMenu}
 							>
 								<div>
-									<p class="text-xs font-bold uppercase tracking-widest text-dci-cream/70">
+									<p class="text-xs font-bold uppercase tracking-widest text-dci-cream/75">
 										{activeItem.label}
 									</p>
 									<h3 class="mt-4 text-3xl font-semibold leading-tight text-white">

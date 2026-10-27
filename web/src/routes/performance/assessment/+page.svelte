@@ -191,7 +191,7 @@
 						autocomplete="name"
 						required
 						placeholder="Your name"
-						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
+						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
 					/>
 					<input
 						bind:value={email}
@@ -200,21 +200,21 @@
 						autocomplete="email"
 						required
 						placeholder="you@email.com"
-						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
+						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
 					/>
 					<input
 						bind:value={role}
 						name="role"
 						type="text"
 						placeholder="Role (optional)"
-						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
+						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
 					/>
 					<input
 						bind:value={company}
 						name="company"
 						type="text"
 						placeholder="Company (optional)"
-						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
+						class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-dci-teal/50 focus:ring-4 focus:ring-dci-teal/10"
 					/>
 
 					{#if form?.errors?.email}

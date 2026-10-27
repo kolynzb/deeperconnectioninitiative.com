@@ -66,19 +66,19 @@
 					<dt class="type-eyebrow text-dci-teal">Office</dt>
 					<dd class="mt-2 text-base text-foreground">{siteConfig.contacts.address}</dd>
 				</div>
-				<div class="grid gap-5 pt-5 sm:grid-cols-2">
-					<div>
-						<dt class="type-eyebrow text-dci-teal">Office hours</dt>
-						<dd class="mt-2 text-sm leading-relaxed text-muted-foreground">
-							Monday-Friday, 9:00 AM-5:00 PM
-						</dd>
-					</div>
-					<div>
-						<dt class="type-eyebrow text-dci-teal">Response window</dt>
-						<dd class="mt-2 text-sm leading-relaxed text-muted-foreground">
-							Usually within 1-2 working days.
-						</dd>
-					</div>
+			</dl>
+			<dl class="grid gap-5 border-t border-dci-teal/15 pt-5 sm:grid-cols-2">
+				<div>
+					<dt class="type-eyebrow text-dci-teal">Office hours</dt>
+					<dd class="mt-2 text-sm leading-relaxed text-muted-foreground">
+						Monday-Friday, 9:00 AM-5:00 PM
+					</dd>
+				</div>
+				<div>
+					<dt class="type-eyebrow text-dci-teal">Response window</dt>
+					<dd class="mt-2 text-sm leading-relaxed text-muted-foreground">
+						Usually within 1-2 working days.
+					</dd>
 				</div>
 			</dl>
 		</aside>
@@ -104,7 +104,10 @@
 					role="status"
 				>
 					<p class="font-semibold">Thanks, your message is in.</p>
-					<p class="mt-1 text-muted-foreground">We'll follow up at the email you provided. For anything urgent, call {siteConfig.contacts.tele}.</p>
+					<p class="mt-1 text-muted-foreground">
+						We'll follow up at the email you provided. For anything urgent, call {siteConfig
+							.contacts.tele}.
+					</p>
 				</div>
 			{/if}
 			{#if form?.errors?.form}
@@ -113,7 +116,10 @@
 					role="alert"
 				>
 					{form.errors.form} You can reach us at
-					<a href={`mailto:${siteConfig.contacts.email}`} class="font-semibold underline underline-offset-4">{siteConfig.contacts.email}</a>.
+					<a
+						href={`mailto:${siteConfig.contacts.email}`}
+						class="font-semibold underline underline-offset-4">{siteConfig.contacts.email}</a
+					>.
 				</div>
 			{/if}
 
@@ -149,7 +155,7 @@
 							value={form?.values?.name ?? ''}
 							aria-invalid={form?.errors?.name ? 'true' : undefined}
 							placeholder="Full name"
-							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 						/>
 						{#if form?.errors?.name}
 							<p class="text-sm text-dci-burgundy">{form.errors.name}</p>
@@ -167,7 +173,7 @@
 							value={form?.values?.email ?? ''}
 							aria-invalid={form?.errors?.email ? 'true' : undefined}
 							placeholder="you@example.com"
-							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 						/>
 						{#if form?.errors?.email}
 							<p class="text-sm text-dci-burgundy">{form.errors.email}</p>
@@ -184,7 +190,7 @@
 							type="tel"
 							autocomplete="tel"
 							placeholder="+256..."
-							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 						/>
 					</div>
 
@@ -214,8 +220,9 @@
 						required
 						aria-invalid={form?.errors?.message ? 'true' : undefined}
 						placeholder="Tell us what you are hoping to do, who the support is for, and the best way to reach you."
-						class="w-full resize-y rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 py-4 text-base leading-relaxed text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
-						>{form?.values?.message ?? aboutParam}</textarea>
+						class="w-full resize-y rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 py-4 text-base leading-relaxed text-foreground outline-none transition placeholder:text-muted-foreground focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+						>{form?.values?.message ?? aboutParam}</textarea
+					>
 					{#if form?.errors?.message}
 						<p class="text-sm text-dci-burgundy">{form.errors.message}</p>
 					{/if}

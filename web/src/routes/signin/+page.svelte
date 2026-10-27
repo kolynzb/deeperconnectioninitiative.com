@@ -51,7 +51,7 @@
 							autocomplete="email"
 							required
 							placeholder="you@example.com"
-							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper pl-11 pr-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper pl-11 pr-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 						/>
 					</div>
 				</div>
@@ -67,7 +67,7 @@
 							autocomplete="current-password"
 							required
 							placeholder="Your password"
-							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper pl-11 pr-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper pl-11 pr-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 						/>
 					</div>
 				</div>

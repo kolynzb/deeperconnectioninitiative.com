@@ -160,7 +160,7 @@
 						aria-controls={`door-${path.id}`}
 						onclick={() => selectPath(path)}
 					>
-						<span class="font-serif text-lg text-dci-cream/50">0{index + 1}</span>
+						<span class="font-serif text-lg text-dci-cream/75">0{index + 1}</span>
 						<span
 							class={cn(
 								'font-serif text-2xl transition sm:text-3xl',
@@ -173,7 +173,7 @@
 						<ArrowRightIcon
 							class={cn(
 								'size-6 transition duration-300',
-								open ? 'rotate-90 text-dci-clay' : 'text-dci-cream/60'
+								open ? 'rotate-90 text-dci-clay' : 'text-dci-cream/75'
 							)}
 							weight="regular"
 						/>
