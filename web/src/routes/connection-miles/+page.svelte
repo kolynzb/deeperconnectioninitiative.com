@@ -3,7 +3,6 @@
 	import { onMount } from 'svelte';
 	import 'leaflet/dist/leaflet.css';
 	import { reveal } from '$lib/actions/reveal';
-	import ToolkitDemo from '$lib/components/pages/sections/toolkit-demo.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { PageHero, Section, SectionHeading } from '$lib/components/sections';
 	import { paymentLinks } from '$lib/payment-links';
@@ -108,27 +107,6 @@
 			name: 'Sponsored toolkit',
 			description: 'Funding a full toolkit into the field is counted separately from using it.',
 			items: [{ action: 'Sponsor one complete kit', miles: '10 miles' }]
-		}
-	];
-
-	const products = [
-		{
-			name: 'DCI Card Game',
-			description: 'Conversation prompts for low-pressure emotional check-ins.',
-			price: '69,000 UGX',
-			href: paymentLinks.cardGame
-		},
-		{
-			name: 'DCI Reflection Journal',
-			description: 'Guided pages for processing, naming, and noticing what is happening.',
-			price: '100,000 UGX',
-			href: paymentLinks.journal
-		},
-		{
-			name: 'DCI Mood Tracker',
-			description: 'A simple daily rhythm for noticing emotional patterns over time.',
-			price: '31,000 UGX',
-			href: paymentLinks.moodTracker
 		}
 	];
 
@@ -317,87 +295,23 @@
 	</div>
 </Section>
 
-<Section>
-	<div class="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-end">
-		<SectionHeading
-			eyebrow="Open the kit"
-			title="See the tools before choosing what to put in the field."
-			description="Cards open conversation, journals shape reflection, and mood trackers help people notice patterns. Together they create the activity behind the Connection Miles."
-		/>
-		<div
-			use:reveal={{ delay: 120, y: 18 }}
-			class="rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8"
-		>
-			<p class="type-eyebrow text-dci-teal">Field-ready support</p>
-			<p class="type-subtitle mt-4 text-foreground">
-				Tap through the kit demo, then choose an individual tool, buy a full kit, or sponsor one
-				into a community setting.
+<!-- The tools live on the Toolkit page; this page only points there. -->
+<Section tone="cream">
+	<div
+		use:reveal={{ delay: 0, y: 22 }}
+		class="grid gap-8 rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8 lg:grid-cols-[1fr_auto] lg:items-center"
+	>
+		<div>
+			<h2 class="type-title text-foreground">The miles start with the kit.</h2>
+			<p class="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
+				Cards open conversation, journals shape reflection, and mood trackers help people notice
+				patterns. Together they create the activity behind the Connection Miles.
 			</p>
 		</div>
-	</div>
-
-	<div class="mt-12">
-		<ToolkitDemo />
-	</div>
-</Section>
-
-<Section id="toolkit-products" class="scroll-mt-28">
-	<SectionHeading
-		eyebrow="Choose a tool"
-		title="Buy one piece or support access to the full kit."
-	/>
-
-	<div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1.1fr]">
-		{#each products as product, index}
-			<article
-				use:reveal={{ delay: index * 80, y: 18 }}
-				class="flex h-full flex-col justify-between rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8"
-			>
-				<div>
-					<h3 class="type-subtitle text-foreground">{product.name}</h3>
-					<p class="mt-3 text-sm leading-relaxed text-muted-foreground">{product.description}</p>
-				</div>
-				<div class="mt-8">
-					<p class="font-serif text-3xl text-dci-teal-deep">{product.price}</p>
-					<Button href={product.href} class="mt-4">
-						Get this tool
-						<ArrowUpRight weight="regular" />
-					</Button>
-				</div>
-			</article>
-		{/each}
-
-		<article
-			use:reveal={{ delay: 260, y: 18 }}
-			class="flex h-full flex-col justify-between rounded-2xl bg-dci-teal-deep p-6 text-dci-cream sm:p-8"
-		>
-			<div>
-				<p class="type-eyebrow text-dci-cream/75">Complete kit</p>
-				<h3 class="type-subtitle mt-4 text-dci-cream">All tools together.</h3>
-				<p class="mt-3 text-sm leading-relaxed text-dci-cream/75">
-					Card Game, Reflection Journal, Mood Tracker, and QR access bundled for personal and group
-					support.
-				</p>
-			</div>
-			<div class="mt-8 flex flex-col gap-3">
-				<Button
-					variant="inverse"
-					href={paymentLinks.toolkit}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Buy complete kit
-				</Button>
-				<Button
-					variant="inverse-outline"
-					href={paymentLinks.donation}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Sponsor a kit
-				</Button>
-			</div>
-		</article>
+		<Button href="/toolkit#toolkit-products" class="shrink-0">
+			See the toolkit
+			<ArrowUpRight class="size-4" weight="regular" />
+		</Button>
 	</div>
 </Section>
 

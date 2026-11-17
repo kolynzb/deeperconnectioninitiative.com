@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { fieldGlide } from '$lib/actions/flow';
+	import { fieldGlide, flowGroup } from '$lib/actions/flow';
 	import { enhance } from '$app/forms';
 	import { Button } from '@/lib/components/ui/button';
 	import { Field } from '$lib/components/ui/field';
-	import GetInvolved from '@/lib/components/pages/sections/get-involved.svelte';
-	import { PageHero, Section } from '@/lib/components/sections';
+	import { PageHero, Section, SectionHeading } from '@/lib/components/sections';
+	import { CLINIC_END, CLINIC_PRICE_UGX, CLINIC_START, CLINIC_VENUE } from '$lib/clinics';
+	import { toolkitProducts } from '$lib/toolkit-products';
 	import { reveal } from '@/lib/actions/reveal';
 	import { siteConfig } from '@/lib/config/site';
 
@@ -28,9 +29,142 @@
 	const aboutParam = $derived(page.url.searchParams.get('about') ?? '');
 	const pick = (t: string | null) => (t && supportPaths.includes(t) ? t : supportPaths[0]);
 	let topic = $state(pick(page.url.searchParams.get('topic')));
-	// An effect, not a one-off read, so same-page links (the Get involved cards) also switch it.
+	// An effect, not a one-off read, so same-page ?topic= links also switch it.
 	$effect(() => {
 		topic = pick(topicParam);
+	});
+
+	// Answers only restate what the rest of the site already says (clinics,
+	// toolkit, trainings, platform, partners, terms and privacy pages).
+	const faqTopics = [
+		{
+			id: 'clinics',
+			title: 'Clinics',
+			faqs: [
+				{
+					q: 'When and where are the clinics?',
+					a: `On the last Wednesday of every month, ${CLINIC_START} to ${CLINIC_END}, at ${CLINIC_VENUE}.`
+				},
+				{
+					q: 'How much is a seat?',
+					a: `${CLINIC_PRICE_UGX.toLocaleString('en-US')} UGX per seat, including the session. Pay by Mobile Money or card. Seats are limited.`
+				},
+				{
+					q: 'Is a clinic therapy?',
+					a: 'No. Conversation Clinics are peer-led. They are not therapy and do not replace care from a professional.'
+				},
+				{
+					q: 'Can you run a clinic for our group?',
+					a: "Yes. If you're bringing a group, or want a clinic at your school, workplace, or venue, choose \u201cCommunity clinic or event\u201d in the form above."
+				}
+			]
+		},
+		{
+			id: 'toolkit',
+			title: 'Toolkit',
+			faqs: [
+				{
+					q: 'What is in the toolkit?',
+					a: 'The DCI Card Game, Reflection Journal, and Mood Tracker. The complete kit bundles all three with QR access, for personal and group support.'
+				},
+				{
+					q: 'What does each tool cost?',
+					a: toolkitProducts.map((p) => `${p.name}: ${p.price}`).join('. ') + '.'
+				},
+				{
+					q: 'How do I pay?',
+					a: "Payments are processed by Flutterwave. You pay by Mobile Money or card on Flutterwave's secure page, and DCI does not store your card details."
+				},
+				{
+					q: 'Can I sponsor a kit for someone else?',
+					a: 'Yes. Choose \u201cSponsor a kit\u201d on the Toolkit page. Sponsoring one complete kit earns 10 Connection Miles. For questions about an order, refund, or sponsorship, write to us at the email on this page.'
+				}
+			]
+		},
+		{
+			id: 'trainings',
+			title: 'Trainings & Champions',
+			faqs: [
+				{
+					q: 'What does Champion certification cost?',
+					a: 'The Foundation Level, the Community Champion Certification, is UGX 500,000 per person.'
+				},
+				{
+					q: 'Are there other certification levels?',
+					a: 'Yes. The Advanced Level (Institutional Scale Certification) is UGX 1,500,000, and Master Trainer (Certified Trainer Certification) is UGX 3,000,000.'
+				},
+				{
+					q: 'How does the training work?',
+					a: 'Apply, confirm, prepare, train, then activate. Once payment is complete you receive the training brief, schedule, and preparation pack.'
+				},
+				{
+					q: 'Do I need to be a clinician?',
+					a: 'No. Champions learn to hold space without needing to be a clinician, and a clinic needs no clinician, just a trained Champion and the toolkit.'
+				}
+			]
+		},
+		{
+			id: 'platform',
+			title: 'Platform & data',
+			// Same answers as the Platform page FAQ.
+			faqs: [
+				{
+					q: 'Is the Early Warning System live?',
+					a: "Not yet, it is coming soon. When it launches, you will log in on the Platform page to check your Connection Miles and follow your community's Early Warning System."
+				},
+				{
+					q: 'Does it show how one person is feeling?',
+					a: 'Organisations see patterns across a whole community. DCI uses wellbeing data in aggregate, non-identifying form, as set out in our privacy policy.'
+				},
+				{
+					q: 'What does it need before it activates?',
+					a: 'Enough people taking part across mood tracking, Champion certification, and clinic attendance. One signal on its own is not enough.'
+				},
+				{
+					q: 'How do organisations pay for it?',
+					a: 'Pay-as-you-go data tracking through Connection Miles, which compound with every toolkit sold, clinic hosted, and Champion trained.'
+				}
+			]
+		},
+		{
+			id: 'partners',
+			title: 'Partners',
+			faqs: [
+				{
+					q: 'Which organisations is DCI for?',
+					a: 'Schools, corporates, NGOs, faith communities, and hospitality spaces.'
+				},
+				{
+					q: 'What does a partnership cost?',
+					a: 'Organisations start from USD 20,000 annually. We scope every engagement around your people, your setting, and the outcomes you report on.'
+				},
+				{
+					q: 'What does a partnership include?',
+					a: 'Three layers. Connect: Community Champions and Conversation Clinics. Equip: the Mood Tracker, Journal, and Card Game. Understand: the Early Warning System reads signals across your whole organisation.'
+				},
+				{
+					q: 'How do we start?',
+					a: 'Book a 30-minute call: choose \u201cPartner training\u201d in the form above.'
+				}
+			]
+		}
+	];
+
+	// The topic list marks the group in view; Cojeev's glide follows it.
+	let activeTopic = $state(faqTopics[0].id);
+	$effect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries)
+					if (entry.isIntersecting) activeTopic = entry.target.id.slice(4);
+			},
+			{ rootMargin: '-40% 0px -55% 0px' }
+		);
+		for (const t of faqTopics) {
+			const el = document.getElementById(`faq-${t.id}`);
+			if (el) observer.observe(el);
+		}
+		return () => observer.disconnect();
 	});
 </script>
 
@@ -237,4 +371,61 @@
 	</div>
 </Section>
 
-<GetInvolved />
+<Section id="faq">
+	<SectionHeading
+		eyebrow="Questions"
+		title="Answers before you write."
+		description="What people ask us most about clinics, the toolkit, trainings, the platform, and partnerships."
+	/>
+
+	<div class="mt-12 grid gap-10 lg:grid-cols-4 lg:gap-8">
+		<nav aria-label="Question topics" class="lg:sticky lg:top-28 lg:self-start">
+			<ul
+				use:flowGroup={{ itemSelector: 'a' }}
+				class="flex flex-wrap gap-1.5 lg:grid lg:gap-1"
+				style="--glide-r: 999px; --hov-r: 999px;"
+			>
+				{#each faqTopics as t (t.id)}
+					{@const current = activeTopic === t.id}
+					<li>
+						<a
+							href={`#faq-${t.id}`}
+							aria-current={current ? 'true' : undefined}
+							onclick={() => (activeTopic = t.id)}
+							class={`relative z-10 block rounded-full px-4 py-2 text-sm font-semibold transition-colors ${current ? 'text-dci-cream' : 'text-muted-foreground hover:text-foreground'}`}
+						>
+							{t.title}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</nav>
+
+		<div class="grid gap-16 lg:col-span-3">
+			{#each faqTopics as t (t.id)}
+				<div id={`faq-${t.id}`} class="scroll-mt-28">
+					<h3 class="type-title text-foreground">{t.title}</h3>
+					<div class="mt-6 divide-y divide-dci-teal/15 border-y border-dci-teal/15">
+						{#each t.faqs as faq (faq.q)}
+							<details class="group py-5">
+								<summary
+									class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg text-foreground [&::-webkit-details-marker]:hidden"
+								>
+									{faq.q}
+									<span
+										aria-hidden="true"
+										class="grid size-8 shrink-0 place-items-center rounded-full border border-dci-teal/20 text-dci-teal transition-transform group-open:rotate-45"
+										>+</span
+									>
+								</summary>
+								<p class="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground">
+									{faq.a}
+								</p>
+							</details>
+						{/each}
+					</div>
+				</div>
+			{/each}
+		</div>
+	</div>
+</Section>
