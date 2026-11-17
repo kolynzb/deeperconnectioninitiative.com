@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Button } from '$lib/components/ui/button';
 	import { CaretLeftIcon as CaretLeft, CaretRightIcon as CaretRight } from 'phosphor-svelte';
 
 	let {
@@ -53,22 +54,24 @@
 	{/if}
 
 	{#if slideCount > 1}
-		<button
-			type="button"
+		<Button
+			variant="secondary"
+			size="icon-sm"
 			aria-label="Previous photo"
 			onclick={prev}
-			class="absolute top-1/2 left-3 z-20 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-dci-paper text-foreground opacity-0 transition hover:bg-white focus-visible:opacity-100 group-hover/gallery:opacity-100 max-lg:opacity-100"
+			class="absolute top-1/2 left-3 z-20 -translate-y-1/2 opacity-0 focus-visible:opacity-100 group-hover/gallery:opacity-100 max-lg:opacity-100"
 		>
 			<CaretLeft class="size-4" weight="bold" />
-		</button>
-		<button
-			type="button"
+		</Button>
+		<Button
+			variant="secondary"
+			size="icon-sm"
 			aria-label="Next photo"
 			onclick={next}
-			class="absolute top-1/2 right-3 z-20 flex size-9 -translate-y-1/2 items-center justify-center rounded-full bg-dci-paper text-foreground opacity-0 transition hover:bg-white focus-visible:opacity-100 group-hover/gallery:opacity-100 max-lg:opacity-100"
+			class="absolute top-1/2 right-3 z-20 -translate-y-1/2 opacity-0 focus-visible:opacity-100 group-hover/gallery:opacity-100 max-lg:opacity-100"
 		>
 			<CaretRight class="size-4" weight="bold" />
-		</button>
+		</Button>
 
 		<div class="pointer-events-none absolute inset-x-0 bottom-3 z-20 flex justify-center gap-1.5">
 			{#each Array(slideCount) as _, i}

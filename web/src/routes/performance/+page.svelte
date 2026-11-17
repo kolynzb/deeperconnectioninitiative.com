@@ -152,6 +152,7 @@
 				<Card
 					appearance="editorial"
 					tone="paper"
+					lift
 					class={tier.popular ? 'border-dci-burgundy/30' : ''}
 				>
 					<CardWatermark

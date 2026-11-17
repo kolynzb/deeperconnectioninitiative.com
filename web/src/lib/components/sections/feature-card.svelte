@@ -41,7 +41,7 @@
 	} = $props();
 </script>
 
-<Card {appearance} {tone} class={className}>
+<Card {appearance} {tone} lift class={className}>
 	{#if badge}
 		<CardWatermark
 			text={badge}

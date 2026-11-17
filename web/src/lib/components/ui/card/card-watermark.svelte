@@ -22,7 +22,7 @@
 <span
 	aria-hidden="true"
 	class={cn(
-		'pointer-events-none absolute -top-5 right-3 z-0 font-serif text-[8.5rem] leading-none opacity-[0.06] select-none',
+		'v-wm pointer-events-none absolute -top-5 right-3 z-0 font-serif text-[8.5rem] leading-none opacity-[0.06] select-none',
 		toneClasses[tone],
 		className
 	)}

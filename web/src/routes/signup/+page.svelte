@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fieldGlide } from '$lib/actions/flow';
 	import { Button } from '$lib/components/ui/button';
 	import { Field } from '$lib/components/ui/field';
 	import { Section } from '$lib/components/sections';
@@ -34,7 +35,7 @@
 				<h2 class="type-title mt-1.5 text-foreground">Start with your basic information.</h2>
 			</div>
 
-			<form class="space-y-5 p-6 sm:p-8 lg:p-10" onsubmit={handleSubmit}>
+			<form use:fieldGlide class="space-y-5 p-6 sm:p-8 lg:p-10" onsubmit={handleSubmit}>
 				{#if notice}
 					<p
 						class="rounded-2xl border border-dci-teal/20 bg-dci-teal/5 px-4 py-3 text-sm text-dci-teal-deep"

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fieldGlide } from '$lib/actions/flow';
 	import { Dialog } from 'bits-ui';
 	import {
 		XIcon as X,
@@ -6,6 +7,7 @@
 		ShieldCheckIcon as ShieldCheck
 	} from 'phosphor-svelte';
 	import { Field } from '$lib/components/ui/field';
+	import { Button } from '$lib/components/ui/button';
 
 	export type DrawerProduct = { slug: string; name: string; price: string };
 
@@ -62,6 +64,7 @@
 				</div>
 
 				<form
+					use:fieldGlide
 					method="POST"
 					action={`/checkout/${product.slug}`}
 					class="mt-5 space-y-4"
@@ -88,16 +91,14 @@
 						placeholder="you@example.com"
 					/>
 
-					<button
-						type="submit"
-						disabled={submitting}
-						class="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-dci-teal-deep text-sm font-semibold text-dci-cream transition hover:bg-dci-teal-mid active:scale-[0.99] disabled:opacity-70"
-					>
+					<Button type="submit" disabled={submitting} class="w-full">
 						<LockSimple class="size-4" weight="bold" />
 						{submitting ? 'Taking you to payment…' : `Pay ${product.price}`}
-					</button>
+					</Button>
 
-					<p class="flex items-center justify-center gap-2 text-center text-xs text-muted-foreground">
+					<p
+						class="flex items-center justify-center gap-2 text-center text-xs text-muted-foreground"
+					>
 						<ShieldCheck class="size-4 shrink-0 text-dci-teal" weight="duotone" />
 						Mobile Money or card, on Flutterwave's secure page.
 					</p>

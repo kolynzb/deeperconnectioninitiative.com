@@ -1268,3 +1268,37 @@
 
 }
 
+
+/* Cojeev card depth (card.css), keyed to DCI cards that opt in with `lift`. */
+[data-slot='card'][data-depth='on'] {
+  rotate: var(--depth-axis-x, 0) var(--depth-axis-y, 1) 0 var(--depth-angle, 0deg);
+  translate: 0 var(--depth-lift, 0px);
+  perspective: 900px;
+}
+[data-slot='card'][data-depth='on']::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+  opacity: var(--depth-light, 0);
+  background: radial-gradient(
+    ellipse at var(--depth-light-x, 50%) var(--depth-light-y, 50%),
+    var(--dci-cream),
+    transparent 65%
+  );
+  mix-blend-mode: soft-light;
+}
+[data-slot='card'][data-depth='on'] > .v-wm {
+  translate: var(--depth-x, 0px) var(--depth-y, 0px);
+}
+[data-slot='card'][data-depth='on'] > :not(.v-wm, .v-morph) {
+  translate: calc(var(--depth-x, 0px) * -0.2) calc(var(--depth-y, 0px) * -0.2);
+}
+
+/* DCI flow fields: the travelling well is paper; the focused edge stays teal. */
+[data-flow-fields] {
+  --v-pink-soft: var(--dci-paper);
+  --glide-r: 1rem;
+}

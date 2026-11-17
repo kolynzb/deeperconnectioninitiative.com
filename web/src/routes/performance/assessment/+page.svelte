@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { flowGroup } from '$lib/actions/flow';
 	import { enhance } from '$app/forms';
 	import { fade } from 'svelte/transition';
 	import { ArrowUpRightIcon as ArrowUpRight } from 'phosphor-svelte';
@@ -44,9 +45,7 @@
 	let currentStatements = $derived(
 		currentFacet ? statements.filter((s) => s.facet === currentFacet!.key) : []
 	);
-	let facetComplete = $derived(
-		currentStatements.every((s) => typeof answers[s.id] === 'number')
-	);
+	let facetComplete = $derived(currentStatements.every((s) => typeof answers[s.id] === 'number'));
 
 	function goToFacet(index: number) {
 		if (index < 0) step = 'intro';
@@ -61,7 +60,9 @@
 <div class="flex min-h-screen flex-col bg-dci-cream">
 	<!-- Minimal, distraction-free header for the assessment flow. -->
 	<header class="border-b border-dci-teal/10">
-		<div class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+		<div
+			class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
+		>
 			<Logo isLink />
 			<span class="type-eyebrow text-dci-burgundy">Performance Blueprint™</span>
 		</div>
@@ -110,7 +111,11 @@
 						{#each currentStatements as statement (statement.id)}
 							<div>
 								<p class="text-lg leading-relaxed text-foreground">{statement.prompt}</p>
-								<div class="mt-4 flex gap-2">
+								<div
+									class="mt-4 flex gap-2"
+									use:flowGroup
+									style="--glide-bg: var(--dci-burgundy); --glide-fg: var(--dci-cream); --glide-hover-bg: color-mix(in oklab, var(--dci-burgundy) 10%, transparent);"
+								>
 									{#each scale as option (option.value)}
 										<button
 											type="button"
@@ -119,8 +124,8 @@
 											aria-pressed={answers[statement.id] === option.value}
 											class={`flex h-10 flex-1 items-center justify-center rounded-full border text-sm font-semibold transition-colors ${
 												answers[statement.id] === option.value
-													? 'border-dci-burgundy bg-dci-burgundy text-dci-cream'
-													: 'border-dci-teal/15 text-muted-foreground hover:border-dci-burgundy/40'
+													? 'border-transparent text-dci-cream'
+													: 'border-dci-teal/15 text-muted-foreground'
 											}`}
 										>
 											{option.value}
@@ -152,9 +157,7 @@
 		{:else if step === 'lead-capture'}
 			<div in:fade={{ duration: 250 }} class="mx-auto w-full max-w-md text-center">
 				<p class="type-eyebrow text-dci-burgundy">Almost there</p>
-				<h2 class="type-title mt-3 text-foreground">
-					Save your Blueprint and get your results.
-				</h2>
+				<h2 class="type-title mt-3 text-foreground">Save your Blueprint and get your results.</h2>
 				<p class="mt-4 text-base leading-relaxed text-muted-foreground">
 					We'll send you a copy and show you your personal snapshot right now.
 				</p>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { flowGroup } from '$lib/actions/flow';
 	import { onMount } from 'svelte';
 	import 'leaflet/dist/leaflet.css';
 	import { reveal } from '$lib/actions/reveal';
@@ -259,16 +260,22 @@
 		<div
 			class="flex flex-wrap items-center justify-between gap-4 border-b border-dci-teal/15 p-6 sm:px-8"
 		>
-			<div class="flex gap-2">
+			<div
+				use:flowGroup
+				class="inline-flex gap-1 rounded-full border border-dci-teal/15 bg-dci-cream p-1"
+			>
 				{#each Object.entries(boards) as [key, board]}
-					<Button
-						size="sm"
-						variant={activeBoard === key ? 'default' : 'outline'}
-						onclick={() => (activeBoard = key as 'champions' | 'organizations')}
+					<button
+						type="button"
 						aria-pressed={activeBoard === key}
+						class="relative z-10 h-10 rounded-full px-5 text-sm font-semibold transition-colors {activeBoard ===
+						key
+							? 'text-dci-cream'
+							: 'text-foreground'}"
+						onclick={() => (activeBoard = key as 'champions' | 'organizations')}
 					>
 						{board.label}
-					</Button>
+					</button>
 				{/each}
 			</div>
 			<p class="type-eyebrow text-muted-foreground">Total Connection Miles · this season</p>

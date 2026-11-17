@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { flowGroup } from '$lib/actions/flow';
+	import { flowGroup, fieldGlide } from '$lib/actions/flow';
 	import { Button } from '@/lib/components/ui/button';
 	import { Field } from '$lib/components/ui/field';
 	import { LockSimpleIcon as LockSimple, ShieldCheckIcon as ShieldCheck } from 'phosphor-svelte';
@@ -21,11 +21,11 @@
 
 <section class="relative overflow-hidden pt-28">
 	<div class="mx-auto w-full max-w-xl px-4 py-16 sm:px-6 lg:px-8">
-		<div
-			class="relative overflow-hidden rounded-4xl border border-dci-teal/15 bg-dci-paper"
-		>
+		<div class="relative overflow-hidden rounded-4xl border border-dci-teal/15 bg-dci-paper">
 			<!-- Recessed Cojeev product summary cover -->
-			<div class="m-2.5 mb-0 space-y-3 rounded-2xl border border-dci-teal/12 bg-dci-cream p-6 sm:p-8">
+			<div
+				class="m-2.5 mb-0 space-y-3 rounded-2xl border border-dci-teal/12 bg-dci-cream p-6 sm:p-8"
+			>
 				<p class="type-eyebrow text-dci-teal">Secure checkout</p>
 				<h1 class="type-title text-foreground">
 					{data.product.name}
@@ -61,6 +61,7 @@
 				{/if}
 
 				<form
+					use:fieldGlide
 					class="space-y-5"
 					method="POST"
 					use:enhance={() => {

@@ -1,4 +1,5 @@
 import { attachFlowGroup, type FlowGroupOptions } from '$lib/cojeev-motion/flow';
+import { attachDepth } from '$lib/cojeev-motion/depth';
 import { attachFlowPress } from '$lib/cojeev-motion/flow-press';
 import { attachMorph } from '$lib/cojeev-motion/morph';
 import type { Category } from '$lib/cojeev-motion/settings';
@@ -46,4 +47,31 @@ export function morph(node: HTMLElement, category: Category = 'buttons') {
 /** Cojeev's release pulse on press and on state change. */
 export function flowPress(node: HTMLElement) {
 	return { destroy: attachFlowPress(node) };
+}
+
+/** Cojeev's card depth: tilt, lift and light that follow the pointer. */
+export function depth(node: HTMLElement, enabled = true) {
+	let detach = enabled ? attachDepth(node) : null;
+	return {
+		update(next = true) {
+			if (next === !!detach) return;
+			detach?.();
+			detach = next ? attachDepth(node) : null;
+		},
+		destroy() {
+			detach?.();
+		}
+	};
+}
+
+/** Cojeev's flow fields: one paper well glides to whichever inset field has focus. */
+export function fieldGlide(node: HTMLElement) {
+	node.dataset.flowFields = '';
+	const detach = attachFlowGroup(node, { kind: 'fill' });
+	return {
+		destroy() {
+			detach();
+			delete node.dataset.flowFields;
+		}
+	};
 }

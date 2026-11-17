@@ -219,7 +219,7 @@
 				<!-- Two routes in, each structured as a Cojeev editorial/collection card with split footer -->
 				<div class="grid gap-5 sm:grid-cols-2">
 					{#each activePath.options as option, optIdx (option.slug)}
-						<Card appearance="editorial" tone="paper">
+						<Card appearance="editorial" tone="paper" lift>
 							<CardCover tint={optIdx === 0 ? 'mist' : 'blush'} class="flex items-baseline justify-between gap-4">
 								<div>
 									<p class="type-eyebrow text-dci-teal">Option 0{optIdx + 1}</p>
@@ -316,7 +316,7 @@
 			{:else}
 				<div class="grid gap-4 sm:grid-cols-3">
 					{#each activePath.steps as step, index (step)}
-						<Card appearance="project" tone="paper" class="p-5 sm:p-6">
+						<Card appearance="project" tone="paper" lift class="p-5 sm:p-6">
 							<CardWatermark text={`0${index + 1}`} tone="teal" />
 							<span
 								class="dci-pebble inline-flex size-8 items-center justify-center bg-dci-mist font-serif text-sm text-dci-teal-deep"

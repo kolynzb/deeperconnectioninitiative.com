@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fieldGlide } from '$lib/actions/flow';
 	import { enhance } from '$app/forms';
 	import { Button } from '@/lib/components/ui/button';
 	import { Field } from '$lib/components/ui/field';
@@ -131,6 +132,7 @@
 				{/if}
 
 				<form
+					use:fieldGlide
 					class="space-y-5"
 					method="POST"
 					use:enhance={() => {

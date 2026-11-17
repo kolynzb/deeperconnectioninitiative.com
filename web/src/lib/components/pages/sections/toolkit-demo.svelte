@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { flowGroup } from '$lib/actions/flow';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { reveal } from '$lib/actions/reveal';
@@ -71,15 +72,17 @@
 			someone notice patterns over time.
 		</p>
 
-		<div class="mt-8 grid gap-2">
+		<div
+			class="mt-8 grid gap-2"
+			use:flowGroup
+			style="--glide-r: 1rem; --hov-r: 1rem; --glide-bg: var(--dci-mist); --glide-fg: var(--foreground); --glide-hover-bg: color-mix(in oklab, var(--dci-mist) 55%, transparent);"
+		>
 			{#each tools as tool}
 				<button
 					type="button"
 					class={cn(
 						'w-full rounded-2xl border px-5 py-4 text-left transition-colors',
-						activeTool.id === tool.id
-							? 'border-dci-teal/40 bg-dci-teal/5'
-							: 'border-dci-teal/15 hover:border-dci-teal/30'
+						activeTool.id === tool.id ? 'border-dci-teal/40' : 'border-dci-teal/15'
 					)}
 					aria-pressed={activeTool.id === tool.id}
 					onclick={() => (activeTool = tool)}

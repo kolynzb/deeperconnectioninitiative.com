@@ -38,7 +38,8 @@
 		<label
 			for={id}
 			class={cn(
-				'group flex flex-col rounded-2xl border border-dci-teal/15 bg-dci-cream/85 px-4 py-3 transition focus-within:border-dci-teal/50 focus-within:bg-dci-paper focus-within:ring-4 focus-within:ring-dci-teal/10',
+				// v-igroup: inside a `use:fieldGlide` form, Cojeev's fill glides to the focused well.
+				'v-igroup group flex flex-col rounded-2xl border border-dci-teal/15 bg-dci-cream/85 px-4 py-3 transition focus-within:border-dci-teal/50 focus-within:bg-transparent',
 				error && 'border-dci-burgundy/45 focus-within:border-dci-burgundy'
 			)}
 		>
