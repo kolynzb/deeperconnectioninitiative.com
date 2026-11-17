@@ -2,7 +2,7 @@
 	import { ArrowUpRightIcon as ArrowUpRight } from 'phosphor-svelte';
 	import { onMount } from 'svelte';
 	import { Button } from '$lib/components/ui/button';
-	import { CardStepList } from '$lib/components/ui/card';
+	import { CardStepList, CardWatermark } from '$lib/components/ui/card';
 	import { paymentLinks } from '$lib/payment-links';
 	import ProductGallery from '$lib/components/product-gallery.svelte';
 	import { reveal } from '$lib/actions/reveal';
@@ -133,6 +133,7 @@
 				</div>
 
 				<div class="relative flex flex-col justify-between">
+					<CardWatermark text={product.number} tone="teal" />
 
 					<div class="space-y-4 p-6 sm:p-8 lg:p-10">
 						<div class="flex items-center gap-3">

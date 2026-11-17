@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { ArrowUpRightIcon as ArrowUpRight } from 'phosphor-svelte';
 	import { Button } from '$lib/components/ui/button';
-	import { Card, CardCover, CardFooter } from '$lib/components/ui/card';
+	import { Card, CardCover, CardFooter, CardWatermark } from '$lib/components/ui/card';
 	import { reveal } from '$lib/actions/reveal';
 	import { PageHero, Section, SectionHeading, FeatureCard, CtaBand } from '$lib/components/sections';
 
@@ -154,6 +154,10 @@
 					tone="paper"
 					class={tier.popular ? 'border-dci-burgundy/30' : ''}
 				>
+					<CardWatermark
+						text={`0${index + 1}`}
+						tone={tier.popular ? 'burgundy' : 'teal'}
+					/>
 					<CardCover tint={tier.popular ? 'blush' : 'cream'}>
 						<div class="flex items-center justify-between gap-3">
 							<p class={`type-eyebrow ${tier.popular ? 'text-dci-burgundy' : 'text-dci-teal'}`}>

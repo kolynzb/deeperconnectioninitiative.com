@@ -108,7 +108,7 @@ menus and drawers. Cards, photos and panels never get a drop shadow; multi-item 
     description, and hairline-divided `CardStepList` rows with check indicators.
   - **`collection`:** Uses `.dci-card-collection` to render two subtle fanned paper backing
     sheets behind the main card for multi-item decks or kits.
-  - No watermark numerals behind cards: one number per card, in its pebble badge.
+  - **`CardWatermark`:** a faded (6%) serif numeral in the top-right corner. `FeatureCard` draws it from `badge`.
 - **Form field (`$lib/components/ui/field`):**
   Three Cojeev control appearances:
   - `inset` (preferred for structured forms & drawers): recessed `bg-dci-cream/85` well

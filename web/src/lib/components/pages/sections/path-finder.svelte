@@ -2,7 +2,7 @@
 	import CheckoutDrawer from '$lib/components/checkout-drawer.svelte';
 	import { cn } from '$lib/utils';
 	import { Button } from '$lib/components/ui/button';
-	import { Card, CardCover, CardFooter } from '$lib/components/ui/card';
+	import { Card, CardCover, CardFooter, CardWatermark } from '$lib/components/ui/card';
 	import { SectionHeading } from '$lib/components/sections';
 
 	import {
@@ -201,7 +201,9 @@
 
 {#snippet detail(pathIndex: number)}
 	<div class="relative overflow-hidden rounded-4xl border border-dci-cream/20 bg-dci-paper text-foreground">
-		<div class="p-6 pb-0 sm:p-8 sm:pb-0 lg:p-10 lg:pb-0">
+		<CardWatermark text={`0${pathIndex + 1}`} tone="teal" />
+
+		<div class="relative z-10 p-6 pb-0 sm:p-8 sm:pb-0 lg:p-10 lg:pb-0">
 			<p class="type-eyebrow text-dci-teal">{activePath.kicker}</p>
 			<h3 class="type-title mt-2 max-w-xl text-foreground">
 				{activePath.title}
@@ -315,6 +317,7 @@
 				<div class="grid gap-4 sm:grid-cols-3">
 					{#each activePath.steps as step, index (step)}
 						<Card appearance="project" tone="paper" class="p-5 sm:p-6">
+							<CardWatermark text={`0${index + 1}`} tone="teal" />
 							<span
 								class="dci-pebble inline-flex size-8 items-center justify-center bg-dci-mist font-serif text-sm text-dci-teal-deep"
 							>

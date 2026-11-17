@@ -6,6 +6,7 @@
 		CardCover,
 		CardFooter,
 		CardStepList,
+		CardWatermark,
 		type CardStepItem
 	} from '$lib/components/ui/card';
 
@@ -41,6 +42,13 @@
 </script>
 
 <Card {appearance} {tone} class={className}>
+	{#if badge}
+		<CardWatermark
+			text={badge}
+			tone={tone === 'dark' ? 'cream' : appearance === 'project' ? 'burgundy' : 'teal'}
+		/>
+	{/if}
+
 	{#if cover}
 		<CardCover tint={coverTint ?? 'cream'}>
 			{@render cover()}
