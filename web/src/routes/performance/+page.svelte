@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { ArrowUpRightIcon as ArrowUpRight } from 'phosphor-svelte';
 	import { Button } from '$lib/components/ui/button';
+	import { Card, CardCover, CardFooter } from '$lib/components/ui/card';
 	import { reveal } from '$lib/actions/reveal';
 	import { PageHero, Section, SectionHeading, FeatureCard, CtaBand } from '$lib/components/sections';
 
@@ -120,12 +121,18 @@
 	<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		{#each facets as item, index}
 			<div use:reveal={{ delay: index * 70, y: 22 }} class="h-full">
-				<FeatureCard title={item.title} description={item.description} />
+				<FeatureCard
+					kicker={`Facet 0${index + 1}`}
+					badge={`0${index + 1}`}
+					title={item.title}
+					description={item.description}
+				/>
 			</div>
 		{/each}
 		<div use:reveal={{ delay: facets.length * 70, y: 22 }} class="h-full">
 			<FeatureCard
 				kicker="Who it's for"
+				badge="06"
 				title="You're not underperforming. You're exhausted from fighting yourself."
 				description="Founders navigating uncertainty. Executives leading teams. Emerging leaders whose own thinking has become their biggest obstacle."
 			/>
@@ -141,22 +148,40 @@
 	/>
 	<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		{#each otherTiers as tier, index (tier.name)}
-			<article
-				use:reveal={{ delay: index * 70, y: 22 }}
-				class={`flex h-full flex-col rounded-2xl border bg-dci-paper/70 p-6 sm:p-8 ${tier.popular ? 'border-dci-burgundy/30' : 'border-dci-teal/15'}`}
-			>
-				{#if tier.popular}
-					<p class="type-eyebrow mb-3 text-dci-burgundy">Most chosen</p>
-				{/if}
-				<h3 class="type-subtitle text-foreground">{tier.name}</h3>
-				<p class="mt-4 font-serif text-3xl text-dci-teal-deep">{tier.price}</p>
-				<p class="mt-1 text-sm font-medium text-muted-foreground">{tier.lead}</p>
-				<p class="mt-4 flex-grow text-sm leading-relaxed text-muted-foreground">{tier.blurb}</p>
-				<Button href={tier.href ?? '/contact'} class="mt-6">
-					{tier.cta}
-					<ArrowUpRight weight="regular" />
-				</Button>
-			</article>
+			<div use:reveal={{ delay: index * 70, y: 22 }} class="h-full">
+				<Card
+					appearance="editorial"
+					tone="paper"
+					class={tier.popular ? 'border-dci-burgundy/30' : ''}
+				>
+					<CardCover tint={tier.popular ? 'blush' : 'cream'}>
+						<div class="flex items-center justify-between gap-3">
+							<p class={`type-eyebrow ${tier.popular ? 'text-dci-burgundy' : 'text-dci-teal'}`}>
+								{tier.popular ? 'Most chosen' : `Tier 0${index + 1}`}
+							</p>
+							<span
+								class={`dci-pebble inline-flex size-8 items-center justify-center font-serif text-xs ${tier.popular ? 'bg-dci-burgundy text-dci-cream' : 'bg-dci-mist text-dci-teal-deep'}`}
+							>
+								0{index + 1}
+							</span>
+						</div>
+						<h3 class="type-subtitle mt-2 text-foreground">{tier.name}</h3>
+						<p class="mt-4 font-serif text-3xl text-dci-teal-deep">{tier.price}</p>
+						<p class="mt-1 text-xs font-medium text-muted-foreground">{tier.lead}</p>
+					</CardCover>
+
+					<div class="relative z-10 flex flex-1 flex-col p-6 sm:p-8">
+						<p class="text-sm leading-relaxed text-muted-foreground">{tier.blurb}</p>
+					</div>
+
+					<CardFooter>
+						<Button href={tier.href ?? '/contact'} class="w-full">
+							{tier.cta}
+							<ArrowUpRight weight="regular" />
+						</Button>
+					</CardFooter>
+				</Card>
+			</div>
 		{/each}
 	</div>
 	<p class="mt-6 max-w-3xl text-sm text-muted-foreground">

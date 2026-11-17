@@ -62,7 +62,12 @@
 	<div class="grid gap-6 md:grid-cols-3">
 		{#each does as item, index}
 			<div use:reveal={{ delay: index * 80, y: 22 }} class="h-full">
-				<FeatureCard title={item.title} description={item.description} />
+				<FeatureCard
+					kicker={`Role 0${index + 1}`}
+					badge={`0${index + 1}`}
+					title={item.title}
+					description={item.description}
+				/>
 			</div>
 		{/each}
 	</div>

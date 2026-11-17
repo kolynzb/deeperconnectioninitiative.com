@@ -2,6 +2,7 @@
 	import CheckoutDrawer from '$lib/components/checkout-drawer.svelte';
 	import { cn } from '$lib/utils';
 	import { Button } from '$lib/components/ui/button';
+	import { Card, CardCover, CardFooter } from '$lib/components/ui/card';
 	import { SectionHeading } from '$lib/components/sections';
 
 	import {
@@ -149,18 +150,27 @@
 			{#snippet title()}Start <em>where you are.</em>{/snippet}
 		</SectionHeading>
 
-		<ol class="mt-14 border-t border-dci-cream/15">
+		<ol class="mt-10 border-t border-dci-cream/15">
 			{#each pathways as path, index (path.id)}
 				{@const open = activePath.id === path.id}
 				<li class="border-b border-dci-cream/15">
 					<button
 						type="button"
-						class="group grid w-full grid-cols-[2.5rem_1fr_auto] items-center gap-4 py-6 text-left sm:grid-cols-[3.5rem_1fr_1fr_auto] lg:py-7"
+						class="group grid w-full grid-cols-[2.75rem_1fr_auto] items-center gap-4 py-6 text-left sm:grid-cols-[3.5rem_1fr_1fr_auto] lg:py-7"
 						aria-expanded={open}
 						aria-controls={`door-${path.id}`}
 						onclick={() => selectPath(path)}
 					>
-						<span class="font-serif text-lg text-dci-cream/75">0{index + 1}</span>
+						<span
+							class={cn(
+								'dci-pebble inline-flex size-9 items-center justify-center font-serif text-sm transition-colors',
+								open
+									? 'bg-dci-clay text-dci-ink'
+									: 'bg-dci-cream/10 text-dci-cream/80 group-hover:bg-dci-cream/20'
+							)}
+						>
+							0{index + 1}
+						</span>
 						<span
 							class={cn(
 								'font-serif text-2xl transition sm:text-3xl',
@@ -180,7 +190,7 @@
 					</button>
 					{#if open}
 						<div id={`door-${path.id}`} class="pb-8">
-							{@render detail()}
+							{@render detail(index)}
 						</div>
 					{/if}
 				</li>
@@ -189,138 +199,160 @@
 	</div>
 </section>
 
-{#snippet detail()}
-	<div class="relative overflow-hidden rounded-4xl bg-dci-cream p-6 text-foreground sm:p-8 lg:p-10">
-		<div class="relative z-10 max-w-3xl">
-			<h3 class="type-title max-w-xl">
+{#snippet detail(pathIndex: number)}
+	<div class="relative overflow-hidden rounded-4xl border border-dci-cream/20 bg-dci-paper text-foreground">
+		<div class="p-6 pb-0 sm:p-8 sm:pb-0 lg:p-10 lg:pb-0">
+			<p class="type-eyebrow text-dci-teal">{activePath.kicker}</p>
+			<h3 class="type-title mt-2 max-w-xl text-foreground">
 				{activePath.title}
 			</h3>
-			<p class="type-lede mt-4 max-w-xl text-muted-foreground">
+			<p class="type-lede mt-3 max-w-2xl text-muted-foreground">
 				{activePath.description}
 			</p>
-			<div class="mt-8">
-				{#if 'options' in activePath && activePath.options}
-					<!-- Two routes in, each buyable in place. -->
-					<div class="grid gap-3 sm:grid-cols-2">
-						{#each activePath.options as option (option.slug)}
-							<article
-								class="flex flex-col justify-between rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-4"
-							>
+		</div>
+
+		<!-- Body content -->
+		<div class="relative z-10 p-6 sm:p-8 lg:p-10">
+			{#if 'options' in activePath && activePath.options}
+				<!-- Two routes in, each structured as a Cojeev editorial/collection card with split footer -->
+				<div class="grid gap-5 sm:grid-cols-2">
+					{#each activePath.options as option, optIdx (option.slug)}
+						<Card appearance="editorial" tone="paper">
+							<CardCover tint={optIdx === 0 ? 'mist' : 'blush'} class="flex items-baseline justify-between gap-4">
 								<div>
-									<p class="text-sm font-semibold leading-tight text-foreground">{option.name}</p>
-									<p class="mt-2 text-xs leading-relaxed text-muted-foreground">{option.body}</p>
-									<p class="mt-3 text-base font-bold text-dci-teal-deep">{option.price}</p>
-									<p class="mt-1 text-xs text-muted-foreground">{option.note}</p>
+									<p class="type-eyebrow text-dci-teal">Option 0{optIdx + 1}</p>
+									<p class="mt-1 font-serif text-2xl text-foreground">{option.name}</p>
 								</div>
-								<div class="mt-4 space-y-2">
-									<Button
-										variant="outline"
-										size="sm"
-										class="w-full"
-										onclick={() => (buying = { slug: option.slug, name: option.name, price: option.price })}
-									>
-										{option.cta}
-									</Button>
-								</div>
-							</article>
-						{/each}
-					</div>
-				{:else if 'video' in activePath && activePath.video}
-					<!-- Click to play, so no YouTube request is made until it is wanted. -->
-					<div class="max-w-md overflow-hidden rounded-2xl border border-dci-teal/12 bg-dci-ink">
-						{#if playing}
-							<div class="aspect-video w-full">
-								<iframe
-									src={`https://www.youtube-nocookie.com/embed/${activePath.video.id}?autoplay=1&rel=0`}
-									title={activePath.video.title}
-									frameborder="0"
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-									allowfullscreen
-									class="h-full w-full"
-								></iframe>
+								<p class="font-serif text-2xl text-dci-teal-deep">{option.price}</p>
+							</CardCover>
+							<div class="flex flex-1 flex-col justify-between p-6">
+								<p class="text-sm leading-relaxed text-muted-foreground">{option.body}</p>
 							</div>
-						{:else}
-							<button
-								type="button"
-								onclick={() => (playing = true)}
-								aria-label={`Play video: ${activePath.video.title}`}
-								class="group relative flex aspect-video w-full items-center justify-center"
-							>
-								<img
-									src="/photos/ann-banya.webp"
-									alt=""
-									loading="lazy"
-									class="absolute inset-0 h-full w-full object-cover opacity-70 transition group-hover:opacity-80"
-								/>
-								<span
-									class="relative flex size-14 items-center justify-center rounded-full bg-dci-cream text-dci-teal-deep transition group-hover:bg-dci-paper"
+							<CardFooter meta={option.note}>
+								<Button
+									variant="outline"
+									size="sm"
+									onclick={() =>
+										(buying = { slug: option.slug, name: option.name, price: option.price })}
 								>
-									<PlayIcon class="ml-0.5 size-6" weight="fill" />
-								</span>
-								<span class="absolute bottom-3 left-4 right-4 text-left text-sm font-semibold text-dci-cream">
-									{activePath.video.title}
-								</span>
-							</button>
-						{/if}
-					</div>
-				<p class="mt-2 text-xs text-muted-foreground">
+									{option.cta}
+								</Button>
+							</CardFooter>
+						</Card>
+					{/each}
+				</div>
+			{:else if 'video' in activePath && activePath.video}
+				<!-- Click to play, framed inside a recessed well -->
+				<div class="max-w-xl overflow-hidden rounded-2xl border border-dci-teal/15 bg-dci-ink">
+					{#if playing}
+						<div class="aspect-video w-full">
+							<iframe
+								src={`https://www.youtube-nocookie.com/embed/${activePath.video.id}?autoplay=1&rel=0`}
+								title={activePath.video.title}
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen
+								class="h-full w-full"
+							></iframe>
+						</div>
+					{:else}
+						<button
+							type="button"
+							onclick={() => (playing = true)}
+							aria-label={`Play video: ${activePath.video.title}`}
+							class="group relative flex aspect-video w-full items-center justify-center"
+						>
+							<img
+								src="/photos/ann-banya.webp"
+								alt=""
+								loading="lazy"
+								class="absolute inset-0 h-full w-full object-cover opacity-70 transition group-hover:opacity-80"
+							/>
+							<span
+								class="relative flex size-14 items-center justify-center rounded-full bg-dci-cream text-dci-teal-deep transition group-hover:bg-dci-paper"
+							>
+								<PlayIcon class="ml-0.5 size-6" weight="fill" />
+							</span>
+							<span
+								class="absolute right-4 bottom-3 left-4 text-left text-sm font-semibold text-dci-cream"
+							>
+								{activePath.video.title}
+							</span>
+						</button>
+					{/if}
+				</div>
+				<p class="mt-3 text-xs text-muted-foreground">
 					Video not loading?
 					<a
 						href={`https://www.youtube.com/watch?v=${activePath.video.id}`}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="font-semibold text-dci-teal underline underline-offset-4"
-					>Watch it on YouTube</a>
-				</p>
-				{:else if 'offer' in activePath && activePath.offer}
-					<article class="rounded-2xl border border-dci-teal/15 bg-dci-paper/65 p-5">
-						<div class="min-w-0">
-							<p class="text-sm font-semibold leading-tight text-foreground">
-								{activePath.offer.name}
-							</p>
-							<p class="mt-2 text-xs leading-relaxed text-muted-foreground">{activePath.offer.body}</p>
-							<p class="mt-3 text-sm font-semibold text-dci-teal-deep">
-								{activePath.offer.deposit} deposit
-								<span class="font-normal text-muted-foreground">of {activePath.offer.total}</span>
-							</p>
-							<p class="mt-1 text-xs leading-snug text-muted-foreground">
-								{activePath.offer.depositNote}
-							</p>
-						</div>
-					</article>
-				{:else}
-					<div class="grid gap-3 sm:grid-cols-3">
-						{#each activePath.steps as step, index (step)}
-							<div class="rounded-2xl border border-dci-teal/12 bg-dci-paper/65 p-4">
-								<p class="text-xs font-semibold text-dci-burgundy/70">0{index + 1}</p>
-								<p class="mt-3 text-sm font-semibold leading-snug text-dci-teal-deep">{step}</p>
-							</div>
-						{/each}
-					</div>
-				{/if}
-
-				<div class="mt-8 flex flex-col gap-3 border-t border-dci-teal/12 pt-6 sm:flex-row sm:items-center sm:justify-between">
-					<div class="max-w-sm space-y-2">
-						<p class="text-sm leading-relaxed text-muted-foreground">{activePath.helper}</p>
-						<p class="text-sm leading-relaxed text-muted-foreground">
-							Not sure where to start?
-							<a href="/performance/assessment" class="font-semibold text-dci-teal underline underline-offset-4">
-								Take the free Blueprint Assessment
-							</a>
-							and see what the patterns say.
-						</p>
-					</div>
-					<Button
-						variant="accent"
-						href={activePath.href}
-						target={activePath.href.startsWith('http') ? '_blank' : undefined}
-						rel={activePath.href.startsWith('http') ? 'noopener noreferrer' : undefined}
 					>
-						{activePath.cta}
-						<ArrowUpRightIcon weight="regular" />
-					</Button>
+						Watch it on YouTube
+					</a>
+				</p>
+			{:else if 'offer' in activePath && activePath.offer}
+				<Card appearance="editorial" tone="paper" class="max-w-2xl">
+					<CardCover tint="blush" class="flex flex-wrap items-baseline justify-between gap-4">
+						<div>
+							<p class="type-eyebrow text-dci-burgundy">Certification track</p>
+							<p class="mt-1 font-serif text-2xl text-foreground">{activePath.offer.name}</p>
+						</div>
+						<p class="font-serif text-2xl text-dci-teal-deep">
+							{activePath.offer.deposit}
+							<span class="font-sans text-xs font-normal text-muted-foreground">
+								deposit of {activePath.offer.total}
+							</span>
+						</p>
+					</CardCover>
+					<div class="p-6">
+						<p class="text-sm leading-relaxed text-muted-foreground">{activePath.offer.body}</p>
+					</div>
+					<CardFooter meta={activePath.offer.depositNote} />
+				</Card>
+			{:else}
+				<div class="grid gap-4 sm:grid-cols-3">
+					{#each activePath.steps as step, index (step)}
+						<Card appearance="project" tone="paper" class="p-5 sm:p-6">
+							<span
+								class="dci-pebble inline-flex size-8 items-center justify-center bg-dci-mist font-serif text-sm text-dci-teal-deep"
+							>
+								0{index + 1}
+							</span>
+							<p class="mt-4 font-serif text-xl leading-snug text-foreground">{step}</p>
+						</Card>
+					{/each}
 				</div>
+			{/if}
+		</div>
+
+		<!-- Cojeev recessed split footer bar -->
+		<div
+			class="flex flex-col gap-4 border-t border-dci-teal/12 bg-dci-cream/65 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10"
+		>
+			<div class="max-w-md space-y-1.5">
+				<p class="text-sm leading-relaxed text-muted-foreground">{activePath.helper}</p>
+				<p class="text-sm leading-relaxed text-muted-foreground">
+					Not sure where to start?
+					<a
+						href="/performance/assessment"
+						class="font-semibold text-dci-teal underline underline-offset-4"
+					>
+						Take the free Blueprint Assessment
+					</a>
+					and see what the patterns say.
+				</p>
 			</div>
+			<Button
+				variant="accent"
+				href={activePath.href}
+				target={activePath.href.startsWith('http') ? '_blank' : undefined}
+				rel={activePath.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+			>
+				{activePath.cta}
+				<ArrowUpRightIcon weight="regular" />
+			</Button>
 		</div>
 	</div>
 {/snippet}

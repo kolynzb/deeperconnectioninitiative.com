@@ -102,15 +102,39 @@
 
 {#snippet cardFace(p: Prompt, isBack: boolean)}
 	<div
-		class="absolute inset-0 flex flex-col rounded-2xl border border-dci-teal/15 bg-dci-paper p-7 [backface-visibility:hidden]"
+		class="absolute inset-0 flex flex-col overflow-hidden rounded-2xl border border-dci-teal/15 bg-dci-paper [backface-visibility:hidden]"
 		style="transform: rotateY({isBack ? 180 : 0}deg);"
 	>
-		<div class="flex items-center justify-between">
+		<span
+			aria-hidden="true"
+			class="pointer-events-none absolute right-5 bottom-12 select-none font-serif text-7xl leading-none text-dci-teal/10"
+		>
+			{String(p.no).padStart(2, '0')}
+		</span>
+
+		<div
+			class="m-2.5 mb-0 flex items-center justify-between rounded-2xl border border-dci-teal/10 bg-dci-cream px-4 py-3"
+		>
 			<span class="type-eyebrow {toneText[p.tone]}">{p.theme}</span>
-			<span class="type-eyebrow text-muted-foreground">{String(p.no).padStart(2, '0')} / 60</span>
+			<span
+				class="dci-pebble inline-flex size-8 items-center justify-center bg-dci-mist font-serif text-xs text-dci-teal-deep"
+			>
+				{String(p.no).padStart(2, '0')}
+			</span>
 		</div>
-		<p class="my-auto font-serif text-2xl leading-snug text-foreground">{p.text}</p>
-		<p class="type-eyebrow text-muted-foreground">Deeper Connection</p>
+
+		<div class="relative z-10 flex flex-1 items-center px-7 py-5">
+			<p class="font-serif text-2xl leading-snug text-foreground">{p.text}</p>
+		</div>
+
+		<div
+			class="flex items-center justify-between border-t border-dci-teal/12 bg-dci-cream/55 px-6 py-3.5"
+		>
+			<span class="type-eyebrow text-muted-foreground">Deeper Connection</span>
+			<span class="text-xs font-medium text-muted-foreground">
+				Card {String(p.no).padStart(2, '0')} of 60
+			</span>
+		</div>
 	</div>
 {/snippet}
 

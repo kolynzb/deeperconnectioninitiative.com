@@ -74,19 +74,21 @@ Don't set `font-family` inline.
 
 ## Radius
 
-Three values only:
 - `rounded-full` for buttons, pills, avatars and icon chips.
-- `rounded-2xl` for cards and form fields.
+- `rounded-2xl` for cards, recessed card covers and form fields.
 - `rounded-4xl` for large panels, heroes and bands.
+- `.dci-pebble` / `.dci-pebble-alt` for organic asymmetric number badges and icon wells (`42% 58% 54% 46% / 48% 44% 56% 52%`).
 
 Retire `rounded-xl`/`lg`/`3xl` when you touch a file.
 
 ## Depth
 
-Borders, not shadows. The one shadow, `shadow-dci-overlay`, is only for things that float
-over the page: the header, menus and drawers. Cards, photos and panels never get one.
+Borders and recessed surface shifts (`dci-sand` → `dci-paper` → `dci-cream`), not drop shadows.
+The one shadow, `shadow-dci-overlay`, is only for things that float over the page: the header,
+menus and drawers. Cards, photos and panels never get a drop shadow; multi-item decks may use
+`.dci-card-collection` for physical stacked backing sheets.
 
-## Components
+## Components (DCI × Cojeev Architecture)
 
 - **Button:** always `$lib/components/ui/button` (or `buttonVariants()` on a raw `<a>`).
   Never hand-roll a pill, and never pass colours, padding or radius through `class`
@@ -96,24 +98,40 @@ over the page: the header, menus and drawers. Cards, photos and panels never get
   - Sizes: `default` (h-12) and `sm` (h-10). That's all.
   - One primary CTA per section; the rest are `outline` or text links.
 - **Eyebrow:** `sections/eyebrow.svelte`. Plain text, no pill, no icon.
-- **Card:** `rounded-2xl border border-dci-teal/15 bg-dci-paper p-6 sm:p-8`. No shadow unless
-  it floats over something. Cards that aren't links don't react to hover.
-- **Form field:**
-  `h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground placeholder:text-muted-foreground`
-  and a visible teal focus ring.
+- **Card (`$lib/components/ui/card` and `sections/feature-card.svelte`):**
+  Cojeev-inspired structured cards on `bg-dci-paper` with `border border-dci-teal/15`:
+  - **`editorial` (default & `split`):** May include a recessed `CardCover` (`bg-dci-cream`,
+    `bg-dci-mist`, `bg-dci-blush`, or `bg-dci-oat`), eyebrow + serif title + body, and a
+    recessed split `CardFooter` bar (`bg-dci-cream/55 border-t border-dci-teal/12`) pairing
+    status/meta text on the left with a pill CTA or link on the right.
+  - **`project`:** Header with an organic `.dci-pebble` number badge (`01`, `02`, …), title,
+    description, and hairline-divided `CardStepList` rows with check indicators.
+  - **`collection`:** Uses `.dci-card-collection` to render two subtle fanned paper backing
+    sheets behind the main card for multi-item decks or kits.
+  - No watermark numerals behind cards: one number per card, in its pebble badge.
+- **Form field (`$lib/components/ui/field`):**
+  Three Cojeev control appearances:
+  - `inset` (preferred for structured forms & drawers): recessed `bg-dci-cream/85` well
+    wrapping both the uppercase eyebrow label and the input inside one `rounded-2xl` container.
+  - `contour`: standalone `h-12 rounded-2xl border border-dci-teal/15 bg-dci-paper px-4`.
+  - `editorial`: bottom-rule field with a sliding `dci-teal` focus bar (`.dci-field-editorial`).
+- **Motion (`$lib/actions/flow`):** Cojeev's own engine (`$lib/cojeev-motion`, MIT), not a copy of its look.
+  - `Button` already carries `use:morph` (organic surface) and `use:flowPress` (release pulse). Outline draws as a stroke; ghost and link stay flat.
+  - `use:flowGroup` on a nav, tab strip or segmented control glides one pill to the item marked `aria-current="page"`, `aria-selected`, or `aria-pressed`, with a hover preview. Pass `{ itemSelector: 'a' }` for link lists.
+  - Recolour a group with `--glide-bg`, `--glide-fg` and `--glide-hover-bg` on its element, never with classes on the pill.
 - **Toolkit product card:**
   - Media and copy sit side by side, alternating sides per row; photos fill their frame.
   - Use `md:min-h-*`, never a fixed height; content must be able to grow.
   - Connection Miles is one plain line of text ("Earns 8 Connection Miles"), not a badge.
-  - Prices are `font-serif text-3xl text-dci-teal-deep`.
+  - Prices are `font-serif text-3xl text-dci-teal-deep` paired in a split footer bar.
 
 ## Never
 
 These are what make a site look generated. Don't add them back:
 - dot-grid or noise textures, blurred colour blobs, glows, gradient fills on solid objects;
-- pill badges on labels, sparkle or "live" pinging dots, icons in a tinted square above every card;
-- floating or looping decorative art, hover lifts on things you can't click;
-- offset "backing" panels behind photos, glassy floating name tags;
+- pill badges on labels, sparkle or "live" pinging dots, generic icons in a square above every card;
+- floating or looping decorative art, hover lifts (`hover:-translate-y-*`) on things you can't click;
+- glassy floating name tags;
 - three or more competing buttons in one block;
 - spot or cartoon illustrations, dark "side panels" of stats next to a page title.
 
@@ -132,8 +150,9 @@ need an exception (floating UI, the logo), add the file to its `allowed` list.
 
 ## Motion
 
-- House easing is `cubic-bezier(0.16, 1, 0.3, 1)`.
-- Use `use:reveal` from `$lib/actions/reveal` for scroll entrances.
+- House easing is `cubic-bezier(0.16, 1, 0.3, 1)`; spring easing is `cubic-bezier(0.22, 1, 0.36, 1)`.
+- Use `use:reveal` from `$lib/actions/reveal` for scroll entrances, and `use:flowGroup` from
+  `$lib/actions/flow` for travelling selection pills.
 - `dci-soft-hover` only darkens a border on hover; nothing lifts or floats.
 - Nothing loops forever.
 - Every animation must stop under `prefers-reduced-motion` (the reduce block in `layout.css`).

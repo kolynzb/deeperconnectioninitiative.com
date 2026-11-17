@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { Button } from '@/lib/components/ui/button';
+	import { Field } from '$lib/components/ui/field';
 	import GetInvolved from '@/lib/components/pages/sections/get-involved.svelte';
 	import { PageHero, Section } from '@/lib/components/sections';
 	import { reveal } from '@/lib/actions/reveal';
@@ -90,160 +91,146 @@
 
 		<div
 			use:reveal={{ delay: 120, y: 18 }}
-			class="rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8 lg:p-10"
+			class="overflow-hidden rounded-2xl border border-dci-teal/15 bg-dci-paper"
 		>
-			<div class="mb-8 max-w-2xl space-y-3">
+			<div class="m-2.5 mb-0 rounded-2xl border border-dci-teal/12 bg-dci-cream p-6 sm:p-8">
 				<p class="type-eyebrow text-dci-teal">Send a message</p>
-				<h2 class="type-title text-foreground">
+				<h2 class="type-title mt-2 text-foreground">
 					Start with the basics. We will follow up with care.
 				</h2>
-				<p class="text-base leading-relaxed text-muted-foreground">
+				<p class="mt-2 max-w-2xl text-base leading-relaxed text-muted-foreground">
 					Use this form for general inquiries. If someone is in immediate danger, contact local
 					emergency services or a trusted crisis support provider.
 				</p>
 			</div>
 
-			{#if form?.success}
-				<div
-					class="mb-6 rounded-2xl border border-dci-teal/25 bg-dci-teal/8 px-5 py-4 text-sm text-dci-teal-deep"
-					role="status"
-				>
-					<p class="font-semibold">Thanks, your message is in.</p>
-					<p class="mt-1 text-muted-foreground">
-						We'll follow up at the email you provided. For anything urgent, call {siteConfig
-							.contacts.tele}.
-					</p>
-				</div>
-			{/if}
-			{#if form?.errors?.form}
-				<div
-					class="mb-6 rounded-2xl border border-dci-burgundy/25 bg-dci-burgundy/8 px-5 py-4 text-sm text-dci-burgundy"
-					role="alert"
-				>
-					{form.errors.form} You can reach us at
-					<a
-						href={`mailto:${siteConfig.contacts.email}`}
-						class="font-semibold underline underline-offset-4">{siteConfig.contacts.email}</a
-					>.
-				</div>
-			{/if}
+			<div class="p-6 sm:p-8 lg:p-10">
+				{#if form?.success}
+					<div
+						class="mb-6 rounded-2xl border border-dci-teal/25 bg-dci-teal/8 px-5 py-4 text-sm text-dci-teal-deep"
+						role="status"
+					>
+						<p class="font-semibold">Thanks, your message is in.</p>
+						<p class="mt-1 text-muted-foreground">
+							We'll follow up at the email you provided. For anything urgent, call {siteConfig
+								.contacts.tele}.
+						</p>
+					</div>
+				{/if}
+				{#if form?.errors?.form}
+					<div
+						class="mb-6 rounded-2xl border border-dci-burgundy/25 bg-dci-burgundy/8 px-5 py-4 text-sm text-dci-burgundy"
+						role="alert"
+					>
+						{form.errors.form} You can reach us at
+						<a
+							href={`mailto:${siteConfig.contacts.email}`}
+							class="font-semibold underline underline-offset-4">{siteConfig.contacts.email}</a
+						>.
+					</div>
+				{/if}
 
-			<form
-				class="space-y-6"
-				method="POST"
-				use:enhance={() => {
-					submitting = true;
-					return async ({ update }) => {
-						await update();
-						submitting = false;
-					};
-				}}
-			>
-				<input
-					autocomplete="off"
-					name="company"
-					type="text"
-					tabindex="-1"
-					aria-hidden="true"
-					class="hidden"
-				/>
+				<form
+					class="space-y-5"
+					method="POST"
+					use:enhance={() => {
+						submitting = true;
+						return async ({ update }) => {
+							await update();
+							submitting = false;
+						};
+					}}
+				>
+					<input
+						autocomplete="off"
+						name="company"
+						type="text"
+						tabindex="-1"
+						aria-hidden="true"
+						class="hidden"
+					/>
 
-				<div class="grid gap-5 sm:grid-cols-2">
-					<div class="space-y-2">
-						<label for="name" class="text-sm font-semibold text-foreground">Your name</label>
-						<input
+					<div class="grid gap-4 sm:grid-cols-2">
+						<Field
+							appearance="inset"
 							id="name"
 							name="name"
+							label="Your name"
 							type="text"
 							autocomplete="name"
 							required
 							value={form?.values?.name ?? ''}
 							aria-invalid={form?.errors?.name ? 'true' : undefined}
+							error={form?.errors?.name}
 							placeholder="Full name"
-							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 						/>
-						{#if form?.errors?.name}
-							<p class="text-sm text-dci-burgundy">{form.errors.name}</p>
-						{/if}
-					</div>
 
-					<div class="space-y-2">
-						<label for="email" class="text-sm font-semibold text-foreground">Email address</label>
-						<input
+						<Field
+							appearance="inset"
 							id="email"
 							name="email"
+							label="Email address"
 							type="email"
 							autocomplete="email"
 							required
 							value={form?.values?.email ?? ''}
 							aria-invalid={form?.errors?.email ? 'true' : undefined}
+							error={form?.errors?.email}
 							placeholder="you@example.com"
-							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 						/>
-						{#if form?.errors?.email}
-							<p class="text-sm text-dci-burgundy">{form.errors.email}</p>
-						{/if}
 					</div>
-				</div>
 
-				<div class="grid gap-5 sm:grid-cols-2">
-					<div class="space-y-2">
-						<label for="phone" class="text-sm font-semibold text-foreground">Phone number</label>
-						<input
+					<div class="grid gap-4 sm:grid-cols-2">
+						<Field
+							appearance="inset"
 							id="phone"
 							name="phone"
+							label="Phone number"
 							type="tel"
 							autocomplete="tel"
 							placeholder="+256..."
-							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition placeholder:text-muted-foreground focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
 						/>
+
+						<Field appearance="inset" id="topic" label="What is this about?">
+							<select
+								id="topic"
+								name="topic"
+								bind:value={topic}
+								class="mt-1 h-7 w-full bg-transparent text-base text-foreground outline-none"
+							>
+								{#each supportPaths as path}
+									<option>{path}</option>
+								{/each}
+							</select>
+						</Field>
 					</div>
 
-					<div class="space-y-2">
-						<label for="topic" class="text-sm font-semibold text-foreground"
-							>What is this about?</label
-						>
-						<select
-							id="topic"
-							name="topic"
-							bind:value={topic}
-							class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-foreground outline-none transition focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
-						>
-							{#each supportPaths as path}
-								<option>{path}</option>
-							{/each}
-						</select>
-					</div>
-				</div>
-
-				<div class="space-y-2">
-					<label for="message" class="text-sm font-semibold text-foreground">Message</label>
-					<textarea
+					<Field
+						appearance="inset"
+						multiline
+						rows={6}
 						id="message"
 						name="message"
-						rows="7"
+						label="Message"
 						required
+						value={form?.values?.message ?? aboutParam}
 						aria-invalid={form?.errors?.message ? 'true' : undefined}
+						error={form?.errors?.message}
 						placeholder="Tell us what you are hoping to do, who the support is for, and the best way to reach you."
-						class="w-full resize-y rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 py-4 text-base leading-relaxed text-foreground outline-none transition placeholder:text-muted-foreground focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
-						>{form?.values?.message ?? aboutParam}</textarea
-					>
-					{#if form?.errors?.message}
-						<p class="text-sm text-dci-burgundy">{form.errors.message}</p>
-					{/if}
-				</div>
+					/>
 
-				<div
-					class="flex flex-col gap-4 border-t border-dci-teal/10 pt-6 sm:flex-row sm:items-center sm:justify-between"
-				>
-					<p class="max-w-md text-sm leading-relaxed text-muted-foreground">
-						Please avoid sending sensitive clinical details through this form.
-					</p>
-					<Button type="submit" disabled={submitting}>
-						{submitting ? 'Sending…' : 'Send message'}
-					</Button>
-				</div>
-			</form>
+					<div
+						class="-mx-6 -mb-6 flex flex-col gap-4 border-t border-dci-teal/12 bg-dci-cream/55 px-6 py-5 sm:-mx-8 sm:-mb-8 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:-mx-10 lg:-mb-10 lg:px-10"
+					>
+						<p class="max-w-md text-sm leading-relaxed text-muted-foreground">
+							Please avoid sending sensitive clinical details through this form.
+						</p>
+						<Button type="submit" disabled={submitting}>
+							{submitting ? 'Sending…' : 'Send message'}
+						</Button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </Section>

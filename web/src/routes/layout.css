@@ -72,17 +72,27 @@
 	--dci-clay: #d49c70;
 	--dci-teal-mid: #234f53; /* hover shade for teal / teal-deep surfaces */
 	--dci-ink: #171817; /* neutral near-black for dark cards + text */
-	/* Product-card media tints (toolkit) */
+	/* Product-card & inner cover tints */
 	--dci-blush: #ead5c8;
 	--dci-mist: #eef1e5;
 	--dci-oat: #ece7da;
 
+	/* Cojeev × DCI surface & motion tokens */
+	--surface-canvas: var(--dci-sand);
+	--surface-paper: var(--dci-paper);
+	--surface-inset: var(--dci-cream);
+	--surface-elevated: #ffffff;
+	--ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+	--ease-house: cubic-bezier(0.16, 1, 0.3, 1);
+	--dur-fast: 180ms;
+	--dur-med: 320ms;
+
 	--radius: 0.625rem;
 	--background: var(--dci-sand);
 	--foreground: var(--dci-ink);
-	--card: oklch(1 0 0);
+	--card: var(--dci-paper);
 	--card-foreground: var(--dci-ink);
-	--popover: oklch(1 0 0);
+	--popover: var(--dci-paper);
 	--popover-foreground: var(--dci-ink);
 	--primary: var(--dci-teal);
 	--primary-foreground: oklch(1 0 0);
@@ -226,6 +236,74 @@ a {
 		border-color: color-mix(in srgb, var(--dci-teal) 30%, transparent);
 	}
 
+	/* Cojeev organic pebble badge geometry */
+	.dci-pebble {
+		border-radius: 42% 58% 54% 46% / 48% 44% 56% 52%;
+	}
+
+	.dci-pebble-alt {
+		border-radius: 54% 46% 42% 58% / 52% 56% 44% 48%;
+	}
+
+	/* Cojeev collection card stack (fanned backing sheets) */
+	.dci-card-collection {
+		position: relative;
+		isolation: isolate;
+	}
+
+	.dci-card-collection::before,
+	.dci-card-collection::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: var(--radius-2xl, 1rem);
+		border: 1px solid color-mix(in srgb, var(--dci-teal) 16%, transparent);
+		pointer-events: none;
+		transition: transform var(--dur-med) var(--ease-spring);
+	}
+
+	.dci-card-collection::before {
+		z-index: -2;
+		background-color: var(--dci-oat);
+		transform: translate3d(-4px, -5px, 0) rotate(-1.35deg) scale(0.985);
+	}
+
+	.dci-card-collection::after {
+		z-index: -1;
+		background-color: var(--dci-cream);
+		transform: translate3d(4px, -3px, 0) rotate(1.15deg) scale(0.992);
+	}
+
+	.dci-card-collection:hover::before {
+		transform: translate3d(-7px, -7px, 0) rotate(-2.1deg) scale(0.985);
+	}
+
+	.dci-card-collection:hover::after {
+		transform: translate3d(7px, -5px, 0) rotate(1.85deg) scale(0.992);
+	}
+
+	/* Cojeev editorial bottom-rule field focus bar */
+	.dci-field-editorial {
+		position: relative;
+	}
+
+	.dci-field-editorial::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -1px;
+		height: 2px;
+		background-color: var(--dci-teal);
+		transform: scaleX(0);
+		transform-origin: left center;
+		transition: transform var(--dur-med) var(--ease-spring);
+	}
+
+	.dci-field-editorial:focus-within::after {
+		transform: scaleX(1);
+	}
+
 	/* Logo color overrides for dark backgrounds */
 	.logo-on-dark .text-dci-teal-deep {
 		color: white;
@@ -250,5 +328,17 @@ a {
 	.dci-soft-hover,
 	.dci-soft-hover:hover {
 		border-color: color-mix(in srgb, var(--dci-teal) 30%, transparent);
+	}
+
+	.dci-card-collection:hover::before {
+		transform: translate3d(-4px, -5px, 0) rotate(-1.35deg) scale(0.985);
+	}
+
+	.dci-card-collection:hover::after {
+		transform: translate3d(4px, -3px, 0) rotate(1.15deg) scale(0.992);
+	}
+
+	.dci-field-editorial::after {
+		transition: none;
 	}
 }

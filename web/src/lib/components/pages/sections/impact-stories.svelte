@@ -2,18 +2,22 @@
 	import { reveal } from '$lib/actions/reveal';
 	import { ArrowUpRightIcon } from 'phosphor-svelte';
 	import { Button } from '$lib/components/ui/button';
-	import { Section, SectionHeading } from '$lib/components/sections';
+	import { FeatureCard, Section, SectionHeading } from '$lib/components/sections';
 
 	const fieldNotes = [
 		{
 			label: 'School group',
+			badge: '01',
 			title: 'A counselor opens a circle without asking students to explain everything at once.',
-			body: 'The card prompts create enough structure for quiet students to participate without turning the room into a formal therapy session.'
+			body: 'The card prompts create enough structure for quiet students to participate without turning the room into a formal therapy session.',
+			meta: 'Card Game · Guided circle'
 		},
 		{
 			label: 'Recovery space',
+			badge: '02',
 			title: 'A weekly check-in becomes easier to repeat.',
-			body: 'Mood tracking gives the team a shared language for patterns, triggers, and small shifts that might otherwise go unnoticed.'
+			body: 'Mood tracking gives the team a shared language for patterns, triggers, and small shifts that might otherwise go unnoticed.',
+			meta: 'Mood Tracker · Weekly rhythm'
 		}
 	];
 </script>
@@ -30,7 +34,7 @@
 	<div class="mt-12 grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
 		<article
 			use:reveal={{ delay: 0, y: 22 }}
-			class="relative flex min-h-[32rem] items-end overflow-hidden rounded-4xl bg-dci-teal-deep p-6 text-dci-cream sm:p-8 lg:p-10"
+			class="relative flex min-h-[32rem] items-end overflow-hidden rounded-4xl border border-dci-teal/15 bg-dci-teal-deep p-6 text-dci-cream sm:p-8 lg:p-10"
 		>
 			<img
 				src="/photos/champion-training-hero.webp"
@@ -51,14 +55,15 @@
 
 		<div class="flex flex-col gap-5">
 			{#each fieldNotes as note, index (note.label)}
-				<article
-					use:reveal={{ delay: index * 90, y: 18 }}
-					class="rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8"
-				>
-					<p class="type-eyebrow text-dci-teal">{note.label}</p>
-					<h3 class="type-subtitle mt-4 text-foreground">{note.title}</h3>
-					<p class="mt-3 text-sm leading-relaxed text-muted-foreground">{note.body}</p>
-				</article>
+				<div use:reveal={{ delay: index * 90, y: 18 }}>
+					<FeatureCard
+						kicker={note.label}
+						badge={note.badge}
+						title={note.title}
+						description={note.body}
+						footerMeta={note.meta}
+					/>
+				</div>
 			{/each}
 
 			<Button href="/events" variant="outline" class="self-start">

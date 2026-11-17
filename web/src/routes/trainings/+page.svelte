@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { ArrowUpRightIcon as ArrowUpRight } from 'phosphor-svelte';
 	import { Button } from '$lib/components/ui/button';
+	import { Card, CardCover, CardFooter } from '$lib/components/ui/card';
 	import { paymentLinks } from '$lib/payment-links';
 	import { reveal } from '$lib/actions/reveal';
 	import {
@@ -147,39 +148,59 @@
 
 	<div class="mt-12 grid gap-6 lg:grid-cols-3">
 		{#each tiers as tier, index}
-			<article
-				use:reveal={{ delay: index * 80, y: 22 }}
-				class={`flex h-full flex-col rounded-2xl border bg-dci-paper/70 p-6 sm:p-8 ${tier.popular ? 'border-dci-burgundy/30' : 'border-dci-teal/15'}`}
-			>
-				{#if tier.popular}
-					<p class="type-eyebrow mb-3 text-dci-burgundy">Most requested</p>
-				{/if}
-				<h3 class="type-title text-foreground">{tier.name}</h3>
-				<p class="type-eyebrow mt-2 text-muted-foreground">{tier.subtitle}</p>
-				<p class="mt-6 font-serif text-3xl text-dci-teal-deep">{tier.price}</p>
-				<p class="mt-1 text-sm text-muted-foreground">{tier.duration}</p>
-				<p class="mt-6 border-t border-dci-teal/15 pt-6 text-sm leading-relaxed text-muted-foreground">
-					<span class="font-semibold text-foreground">Best for:</span> {tier.bestFor}
-				</p>
+			<div use:reveal={{ delay: index * 80, y: 22 }} class="h-full">
+				<Card
+					appearance="editorial"
+					tone="paper"
+					class={tier.popular ? 'border-dci-burgundy/30' : ''}
+				>
 
-				<div class="mt-7 grid gap-6">
-					<div>
-						<p class="type-eyebrow mb-3 text-dci-teal">Includes</p>
-						<CheckList items={tier.includes} />
-					</div>
-					<div>
-						<p class="type-eyebrow mb-3 text-dci-burgundy">Outcomes</p>
-						<CheckList items={tier.outcomes} accent="#6F231E" />
-					</div>
-				</div>
+					<CardCover tint={tier.popular ? 'blush' : 'cream'}>
+						<div class="flex items-center justify-between gap-3">
+							<p class={`type-eyebrow ${tier.popular ? 'text-dci-burgundy' : 'text-dci-teal'}`}>
+								{tier.popular ? 'Most requested' : tier.subtitle}
+							</p>
+							<span
+								class={`dci-pebble inline-flex size-8 items-center justify-center font-serif text-xs ${tier.popular ? 'bg-dci-burgundy text-dci-cream' : 'bg-dci-mist text-dci-teal-deep'}`}
+							>
+								0{index + 1}
+							</span>
+						</div>
+						<h3 class="type-title mt-2 text-foreground">{tier.name}</h3>
+						{#if tier.popular}
+							<p class="type-eyebrow mt-1 text-muted-foreground">{tier.subtitle}</p>
+						{/if}
+						<div class="mt-5 flex items-baseline justify-between gap-4 border-t border-dci-teal/12 pt-4">
+							<p class="font-serif text-3xl text-dci-teal-deep">{tier.price}</p>
+							<p class="text-xs font-medium text-muted-foreground">{tier.duration}</p>
+						</div>
+					</CardCover>
 
-				<div class="mt-auto pt-8">
-					<Button href={tier.paymentLink} target="_blank" rel="noopener noreferrer" class="w-full">
-						Start this tier
-						<ArrowUpRight weight="regular" />
-					</Button>
-				</div>
-			</article>
+					<div class="relative z-10 flex flex-1 flex-col p-6 sm:p-8">
+						<p class="text-sm leading-relaxed text-muted-foreground">
+							<span class="font-semibold text-foreground">Best for:</span> {tier.bestFor}
+						</p>
+
+						<div class="mt-6 grid gap-6 border-t border-dci-teal/12 pt-6">
+							<div>
+								<p class="type-eyebrow mb-3 text-dci-teal">Includes</p>
+								<CheckList items={tier.includes} />
+							</div>
+							<div>
+								<p class="type-eyebrow mb-3 text-dci-burgundy">Outcomes</p>
+								<CheckList items={tier.outcomes} accent="#6F231E" />
+							</div>
+						</div>
+					</div>
+
+					<CardFooter>
+						<Button href={tier.paymentLink} target="_blank" rel="noopener noreferrer" class="w-full">
+							Start this tier
+							<ArrowUpRight weight="regular" />
+						</Button>
+					</CardFooter>
+				</Card>
+			</div>
 		{/each}
 	</div>
 </Section>

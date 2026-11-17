@@ -25,7 +25,8 @@ const allowed = {
 	'src/lib/components/ui/navigation-menu/navigation-menu-indicator.svelte': [
 		'decorative shadow (only shadow-dci-overlay, on floating UI)'
 	],
-	'src/lib/components/layout/logo.svelte': ['hand-made label; use type-eyebrow']
+	'src/lib/components/layout/logo.svelte': ['hand-made label; use type-eyebrow'],
+	'src/lib/components/ui/card/card-watermark.svelte': ['text under /75 on dark fails contrast']
 };
 
 const files = (dir) =>
