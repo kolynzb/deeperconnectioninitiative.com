@@ -119,6 +119,8 @@ menus and drawers. Cards, photos and panels never get a drop shadow; multi-item 
   - `Button` already carries `use:morph` (organic surface) and `use:flowPress` (release pulse). Outline draws as a stroke; ghost and link stay flat.
   - `use:flowGroup` on a nav, tab strip or segmented control glides one pill to the item marked `aria-current="page"`, `aria-selected`, or `aria-pressed`, with a hover preview. Pass `{ itemSelector: 'a' }` for link lists.
   - Recolour a group with `--glide-bg`, `--glide-fg` and `--glide-hover-bg` on its element, never with classes on the pill.
+  - `<Card lift>` adds Cojeev's pointer depth (tilt, lift, light); `use:fieldGlide` on a form with inset fields slides one paper well to the focused field.
+  - `Sheet` enters with Cojeev's presence slide (`createFlowPresence`); don't add `animate-in` classes back.
 - **Toolkit product card:**
   - Media and copy sit side by side, alternating sides per row; photos fill their frame.
   - Use `md:min-h-*`, never a fixed height; content must be able to grow.
