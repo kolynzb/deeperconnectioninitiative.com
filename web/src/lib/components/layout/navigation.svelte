@@ -1,9 +1,15 @@
 <script lang="ts">
 	import Logo from './logo.svelte';
+	import DciMark from '$lib/components/dci-mark/dci-mark.svelte';
+	import { createCompactHeader } from '$lib/components/dci-mark/header-state.svelte';
+
+	// Compact state comes from an IntersectionObserver sentinel, not a scroll listener.
+	const header = createCompactHeader();
 	import * as Sheet from '$lib/components/ui/sheet';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
+	import { Button } from '$lib/components/ui/button';
 	import { cn } from '$lib/utils';
 	import { page } from '$app/state';
+	import { flowGroup } from '$lib/actions/flow';
 	import {
 		ArrowUpRightIcon as ArrowUpRight,
 		BookOpenTextIcon as BookOpen,
@@ -13,45 +19,15 @@
 		ChartLineUpIcon as ChartLineUp,
 		HandshakeIcon as HeartHandshake,
 		ListIcon as Menu,
-		ChatCircleTextIcon as MessageCircle,
-		SparkleIcon as Sparkles,
+		CardsThreeIcon as Cards,
 		UsersThreeIcon as Users
 	} from 'phosphor-svelte';
-	import NoiseOverlay from './overlays/noise-overlay.svelte';
 
+	// Five top-level items and one primary CTA. The nav is a decision path, not a
+	// directory: every item either sells something or explains who we are.
+	// Pages removed from the nav stay live at their URLs, in the footer, and in
+	// the sitemap. Nothing here has been deleted.
 	const navItems = [
-		{ label: 'Mission', href: '/#about' },
-		{
-			label: 'Ecosystem',
-			href: '/#ecosystem',
-			description: 'The care pathway from self-led tools to community support.',
-			children: [
-				{
-					label: 'Trainings',
-					href: '/trainings',
-					description: 'Equip community champions and partner teams.',
-					icon: Users
-				},
-				{
-					label: 'Partners',
-					href: '/partners',
-					description: 'Build mental wellness into trusted local spaces.',
-					icon: Building2
-				},
-				{
-					label: 'Champions',
-					href: '/champions',
-					description: 'Become the infrastructure in your community.',
-					icon: Users
-				},
-				{
-					label: 'Events',
-					href: '/events',
-					description: 'Book a clinic seat, join workshops and gatherings.',
-					icon: CalendarDays
-				}
-			]
-		},
 		{
 			label: 'Toolkit',
 			href: '/toolkit',
@@ -60,35 +36,67 @@
 				{
 					label: 'Open the kit',
 					href: '/toolkit',
-					description: 'Explore how cards, journals, and mood tracking work.',
-					icon: Sparkles
+					description: 'See how the cards, journal, and mood tracker work.',
+					icon: Cards
 				},
 				{
-					label: 'Toolkit products',
-					href: '/#toolkit-products',
+					label: 'Buy a tool',
+					href: '/toolkit#toolkit-products',
 					description: 'Compare the card game, journal, mood tracker, and full kit.',
 					icon: BookOpen
 				},
 				{
 					label: 'Connection Miles',
 					href: '/connection-miles',
-					description: 'Track sponsored toolkits, field activity, and the miles rubric.',
+					description: 'How we count the impact every purchase puts into the world.',
 					icon: ChartLineUp
 				},
 				{
 					label: 'Sponsor a kit',
-					href: '/#toolkit',
-					description: 'Fund toolkit access and community champion training.',
+					href: '/checkout/donate',
+					description: 'Put a toolkit in the hands of someone who cannot buy one.',
 					icon: HeartHandshake
 				}
 			]
 		},
+		{ label: 'Clinics', href: '/clinics' },
 		{ label: 'Coaching', href: '/performance' },
-		{ label: 'Contact Us', href: '/contact' }
+		{
+			label: 'Organisations',
+			href: '/partners',
+			description: 'Wellbeing infrastructure for schools, companies, and NGOs.',
+			children: [
+				{
+					label: 'For organisations',
+					href: '/partners',
+					description: 'Build wellbeing into how your people already work.',
+					icon: Building2
+				},
+				{
+					label: 'Champion certification',
+					href: '/trainings',
+					description: 'Certify the people who will hold the conversations.',
+					icon: Users
+				},
+				{
+					label: 'Become a Champion',
+					href: '/champions',
+					description: 'What the role involves and who it suits.',
+					icon: Users
+				},
+				{
+					label: 'Events',
+					href: '/events',
+					description: 'Workshops, orientations, and one-off gatherings.',
+					icon: CalendarDays
+				}
+			]
+		},
+		{ label: 'About', href: '/about' }
 	];
 
 	let isOpen = $state(false);
-	let openMobileSection = $state('Ecosystem');
+	let openMobileSection = $state('Toolkit');
 	let activeDesktopMenu = $state('');
 	let closeTimer: ReturnType<typeof setTimeout> | undefined;
 	let activeItem = $derived(
@@ -122,10 +130,10 @@
 	}
 
 	function activeDesktopClass(isActive: boolean) {
+		// Cojeev's glide paints the current page and the hover preview.
 		return cn(
-			'h-10 rounded-full bg-transparent px-4 text-[0.92rem] font-medium text-foreground/80 hover:bg-dci-teal/7 hover:text-dci-teal-deep focus:bg-dci-teal/7',
-			isActive &&
-				'bg-dci-burgundy/10 text-dci-burgundy ring-1 ring-dci-burgundy/15 hover:bg-dci-burgundy/12 hover:text-dci-burgundy'
+			'h-10 rounded-full bg-transparent px-4 text-[0.92rem] font-medium text-foreground/80 transition-colors hover:text-dci-teal-deep',
+			isActive && 'text-dci-teal-deep'
 		);
 	}
 
@@ -177,13 +185,16 @@
 <header
 	class="fixed top-3 right-0 left-0 z-50 mx-auto w-[calc(100%-1rem)] max-w-7xl px-2 sm:top-4 sm:w-[calc(100%-2rem)]"
 >
+	<!-- Fixed height per breakpoint, 78px easing to 60px once scrolled. Overflow
+	     stays visible: the desktop dropdown hangs below this box. -->
 	<div
-		class="relative overflow-visible rounded-2xl border border-dci-teal/12 bg-dci-cream/92 px-3 py-1.5 shadow-dci-lift backdrop-blur-xl sm:px-4"
+		class={`dci-header-shell relative overflow-visible rounded-2xl border border-dci-teal/12 bg-dci-cream/92 px-3 shadow-dci-overlay backdrop-blur-xl sm:px-4${
+			header.compact ? ' is-compact' : ''
+		}`}
 	>
-		<NoiseOverlay />
-		<div class="relative flex h-12 items-center justify-between gap-4">
+		<div class="relative flex h-full items-center justify-between gap-4">
 			<div class="flex min-w-0 items-center">
-				<Logo isLink />
+				<DciMark compact={header.compact} />
 			</div>
 
 			<div
@@ -195,19 +206,17 @@
 				onkeydown={handleDesktopKeydown}
 			>
 				<nav aria-label="Main navigation">
-					<ul class="flex list-none items-center justify-center gap-1">
+					<ul
+						use:flowGroup={{ itemSelector: 'a,button' }}
+						class="flex list-none items-center justify-center gap-1"
+					>
 						{#each navItems as item}
 							{@const isActive = isNavItemActive(item)}
 							<li class="relative">
 								{#if item.children}
 									<button
 										type="button"
-										class={cn(
-											activeDesktopClass(isActive),
-											'data-[state=open]:bg-dci-teal/8 data-[state=open]:text-dci-teal-deep',
-											isActive &&
-												'data-[state=open]:bg-dci-burgundy/10 data-[state=open]:text-dci-burgundy'
-										)}
+										class={activeDesktopClass(isActive)}
 										data-state={activeDesktopMenu === item.label ? 'open' : 'closed'}
 										aria-expanded={activeDesktopMenu === item.label}
 										aria-current={isActive ? 'page' : undefined}
@@ -247,7 +256,7 @@
 						id="desktop-navigation-viewport"
 						role="region"
 						aria-label={`${activeItem.label} navigation`}
-						class="absolute top-[calc(100%+0.85rem)] left-1/2 z-50 w-[680px] -translate-x-1/2 overflow-hidden rounded-2xl border border-dci-teal/10 bg-dci-cream p-4 text-popover-foreground shadow-dci-panel duration-200 animate-in fade-in-0 zoom-in-95"
+						class="absolute top-[calc(100%+0.85rem)] left-1/2 z-50 w-[680px] -translate-x-1/2 overflow-hidden rounded-2xl border border-dci-teal/10 bg-dci-cream p-4 text-popover-foreground shadow-dci-overlay duration-200 animate-in fade-in-0 zoom-in-95"
 						onmouseenter={() => openDesktopMenu(activeItem.label)}
 						onmouseleave={scheduleDesktopClose}
 						onfocusin={cancelDesktopClose}
@@ -262,7 +271,7 @@
 								onclick={closeDesktopMenu}
 							>
 								<div>
-									<p class="text-xs font-bold uppercase tracking-widest text-dci-cream/70">
+									<p class="text-xs font-bold uppercase tracking-widest text-dci-cream/75">
 										{activeItem.label}
 									</p>
 									<h3 class="mt-4 text-3xl font-semibold leading-tight text-white">
@@ -278,12 +287,12 @@
 								</span>
 							</a>
 
-							<div class="grid gap-2">
+							<div use:flowGroup={{ itemSelector: 'a' }} class="grid gap-2">
 								{#each activeItem.children as child}
 									{@const Icon = child.icon}
 									<a
 										href={child.href}
-										class="group grid grid-cols-[2.5rem_1fr] gap-3 rounded-xl p-3 outline-none hover:bg-dci-sand/65 focus:bg-dci-sand/65 focus-visible:ring-2 focus-visible:ring-dci-teal/30"
+										class="group grid grid-cols-[2.5rem_1fr] gap-3 rounded-xl p-3 outline-none focus-visible:ring-2 focus-visible:ring-dci-teal/30"
 										onclick={closeDesktopMenu}
 									>
 										<span
@@ -292,14 +301,14 @@
 											<Icon class="size-5" weight="duotone" aria-hidden="true" />
 										</span>
 										<span>
-											<span class="flex items-center gap-2 text-sm font-semibold text-slate-950">
+											<span class="flex items-center gap-2 text-sm font-semibold text-foreground">
 												{child.label}
 												<ArrowUpRight
 													class="size-3.5 opacity-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
 													weight="regular"
 												/>
 											</span>
-											<span class="mt-1 block text-sm leading-snug text-slate-600">
+											<span class="mt-1 block text-sm leading-snug text-muted-foreground">
 												{child.description}
 											</span>
 										</span>
@@ -311,19 +320,13 @@
 				{/if}
 			</div>
 
-			<div class="hidden shrink-0 items-center gap-2 lg:flex">
-				<a
-					href="/checkout/donate"
-					class={cn(
-						buttonVariants({ variant: 'outline' }),
-						'rounded-full border-dci-teal/20 bg-dci-paper/70 px-5 text-dci-teal-deep hover:bg-dci-teal/7 hover:text-dci-teal-deep'
-					)}
-				>
-					Sponsor a kit
-				</a>
-				<a href="/toolkit#toolkit-products" class={cn(buttonVariants(), 'rounded-full px-5')}>
+			<!-- One primary CTA. Sponsorship still converts from the toolkit section
+			     and the get-involved block, where it reads as a choice rather than
+			     as competition for the purchase. -->
+			<div class="hidden shrink-0 items-center lg:flex">
+				<Button href="/toolkit#toolkit-products" size="sm">
 					Get the toolkit
-				</a>
+				</Button>
 			</div>
 
 			<Sheet.Root bind:open={isOpen}>
@@ -384,7 +387,11 @@
 												/>
 											</button>
 											{#if openMobileSection === item.label}
-												<div class="grid gap-1 border-t border-dci-teal/10 p-2">
+												<div
+													use:flowGroup={{ itemSelector: 'a' }}
+													class="grid gap-1 border-t border-dci-teal/10 p-2"
+													style="--glide-bg: var(--dci-blush); --glide-fg: var(--dci-burgundy)"
+												>
 													<a
 														href={item.href}
 														class={cn(
@@ -415,13 +422,13 @@
 															<span>
 																<span
 																	class={cn(
-																		'block text-sm font-semibold text-slate-950',
+																		'block text-sm font-semibold text-foreground',
 																		isHrefActive(child.href) && 'text-dci-burgundy'
 																	)}
 																>
 																	{child.label}
 																</span>
-																<span class="mt-1 block text-sm leading-snug text-slate-600">
+																<span class="mt-1 block text-sm leading-snug text-muted-foreground">
 																	{child.description}
 																</span>
 															</span>
@@ -447,23 +454,9 @@
 
 						<div class="border-t border-dci-teal/10 p-5">
 							<div class="grid gap-3">
-								<a
-									href="/toolkit#toolkit-products"
-									class={cn(buttonVariants({ size: 'lg' }), 'w-full rounded-full')}
-									onclick={closeMobileMenu}
-								>
+								<Button href="/toolkit#toolkit-products" class="w-full" onclick={closeMobileMenu}>
 									Get the toolkit
-								</a>
-								<a
-									href="/checkout/donate"
-									class={cn(
-										buttonVariants({ variant: 'outline', size: 'lg' }),
-										'w-full rounded-full border-dci-teal/20 bg-transparent text-dci-teal-deep'
-									)}
-									onclick={closeMobileMenu}
-								>
-									Sponsor a kit
-								</a>
+								</Button>
 							</div>
 						</div>
 					</div>

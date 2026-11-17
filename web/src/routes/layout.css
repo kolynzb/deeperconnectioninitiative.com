@@ -1,9 +1,60 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@import '../lib/cojeev-motion/cojeev-motion.css';
 
-@custom-variant dark (&:is(.dark *));
 @plugin '@tailwindcss/typography';
 @plugin 'tailwind-scrollbar-hide';
+
+/* Self-hosted (from Google Fonts, OFL) so text paints without a third-party round trip.
+   Fraunces is cut to weight 400, the only one the site uses; a bolder serif would be faked. */
+@font-face {
+	font-family: 'Fraunces';
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url('/fonts/fraunces-italic-latin-ext.woff2') format('woff2');
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+	font-family: 'Fraunces';
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url('/fonts/fraunces-italic-latin.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+	font-family: 'Fraunces';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('/fonts/fraunces-normal-latin-ext.woff2') format('woff2');
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+	font-family: 'Fraunces';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('/fonts/fraunces-normal-latin.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+	font-family: 'Outfit';
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+	src: url('/fonts/outfit-normal-latin-ext.woff2') format('woff2');
+	unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+	font-family: 'Outfit';
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+	src: url('/fonts/outfit-normal-latin.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 :root {
 	/* Typography */
@@ -21,111 +72,41 @@
 	--dci-clay: #d49c70;
 	--dci-teal-mid: #234f53; /* hover shade for teal / teal-deep surfaces */
 	--dci-ink: #171817; /* neutral near-black for dark cards + text */
-	/* Product-card media tints (toolkit) */
+	/* Product-card & inner cover tints */
 	--dci-blush: #ead5c8;
 	--dci-mist: #eef1e5;
 	--dci-oat: #ece7da;
 
+	/* Cojeev × DCI surface & motion tokens */
+	--surface-canvas: var(--dci-sand);
+	--surface-paper: var(--dci-paper);
+	--surface-inset: var(--dci-cream);
+	--surface-elevated: #ffffff;
+	--ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+	--ease-house: cubic-bezier(0.16, 1, 0.3, 1);
+	--dur-fast: 180ms;
+	--dur-med: 320ms;
+
 	--radius: 0.625rem;
-	--background: oklch(0.92 0.02 85);
-	--foreground: oklch(0.15 0 0);
-	--card: oklch(1 0 0);
-	--card-foreground: oklch(0.15 0 0);
-	--popover: oklch(1 0 0);
-	--popover-foreground: oklch(0.15 0 0);
-	--primary: oklch(0.42 0.05 210);
+	--background: var(--dci-sand);
+	--foreground: var(--dci-ink);
+	--card: var(--dci-paper);
+	--card-foreground: var(--dci-ink);
+	--popover: var(--dci-paper);
+	--popover-foreground: var(--dci-ink);
+	--primary: var(--dci-teal);
 	--primary-foreground: oklch(1 0 0);
-	--secondary: oklch(0.92 0.02 85);
-	--secondary-foreground: oklch(0.15 0 0);
+	--secondary: var(--dci-cream);
+	--secondary-foreground: var(--dci-ink);
 	--muted: oklch(0.88 0.02 85);
-	--muted-foreground: oklch(0.45 0 0);
-	--accent: oklch(0.35 0.12 25);
+	--muted-foreground: #57534e; /* warm grey, 6:1 on sand */
+	--accent: var(--dci-burgundy);
 	--accent-foreground: oklch(1 0 0);
-	--destructive: oklch(0.35 0.12 25);
+	--destructive: var(--dci-burgundy);
 	--destructive-foreground: oklch(1 0 0);
 	--border: oklch(0.82 0.03 85);
 	--input: oklch(0.82 0.03 85);
-	--ring: oklch(0.42 0.05 210);
-	--chart-1: oklch(0.646 0.222 41.116);
-	--chart-2: oklch(0.6 0.118 184.704);
-	--chart-3: oklch(0.398 0.07 227.392);
-	--chart-4: oklch(0.828 0.189 84.429);
-	--chart-5: oklch(0.769 0.188 70.08);
-
-	--sidebar: oklch(0.985 0 0);
-	--sidebar-foreground: oklch(0.145 0 0);
-	--sidebar-primary: oklch(0.42 0.05 210);
-	--sidebar-primary-foreground: oklch(1 0 0);
-	--sidebar-accent: oklch(0.92 0.02 85);
-	--sidebar-accent-foreground: oklch(0.15 0 0);
-	--sidebar-border: oklch(0.82 0.03 85);
-	--sidebar-ring: oklch(0.42 0.05 210);
-
-	/* --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788); */
-}
-
-.dark {
-	--background: oklch(0.129 0.042 264.695);
-	--foreground: oklch(0.984 0.003 247.858);
-	--card: oklch(0.208 0.042 265.755);
-	--card-foreground: oklch(0.984 0.003 247.858);
-	--popover: oklch(0.208 0.042 265.755);
-	--popover-foreground: oklch(0.984 0.003 247.858);
-	--primary: oklch(0.929 0.013 255.508);
-	--primary-foreground: oklch(0.208 0.042 265.755);
-	--secondary: oklch(0.279 0.041 260.031);
-	--secondary-foreground: oklch(0.984 0.003 247.858);
-	--muted: oklch(0.279 0.041 260.031);
-	--muted-foreground: oklch(0.704 0.04 256.788);
-	--accent: oklch(0.279 0.041 260.031);
-	--accent-foreground: oklch(0.984 0.003 247.858);
-	--destructive: oklch(0.704 0.191 22.216);
-	--border: oklch(1 0 0 / 10%);
-	--input: oklch(1 0 0 / 15%);
-	--ring: oklch(0.551 0.027 264.364);
-	--chart-1: oklch(0.488 0.243 264.376);
-	--chart-2: oklch(0.696 0.17 162.48);
-	--chart-3: oklch(0.769 0.188 70.08);
-	--chart-4: oklch(0.627 0.265 303.9);
-	--chart-5: oklch(0.645 0.246 16.439);
-	--sidebar: oklch(0.208 0.042 265.755);
-	--sidebar-foreground: oklch(0.984 0.003 247.858);
-	--sidebar-primary: oklch(0.488 0.243 264.376);
-	--sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-	--sidebar-accent: oklch(0.279 0.041 260.031);
-	--sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-	--sidebar-border: oklch(1 0 0 / 10%);
-	--sidebar-ring: oklch(0.551 0.027 264.364);
+	--ring: var(--dci-teal);
 }
 
 @theme inline {
@@ -151,19 +132,6 @@
 	--color-border: var(--border);
 	--color-input: var(--input);
 	--color-ring: var(--ring);
-	--color-chart-1: var(--chart-1);
-	--color-chart-2: var(--chart-2);
-	--color-chart-3: var(--chart-3);
-	--color-chart-4: var(--chart-4);
-	--color-chart-5: var(--chart-5);
-	--color-sidebar: var(--sidebar);
-	--color-sidebar-foreground: var(--sidebar-foreground);
-	--color-sidebar-primary: var(--sidebar-primary);
-	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-	--color-sidebar-accent: var(--sidebar-accent);
-	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-	--color-sidebar-border: var(--sidebar-border);
-	--color-sidebar-ring: var(--sidebar-ring);
 
 	/* DCI brand palette as Tailwind color tokens (use text-dci-teal, bg-dci-cream/8, …) */
 	--color-dci-teal-deep: var(--dci-teal-deep);
@@ -179,12 +147,8 @@
 	--color-dci-mist: var(--dci-mist);
 	--color-dci-oat: var(--dci-oat);
 
-	/* Shadow scale — replaces ~20 near-identical arbitrary values.
-	   Neutral lifts (lift/panel) + teal-tinted family (teal/soft). */
-	--shadow-dci-lift: 0 24px 70px -58px rgba(0, 0, 0, 0.72); /* large neutral lift */
-	--shadow-dci-panel: 0 28px 90px -60px rgba(0, 0, 0, 0.75); /* XL neutral panel */
-	--shadow-dci-teal: 0 24px 72px -54px rgba(26, 60, 64, 0.55); /* large teal-tinted */
-	--shadow-dci-soft: 0 16px 44px -26px rgba(26, 60, 64, 0.5); /* small/tight teal-tinted */
+	/* Only for things that float over the page: header, menus, drawers. */
+	--shadow-dci-overlay: 0 24px 70px -40px rgba(0, 0, 0, 0.45);
 }
 
 @layer base {
@@ -194,18 +158,6 @@
 	body {
 		@apply bg-background text-foreground;
 		background-color: var(--dci-sand);
-		background-image:
-			radial-gradient(rgba(111, 35, 30, 0.05) 0.8px, transparent 0.8px),
-			radial-gradient(rgba(42, 98, 104, 0.045) 0.7px, transparent 0.7px),
-			linear-gradient(180deg, rgba(246, 236, 217, 0.58), rgba(239, 229, 208, 0.78));
-		background-position:
-			0 0,
-			13px 17px,
-			0 0;
-		background-size:
-			28px 28px,
-			34px 34px,
-			100% 100%;
 	}
 }
 
@@ -233,6 +185,30 @@ a {
 }
 
 /* DCI brand utilities */
+/*
+	Type scale. Every heading, label and lead paragraph uses one of these, so sizes
+	can't drift section by section. Named type-* (not text-*) so cn()/tailwind-merge
+	never mistakes them for a text colour and drops one.
+*/
+@utility type-display {
+	@apply font-serif text-6xl leading-[0.98] font-normal tracking-tight text-balance sm:text-7xl lg:text-8xl;
+}
+@utility type-headline {
+	@apply font-serif text-5xl leading-[1.04] font-normal tracking-tight text-balance sm:text-6xl;
+}
+@utility type-title {
+	@apply font-serif text-3xl leading-tight font-normal tracking-tight text-balance sm:text-4xl;
+}
+@utility type-subtitle {
+	@apply font-serif text-2xl leading-snug font-normal;
+}
+@utility type-eyebrow {
+	@apply text-xs font-semibold tracking-wide uppercase;
+}
+@utility type-lede {
+	@apply text-base leading-relaxed text-pretty sm:text-lg;
+}
+
 @layer utilities {
 	[data-reveal='ready'] {
 		opacity: 0;
@@ -249,96 +225,83 @@ a {
 		transform: translate3d(0, 0, 0);
 	}
 
-	.dci-float {
-		animation: dci-float 8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-		will-change: transform;
-	}
-
-	.dci-float-slow {
-		animation: dci-float 11s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-		will-change: transform;
-	}
-
 	.dci-soft-hover {
 		transition:
 			transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
 			border-color 280ms cubic-bezier(0.16, 1, 0.3, 1),
-			background-color 280ms cubic-bezier(0.16, 1, 0.3, 1),
-			box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1);
+			background-color 280ms cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
 	.dci-soft-hover:hover {
-		transform: translate3d(0, -4px, 0);
-		box-shadow: 0 26px 70px -58px rgba(26, 60, 64, 0.72);
+		border-color: color-mix(in srgb, var(--dci-teal) 30%, transparent);
 	}
 
-	.animate-spin-slow {
-		animation: spin 20s linear infinite;
+	/* Cojeev organic pebble badge geometry */
+	.dci-pebble {
+		border-radius: 42% 58% 54% 46% / 48% 44% 56% 52%;
 	}
 
-	.animate-spin-slow-reverse {
-		animation: spin 20s linear infinite reverse;
+	.dci-pebble-alt {
+		border-radius: 54% 46% 42% 58% / 52% 56% 44% 48%;
 	}
 
-	.text-balance {
-		text-wrap: balance;
+	/* Cojeev collection card stack (fanned backing sheets) */
+	.dci-card-collection {
+		position: relative;
+		isolation: isolate;
 	}
 
-	.text-pretty {
-		text-wrap: pretty;
+	.dci-card-collection::before,
+	.dci-card-collection::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: var(--radius-2xl, 1rem);
+		border: 1px solid color-mix(in srgb, var(--dci-teal) 16%, transparent);
+		pointer-events: none;
+		transition: transform var(--dur-med) var(--ease-spring);
 	}
 
-	/* Cream backgrounds */
-	.bg-cream {
+	.dci-card-collection::before {
+		z-index: -2;
+		background-color: var(--dci-oat);
+		transform: translate3d(-4px, -5px, 0) rotate(-1.35deg) scale(0.985);
+	}
+
+	.dci-card-collection::after {
+		z-index: -1;
 		background-color: var(--dci-cream);
+		transform: translate3d(4px, -3px, 0) rotate(1.15deg) scale(0.992);
 	}
 
-	.text-cream {
-		color: var(--dci-cream);
+	.dci-card-collection:hover::before {
+		transform: translate3d(-7px, -7px, 0) rotate(-2.1deg) scale(0.985);
 	}
 
-	/* Very subtle darker cream for gentle section variation */
-	.bg-cream-darker {
-		background-color: var(--dci-sand);
+	.dci-card-collection:hover::after {
+		transform: translate3d(7px, -5px, 0) rotate(1.85deg) scale(0.992);
 	}
 
-	/* Soft off-white for cards */
-	.bg-off-white {
-		background-color: var(--dci-paper);
+	/* Cojeev editorial bottom-rule field focus bar */
+	.dci-field-editorial {
+		position: relative;
 	}
 
-	/* Dark charcoal backgrounds for contrast sections */
-	.bg-charcoal {
-		background-color: oklch(0.18 0.01 220);
-	}
-
-	.bg-charcoal-light {
-		background-color: oklch(0.22 0.01 220);
-	}
-
-	.border-border-dark {
-		border-color: oklch(0.3 0.02 220);
-	}
-
-	/* Teal section background - muted and sophisticated */
-	.bg-teal-subtle {
+	.dci-field-editorial::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -1px;
+		height: 2px;
 		background-color: var(--dci-teal);
+		transform: scaleX(0);
+		transform-origin: left center;
+		transition: transform var(--dur-med) var(--ease-spring);
 	}
 
-	.text-on-teal {
-		color: var(--dci-cream);
-	}
-
-	.bg-dci-paper {
-		background-color: var(--dci-paper);
-	}
-
-	.bg-dci-teal {
-		background-color: var(--dci-teal-deep);
-	}
-
-	.text-dci-burgundy {
-		color: var(--dci-burgundy);
+	.dci-field-editorial:focus-within::after {
+		transform: scaleX(1);
 	}
 
 	/* Logo color overrides for dark backgrounds */
@@ -350,16 +313,6 @@ a {
 	}
 }
 
-@keyframes dci-float {
-	0%,
-	100% {
-		transform: translate3d(0, 0, 0) rotate(var(--float-rotate, 0deg));
-	}
-	50% {
-		transform: translate3d(0, -10px, 0) rotate(calc(var(--float-rotate, 0deg) + 1deg));
-	}
-}
-
 @media (prefers-reduced-motion: reduce) {
 	[data-reveal='ready'] {
 		opacity: 1;
@@ -367,10 +320,6 @@ a {
 		transition: none;
 	}
 
-	.dci-float,
-	.dci-float-slow,
-	.animate-spin-slow,
-	.animate-spin-slow-reverse,
 	.animate-ping,
 	.animate-pulse {
 		animation: none !important;
@@ -378,7 +327,18 @@ a {
 
 	.dci-soft-hover,
 	.dci-soft-hover:hover {
-		transform: none;
-		transition-duration: 0.01ms;
+		border-color: color-mix(in srgb, var(--dci-teal) 30%, transparent);
+	}
+
+	.dci-card-collection:hover::before {
+		transform: translate3d(-4px, -5px, 0) rotate(-1.35deg) scale(0.985);
+	}
+
+	.dci-card-collection:hover::after {
+		transform: translate3d(4px, -3px, 0) rotate(1.15deg) scale(0.992);
+	}
+
+	.dci-field-editorial::after {
+		transition: none;
 	}
 }

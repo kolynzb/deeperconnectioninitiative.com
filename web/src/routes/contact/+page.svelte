@@ -1,22 +1,16 @@
 <script lang="ts">
+	import { fieldGlide, flowGroup } from '$lib/actions/flow';
 	import { enhance } from '$app/forms';
 	import { Button } from '@/lib/components/ui/button';
-	import GetInvolved from '@/lib/components/pages/sections/get-involved.svelte';
-	import SpotIllustration from '@/lib/components/spot-illustration.svelte';
+	import { Field } from '$lib/components/ui/field';
+	import { PageHero, Section, SectionHeading } from '@/lib/components/sections';
+	import { CLINIC_END, CLINIC_PRICE_UGX, CLINIC_START, CLINIC_VENUE } from '$lib/clinics';
+	import { toolkitProducts } from '$lib/toolkit-products';
 	import { reveal } from '@/lib/actions/reveal';
 	import { siteConfig } from '@/lib/config/site';
 
 	let { form } = $props();
 	let submitting = $state(false);
-	import {
-		ArrowUpRightIcon as ArrowUpRight,
-		ClockIcon as Clock3,
-		EnvelopeIcon as Mail,
-		MapPinIcon as MapPin,
-		ChatCircleTextIcon as MessageCircle,
-		PhoneIcon as Phone
-	} from 'phosphor-svelte';
-
 	import { page } from '$app/state';
 
 	const supportPaths = [
@@ -31,160 +25,249 @@
 
 	// CTAs across the site link here with ?topic= and ?about= so the form
 	// arrives already knowing what the visitor wants.
-	const topicParam = page.url.searchParams.get('topic') ?? '';
-	const aboutParam = page.url.searchParams.get('about') ?? '';
-	let topic = $state(supportPaths.includes(topicParam) ? topicParam : supportPaths[0]);
+	const topicParam = $derived(page.url.searchParams.get('topic') ?? '');
+	const aboutParam = $derived(page.url.searchParams.get('about') ?? '');
+	const pick = (t: string | null) => (t && supportPaths.includes(t) ? t : supportPaths[0]);
+	let topic = $state(pick(page.url.searchParams.get('topic')));
+	// An effect, not a one-off read, so same-page ?topic= links also switch it.
+	$effect(() => {
+		topic = pick(topicParam);
+	});
+
+	// Answers only restate what the rest of the site already says (clinics,
+	// toolkit, trainings, platform, partners, terms and privacy pages).
+	const faqTopics = [
+		{
+			id: 'clinics',
+			title: 'Clinics',
+			faqs: [
+				{
+					q: 'When and where are the clinics?',
+					a: `On the last Wednesday of every month, ${CLINIC_START} to ${CLINIC_END}, at ${CLINIC_VENUE}.`
+				},
+				{
+					q: 'How much is a seat?',
+					a: `${CLINIC_PRICE_UGX.toLocaleString('en-US')} UGX per seat, including the session. Pay by Mobile Money or card. Seats are limited.`
+				},
+				{
+					q: 'Is a clinic therapy?',
+					a: 'No. Conversation Clinics are peer-led. They are not therapy and do not replace care from a professional.'
+				},
+				{
+					q: 'Can you run a clinic for our group?',
+					a: "Yes. If you're bringing a group, or want a clinic at your school, workplace, or venue, choose \u201cCommunity clinic or event\u201d in the form above."
+				}
+			]
+		},
+		{
+			id: 'toolkit',
+			title: 'Toolkit',
+			faqs: [
+				{
+					q: 'What is in the toolkit?',
+					a: 'The DCI Card Game, Reflection Journal, and Mood Tracker. The complete kit bundles all three with QR access, for personal and group support.'
+				},
+				{
+					q: 'What does each tool cost?',
+					a: toolkitProducts.map((p) => `${p.name}: ${p.price}`).join('. ') + '.'
+				},
+				{
+					q: 'How do I pay?',
+					a: "Payments are processed by Flutterwave. You pay by Mobile Money or card on Flutterwave's secure page, and DCI does not store your card details."
+				},
+				{
+					q: 'Can I sponsor a kit for someone else?',
+					a: 'Yes. Choose \u201cSponsor a kit\u201d on the Toolkit page. Sponsoring one complete kit earns 10 Connection Miles. For questions about an order, refund, or sponsorship, write to us at the email on this page.'
+				}
+			]
+		},
+		{
+			id: 'trainings',
+			title: 'Trainings & Champions',
+			faqs: [
+				{
+					q: 'What does Champion certification cost?',
+					a: 'The Foundation Level, the Community Champion Certification, is UGX 500,000 per person.'
+				},
+				{
+					q: 'Are there other certification levels?',
+					a: 'Yes. The Advanced Level (Institutional Scale Certification) is UGX 1,500,000, and Master Trainer (Certified Trainer Certification) is UGX 3,000,000.'
+				},
+				{
+					q: 'How does the training work?',
+					a: 'Apply, confirm, prepare, train, then activate. Once payment is complete you receive the training brief, schedule, and preparation pack.'
+				},
+				{
+					q: 'Do I need to be a clinician?',
+					a: 'No. Champions learn to hold space without needing to be a clinician, and a clinic needs no clinician, just a trained Champion and the toolkit.'
+				}
+			]
+		},
+		{
+			id: 'platform',
+			title: 'Platform & data',
+			// Same answers as the Platform page FAQ.
+			faqs: [
+				{
+					q: 'Is the Early Warning System live?',
+					a: "Not yet, it is coming soon. When it launches, you will log in on the Platform page to check your Connection Miles and follow your community's Early Warning System."
+				},
+				{
+					q: 'Does it show how one person is feeling?',
+					a: 'Organisations see patterns across a whole community. DCI uses wellbeing data in aggregate, non-identifying form, as set out in our privacy policy.'
+				},
+				{
+					q: 'What does it need before it activates?',
+					a: 'Enough people taking part across mood tracking, Champion certification, and clinic attendance. One signal on its own is not enough.'
+				},
+				{
+					q: 'How do organisations pay for it?',
+					a: 'Pay-as-you-go data tracking through Connection Miles, which compound with every toolkit sold, clinic hosted, and Champion trained.'
+				}
+			]
+		},
+		{
+			id: 'partners',
+			title: 'Partners',
+			faqs: [
+				{
+					q: 'Which organisations is DCI for?',
+					a: 'Schools, corporates, NGOs, faith communities, and hospitality spaces.'
+				},
+				{
+					q: 'What does a partnership cost?',
+					a: 'Organisations start from USD 20,000 annually. We scope every engagement around your people, your setting, and the outcomes you report on.'
+				},
+				{
+					q: 'What does a partnership include?',
+					a: 'Three layers. Connect: Community Champions and Conversation Clinics. Equip: the Mood Tracker, Journal, and Card Game. Understand: the Early Warning System reads signals across your whole organisation.'
+				},
+				{
+					q: 'How do we start?',
+					a: 'Book a 30-minute call: choose \u201cPartner training\u201d in the form above.'
+				}
+			]
+		}
+	];
+
+	// The topic list marks the group in view; Cojeev's glide follows it.
+	let activeTopic = $state(faqTopics[0].id);
+	$effect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries)
+					if (entry.isIntersecting) activeTopic = entry.target.id.slice(4);
+			},
+			{ rootMargin: '-40% 0px -55% 0px' }
+		);
+		for (const t of faqTopics) {
+			const el = document.getElementById(`faq-${t.id}`);
+			if (el) observer.observe(el);
+		}
+		return () => observer.disconnect();
+	});
 </script>
 
-<section class="relative overflow-hidden pt-28">
-	<div
-		class="pointer-events-none absolute top-28 right-0 hidden h-72 w-72 rounded-full bg-dci-teal/8 blur-3xl lg:block"
-	></div>
-	<div class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-		<div class="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
-			<aside
-				use:reveal={{ delay: 0, y: 18 }}
-				class="relative overflow-hidden rounded-[2rem] bg-dci-teal-deep p-8 text-dci-cream lg:sticky lg:top-28 lg:p-10"
-			>
-				<div
-					class="pointer-events-none absolute inset-0 opacity-10"
-					style="background-image: radial-gradient(#F6ECD9 1px, transparent 1px); background-size: 26px 26px;"
-				></div>
-				<div class="relative space-y-10">
-					<div class="space-y-5">
-						<div
-							class="inline-flex items-center rounded-full border border-dci-cream/20 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-dci-cream/70"
-						>
-							Contact DCI
-						</div>
-						<div class="space-y-4">
-							<h1
-								class="max-w-xl text-5xl font-semibold leading-[0.95] tracking-tight text-white sm:text-6xl"
-							>
-								Let us know what kind of support you need.
-							</h1>
-							<p class="max-w-lg text-base leading-relaxed text-dci-cream/75 sm:text-lg">
-								Reach out about toolkits, clinics, trainings, partnerships, or responsible mental
-								health referrals. We will route your message to the right person.
-							</p>
-						</div>
-					</div>
+<PageHero
+	eyebrow="Contact DCI"
+	title="Let us know what kind of support you need."
+	description="Reach out about toolkits, clinics, trainings, partnerships, or responsible mental health referrals. We will route your message to the right person."
+/>
 
-					<div class="grid gap-3">
+<Section class="pt-0 lg:pt-0">
+	<div class="grid gap-8 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
+		<aside
+			use:reveal={{ delay: 0, y: 18 }}
+			class="rounded-2xl border border-dci-teal/15 bg-dci-paper/70 p-6 sm:p-8 lg:sticky lg:top-28"
+		>
+			<dl class="divide-y divide-dci-teal/15">
+				<div class="pb-5">
+					<dt class="type-eyebrow text-dci-teal">Email</dt>
+					<dd class="mt-2">
 						<a
 							href={`mailto:${siteConfig.contacts.email}`}
-							class="group dci-soft-hover grid grid-cols-[2.75rem_1fr] gap-3 rounded-2xl border border-dci-cream/12 bg-dci-cream/6 p-4 transition hover:bg-dci-cream/10"
+							class="text-base text-foreground underline-offset-4 hover:underline"
 						>
-							<span
-								class="flex size-11 items-center justify-center rounded-xl bg-dci-cream/12 text-dci-cream"
-							>
-								<Mail class="size-5" weight="duotone" />
-							</span>
-							<span>
-								<span class="block text-sm font-semibold text-white">Email</span>
-								<span class="mt-1 flex items-center gap-2 text-sm text-dci-cream/70">
-									{siteConfig.contacts.email}
-									<ArrowUpRight
-										class="size-3.5 opacity-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
-										weight="regular"
-									/>
-								</span>
-							</span>
+							{siteConfig.contacts.email}
 						</a>
-
+					</dd>
+				</div>
+				<div class="py-5">
+					<dt class="type-eyebrow text-dci-teal">Phone</dt>
+					<dd class="mt-2">
 						<a
 							href={`tel:${siteConfig.contacts.tele}`}
-							class="group dci-soft-hover grid grid-cols-[2.75rem_1fr] gap-3 rounded-2xl border border-dci-cream/12 bg-dci-cream/6 p-4 transition hover:bg-dci-cream/10"
+							class="text-base text-foreground underline-offset-4 hover:underline"
 						>
-							<span
-								class="flex size-11 items-center justify-center rounded-xl bg-dci-cream/12 text-dci-cream"
-							>
-								<Phone class="size-5" weight="duotone" />
-							</span>
-							<span>
-								<span class="block text-sm font-semibold text-white">Phone</span>
-								<span class="mt-1 block text-sm text-dci-cream/70">{siteConfig.contacts.tele}</span>
-							</span>
+							{siteConfig.contacts.tele}
 						</a>
-
-						<div
-							class="grid grid-cols-[2.75rem_1fr] gap-3 rounded-2xl border border-dci-cream/12 bg-dci-cream/6 p-4"
-						>
-							<span
-								class="flex size-11 items-center justify-center rounded-xl bg-dci-cream/12 text-dci-cream"
-							>
-								<MapPin class="size-5" weight="duotone" />
-							</span>
-							<span>
-								<span class="block text-sm font-semibold text-white">Office</span>
-								<span class="mt-1 block text-sm text-dci-cream/70"
-									>{siteConfig.contacts.address}</span
-								>
-							</span>
-						</div>
-					</div>
-
-					<div class="grid gap-3 border-t border-dci-cream/15 pt-6 sm:grid-cols-2">
-						<div>
-							<Clock3 class="mb-3 size-5 text-dci-cream/70" weight="regular" />
-							<p class="text-sm font-semibold text-white">Office hours</p>
-							<p class="mt-1 text-sm leading-relaxed text-dci-cream/65">
-								Monday-Friday, 9:00 AM-5:00 PM
-							</p>
-						</div>
-						<div>
-							<MessageCircle class="mb-3 size-5 text-dci-cream/70" weight="regular" />
-							<p class="text-sm font-semibold text-white">Response window</p>
-							<p class="mt-1 text-sm leading-relaxed text-dci-cream/65">
-								Usually within 1-2 working days.
-							</p>
-						</div>
-					</div>
+					</dd>
 				</div>
-			</aside>
-
-			<div
-				use:reveal={{ delay: 120, y: 18 }}
-				class="relative overflow-hidden rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-5 shadow-dci-lift sm:p-8 lg:p-10"
-			>
-				<SpotIllustration
-					variant="care"
-					class="pointer-events-none absolute -right-20 bottom-20 hidden w-80 rotate-3 opacity-16 lg:block"
-				/>
-				<div class="relative z-10 mb-8 max-w-2xl space-y-3">
-					<p class="text-xs font-semibold uppercase tracking-wide text-dci-teal">Send a message</p>
-					<h2
-						class="text-3xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-4xl"
-					>
-						Start with the basics. We will follow up with care.
-					</h2>
-					<p class="text-base leading-relaxed text-slate-600">
-						Use this form for general inquiries. If someone is in immediate danger, contact local
-						emergency services or a trusted crisis support provider.
-					</p>
+				<div class="py-5">
+					<dt class="type-eyebrow text-dci-teal">Office</dt>
+					<dd class="mt-2 text-base text-foreground">{siteConfig.contacts.address}</dd>
 				</div>
+			</dl>
+			<dl class="grid gap-5 border-t border-dci-teal/15 pt-5 sm:grid-cols-2">
+				<div>
+					<dt class="type-eyebrow text-dci-teal">Office hours</dt>
+					<dd class="mt-2 text-sm leading-relaxed text-muted-foreground">
+						Monday-Friday, 9:00 AM-5:00 PM
+					</dd>
+				</div>
+				<div>
+					<dt class="type-eyebrow text-dci-teal">Response window</dt>
+					<dd class="mt-2 text-sm leading-relaxed text-muted-foreground">
+						Usually within 1-2 working days.
+					</dd>
+				</div>
+			</dl>
+		</aside>
 
+		<div
+			use:reveal={{ delay: 120, y: 18 }}
+			class="overflow-hidden rounded-2xl border border-dci-teal/15 bg-dci-paper"
+		>
+			<div class="m-2.5 mb-0 rounded-2xl border border-dci-teal/12 bg-dci-cream p-6 sm:p-8">
+				<p class="type-eyebrow text-dci-teal">Send a message</p>
+				<h2 class="type-title mt-2 text-foreground">
+					Start with the basics. We will follow up with care.
+				</h2>
+				<p class="mt-2 max-w-2xl text-base leading-relaxed text-muted-foreground">
+					Use this form for general inquiries. If someone is in immediate danger, contact local
+					emergency services or a trusted crisis support provider.
+				</p>
+			</div>
+
+			<div class="p-6 sm:p-8 lg:p-10">
 				{#if form?.success}
 					<div
-						class="relative z-10 mb-6 rounded-2xl border border-dci-teal/25 bg-dci-teal/8 px-5 py-4 text-sm text-dci-teal-deep"
+						class="mb-6 rounded-2xl border border-dci-teal/25 bg-dci-teal/8 px-5 py-4 text-sm text-dci-teal-deep"
 						role="status"
 					>
 						<p class="font-semibold">Thanks, your message is in.</p>
-						<p class="mt-1 text-slate-700">We'll follow up at the email you provided. For anything urgent, call {siteConfig.contacts.tele}.</p>
+						<p class="mt-1 text-muted-foreground">
+							We'll follow up at the email you provided. For anything urgent, call {siteConfig
+								.contacts.tele}.
+						</p>
 					</div>
 				{/if}
 				{#if form?.errors?.form}
 					<div
-						class="relative z-10 mb-6 rounded-2xl border border-dci-burgundy/25 bg-dci-burgundy/8 px-5 py-4 text-sm text-dci-burgundy"
+						class="mb-6 rounded-2xl border border-dci-burgundy/25 bg-dci-burgundy/8 px-5 py-4 text-sm text-dci-burgundy"
 						role="alert"
 					>
 						{form.errors.form} You can reach us at
-						<a href={`mailto:${siteConfig.contacts.email}`} class="font-semibold underline underline-offset-4">{siteConfig.contacts.email}</a>.
+						<a
+							href={`mailto:${siteConfig.contacts.email}`}
+							class="font-semibold underline underline-offset-4">{siteConfig.contacts.email}</a
+						>.
 					</div>
 				{/if}
 
 				<form
-					class="relative z-10 space-y-6"
+					use:fieldGlide
+					class="space-y-5"
 					method="POST"
 					use:enhance={() => {
 						submitting = true;
@@ -203,97 +286,82 @@
 						class="hidden"
 					/>
 
-					<div class="grid gap-5 sm:grid-cols-2">
-						<div class="space-y-2">
-							<label for="name" class="text-sm font-semibold text-slate-950">Your name</label>
-							<input
-								id="name"
-								name="name"
-								type="text"
-								autocomplete="name"
-								required
-								value={form?.values?.name ?? ''}
-								aria-invalid={form?.errors?.name ? 'true' : undefined}
-								placeholder="Full name"
-								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
-							/>
-							{#if form?.errors?.name}
-								<p class="text-sm text-dci-burgundy">{form.errors.name}</p>
-							{/if}
-						</div>
+					<div class="grid gap-4 sm:grid-cols-2">
+						<Field
+							appearance="inset"
+							id="name"
+							name="name"
+							label="Your name"
+							type="text"
+							autocomplete="name"
+							required
+							value={form?.values?.name ?? ''}
+							aria-invalid={form?.errors?.name ? 'true' : undefined}
+							error={form?.errors?.name}
+							placeholder="Full name"
+						/>
 
-						<div class="space-y-2">
-							<label for="email" class="text-sm font-semibold text-slate-950">Email address</label>
-							<input
-								id="email"
-								name="email"
-								type="email"
-								autocomplete="email"
-								required
-								value={form?.values?.email ?? ''}
-								aria-invalid={form?.errors?.email ? 'true' : undefined}
-								placeholder="you@example.com"
-								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
-							/>
-							{#if form?.errors?.email}
-								<p class="text-sm text-dci-burgundy">{form.errors.email}</p>
-							{/if}
-						</div>
+						<Field
+							appearance="inset"
+							id="email"
+							name="email"
+							label="Email address"
+							type="email"
+							autocomplete="email"
+							required
+							value={form?.values?.email ?? ''}
+							aria-invalid={form?.errors?.email ? 'true' : undefined}
+							error={form?.errors?.email}
+							placeholder="you@example.com"
+						/>
 					</div>
 
-					<div class="grid gap-5 sm:grid-cols-2">
-						<div class="space-y-2">
-							<label for="phone" class="text-sm font-semibold text-slate-950">Phone number</label>
-							<input
-								id="phone"
-								name="phone"
-								type="tel"
-								autocomplete="tel"
-								placeholder="+256..."
-								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
-							/>
-						</div>
+					<div class="grid gap-4 sm:grid-cols-2">
+						<Field
+							appearance="inset"
+							id="phone"
+							name="phone"
+							label="Phone number"
+							type="tel"
+							autocomplete="tel"
+							placeholder="+256..."
+						/>
 
-						<div class="space-y-2">
-							<label for="topic" class="text-sm font-semibold text-slate-950"
-								>What is this about?</label
-							>
+						<Field appearance="inset" id="topic" label="What is this about?">
 							<select
 								id="topic"
 								name="topic"
 								bind:value={topic}
-								class="h-12 w-full rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 text-base text-slate-950 outline-none transition focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
+								class="mt-1 h-7 w-full bg-transparent text-base text-foreground outline-none"
 							>
 								{#each supportPaths as path}
 									<option>{path}</option>
 								{/each}
 							</select>
-						</div>
+						</Field>
 					</div>
 
-					<div class="space-y-2">
-						<label for="message" class="text-sm font-semibold text-slate-950">Message</label>
-						<textarea
-							id="message"
-							name="message"
-							rows="7"
-							required
-							aria-invalid={form?.errors?.message ? 'true' : undefined}
-							placeholder="Tell us what you are hoping to do, who the support is for, and the best way to reach you."
-							class="w-full resize-y rounded-2xl border border-dci-teal/15 bg-dci-paper px-4 py-4 text-base leading-relaxed text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-dci-teal/50 focus:bg-white focus:ring-4 focus:ring-dci-teal/10"
-							>{form?.values?.message ?? aboutParam}</textarea>
-						{#if form?.errors?.message}
-							<p class="text-sm text-dci-burgundy">{form.errors.message}</p>
-						{/if}
-					</div>
+					<Field
+						appearance="inset"
+						multiline
+						rows={6}
+						id="message"
+						name="message"
+						label="Message"
+						required
+						value={form?.values?.message ?? aboutParam}
+						aria-invalid={form?.errors?.message ? 'true' : undefined}
+						error={form?.errors?.message}
+						placeholder="Tell us what you are hoping to do, who the support is for, and the best way to reach you."
+					/>
 
 					<div
-						class="flex flex-col gap-4 border-t border-dci-teal/10 pt-6 sm:flex-row sm:items-center sm:justify-between"
+						class="-mx-6 -mb-6 flex flex-col gap-4 border-t border-dci-teal/12 bg-dci-cream/55 px-6 py-5 sm:-mx-8 sm:-mb-8 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:-mx-10 lg:-mb-10 lg:px-10"
 					>
-						<p class="max-w-md text-sm leading-relaxed text-slate-600">
+						<p class="max-w-md text-sm leading-relaxed text-muted-foreground">
 							Please avoid sending sensitive clinical details through this form.
 						</p>
-						<Button type="submit" size="lg" disabled={submitting} class="rounded-full px-8">
+						<Button type="submit" disabled={submitting}>
 							{submitting ? 'Sending…' : 'Send message'}
 						</Button>
 					</div>
@@ -301,6 +369,63 @@
 			</div>
 		</div>
 	</div>
+</Section>
 
-	<GetInvolved />
-</section>
+<Section id="faq">
+	<SectionHeading
+		eyebrow="Questions"
+		title="Answers before you write."
+		description="What people ask us most about clinics, the toolkit, trainings, the platform, and partnerships."
+	/>
+
+	<div class="mt-12 grid gap-10 lg:grid-cols-4 lg:gap-8">
+		<nav aria-label="Question topics" class="lg:sticky lg:top-28 lg:self-start">
+			<ul
+				use:flowGroup={{ itemSelector: 'a' }}
+				class="flex flex-wrap gap-1.5 lg:grid lg:gap-1"
+				style="--glide-r: 999px; --hov-r: 999px;"
+			>
+				{#each faqTopics as t (t.id)}
+					{@const current = activeTopic === t.id}
+					<li>
+						<a
+							href={`#faq-${t.id}`}
+							aria-current={current ? 'true' : undefined}
+							onclick={() => (activeTopic = t.id)}
+							class={`relative z-10 block rounded-full px-4 py-2 text-sm font-semibold transition-colors ${current ? 'text-dci-cream' : 'text-muted-foreground hover:text-foreground'}`}
+						>
+							{t.title}
+						</a>
+					</li>
+				{/each}
+			</ul>
+		</nav>
+
+		<div class="grid gap-16 lg:col-span-3">
+			{#each faqTopics as t (t.id)}
+				<div id={`faq-${t.id}`} class="scroll-mt-28">
+					<h3 class="type-title text-foreground">{t.title}</h3>
+					<div class="mt-6 divide-y divide-dci-teal/15 border-y border-dci-teal/15">
+						{#each t.faqs as faq (faq.q)}
+							<details class="group py-5">
+								<summary
+									class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg text-foreground [&::-webkit-details-marker]:hidden"
+								>
+									{faq.q}
+									<span
+										aria-hidden="true"
+										class="grid size-8 shrink-0 place-items-center rounded-full border border-dci-teal/20 text-dci-teal transition-transform group-open:rotate-45"
+										>+</span
+									>
+								</summary>
+								<p class="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground">
+									{faq.a}
+								</p>
+							</details>
+						{/each}
+					</div>
+				</div>
+			{/each}
+		</div>
+	</div>
+</Section>

@@ -1,49 +1,120 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
+	import type { Snippet } from 'svelte';
+	import {
+		Card,
+		CardCover,
+		CardFooter,
+		CardStepList,
+		CardWatermark,
+		type CardStepItem
+	} from '$lib/components/ui/card';
 
 	let {
-		icon: Icon,
 		kicker,
+		badge,
 		title,
 		description,
-		accent = '#2A6268',
+		appearance = 'editorial',
+		tone = 'paper',
+		coverTint,
+		steps,
+		footerMeta,
 		class: className,
+		cover,
+		footer,
 		children
 	}: {
-		icon?: any;
 		kicker?: string;
+		badge?: string;
 		title: string;
 		description?: string;
-		accent?: string;
+		appearance?: 'editorial' | 'project' | 'collection';
+		tone?: 'paper' | 'cream' | 'dark';
+		coverTint?: 'cream' | 'mist' | 'blush' | 'oat' | 'dark';
+		steps?: readonly CardStepItem[];
+		footerMeta?: string;
 		class?: string;
-		children?: import('svelte').Snippet;
+		cover?: Snippet;
+		footer?: Snippet;
+		children?: Snippet;
 	} = $props();
 </script>
 
-<article
-	class={cn(
-		'dci-soft-hover flex h-full flex-col rounded-[2rem] border border-dci-teal/12 bg-dci-cream p-6 shadow-dci-lift sm:p-7',
-		className
-	)}
->
-	{#if Icon}
+<Card {appearance} {tone} lift class={className}>
+	{#if badge}
+		<CardWatermark
+			text={badge}
+			tone={tone === 'dark' ? 'cream' : appearance === 'project' ? 'burgundy' : 'teal'}
+		/>
+	{/if}
+
+	{#if cover}
+		<CardCover tint={coverTint ?? 'cream'}>
+			{@render cover()}
+		</CardCover>
+	{:else if kicker || badge}
 		<div
-			class="mb-6 flex size-12 items-center justify-center rounded-xl bg-white/65"
-			style={`color:${accent}`}
+			class={cn(
+				'flex items-center justify-between gap-3 border-b px-6 py-3.5 sm:px-8',
+				tone === 'dark'
+					? 'border-dci-cream/15 bg-dci-ink/20'
+					: 'border-dci-teal/10 bg-dci-cream/60'
+			)}
 		>
-			<Icon class="size-6" weight="duotone" aria-hidden="true" />
+			{#if kicker}
+				<p class={cn('type-eyebrow', tone === 'dark' ? 'text-dci-cream/80' : 'text-dci-teal')}>
+					{kicker}
+				</p>
+			{:else}
+				<span></span>
+			{/if}
+			{#if badge}
+				<span
+					class={cn(
+						'dci-pebble inline-flex size-8 shrink-0 items-center justify-center font-serif text-sm',
+						tone === 'dark'
+							? 'bg-dci-cream/15 text-dci-cream'
+							: 'bg-dci-mist text-dci-teal-deep'
+					)}
+				>
+					{badge}
+				</span>
+			{/if}
 		</div>
 	{/if}
-	{#if kicker}
-		<p class="mb-2 text-xs font-bold uppercase tracking-wide" style={`color:${accent}`}>{kicker}</p>
+
+	<div class="relative z-10 flex flex-1 flex-col p-6 sm:p-8">
+		<h3 class={cn('type-subtitle', tone === 'dark' ? 'text-dci-cream' : 'text-foreground')}>
+			{title}
+		</h3>
+		{#if description}
+			<p
+				class={cn(
+					'mt-3 text-base leading-relaxed',
+					tone === 'dark' ? 'text-dci-cream/75' : 'text-muted-foreground'
+				)}
+			>
+				{description}
+			</p>
+		{/if}
+		{#if steps && steps.length > 0}
+			<CardStepList
+				{steps}
+				tone={tone === 'dark' ? 'dark' : 'teal'}
+				class="mt-5"
+			/>
+		{/if}
+		{#if children}
+			<div class="mt-5">
+				{@render children()}
+			</div>
+		{/if}
+	</div>
+
+	{#if footer || footerMeta}
+		<CardFooter meta={footerMeta} tone={tone === 'dark' ? 'dark' : 'light'}>
+			{@render footer?.()}
+		</CardFooter>
 	{/if}
-	<h3 class="text-2xl font-semibold leading-tight text-slate-950">{title}</h3>
-	{#if description}
-		<p class="mt-3 text-base leading-relaxed text-slate-700">{description}</p>
-	{/if}
-	{#if children}
-		<div class="mt-5">
-			{@render children()}
-		</div>
-	{/if}
-</article>
+</Card>
