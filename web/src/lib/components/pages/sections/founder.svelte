@@ -57,7 +57,7 @@
 		</figure>
 
 		<div class="space-y-6" use:reveal={{ delay: 120, y: 18 }}>
-			<Eyebrow label="The founder" />
+			<Eyebrow label="Co-founder" />
 			<h2 class="type-headline text-foreground">
 				<em class="text-dci-burgundy">40+ years</em> of experience started this journey
 			</h2>

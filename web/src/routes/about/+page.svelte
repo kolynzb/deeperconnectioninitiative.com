@@ -179,7 +179,7 @@
 					class="absolute right-0 bottom-full size-8 text-background"
 					fill="currentColor"><path d="M0 24A24 24 0 0 0 24 0V24Z" /></svg
 				>
-				<span class="block text-sm text-muted-foreground">The founder</span>
+				<span class="block text-sm text-muted-foreground">Co-founder</span>
 				<span class="block font-serif text-xl text-foreground">Ann Banya</span>
 			</figcaption>
 		</figure>
@@ -199,8 +199,8 @@
 						toolkit, clinic, and training carries that experience behind it.
 					</p>
 					<p>
-						Ann Banya brings 40+ years as an Early Childhood Development and behavioural specialist
-						to the work.
+						DCI was co-founded by Ann Banya and Emily. Ann brings 40+ years as an Early Childhood
+						Development and behavioural specialist to the work.
 					</p>
 				</div>
 				<p class="type-eyebrow mt-10 text-muted-foreground">Trusted alongside</p>
