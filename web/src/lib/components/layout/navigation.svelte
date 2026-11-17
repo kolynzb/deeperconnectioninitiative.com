@@ -6,9 +6,10 @@
 	// Compact state comes from an IntersectionObserver sentinel, not a scroll listener.
 	const header = createCompactHeader();
 	import * as Sheet from '$lib/components/ui/sheet';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
+	import { Button } from '$lib/components/ui/button';
 	import { cn } from '$lib/utils';
 	import { page } from '$app/state';
+	import { flowGroup } from '$lib/actions/flow';
 	import {
 		ArrowUpRightIcon as ArrowUpRight,
 		BookOpenTextIcon as BookOpen,
@@ -129,10 +130,10 @@
 	}
 
 	function activeDesktopClass(isActive: boolean) {
+		// Cojeev's glide paints the current page and the hover preview.
 		return cn(
-			'h-10 rounded-full bg-transparent px-4 text-[0.92rem] font-medium text-foreground/80 hover:bg-dci-teal/7 hover:text-dci-teal-deep focus:bg-dci-teal/7',
-			isActive &&
-				'bg-dci-burgundy/10 text-dci-burgundy ring-1 ring-dci-burgundy/15 hover:bg-dci-burgundy/12 hover:text-dci-burgundy'
+			'h-10 rounded-full bg-transparent px-4 text-[0.92rem] font-medium text-foreground/80 transition-colors hover:text-dci-teal-deep',
+			isActive && 'text-dci-teal-deep'
 		);
 	}
 
@@ -205,19 +206,17 @@
 				onkeydown={handleDesktopKeydown}
 			>
 				<nav aria-label="Main navigation">
-					<ul class="flex list-none items-center justify-center gap-1">
+					<ul
+						use:flowGroup={{ itemSelector: 'a,button' }}
+						class="flex list-none items-center justify-center gap-1"
+					>
 						{#each navItems as item}
 							{@const isActive = isNavItemActive(item)}
 							<li class="relative">
 								{#if item.children}
 									<button
 										type="button"
-										class={cn(
-											activeDesktopClass(isActive),
-											'data-[state=open]:bg-dci-teal/8 data-[state=open]:text-dci-teal-deep',
-											isActive &&
-												'data-[state=open]:bg-dci-burgundy/10 data-[state=open]:text-dci-burgundy'
-										)}
+										class={activeDesktopClass(isActive)}
 										data-state={activeDesktopMenu === item.label ? 'open' : 'closed'}
 										aria-expanded={activeDesktopMenu === item.label}
 										aria-current={isActive ? 'page' : undefined}
@@ -288,12 +287,12 @@
 								</span>
 							</a>
 
-							<div class="grid gap-2">
+							<div use:flowGroup={{ itemSelector: 'a' }} class="grid gap-2">
 								{#each activeItem.children as child}
 									{@const Icon = child.icon}
 									<a
 										href={child.href}
-										class="group grid grid-cols-[2.5rem_1fr] gap-3 rounded-xl p-3 outline-none hover:bg-dci-sand/65 focus:bg-dci-sand/65 focus-visible:ring-2 focus-visible:ring-dci-teal/30"
+										class="group grid grid-cols-[2.5rem_1fr] gap-3 rounded-xl p-3 outline-none focus-visible:ring-2 focus-visible:ring-dci-teal/30"
 										onclick={closeDesktopMenu}
 									>
 										<span
@@ -325,9 +324,9 @@
 			     and the get-involved block, where it reads as a choice rather than
 			     as competition for the purchase. -->
 			<div class="hidden shrink-0 items-center lg:flex">
-				<a href="/toolkit#toolkit-products" class={buttonVariants({ size: 'sm' })}>
+				<Button href="/toolkit#toolkit-products" size="sm">
 					Get the toolkit
-				</a>
+				</Button>
 			</div>
 
 			<Sheet.Root bind:open={isOpen}>
@@ -388,7 +387,11 @@
 												/>
 											</button>
 											{#if openMobileSection === item.label}
-												<div class="grid gap-1 border-t border-dci-teal/10 p-2">
+												<div
+													use:flowGroup={{ itemSelector: 'a' }}
+													class="grid gap-1 border-t border-dci-teal/10 p-2"
+													style="--glide-bg: var(--dci-blush); --glide-fg: var(--dci-burgundy)"
+												>
 													<a
 														href={item.href}
 														class={cn(
@@ -451,13 +454,9 @@
 
 						<div class="border-t border-dci-teal/10 p-5">
 							<div class="grid gap-3">
-								<a
-									href="/toolkit#toolkit-products"
-									class={cn(buttonVariants(), 'w-full')}
-									onclick={closeMobileMenu}
-								>
+								<Button href="/toolkit#toolkit-products" class="w-full" onclick={closeMobileMenu}>
 									Get the toolkit
-								</a>
+								</Button>
 							</div>
 						</div>
 					</div>

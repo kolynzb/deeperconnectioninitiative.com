@@ -2,6 +2,7 @@
 	import { cn, type WithElementRef } from '$lib/utils.js';
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 	import { type VariantProps, tv } from 'tailwind-variants';
+	import { flowPress, morph } from '$lib/actions/flow';
 
 	// The site's only buttons. Every CTA is a pill in one of these variants and two
 	// sizes; pass layout classes (w-full, mt-*) through class, never colours or sizes.
@@ -62,13 +63,25 @@
 		children,
 		...restProps
 	}: ButtonProps = $props();
+
+	// Cojeev's morph engine reads these: .v-btn gets the organic surface,
+	// -outline draws it as a stroke, -ghost opts out.
+	const cojeev = $derived(
+		cn(
+			'v-btn',
+			(variant === 'outline' || variant === 'inverse-outline') && '-outline',
+			(variant === 'ghost' || variant === 'link') && '-ghost'
+		)
+	);
 </script>
 
 {#if href}
 	<a
 		bind:this={ref}
 		data-slot="button"
-		class={cn(buttonVariants({ variant, size }), className)}
+		use:morph={'buttons'}
+		use:flowPress
+		class={cn(cojeev, buttonVariants({ variant, size }), className)}
 		href={disabled ? undefined : href}
 		aria-disabled={disabled}
 		role={disabled ? 'link' : undefined}
@@ -81,7 +94,9 @@
 	<button
 		bind:this={ref}
 		data-slot="button"
-		class={cn(buttonVariants({ variant, size }), className)}
+		use:morph={'buttons'}
+		use:flowPress
+		class={cn(cojeev, buttonVariants({ variant, size }), className)}
 		{type}
 		{disabled}
 		{...restProps}
