@@ -36,7 +36,7 @@ function organizationNode() {
 			'@type': 'ImageObject',
 			url: LOGO_URL
 		},
-		image: `${SITE_URL}/og-image.png`,
+		image: `${SITE_URL}/og-image.jpg`,
 		description: PAGE_META['/'].description,
 		email: siteConfig.contacts.email,
 		telephone: siteConfig.contacts.tele,

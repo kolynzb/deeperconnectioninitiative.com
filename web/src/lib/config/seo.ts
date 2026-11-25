@@ -7,7 +7,7 @@ export const SITE_URL = 'https://deeperconnectioninitiative.com';
 export const SITE_NAME = 'DCI Wellness';
 // Registered legal entity name (used in structured data / legal pages).
 export const LEGAL_NAME = 'Deeper Connection Initiative';
-export const OG_IMAGE = `${SITE_URL}/og-image.png`;
+export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 export const TWITTER_HANDLE = '@dci_wellness';
 // Date of the last meaningful content update. Bump when pages change
 // substantially so the sitemap's <lastmod> stays honest for crawlers.
@@ -60,6 +60,11 @@ export const PAGE_META: Record<string, PageMeta> = {
 		description:
 			'Track how sponsored toolkits, Conversation Clinics, and mood check-ins build measurable Connection Miles. One mile equals one life meaningfully impacted.'
 	},
+	'/clinics': {
+		title: `Conversation Clinics${SUFFIX}`,
+		description:
+			'A monthly Conversation Clinic in Kampala, the last Wednesday of every month. A trained Champion, the DCI card game, and a small group. Book your seat for 20,000 UGX.'
+	},
 	'/events': {
 		title: `Events & Clinics${SUFFIX}`,
 		description:
@@ -69,6 +74,11 @@ export const PAGE_META: Record<string, PageMeta> = {
 		title: `Training of Trainers${SUFFIX}`,
 		description:
 			'DCI certifications equip community champions, institutions, and trainers to facilitate grounded mental health conversations with clear referral boundaries.'
+	},
+	'/about': {
+		title: `About DCI${SUFFIX}`,
+		description:
+			'DCI shifts mental health from a passive service model to an active, self-led journey: toolkits, Conversation Clinics, Community Champions and a referral network, built for the places care already happens.'
 	},
 	'/volunteering': {
 		title: `Volunteer with DCI${SUFFIX}`,

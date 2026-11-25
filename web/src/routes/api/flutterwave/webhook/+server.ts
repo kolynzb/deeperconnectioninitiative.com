@@ -57,6 +57,7 @@ export const POST: RequestHandler = async ({ request, fetch }) => {
 				subject: `Payment received: ${productName} (${tx.amount.toLocaleString('en-US')} ${tx.currency})`,
 				text: [
 					`Product: ${productName}`,
+					...(tx.clinicDate ? [`Clinic date: ${tx.clinicDate}`] : []),
 					`Amount: ${tx.amount.toLocaleString('en-US')} ${tx.currency}`,
 					`Buyer email: ${tx.customerEmail || 'unknown'}`,
 					`Reference: ${tx.txRef}`,

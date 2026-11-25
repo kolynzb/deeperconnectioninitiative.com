@@ -38,7 +38,7 @@ export const siteConfig = {
     description: "A mental health initiative helping individuals and communities build emotional strength through tactile toolkits, guided reflection, storytelling, and community connection.",
     images: [
       {
-        url: "https://deeperconnectioninitiative.com/og-image.png",
+        url: "https://deeperconnectioninitiative.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Deeper Connection Initiative: Own your healing",

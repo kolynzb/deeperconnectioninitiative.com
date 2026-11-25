@@ -11,7 +11,12 @@
 
 	// Derive metadata from the current route. Single source of truth for every
 	// page's title / description / canonical / Open Graph / Twitter tags.
-	let meta = $derived(metaForPath(page.url.pathname));
+	let failed = $derived(page.status >= 400);
+	let meta = $derived(
+		failed
+			? { ...metaForPath('/'), title: `Page not found | ${SITE_NAME}` }
+			: metaForPath(page.url.pathname)
+	);
 	let canonical = $derived(`${SITE_URL}${page.url.pathname === '/' ? '' : page.url.pathname}`);
 	// JSON-LD structured data (Organization + WebSite + page + breadcrumbs).
 	let jsonLd = $derived(structuredDataFor(page.url.pathname));
@@ -20,6 +25,7 @@
 <svelte:head>
 	<title>{meta.title}</title>
 	<meta name="description" content={meta.description} />
+	<meta name="robots" content={failed ? 'noindex' : 'index, follow'} />
 	<link rel="canonical" href={canonical} />
 
 	<!-- Open Graph -->

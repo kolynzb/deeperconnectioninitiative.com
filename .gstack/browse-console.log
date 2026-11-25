@@ -1,25 +1,223 @@
-[2026-07-20T13:00:32.489Z] [error] Failed to load resource: the server responded with a status of 404 ()
-[2026-07-20T13:00:32.975Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:00:32.975Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:00:32.975Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:00:33.031Z] [log] Adobe Analytics configured: trackExternalLinks = false
-[2026-07-20T13:00:33.181Z] [error] Failed to load resource: the server responded with a status of 403 ()
-[2026-07-20T13:00:33.182Z] [error] Failed to load resource: the server responded with a status of 403 ()
-[2026-07-20T13:00:34.127Z] [warning] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://aws.demdex.net') does not match the recipient window's origin ('null').
-[2026-07-20T13:00:37.984Z] [log] Adobe Analytics configured: trackExternalLinks = false
-[2026-07-20T13:00:44.164Z] [log] Adobe Analytics configured: trackExternalLinks = false
-[2026-07-20T13:01:00.757Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:01:00.757Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:01:00.759Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:01:00.847Z] [log] Adobe Analytics configured: trackExternalLinks = false
-[2026-07-20T13:01:21.507Z] [error] Failed to load resource: the server responded with a status of 404 ()
-[2026-07-20T13:01:21.565Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:01:21.565Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:01:21.566Z] [warning] Amplify has not been configured. Please call Amplify.configure() before using this service.
-[2026-07-20T13:01:21.601Z] [log] Adobe Analytics configured: trackExternalLinks = false
-[2026-07-20T13:01:37.210Z] [error] Blocked script execution in 'https://raw.githubusercontent.com/github/awesome-copilot/main/README.md' because the document's frame is sandboxed and the 'allow-scripts' permission is not set.
-[2026-07-20T13:01:45.030Z] [error] Blocked script execution in 'https://raw.githubusercontent.com/github/spec-kit/main/templates/plan-template.md' because the document's frame is sandboxed and the 'allow-scripts' permission is not set.
-[2026-07-20T13:01:54.677Z] [error] Blocked script execution in 'https://raw.githubusercontent.com/kirodotdev/Kiro/main/README.md' because the document's frame is sandboxed and the 'allow-scripts' permission is not set.
-[2026-07-20T13:01:55.220Z] [error] Failed to load resource: the server responded with a status of 404 ()
-[2026-07-20T13:01:55.220Z] [error] Blocked script execution in 'https://raw.githubusercontent.com/dotcursorrules/awesome-cursorrules/main/README.md' because the document's frame is sandboxed and the 'allow-scripts' permission is not set.
-[2026-07-20T13:02:00.891Z] [error] Failed to load resource: the server responded with a status of 401 ()
+[2026-10-27T03:31:24.533Z] [debug] [vite] connecting...
+[2026-10-27T03:31:24.547Z] [debug] [vite] connected.
+[2026-10-27T03:31:25.403Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:31:25.404Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:31:25.404Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:31:52.174Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/toolkit.svelte
+[2026-10-27T03:31:52.174Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:32:01.475Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/path-finder.svelte
+[2026-10-27T03:32:01.476Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:32:02.241Z] [debug] [vite] connecting...
+[2026-10-27T03:32:02.245Z] [debug] [vite] connected.
+[2026-10-27T03:32:02.331Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:32:02.331Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:32:02.331Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:32:14.849Z] [debug] [vite] connecting...
+[2026-10-27T03:32:14.859Z] [debug] [vite] connected.
+[2026-10-27T03:32:14.944Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:32:14.945Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:32:14.945Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:32:34.692Z] [debug] [vite] connecting...
+[2026-10-27T03:32:34.693Z] [debug] [vite] connected.
+[2026-10-27T03:32:34.823Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:32:34.823Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:32:34.823Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:32:51.774Z] [debug] [vite] connecting...
+[2026-10-27T03:32:51.776Z] [debug] [vite] connected.
+[2026-10-27T03:32:51.878Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:32:51.878Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:32:51.878Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:33:18.474Z] [debug] [vite] connecting...
+[2026-10-27T03:33:18.672Z] [debug] [vite] connected.
+[2026-10-27T03:33:28.366Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:33:28.366Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:33:28.366Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:39:17.823Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:39:18.002Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/card-draw.svelte
+[2026-10-27T03:39:18.002Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:39:18.611Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/crisis-prevention.svelte
+[2026-10-27T03:39:18.611Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:39:18.675Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/impact-stories.svelte
+[2026-10-27T03:39:18.675Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:39:18.683Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:39:18.692Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:39:18.895Z] [debug] [vite] hot updated: /src/routes/+layout.svelte
+[2026-10-27T03:39:18.895Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:39:18.949Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:39:19.005Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:39:19.218Z] [debug] [vite] connecting...
+[2026-10-27T03:39:19.458Z] [debug] [vite] connected.
+[2026-10-27T03:39:19.626Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:39:19.626Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:39:19.626Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:39:20.639Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/path-finder.svelte
+[2026-10-27T03:39:20.639Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:39:28.683Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/card-draw.svelte
+[2026-10-27T03:39:28.683Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:39:34.747Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/impact-stories.svelte
+[2026-10-27T03:39:34.747Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:39:34.764Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/toolkit.svelte
+[2026-10-27T03:39:34.764Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:39:34.823Z] [debug] [vite] hot updated: /src/routes/+page.svelte
+[2026-10-27T03:39:34.823Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:39:40.580Z] [debug] [vite] hot updated: /src/routes/+page.svelte
+[2026-10-27T03:39:40.580Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:39:46.385Z] [debug] [vite] connecting...
+[2026-10-27T03:39:46.415Z] [debug] [vite] connected.
+[2026-10-27T03:39:46.558Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:39:46.559Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:39:46.559Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:40:15.180Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/toolkit.svelte
+[2026-10-27T03:40:15.180Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:40:24.587Z] [debug] [vite] connecting...
+[2026-10-27T03:40:24.789Z] [debug] [vite] connected.
+[2026-10-27T03:40:25.033Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:40:25.033Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:40:25.033Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:40:38.489Z] [debug] [vite] connecting...
+[2026-10-27T03:40:38.491Z] [debug] [vite] connected.
+[2026-10-27T03:40:38.546Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:40:38.546Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:40:38.546Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:41:03.684Z] [debug] [vite] connecting...
+[2026-10-27T03:41:04.212Z] [debug] [vite] connected.
+[2026-10-27T03:41:05.280Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:41:05.280Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:41:05.280Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:46:40.042Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:46:40.226Z] [debug] [vite] hot updated: /src/lib/components/ui/button/button.svelte
+[2026-10-27T03:46:40.227Z] [debug] [vite] hot updated: /src/lib/components/layout/navigation.svelte
+[2026-10-27T03:46:40.231Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/toolkit.svelte
+[2026-10-27T03:46:40.231Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:47:07.085Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:47:07.128Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:47:07.131Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:47:07.134Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:47:07.135Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:47:22.530Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:47:23.231Z] [debug] [vite] connecting...
+[2026-10-27T03:47:23.243Z] [debug] [vite] connected.
+[2026-10-27T03:47:23.519Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:47:23.519Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:47:23.519Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:47:33.096Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:47:33.218Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/toolkit.svelte
+[2026-10-27T03:47:33.218Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:47:33.228Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:47:33.231Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:47:33.397Z] [debug] [vite] connecting...
+[2026-10-27T03:47:33.399Z] [debug] [vite] connected.
+[2026-10-27T03:47:33.421Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:47:33.421Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:47:33.421Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:47:53.512Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:47:53.543Z] [debug] [vite] hot updated: /src/routes/+page.svelte
+[2026-10-27T03:47:53.543Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:47:53.560Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/hero-v2.svelte
+[2026-10-27T03:47:53.560Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:47:59.013Z] [debug] [vite] hot updated: /src/lib/components/video-embed.svelte
+[2026-10-27T03:47:59.013Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:48:17.683Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/path-finder.svelte
+[2026-10-27T03:48:17.694Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:48:26.836Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/path-finder.svelte
+[2026-10-27T03:48:26.836Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:48:43.401Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/crisis-prevention.svelte
+[2026-10-27T03:48:43.401Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:48:44.172Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/crisis-prevention.svelte
+[2026-10-27T03:48:44.172Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:49:01.702Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/founder.svelte
+[2026-10-27T03:49:01.702Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:49:22.366Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/impact-stories.svelte
+[2026-10-27T03:49:22.368Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:49:49.814Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/toolkit.svelte
+[2026-10-27T03:49:49.814Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:49:50.395Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/toolkit.svelte
+[2026-10-27T03:49:50.395Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:50:20.432Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/card-draw.svelte
+[2026-10-27T03:50:20.432Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:50:38.406Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/card-draw.svelte
+[2026-10-27T03:50:38.406Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:50:39.849Z] [debug] [vite] connecting...
+[2026-10-27T03:50:39.851Z] [debug] [vite] connected.
+[2026-10-27T03:50:39.969Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:50:39.970Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:50:39.970Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:51:07.088Z] [debug] [vite] hot updated: /src/lib/components/pages/sections/path-finder.svelte
+[2026-10-27T03:51:07.088Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:51:07.097Z] [debug] [vite] hot updated: /src/lib/components/sections/cta-band.svelte
+[2026-10-27T03:51:07.097Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:51:10.997Z] [debug] [vite] hot updated: /src/lib/components/layout/navigation.svelte
+[2026-10-27T03:51:10.997Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:51:23.054Z] [debug] [vite] hot updated: /src/lib/components/sections/page-hero.svelte
+[2026-10-27T03:51:23.054Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:51:23.609Z] [debug] [vite] connecting...
+[2026-10-27T03:51:23.618Z] [debug] [vite] connected.
+[2026-10-27T03:51:23.669Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:51:23.669Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /champions, path: /champions}
+[2026-10-27T03:51:23.669Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/champions color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/champions, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /champions} /_vercel/insights/view
+[2026-10-27T03:51:25.167Z] [debug] [vite] connecting...
+[2026-10-27T03:51:25.169Z] [debug] [vite] connected.
+[2026-10-27T03:51:25.203Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:51:25.203Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /partners, path: /partners}
+[2026-10-27T03:51:25.203Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/partners color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/partners, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /partners} /_vercel/insights/view
+[2026-10-27T03:51:26.764Z] [debug] [vite] connecting...
+[2026-10-27T03:51:26.766Z] [debug] [vite] connected.
+[2026-10-27T03:51:26.818Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:51:26.818Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /performance, path: /performance}
+[2026-10-27T03:51:26.818Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/performance color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/performance, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /performance} /_vercel/insights/view
+[2026-10-27T03:51:28.333Z] [debug] [vite] connecting...
+[2026-10-27T03:51:28.342Z] [debug] [vite] connected.
+[2026-10-27T03:51:28.412Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:51:28.412Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /events, path: /events}
+[2026-10-27T03:51:28.412Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/events color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/events, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /events} /_vercel/insights/view
+[2026-10-27T03:51:29.909Z] [debug] [vite] connecting...
+[2026-10-27T03:51:29.911Z] [debug] [vite] connected.
+[2026-10-27T03:51:29.962Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:51:29.962Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /trainings, path: /trainings}
+[2026-10-27T03:51:29.962Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/trainings color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/trainings, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /trainings} /_vercel/insights/view
+[2026-10-27T03:51:31.554Z] [debug] [vite] connecting...
+[2026-10-27T03:51:31.554Z] [debug] [vite] connected.
+[2026-10-27T03:51:31.663Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:51:31.663Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /connection-miles, path: /connection-miles}
+[2026-10-27T03:51:31.663Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/connection-miles color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/connection-miles, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /connection-miles} /_vercel/insights/view
+[2026-10-27T03:51:56.256Z] [debug] [vite] connecting...
+[2026-10-27T03:51:56.256Z] [debug] [vite] connected.
+[2026-10-27T03:51:56.454Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:51:56.454Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /connection-miles, path: /connection-miles}
+[2026-10-27T03:51:56.454Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/connection-miles color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/connection-miles, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /connection-miles} /_vercel/insights/view
+[2026-10-27T03:52:04.206Z] [debug] [vite] connecting...
+[2026-10-27T03:52:04.210Z] [debug] [vite] connected.
+[2026-10-27T03:52:04.259Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:52:04.259Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /connection-miles, path: /connection-miles}
+[2026-10-27T03:52:04.259Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/connection-miles color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/connection-miles, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /connection-miles} /_vercel/insights/view
+[2026-10-27T03:52:15.703Z] [debug] [vite] connecting...
+[2026-10-27T03:52:15.706Z] [debug] [vite] connected.
+[2026-10-27T03:52:15.769Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:52:15.769Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /connection-miles, path: /connection-miles}
+[2026-10-27T03:52:15.769Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/connection-miles color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/connection-miles, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /connection-miles} /_vercel/insights/view
+[2026-10-27T03:52:37.898Z] [debug] [vite] connecting...
+[2026-10-27T03:52:38.155Z] [debug] [vite] connected.
+[2026-10-27T03:52:38.877Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:52:38.877Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /connection-miles, path: /connection-miles}
+[2026-10-27T03:52:38.877Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/connection-miles color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/connection-miles, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /connection-miles} /_vercel/insights/view
+[2026-10-27T03:52:41.373Z] [debug] [vite] connecting...
+[2026-10-27T03:52:41.388Z] [debug] [vite] connected.
+[2026-10-27T03:52:41.453Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:52:41.453Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:52:41.453Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:52:59.420Z] [debug] [vite] hot updated: /src/routes/+layout.svelte
+[2026-10-27T03:52:59.420Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:52:59.428Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:52:59.439Z] [debug] [vite] hot updated: /src/lib/components/layout/navigation.svelte
+[2026-10-27T03:52:59.439Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:53:03.876Z] [debug] [vite] hot updated: /src/routes/layout.css
+[2026-10-27T03:53:08.541Z] [debug] [vite] connecting...
+[2026-10-27T03:53:08.541Z] [debug] [vite] connected.
+[2026-10-27T03:53:08.562Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:53:08.562Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:53:08.562Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view
+[2026-10-27T03:53:22.038Z] [debug] [vite] connecting...
+[2026-10-27T03:53:22.041Z] [debug] [vite] connected.
+[2026-10-27T03:53:22.099Z] [log] %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[2026-10-27T03:53:22.099Z] [log] %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {route: /, path: /}
+[2026-10-27T03:53:22.099Z] [log] %c[Vercel Web Analytics]%c [view] http://localhost:5180/ color: rgb(120, 120, 120) color: inherit {o: http://localhost:5180/, sv: 0.1.3, sdkn: @vercel/analytics/sveltekit, sdkv: 2.0.1, dp: /} /_vercel/insights/view

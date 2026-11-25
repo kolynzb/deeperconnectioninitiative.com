@@ -15,7 +15,7 @@
 
 <ul class={cn('space-y-3', className)}>
 	{#each items as item}
-		<li class="flex gap-3 text-sm leading-relaxed text-slate-700">
+		<li class="flex gap-3 text-sm leading-relaxed text-muted-foreground">
 			<Check class="mt-0.5 size-4 shrink-0" color={accent} weight="bold" aria-hidden="true" />
 			<span>{item}</span>
 		</li>

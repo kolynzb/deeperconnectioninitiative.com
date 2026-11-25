@@ -10,6 +10,7 @@ const navGroups = [
       { label: "Champions", href: "/champions" },
       { label: "Trainings", href: "/trainings" },
       { label: "Volunteering", href: "/volunteering" },
+      { label: "Conversation Clinics", href: "/clinics" },
       { label: "Events", href: "/events" },
     ],
   },
@@ -31,11 +32,6 @@ const complianceLinks = [
 </script>
 
 <footer class="relative bg-dci-teal-deep text-dci-sand rounded-t-4xl overflow-hidden">
-	<!-- Dot-pattern overlay -->
-	<div
-		class="pointer-events-none absolute inset-0 opacity-10"
-		style="background-image: radial-gradient(#2A6268 1px, transparent 1px); background-size: 30px 30px;"
-	></div>
 
 	<div class="relative max-w-7xl mx-auto px-6 sm:px-8 pt-16 pb-8 2xl:max-w-400">
 		<!-- Main grid -->
@@ -45,7 +41,7 @@ const complianceLinks = [
 				<div class="logo-on-dark">
 					<Logo isLink />
 				</div>
-				<p class="text-sm text-dci-sand/70 leading-relaxed max-w-xs">
+				<p class="text-sm text-dci-sand/75 leading-relaxed max-w-xs">
 					Building deeper connections for community wellness through evidence-based programs and mutual support.
 				</p>
 			</div>
@@ -54,14 +50,14 @@ const complianceLinks = [
 			<div class="lg:col-span-4 grid grid-cols-2 gap-8">
 				{#each navGroups as group}
 					<div>
-						<p class="text-xs font-semibold uppercase tracking-wide text-dci-sand/60">
+						<p class="text-xs font-semibold uppercase tracking-wide text-dci-sand/75">
 							{group.title}
 						</p>
 						<nav class="flex flex-col gap-2.5 mt-3" aria-label={`${group.title} links`}>
 							{#each group.links as link}
 								<a
 									href={link.href}
-									class="text-sm text-dci-sand/70 hover:text-white transition-colors"
+									class="text-sm text-dci-sand/75 hover:text-white transition-colors"
 								>
 									{link.label}
 								</a>
@@ -73,35 +69,35 @@ const complianceLinks = [
 
 			<!-- Right: Contact info -->
 			<div class="lg:col-span-4">
-				<p class="text-xs font-semibold uppercase tracking-wide text-dci-sand/60">
+				<p class="text-xs font-semibold uppercase tracking-wide text-dci-sand/75">
 					Contact
 				</p>
 				<div class="mt-3 space-y-2.5">
-					<p class="text-sm text-dci-sand/70">{siteConfig.contacts.address}</p>
-					<p class="text-sm text-dci-sand/70">
+					<p class="text-sm text-dci-sand/75">{siteConfig.contacts.address}</p>
+					<p class="text-sm text-dci-sand/75">
 						<a
 							href={`mailto:${siteConfig.contacts.email}`}
-							class="text-dci-sand/70 hover:text-white underline underline-offset-4 transition-colors"
+							class="text-dci-sand/75 hover:text-white underline underline-offset-4 transition-colors"
 						>
 							{siteConfig.contacts.email}
 						</a>
 					</p>
-					<p class="text-sm text-dci-sand/70">
+					<p class="text-sm text-dci-sand/75">
 						<a
 							href={`tel:${siteConfig.contacts.tele}`}
-							class="text-dci-sand/70 hover:text-white underline underline-offset-4 transition-colors"
+							class="text-dci-sand/75 hover:text-white underline underline-offset-4 transition-colors"
 						>
 							{siteConfig.contacts.tele}
 						</a>
 					</p>
-					<p class="text-sm text-dci-sand/70">Mon&ndash;Fri, 9:00 AM&ndash;5:00 PM</p>
+					<p class="text-sm text-dci-sand/75">Mon&ndash;Fri, 9:00 AM&ndash;5:00 PM</p>
 				</div>
 			</div>
 		</div>
 
 		<!-- Bottom bar -->
 		<div class="mt-14 border-t border-dci-sand/15 pt-8 space-y-6">
-			<p class="text-xs text-dci-sand/50 leading-relaxed max-w-3xl">
+			<p class="text-xs text-dci-sand/75 leading-relaxed max-w-3xl">
 				Our community is built on the foundation of belonging and mutual respect. Through our
 				Deeper Connection Initiative, we are committed to fostering a neighborhood where every
 				resident feels truly at home: celebrating diversity, encouraging participation,
@@ -112,13 +108,13 @@ const complianceLinks = [
 					{#each complianceLinks as link}
 						<a
 							href={link.href}
-							class="text-xs text-dci-sand/50 hover:text-dci-sand transition-colors"
+							class="text-xs text-dci-sand/75 hover:text-dci-sand transition-colors"
 						>
 							{link.label}
 						</a>
 					{/each}
 				</nav>
-				<p class="text-xs text-dci-sand/50">
+				<p class="text-xs text-dci-sand/75">
 					&copy; {new Date().getFullYear()} {siteConfig.legalName}
 				</p>
 			</div>
